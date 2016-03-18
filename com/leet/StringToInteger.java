@@ -50,6 +50,7 @@ public class StringToInteger {
     	char cSingleElement;
     	int nSingleElement;
     	
+    	
     	for (int i=0; i<nLen; i++) {
     		cSingleElement = str.charAt(i);
     		

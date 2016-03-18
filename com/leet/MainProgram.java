@@ -18,17 +18,23 @@ public class MainProgram {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		CountRangeSum myInstance = new CountRangeSum();
-		
+		WordSearchII myInstance = new WordSearchII();
+
+		long lnTm1 = System.currentTimeMillis();
+
 		myInstance.run();
 
+		long lnTm2 = System.currentTimeMillis();
+		
+		System.out.println("Time: " + (lnTm2 - lnTm1) + " ms");
+	
 		/////////////////Important//////////////////////
-		String ss = "12.3.4.5";
-		String kk[] = ss.split("\\.");
+//		String ss = "12.3.4.5";
+//		String kk[] = ss.split("\\.");
 		
 		
-		String mmm= "22\\5\\66";    //Actually it is "22\5\66 if printed
-	    String kkk[] = mmm.split("\\\\");
+//		String mmm= "22\\5\\66";    //Actually it is "22\5\66 if printed
+//	    String kkk[] = mmm.split("\\\\");
 	    
 	    //myString.split("\\s+");    //Split by space and tab
 	    
