@@ -144,7 +144,7 @@ public class ShortestPalindrome {
     	
     	//Find max-length palindrome starting from head
     	for (i=0; i<narrPalinLen.length; i++) {
-    		if (nMaxLen < narrPalinLen[i] && i-(narrPalinLen[i]-1)<=2) nMaxLen = narrPalinLen[i];
+    		if (nMaxLen < narrPalinLen[i] && i-(narrPalinLen[i]-1)<=2) nMaxLen = narrPalinLen[i];   //i-(narrPalinLen[i]-1)<=2 guarantees the string should be starting from head of raw string (^#a#b....)
     	}
     	
     	return nMaxLen-1;  //reduce 1 to get the actual length of Palindrome, because of the definition of narrPalinLen     	
