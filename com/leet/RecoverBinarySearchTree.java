@@ -115,6 +115,7 @@ public class RecoverBinarySearchTree {
             }
         }
         
+        //Recover by swapping the values of the two mistaken nodes
         if (firstMis != null && secondMis != null) {
             int nVal = firstMis.val;
             firstMis.val = secondMis.val;
