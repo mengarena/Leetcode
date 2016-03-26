@@ -18,7 +18,7 @@ public class MainProgram {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		WordSearchII myInstance = new WordSearchII();
+		SparseMatrixMultiplication myInstance = new SparseMatrixMultiplication();
 
 		long lnTm1 = System.currentTimeMillis();
 
@@ -28,6 +28,7 @@ public class MainProgram {
 		
 		System.out.println("Time: " + (lnTm2 - lnTm1) + " ms");
 	
+		
 		/////////////////Important//////////////////////
 //		String ss = "12.3.4.5";
 //		String kk[] = ss.split("\\.");
