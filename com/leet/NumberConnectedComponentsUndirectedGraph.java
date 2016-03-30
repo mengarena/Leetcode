@@ -39,6 +39,7 @@ public class NumberConnectedComponentsUndirectedGraph {
 	}
 	
 	
+	//Union Find
 	//Refer to:  https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf
     public int countComponents(int n, int[][] edges) {
     	if (edges == null || edges.length == 0 || edges[0].length == 0) return n;    	    	
@@ -63,11 +64,6 @@ public class NumberConnectedComponentsUndirectedGraph {
     }
     
     
-    private void unite(int[] roots, int p, int q) {
-    	int i = root(roots, p);
-    	int j = root(roots, q);
-    	roots[i] = j;
-    }
     
     private int root(int[] roots, int i) {
     	while (i != roots[i]) {
@@ -82,6 +78,18 @@ public class NumberConnectedComponentsUndirectedGraph {
     private boolean IsConnected(int[] roots, int p, int q) {
     	return roots[p] == roots[q];
     }
+    
+    private void unite(int[] roots, int p, int q) {
+    	int i = root(roots, p);
+    	int j = root(roots, q);
+    	roots[i] = j;
+    }
+    
+    
+
+    
+    
+    
     
     
 	//AC:  27%

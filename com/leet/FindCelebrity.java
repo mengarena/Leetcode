@@ -118,4 +118,8 @@ public class FindCelebrity {
          return findCelebrityHelper(lstCandidateNew);
     }
     
+    
+    private boolean knows(int a, int b) {
+    	return true;
+    }
 }
