@@ -84,7 +84,7 @@ public class CourseScheduleII {
         	}
         }
                  
-        for (i=0; i<numCourses; i++) {   //**
+        for (i=0; i<numCourses; i++) {   //** Node
         	if (!lstVisited.get(i)) {
         		boolean bRet = dfsFindCourses(hmGraph, i, lstVisited, lstCourses);
         		if (bRet == false) return new int[0];   //If there a loop, return []

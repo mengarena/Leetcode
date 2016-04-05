@@ -27,7 +27,6 @@ public class ReadNCharactersGivenRead4 {
      * @return    The number of characters read
      */
     public int read(char[] buf, int n) {
-        int nTotalCnt = 0;
         int i=0, j=0;
         int nReadCnt = 0;
         int nBufIdx = 0;
