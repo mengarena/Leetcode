@@ -31,7 +31,7 @@ import java.util.LinkedList;
 //The queue size need not be the same as the window¡¯s size.
 //Remove redundant elements and the queue should store only elements that need to be considered.
 
-
+//Zenefits
 public class SlidingWindowMaximum {
 
 	public SlidingWindowMaximum() {

@@ -37,6 +37,7 @@ import java.util.List;
 //     5
 //The above binary tree is serialized as "{1,2,3,#,#,4,#,#,5}".
 
+//Microsoft, Bloomberg
 public class SymmetricTree {
 	//Definition for a binary tree node.
 	public class TreeNode {

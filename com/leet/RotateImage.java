@@ -6,7 +6,8 @@ package com.leet;
 //
 //Follow up:
 //Could you do this in-place?
-		
+
+//Microsoft, Amazon
 public class RotateImage {
 
 	public RotateImage() {

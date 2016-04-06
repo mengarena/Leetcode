@@ -26,6 +26,7 @@ import java.util.Queue;
 //Note: Do not use class member/global/static variables to store states. 
 //Your serialize and deserialize algorithms should be stateless.
 
+//Facebook, Linkedin, Microsoft, Yahoo, Bloomberg
 public class SerializeDeserializeBinaryTree {
 
 	public SerializeDeserializeBinaryTree() {

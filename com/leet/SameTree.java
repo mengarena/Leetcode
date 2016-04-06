@@ -4,6 +4,7 @@ package com.leet;
 //
 //Two binary trees are considered equal if they are structurally identical and the nodes have the same value.
 
+//Bloomberg
 public class SameTree {
 	// Definition for a binary tree node.
 	public class TreeNode {

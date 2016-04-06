@@ -11,6 +11,7 @@ package com.leet;
 //
 //For the purpose of this problem, we define empty string as valid palindrome.
 
+//Facebook, Uber, Microsoft, Zenefits
 public class ValidPalindrome {
 
 	public ValidPalindrome() {

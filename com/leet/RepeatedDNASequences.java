@@ -18,6 +18,7 @@ import java.util.Set;
 //Return:
 //["AAAAACCCCC", "CCCCCAAAAA"].
 
+//Linkedin
 public class RepeatedDNASequences {
 
 	public RepeatedDNASequences() {

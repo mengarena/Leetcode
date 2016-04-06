@@ -18,6 +18,7 @@ import java.util.Stack;
 //Given "cbacdcbc"
 //Return "acdb"
 
+//Google
 public class RemoveDuplicateLetters {
 
 	public RemoveDuplicateLetters() {

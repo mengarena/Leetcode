@@ -8,6 +8,7 @@ package com.leet;
 //
 //You may assume no duplicate exists in the array.
 
+//Facebook, Uber, Linkedin, Bloomberg
 public class SearchRotatedSortedArray {
 
 	public SearchRotatedSortedArray() {

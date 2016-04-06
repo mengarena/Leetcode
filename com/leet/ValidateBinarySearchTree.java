@@ -12,6 +12,7 @@ import java.util.List;
 //Both the left and right subtrees must also be binary search trees.
 //confused what "{1,#,2,3}" means? > read more on how binary tree is serialized on OJ.
 
+//Microsoft, Amazon, Bloomberg
 public class ValidateBinarySearchTree {
 
 	public ValidateBinarySearchTree() {

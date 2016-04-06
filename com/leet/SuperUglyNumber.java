@@ -13,7 +13,7 @@ import java.util.List;
 //(2) The given numbers in primes are in ascending order.
 //(3) 0 < k ¡Ü 100, 0 < n ¡Ü 106, 0 < primes[i] < 1000.
 
-
+//Google
 public class SuperUglyNumber {
 
 	public SuperUglyNumber() {

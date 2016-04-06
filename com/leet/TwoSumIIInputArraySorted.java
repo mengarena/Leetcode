@@ -14,6 +14,7 @@ import java.util.List;
 //Input: numbers={2, 7, 11, 15}, target=9
 //Output: index1=1, index2=2
 
+//Amazon
 public class TwoSumIIInputArraySorted {
 
 	public TwoSumIIInputArraySorted() {

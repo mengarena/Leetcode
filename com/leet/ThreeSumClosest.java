@@ -12,6 +12,8 @@ import java.util.List;
 //
 //The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 
+
+//Bloomberg
 public class ThreeSumClosest {
 
 	public ThreeSumClosest() {

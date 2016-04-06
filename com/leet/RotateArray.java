@@ -13,6 +13,7 @@ package com.leet;
 //Could you do it in-place with O(1) extra space?
 //Related problem: Reverse Words in a String II
 
+//Microsoft, Bloomberg
 public class RotateArray {
 
 	public RotateArray() {

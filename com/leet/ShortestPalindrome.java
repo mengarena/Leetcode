@@ -9,7 +9,7 @@ package com.leet;
 //
 //Given "abcd", return "dcbabcd".
 
-
+//Google
 public class ShortestPalindrome {
 
 	public ShortestPalindrome() {

@@ -15,7 +15,8 @@ import java.util.Map;
 //		
 //UPDATE (2016/2/13):
 //The return format had been changed to zero-based indices. Please read the above updated description carefully.
-		
+	
+//Facebook, Airbnb, Amazon, Bloomberg
 public class TwoSum {
 
 	public TwoSum() {
