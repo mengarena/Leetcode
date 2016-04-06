@@ -13,7 +13,7 @@ import java.util.List;
 //Note: 
 //You may assume k is always valid, 1 ¡Ü k ¡Ü array's length.
 
-
+//Facebook, Microsoft, Bloomberg
 public class KthLargestElementArray {
 
 	public KthLargestElementArray() {

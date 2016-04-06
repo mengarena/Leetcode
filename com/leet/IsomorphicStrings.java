@@ -18,6 +18,7 @@ import java.util.Map;
 //
 //Given "paper", "title", return true.
 
+//Linkedin
 public class IsomorphicStrings {
 
 	public IsomorphicStrings() {

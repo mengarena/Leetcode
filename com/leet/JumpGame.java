@@ -14,6 +14,7 @@ import java.util.List;
 //
 //A = [3,2,1,0,4], return false.
 
+//Microsoft
 public class JumpGame {
 
 	public JumpGame() {
@@ -52,6 +53,9 @@ public class JumpGame {
         
         return true;
 	}
+	
+	
+	
 	
 	/* Works, but time out
     public boolean canJump(int[] nums) {

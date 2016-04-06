@@ -16,6 +16,7 @@ import java.util.List;
 //       3   5
 //For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another example is LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition.
 
+//Facebook, Amazon
 public class LowestCommonAncestorBST {
 	 //Definition for a binary tree node.
 	 public class TreeNode {

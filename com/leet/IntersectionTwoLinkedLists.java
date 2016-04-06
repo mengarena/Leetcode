@@ -20,6 +20,7 @@ package com.leet;
 //You may assume there are no cycles anywhere in the entire linked structure.
 //Your code should preferably run in O(n) time and use only O(1) memory.
 
+//Amazon, Microsoft, Bloomberg
 public class IntersectionTwoLinkedLists {
 
 	//Definition for singly-linked list.

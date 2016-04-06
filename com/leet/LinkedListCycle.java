@@ -4,7 +4,8 @@ package com.leet;
 //
 //Follow up:
 //Can you solve it without using extra space?
-		
+
+//Bloomberg
 public class LinkedListCycle {
 
 	public LinkedListCycle() {

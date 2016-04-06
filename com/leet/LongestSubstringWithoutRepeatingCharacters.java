@@ -7,6 +7,7 @@ import java.util.List;
 //For example, the longest substring without repeating letters for "abcabcbb" is "abc", which the length is 3. 
 //For "bbbbb" the longest substring is "b", with the length of 1.
 
+//Bloomberg
 public class LongestSubstringWithoutRepeatingCharacters {
 
 	public LongestSubstringWithoutRepeatingCharacters() {
