@@ -13,6 +13,7 @@ import java.util.List;
 //More practice:
 //If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 
+//Linkedin
 public class MaximumSubarray {
 
 	public MaximumSubarray() {

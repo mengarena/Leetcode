@@ -19,6 +19,8 @@ import java.util.Queue;
 
 //Java Iterator interface reference:
 //https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
+
+//Google, Apple, Yahoo
 class PeekingIterator implements Iterator<Integer> {
 
 	private Queue<Integer> myQueue = new LinkedList<Integer>();

@@ -14,6 +14,7 @@ package com.leet;
 //You may assume that the array does not change.
 //There are many calls to sumRange function.
 
+//Palantir
 public class NumArray {
 
 	private int[] narrSum = null;

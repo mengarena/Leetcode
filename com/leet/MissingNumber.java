@@ -7,7 +7,8 @@ package com.leet;
 //
 //Note:
 //Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
-		
+	
+//Bloomberg
 public class MissingNumber {
 
 	public MissingNumber() {

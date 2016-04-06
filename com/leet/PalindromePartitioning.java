@@ -15,6 +15,7 @@ import java.util.List;
 //    ["a","a","b"]
 //  ]
 
+//Bloomberg
 public class PalindromePartitioning {
 
 	public PalindromePartitioning() {
@@ -23,17 +24,18 @@ public class PalindromePartitioning {
 
 
 	public void run() {
-		String s = "aabaacac";
+		//String s = "aabaacac";
+		String s = "fifgbeajcacehiicccfecbfhhgfiiecdcjjffbghdidbhbdbfbfjccgbbdcjheccfbhafehieabbdfeigbiaggchaeghaijfbjhi";
 		//String s = "ltsqjodzeriqdtyewsrpfscozbyrpidadvsmlylqrviuqiynbscgmhulkvdzdicgdwvquigoepiwxjlydogpxdahyfhdnljshgjeprsvgctgnfgqtnfsqizonirdtcvblehcwbzedsmrxtjsipkyxk";
 		List<List<String>> lstlstPartition = partition(s);
 		
-		for (List<String> lstPartition:lstlstPartition) {
-			System.out.print("[");
-			for (String sPartition:lstPartition) {
-				System.out.print(sPartition + ",");
-			}
-			System.out.println("]");
-		}
+//		for (List<String> lstPartition:lstlstPartition) {
+//			System.out.print("[");
+//			for (String sPartition:lstPartition) {
+//				System.out.print(sPartition + ",");
+//			}
+//			System.out.println("]");
+//		}
 	}
 	
 	

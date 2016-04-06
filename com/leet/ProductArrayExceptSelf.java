@@ -10,7 +10,8 @@ package com.leet;
 //Follow up:
 //Could you solve it with constant space complexity? 
 //(Note: The output array does not count as extra space for the purpose of space complexity analysis.)
-		
+
+//Facebook, Linkedin
 public class ProductArrayExceptSelf {
 
 	public ProductArrayExceptSelf() {

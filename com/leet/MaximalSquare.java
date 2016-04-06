@@ -14,6 +14,7 @@ import java.util.List;
 //
 //Return 4.
 
+//Facebook, Airbnb
 public class MaximalSquare {
 
 	public MaximalSquare() {

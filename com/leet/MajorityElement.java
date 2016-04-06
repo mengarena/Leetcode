@@ -8,6 +8,7 @@ import java.util.Set;
 //
 //You may assume that the array is non-empty and the majority element always exist in the array.
 
+//Zenefits
 public class MajorityElement {
 
 	public MajorityElement() {

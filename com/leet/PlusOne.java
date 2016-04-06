@@ -7,6 +7,7 @@ import java.util.List;
 //
 //The digits are stored such that the most significant digit is at the head of the list.
 
+//Google
 public class PlusOne {
 
 	public PlusOne() {
@@ -36,6 +37,65 @@ public class PlusOne {
 		
 		System.out.println("Plused One Result: " + sNum);
 	}
+	
+	
+	
+	//Accepted. Beat 41%
+    public int[] plusOne(int[] digits) {
+        int i;
+        int nTmp = 0;
+        int nLen = digits.length;
+        
+        //Plus one on last digit
+        nTmp = digits[nLen - 1] + 1;
+        
+        for (i=nLen-2; i>=0; i--) {
+        	if (nTmp > 9) {
+        		digits[i+1] = 0;
+        		nTmp = digits[i] + 1;
+        	} else {
+        		digits[i+1] = nTmp;
+        		return digits;
+        	}
+        	
+        }
+        
+        //Process first digit
+        //If the first digit becomes 10, all other digits followed are 0
+        if (nTmp > 9) {
+           int[] narrNew = new int[nLen + 1];
+           narrNew[0] = 1;    //10...0
+        	
+           return narrNew;
+        } else {   //Only one digit in the digits array
+            digits[0] = nTmp;
+        	return digits;
+        }
+    }
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
     public int[] plusOne_old(int[] digits) {
         int i;

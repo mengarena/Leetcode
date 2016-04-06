@@ -12,6 +12,7 @@ import java.util.List;
 //Note:
 //n and k are non-negative integers.
 
+//Google
 public class PaintFence {
 
 	public PaintFence() {

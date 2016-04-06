@@ -2,6 +2,8 @@ package com.leet;
 
 import java.util.Stack;
 
+//Implement Queue using Stacks
+
 //Implement the following operations of a queue using stacks.
 //
 //push(x) -- Push element x to the back of queue.
@@ -15,6 +17,8 @@ import java.util.Stack;
 //You may simulate a stack by using a list or deque (double-ended queue), as long as you use only standard operations of a stack.
 //You may assume that all operations are valid (for example, no pop or peek operations will be called on an empty queue).
 
+
+//Microsoft
 public class MyQueue {
 
 	Stack<Integer> skOrg = new Stack<Integer>();

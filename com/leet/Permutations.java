@@ -9,6 +9,7 @@ import java.util.List;
 //[1,2,3] have the following permutations:
 //[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1].
 
+//Linkedin, Microsoft
 public class Permutations {
 
 	public Permutations() {
@@ -53,9 +54,12 @@ public class Permutations {
     	}
     	
     	lstlstPermPrev = permute(nums, nValidCnt-1);  //Leave the last one out
+
+    	if (lstlstPermPrev.isEmpty()) return lstlstPerm;
+
+    	int nTmpLen = lstlstPermPrev.get(0).size();
     	
     	for (List<Integer> lstOnePerm:lstlstPermPrev) {
-    		int nTmpLen = lstOnePerm.size();
     		for (int i=0; i<=nTmpLen; i++) {
     			List<Integer> lstOnePermTmp = new ArrayList<Integer>(lstOnePerm);
     			lstOnePermTmp.add(i, nums[nValidCnt-1]);

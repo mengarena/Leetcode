@@ -26,6 +26,7 @@ import java.util.List;
 //nums = [1, 2, 2], n = 5
 //Return 0.
 
+//Google
 public class PatchingArray {
 
 	public PatchingArray() {

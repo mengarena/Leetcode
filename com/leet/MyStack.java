@@ -3,6 +3,8 @@ package com.leet;
 import java.util.LinkedList;
 import java.util.Queue;
 
+//Implement Stack using Queues
+
 //Implement the following operations of a stack using queues.
 //
 //push(x) -- Push element x onto stack.
@@ -19,6 +21,7 @@ import java.util.Queue;
 //Update (2015-06-11):
 //The class name of the Java function had been updated to MyStack instead of Stack.
 
+//Bloomberg
 public class MyStack {
 	
 	private Queue<Integer> orgQueue = new LinkedList<Integer>();

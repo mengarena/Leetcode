@@ -13,6 +13,7 @@ import java.util.Arrays;
 //More practice:
 //If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n).
 
+//Facebook
 public class MinimumSizeSubarraySum {
 
 	public MinimumSizeSubarraySum() {

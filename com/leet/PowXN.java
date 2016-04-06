@@ -2,6 +2,7 @@ package com.leet;
 
 //Implement pow(x, n).
 
+//Facebook, Linkedin, Bloomberg
 public class PowXN {
 
 	public PowXN() {

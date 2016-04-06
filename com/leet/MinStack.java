@@ -11,6 +11,7 @@ import java.util.Stack;
 //top() -- Get the top element.
 //getMin() -- Retrieve the minimum element in the stack.
 
+//Google, Uber, Amazon, Bloomberg, Zenefits
 public class MinStack {
 
 	private Stack<Integer> minStk = new Stack<Integer>();
