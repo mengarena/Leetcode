@@ -33,6 +33,7 @@ import java.util.Set;
 //What kind of data structure could answer such query efficiently? Does a hash table work? Why or why not? How about a Trie? 
 //If you would like to learn how to implement a basic trie, please work on this problem: Implement Trie (Prefix Tree) first.
 
+//Airbnb, Microsoft
 public class WordSearchII {
 	public WordSearchII() {
 		// TODO Auto-generated constructor stub

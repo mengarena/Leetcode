@@ -23,6 +23,7 @@ import java.util.List;
 //word = "SEE", -> returns true,
 //word = "ABCB", -> returns false.
 
+//Facebook, Microsoft, Bloomberg
 public class WordSearch {
 
 	public WordSearch() {

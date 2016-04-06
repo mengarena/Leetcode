@@ -4,6 +4,7 @@ package com.leet;
 //
 //For example, given nums = [3, 5, 2, 1, 6, 4], one possible answer is [1, 6, 2, 5, 3, 4].
 
+//Google
 public class WiggleSort {
 
 	public WiggleSort() {

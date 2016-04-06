@@ -12,6 +12,7 @@ package com.leet;
 //Follow Up:
 //Can you do it in O(n) time and/or in-place with O(1) extra space?
 
+//Google
 public class WiggleSortII {
 
 	public WiggleSortII() {

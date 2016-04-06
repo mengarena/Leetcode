@@ -16,6 +16,7 @@ import java.util.Set;
 //
 //Return true because "leetcode" can be segmented as "leet code".
 
+//Bloomberg
 public class WordBreak {
 
 	public WordBreak() {

@@ -24,6 +24,7 @@ import java.util.Set;
 //All words have the same length.
 //All words contain only lowercase alphabetic characters.
 
+//Linkedin
 public class WordLadder {
 
 	public WordLadder() {

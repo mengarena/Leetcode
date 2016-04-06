@@ -1,9 +1,13 @@
 package com.leet;
 
+
+//Add and Search Word - Data structure design
+
 //Design a data structure that supports the following two operations:
 //
 //void addWord(word)
 //bool search(word)
+//
 //search(word) can search a literal word or a regular expression string containing only letters a-z or .. 
 //A . means it can represent any one letter.
 //
@@ -23,6 +27,8 @@ package com.leet;
 //
 //You should be familiar with how a Trie works. If not, please work on this problem: Implement Trie (Prefix Tree) first.
 
+
+//Facebook
 public class WordDictionary {
 	
 	
