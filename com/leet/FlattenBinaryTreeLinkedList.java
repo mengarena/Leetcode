@@ -25,6 +25,7 @@ import java.util.Stack;
 //            \
 //             6
 
+//Microsoft
 public class FlattenBinaryTreeLinkedList {
 
 	public FlattenBinaryTreeLinkedList() {

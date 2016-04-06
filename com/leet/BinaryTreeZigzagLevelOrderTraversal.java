@@ -21,6 +21,8 @@ import java.util.List;
 //]
 //confused what "{1,#,2,3}" means? > read more on how binary tree is serialized on OJ.
 
+
+//Linkedin, Microsoft, Bloomberg
 public class BinaryTreeZigzagLevelOrderTraversal {
 
 	public BinaryTreeZigzagLevelOrderTraversal() {

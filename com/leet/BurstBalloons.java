@@ -23,6 +23,8 @@ import java.util.List;
 //    nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []
 //   coins =  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   = 167
 
+
+//Google
 public class BurstBalloons {
 
 	public BurstBalloons() {

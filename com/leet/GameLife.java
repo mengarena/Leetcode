@@ -20,6 +20,7 @@ package com.leet;
 //In principle, the board is infinite, which would cause problems when the active area encroaches the border of the array. 
 //How would you address these problems?
 
+//Google, TinyCo
 public class GameLife {
 
 	public GameLife() {

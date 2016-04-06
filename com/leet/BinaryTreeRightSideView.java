@@ -16,6 +16,7 @@ import java.util.Stack;
 //  5     4       <---
 //You should return [1, 3, 4].
 
+//Amazon
 public class BinaryTreeRightSideView {
 
 	public BinaryTreeRightSideView() {

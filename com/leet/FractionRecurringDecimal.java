@@ -13,6 +13,7 @@ import java.util.Map;
 //Given numerator = 2, denominator = 1, return "2".
 //Given numerator = 2, denominator = 3, return "0.(6)".
 
+//Google
 public class FractionRecurringDecimal {
 
 	public FractionRecurringDecimal() {

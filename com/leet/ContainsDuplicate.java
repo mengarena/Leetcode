@@ -7,6 +7,8 @@ import java.util.List;
 //Given an array of integers, find if the array contains any duplicates. 
 //Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
 
+
+//Airbnb
 public class ContainsDuplicate {
 
 	public ContainsDuplicate() {

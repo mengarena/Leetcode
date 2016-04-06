@@ -12,6 +12,7 @@ import java.util.Arrays;
 
 //[**] The statement about H-index in the question is kinda misleading
 
+//Google, Facebook, Bloomberg
 public class HIndex {
 
 	public HIndex() {

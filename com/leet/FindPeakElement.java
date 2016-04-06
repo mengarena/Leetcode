@@ -15,6 +15,7 @@ package com.leet;
 //Note:
 //Your solution should be in logarithmic complexity.
 
+//Google, Microsoft
 public class FindPeakElement {
 
 	public FindPeakElement() {

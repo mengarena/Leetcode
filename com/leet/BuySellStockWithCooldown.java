@@ -1,5 +1,7 @@
 package com.leet;
 
+//Best Time to Buy and Sell Stock with Cooldown
+
 //Say you have an array for which the ith element is the price of a given stock on day i.
 //
 //Design an algorithm to find the maximum profit. 
@@ -14,6 +16,8 @@ package com.leet;
 //maxProfit = 3
 //transactions = [buy, sell, cooldown, buy, sell]
 
+
+//Google
 public class BuySellStockWithCooldown {
 
 	public BuySellStockWithCooldown() {

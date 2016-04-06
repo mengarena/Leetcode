@@ -16,6 +16,7 @@ import java.util.Stack;
 //"00", 0 -> ["0+0", "0-0", "0*0"]
 //"3456237490", 9191 -> []
 
+//Google, Cryptic Studios
 public class ExpressionAddOperators {
 
 	public ExpressionAddOperators() {

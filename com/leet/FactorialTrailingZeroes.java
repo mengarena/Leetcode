@@ -4,6 +4,7 @@ package com.leet;
 //
 //Note: Your solution should be in logarithmic time complexity.
 
+//Bloomberg
 public class FactorialTrailingZeroes {
 
 	public FactorialTrailingZeroes() {

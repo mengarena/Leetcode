@@ -21,6 +21,7 @@ import java.util.List;
 //
 //For now, the judge is able to judge based on one instance of gray code sequence. Sorry about that.
 
+//Amazon
 public class GrayCode {
 
 	public GrayCode() {

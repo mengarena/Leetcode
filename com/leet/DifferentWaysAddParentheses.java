@@ -27,6 +27,7 @@ import java.util.List;
 //Output: [-34, -14, -10, -10, 10]
 //		
 
+//Crypic Studios
 public class DifferentWaysAddParentheses {
 
 	public DifferentWaysAddParentheses() {

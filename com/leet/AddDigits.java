@@ -16,6 +16,8 @@ package com.leet;
 //How do they occur, periodically or randomly?
 //You may find this Wikipedia article useful.
 
+
+//Microsoft
 public class AddDigits {
 
 	public AddDigits() {

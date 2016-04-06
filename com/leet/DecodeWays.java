@@ -16,6 +16,7 @@ import java.util.List;
 //
 //The number of ways decoding "12" is 2.
 
+//Facebook, Microsoft
 public class DecodeWays {
 
 	public DecodeWays() {

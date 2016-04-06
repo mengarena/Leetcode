@@ -16,6 +16,8 @@ import java.util.List;
 //To the right of 1 there is 0 smaller element.
 //Return the array [2, 1, 1, 0].
 
+
+//Google
 public class CountSmallerNumbersAfterSelf {
 	
 	public class TreeNodeS {

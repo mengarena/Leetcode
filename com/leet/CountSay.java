@@ -13,6 +13,7 @@ import java.util.List;
 //
 //Note: The sequence of integers will be represented as a string.
 
+//Facebook
 public class CountSay {
 
 	public CountSay() {

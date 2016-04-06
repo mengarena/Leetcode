@@ -95,7 +95,7 @@ import java.util.List;
 //   return count;
 //}
 
-
+//Amazon
 public class CountPrimes {
 
 	public CountPrimes() {
