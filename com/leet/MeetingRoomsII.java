@@ -48,7 +48,7 @@ public class MeetingRoomsII {
         	narrEnd[i] = intervals[i].end;
         }
         
-        Arrays.sort(narrStart);
+        Arrays.sort(narrStart);   //Time complexity: nlogn
         Arrays.sort(narrEnd);
         
         int nRoomCnt = 0;
@@ -67,6 +67,9 @@ public class MeetingRoomsII {
         
         return nRoomCnt;
     }
+    
+    
+    
     
     //AC: The problem equals to finding the max number of overlapping 
     public int minMeetingRoomsA(Interval[] intervals) {
