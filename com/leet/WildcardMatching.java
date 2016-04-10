@@ -87,7 +87,8 @@ public class WildcardMatching {
         		nstarPos = j;
         		nsPos = i;
         		j++;
-        	} else if (nstarPos != -1) {  //To here, means carrp[j] != carrs[i]
+        	} else if (nstarPos != -1) {  //To here, means carrp[j] != carrs[i], so before proceeding on pattern, 
+        		                          //must match those unmatched in s with the pattern by using the "*", so the position in pattern is fixed at nstarPos+1
         		//In case, for example, 
         		//s = d e h k a k a
         		//p = d *   k a
