@@ -1,0 +1,39 @@
+Question:    
+
+Write a SQL query to delete all duplicate email entries in a table named Person, 
+keeping only unique emails based on its smallest Id.
+
++----+------------------+
+| Id | Email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
+| 3  | john@example.com |
++----+------------------+
+Id is the primary key column for this table.
+
+For example, after running your query, the above Person table should have the following rows:
+
++----+------------------+
+| Id | Email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
++----+------------------+
+
+
+==Answer:
+
+1) delete from Person where Person.Id NOT IN (select IdSet.Id from (select A.Id from (select distinct Email, Id from Person order by Id asc) as A group by Email) as IdSet);
+   
+1.1) select distinct Email, Id from Person order by Id asc --> get Id in ASC order
+1.2) select A.Id from (select distinct Email, Id from Person order by Id asc) as A group by Email --> Get Id for unique email
+1.3) (select A.Id from (select distinct Email, Id from Person order by Id asc) as A group by Email) as IdSet  --> Form a table only containing the Id from 1.2)
+1.4) select IdSet.Id from (select A.Id from (select distinct Email, Id from Person order by Id asc) as A group by Email) as IdSet  -->Get the Id list to limit the delete
+(without this "distinct", result seems wrong)
+
+2) delete p2 from Person p1, Person p2 where STRCMP(p1.Email, p2.Email) = 0 and p1.Id < p2.Id;
+
+3) delete from Person where Person.Id NOT IN (select min_id from (select min(Id) as min_id from Person group by Email) as IdSet);
+
+

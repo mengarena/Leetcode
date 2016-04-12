@@ -1,0 +1,89 @@
+Question: Consecutive Numbers
+
+Write a SQL query to find all numbers that appear at least three times consecutively.
+
++----+-----+
+| Id | Num |
++----+-----+
+| 1  |  1  |
+| 2  |  1  |
+| 3  |  1  |
+| 4  |  2  |
+| 5  |  1  |
+| 6  |  2  |
+| 7  |  2  |
++----+-----+
+
+For example, given the above Logs table, 1 is the only number that appears consecutively for at least three times.
+
+
+== Answer:
+
+1) select distinct log1.Num from Logs log1, Logs log2, Logs log3 where log1.Num = log2.Num and log2.Num = log3.Num and log2.Id - log1.Id = 1 and log3.Id - log2.Id = 1;
+* Solution 1) is based on an assumption that the Id are consecutive.
+
+
+
+2) This solution does not assume that the Id are consecutive.
+
+select distinct Num from 
+(select Num, 
+         case 
+             when @record = Num then @count := @count + 1
+             when @record <> @record := Num then @count := 1
+         end as Cnt
+   from Logs, (select @count := 0, @record := (select Num from Logs limit 0,1)) as NumCount) as stat
+where stat.Cnt >= 3;
+
+OR:
+
+select distinct Num from 
+(select Num, 
+         case 
+             when @record = Num then @count := @count + 1
+             when (@record := Num) IS NOT NULL then @count := 1       <---- Difference in this line
+         end as Cnt
+   from Logs, (select @count := 0, @record := (select Num from Logs limit 1)) as NumCount) as stat
+where stat.Cnt >= 3;
+
+
+
+**Analysis for Solution 2):
+
+2.1) Simplify it to:  select distinct Num from stat where stat.cnt >= 3    (in stat, there are Num and Cnt two columns)
+
+2.2) stat =
+   select Num, 
+         case 
+             when @record = Num then @count := @count + 1
+             when @record <> @record := Num then @count := 1
+         end as Cnt
+   from Logs, (select @count := 0, @record := (select Num from Logs limit 0,1)) as NumCount 
+   
+   This part calculate count for Nums in Logs,
+   it generate something like:
+   *Num*    *Count*
+    2          1
+    1          1
+    1          2
+    1          3
+    2          1
+    3          1
+    3          2
+    3          3
+    3          4
+    ....
+    
+2.2.1) Simplify 2.2) to select Num, Cnt from Logs, NumCount
+
+2.2.2) NumCount = { select @count := 0, @record := (select Num from Logs limit 0,1)  }   --- It is actually initializing @count and @record
+       * Here limit 0, 1 could also be written as limit 1 
+       
+2.2.3) select Num from Logs limit 0,1 --> select the Num of the first record in Logs table (limit 0, 1 means start from offset 0 and 1 record)
+
+2.2.4) Cnt = 
+         case 
+             when @record = Num then @count := @count + 1
+             when @record <> @record := Num then @count := 1
+         end
+      This part calcualte count for each Num

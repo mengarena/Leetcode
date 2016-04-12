@@ -1,0 +1,34 @@
+Question: Nth Highest Salary
+
+Write a SQL query to get the nth highest salary from the Employee table.
+
++----+--------+
+| Id | Salary |
++----+--------+
+| 1  | 100    |
+| 2  | 200    |
+| 3  | 300    |
++----+--------+
+
+For example, given the above Employee table, the nth highest salary where n = 2 is 200. 
+If there is no nth highest salary, then the query should return null.
+
+==Answer:
+
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+  set N = N-1;   <---Add by me
+  RETURN (
+      # Write your MySQL query statement below.
+      select distinct Salary from Employee order by Salary DESC limit N,1     <-- Add by me
+  );
+END
+
+
+Attention:
+
+Can't write like:  select distinct Salary from Employee order by Salary DESC limit N-1,1    <--Does not work
+
+* From MySQL document: (Limit does not calcualte expression)
+The LIMIT clause can be used to constrain the number of rows returned by the SELECT statement. 
+LIMIT takes one or two numeric arguments, which must both be nonnegative integer constants (except when using prepared statements).
