@@ -66,7 +66,7 @@ public class AddTwoNumbers {
     		lstNode = new ListNode(nSum);
     	}
 
-		lstNode.next = null;
+	lstNode.next = null;
     	
     	lstNodeHead = lstNode;
     	
