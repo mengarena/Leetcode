@@ -129,12 +129,11 @@ public class AddTwoNumbers {
         	l2 = l2.next;
         }
         
-		if (nOverflow > 0) {
-			lstNode.next = new ListNode(nOverflow);
-			lstNode.next.next = null;
-		}
+	if (nOverflow > 0) {
+		lstNode.next = new ListNode(nOverflow);
+		lstNode.next.next = null;
+	}
        
-        
     	return lstNodeHead;
     }
 	
