@@ -45,7 +45,7 @@ public class DistinctSubsequences {
         int i,j;
         int[][] dp = new int[nt+1][ns+1];    //number of solutions of get sequence t[0...i] from s[0...j] 
         for (i=0; i<=ns; i++) dp[0][i] = 1;  //t = "";  to get subsequence from s at every position, there is only one solution (by deleting all characters)
-        for (j=1; j<=nt; j++) dp[j][0] = 0;  //This line of code could be ignored, but the value at these positions will be set to 0 by default
+        for (j=1; j<=nt; j++) dp[j][0] = 0;  //This line of code could be ignored, because the value at these positions will be set to 0 by default
         
         for (i=1; i<=nt; i++) {
         	for (j=1; j<=ns; j++) {

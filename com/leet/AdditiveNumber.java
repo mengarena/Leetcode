@@ -159,7 +159,7 @@ public class AdditiveNumber {
         			        			
         			boolean bEqual = isEqual(sFirstVal, sSecondVal, sThirdVal);
         			
-            		        if (bEqual == true) {
+            		if (bEqual == true) {
 
         				if (nFirstLen + nSecondLen + nThirdLen == n) {
         					bRet = true;

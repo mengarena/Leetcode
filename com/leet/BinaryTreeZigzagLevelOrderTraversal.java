@@ -65,6 +65,7 @@ public class BinaryTreeZigzagLevelOrderTraversal {
     	
     	lstTnLevel.add(root);
     	
+    	//Level traversal
     	while (lstTnLevel.size() != 0) {
     		nLevel++;
     		n = lstTnLevel.size();

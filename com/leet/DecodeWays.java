@@ -31,6 +31,35 @@ public class DecodeWays {
 	}
 	
 	
+	//ACC: 30%
+    public int numDecodings(String s) {
+        if (s == null || s.isEmpty() || s.charAt(0) == '0') return 0;
+        int n = s.length();
+        int dp[] = new int[n+1];   //#Decodings by position i in string s
+        
+        dp[0] = 1;   //One way to decoding ""
+        dp[1] = 1;   //One way to decoding the first character
+        
+        //For example, 1120; when comes to last 0, the "2" has not be consumed by the last "0", so the total valid #decoding will be the same as "11"  (two digit number case)
+        //For 1129,   29 is not valid, so when comes to last 9, the last 9 must be independent, 
+        //it does not affect the whole number by 112, so total valid #decoding will be the same as "112"  (one digit number case)
+        for (int i=2; i<=n; i++) {
+            int twoDigitNum = Integer.valueOf(s.substring(i-2, i));
+            int oneDigitNum = Integer.valueOf(s.substring(i-1, i));
+            
+            if (twoDigitNum >= 10 && twoDigitNum <= 26) {    //Check the two digit number
+                dp[i] = dp[i-2];
+            }
+            
+            if (oneDigitNum >= 1 && oneDigitNum <= 9) {   //Check the one digit number
+                dp[i] = dp[i] + dp[i-1];
+            } 
+        }
+        
+        return dp[n];
+    }	
+	
+	
 	//Strategy:
 	//1) Process the element one by one
 	//2) Each time check whether the current one char number and the two-char number (current+previous one) is valid
@@ -41,7 +70,7 @@ public class DecodeWays {
 	//                           4.2) If BX is valid, but X is not valid, the #ways of this segment will be the #ways at A
 	//                                 the string is segmented at X, next segment starts at the char after X
 	//5) Total #ways will be the product of the #ways in all the segments  (
-    public int numDecodings(String s) {
+    public int numDecodingsA(String s) {
         if (s == null || s.isEmpty()) return 0;
         int n = s.length();
         int nTotalWays = 0;

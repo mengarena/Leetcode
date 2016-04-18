@@ -67,6 +67,7 @@ public class EncodeDecodeStrings {
 	//AC:  53%
 	
     // Encodes a list of strings to a single string.
+	//Using length followed by "#" to delimit strings in encoded version
     public String encode(List<String> strs) {
         if (strs == null || strs.size() == 0) return null;
         StringBuilder sb = new StringBuilder();

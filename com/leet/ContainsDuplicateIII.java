@@ -27,7 +27,7 @@ public class ContainsDuplicateIII {
 	
 	//Strategy: put the elements into buckets
 	//The width of the bucket is t+1
-	//Check is there any two numbers with (j-i <= k) but they have same or neighboring buckets
+	//Check is there any two numbers with (j-i <= k) and they have same or neighboring buckets
 	//Same or neighboring buckets means the difference between the two element might be <= t
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         if (nums == null || nums.length == 0 || k <= 0 || t < 0) return false;
@@ -39,10 +39,10 @@ public class ContainsDuplicateIII {
         for (i=0; i<n; i++) {
         	if (i > k) mapBucket.remove(getBucketLabel((long)nums[i-k-1], nBucketWidth));
         	long nLabel = getBucketLabel((long)nums[i], nBucketWidth);
-        	if (mapBucket.containsKey(nLabel)) {
+        	if (mapBucket.containsKey(nLabel)) {   //Two numbers in the same bucket, so their values difference is <= t and the different of index <= k
         		return true;
-        	} else if (mapBucket.containsKey(nLabel-1) && Math.abs((long)nums[i] - mapBucket.get(nLabel-1)) <= t) {
-        		return true;
+        	} else if (mapBucket.containsKey(nLabel-1) && Math.abs((long)nums[i] - mapBucket.get(nLabel-1)) <= t) {  //In neighboring bucket and also the difference of value <= t
+        		return true;                                                                                         //Here only need to check neighboring bucket, value difference in non-neighbor buckets must > t
         	} else if (mapBucket.containsKey(nLabel+1) && Math.abs((long)nums[i] - mapBucket.get(nLabel+1)) <= t) {
         		return true;
         	}

@@ -84,13 +84,15 @@ public class BinaryTreeVerticalOrderTraversal {
         Queue<TreeNode> quRow = new LinkedList<TreeNode>();
         Queue<Integer> quCol = new LinkedList<Integer>();
         
+        //Find leftCnt and RightCnt (i.e. the number of left node from root; the number of right node from root) (nLeftCnt < 0)
         inOrderTraversal(root, 0);
         
-        for (int i=nLeftCnt; i<=nRightCnt; i++) lstlstVerOrder.add(new ArrayList<Integer>());
+        for (int i=nLeftCnt; i<=nRightCnt; i++) lstlstVerOrder.add(new ArrayList<Integer>());  //Total number Math.abs(nLeftCnt) + nRightCnt
         
         quRow.offer(root);
-        quCol.offer(Math.abs(nLeftCnt));
+        quCol.offer(Math.abs(nLeftCnt));   //So if the most left column is 0, the column of the root node will be Math.abs(nLeftCnt)
         
+        //Level traversal
         while (!quRow.isEmpty() && !quCol.isEmpty()) {
         	TreeNode tnTmp = quRow.poll();
         	int nCol = quCol.poll();

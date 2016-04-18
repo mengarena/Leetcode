@@ -44,36 +44,12 @@ public class FindCelebrity {
         List<Integer> lstCandidate = new ArrayList<Integer>();
         int nCelId = -1;
         int i;
-        boolean bAnswer = false;
-        int nNonCandidate = -1;
         
-        for (i=0; i<n/2; i++) {
-        	bAnswer = knows(i, n-1-i);
-        	if (bAnswer == true) {
-        		if (!knows(n-1-i, i)) {        			
-        		    lstCandidate.add(n-1-i);
-        		    nNonCandidate = i;
-        		}
-        	} else {
-        		lstCandidate.add(i);
-        		nNonCandidate = n-1-i;
-        	}
-        }
-        
-        if (n % 2 == 1) {
-            if (nNonCandidate != -1) {
-        	    bAnswer = knows(nNonCandidate, n/2);
-        	    if (bAnswer == true) {
-        	        if (!knows(n/2, nNonCandidate)) lstCandidate.add(n/2);
-        	    }
-            } else {
-                lstCandidate.add(n/2);      
-            }
-        }
-        
-        nCelId = findCelebrityHelper(lstCandidate);
+        for (i=0; i<n; i++) lstCandidate.add(i);
+                
+        nCelId = findCelebrityHelper(lstCandidate); //Candidate
         if (nCelId != -1) {
-        	for (i = 0; i < n; i++) {
+        	for (i = 0; i < n; i++) {  //Further confirm it is actually celebrity or not
         		if (i != nCelId && (knows(i, nCelId) == false || knows(nCelId, i) == true)) return -1;
         	}
         }

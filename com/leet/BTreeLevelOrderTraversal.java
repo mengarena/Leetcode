@@ -42,13 +42,7 @@ public class BTreeLevelOrderTraversal {
     	if (root == null) return lstlstTree;
 
     	lstLayer.add(root);
-		
-    	if (root.left == null && root.right == null) {
-    		lstTmp.add(root.val);
-    		lstlstTree.add(lstTmp);
-    		return lstlstTree;
-    	}
-    	
+		    	
     	while (!lstLayer.isEmpty()) {
     		int n = lstLayer.size();
     		lstTmp = new ArrayList<Integer>();

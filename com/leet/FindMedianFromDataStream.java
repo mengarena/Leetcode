@@ -96,6 +96,8 @@ public class FindMedianFromDataStream {
 
     // Returns the median of current data stream
     public double findMedian() {
+    	if (quLarge.isEmpty()) return 0;
+    	
         if (quLarge.size() > quSmall.size()) {
         	return quLarge.peek();
         } else {

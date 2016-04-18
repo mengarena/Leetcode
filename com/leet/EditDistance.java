@@ -46,7 +46,7 @@ public class EditDistance {
         if (n2 == 0) return n1;
     
         int i, j;
-        int[][] narrarrDist = new int[n1+1][n2+1];
+        int[][] narrarrDist = new int[n1+1][n2+1];  //Min steps by i, j in word1, word2
         int nCost = 0;
         
         for (i=1; i<=n1; i++) narrarrDist[i][0] = i;   //Corresponding to:  if word2 = ""; the edit distance to each position of word1
@@ -66,7 +66,8 @@ public class EditDistance {
         		}
         		
         		//Here, slightly different from raw DTW algorithm
-        		//If use narrarrDist[i-1][j], corresponds to insert one along j (or say, delete one along i)
+        		//If use narrarrDist[i-1][j], corresponds to insert one along j (or say, delete one along i), 
+        		//     i.e. word1[0,i-1] is converted to word2[0,j], so there word1[i] need to be matched, so need one step (either insert one in word2, or delete one from word1)
         		//If use narrarrDist[i][j-1], corresponds to delete one along j (or say, insert one along i)
         		//If use narrarrDist[i-1][j-1], corresponds to change both (i.e. replace) or do nothing (based on the cost)
         		nMin = Math.min(narrarrDist[i-1][j]+1, Math.min(narrarrDist[i][j-1]+1, narrarrDist[i-1][j-1] + nCost));

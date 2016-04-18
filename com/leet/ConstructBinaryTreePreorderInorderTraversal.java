@@ -43,6 +43,7 @@ public class ConstructBinaryTreePreorderInorderTraversal {
     	
     	int i, nInRootIdx = -1;
     	
+    	//Find the root in inorder
     	for (i=nInStart; i<=nInEnd; i++) {
     		if (inorder[i] == preorder[nPreStart]) {
     			nInRootIdx = i;

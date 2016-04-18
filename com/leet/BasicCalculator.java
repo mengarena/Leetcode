@@ -234,6 +234,14 @@ public class BasicCalculator {
     }
     
     
+    
+    
+    
+    
+    
+    
+    
+    
 /*  Function is correct for both Calculator I, II, but exceed time limit  
     public int calculate(String s) {
         if (s == null || s.isEmpty()) return 0;

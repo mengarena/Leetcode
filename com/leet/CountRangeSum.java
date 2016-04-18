@@ -45,7 +45,7 @@ public class CountRangeSum {
         return nRangeCnt;
     }
     
-    private int mergeSort(long[] sums, int nStartPos, int nEndPos, int lower, int upper) {
+    private int mergeSort(long[] sums, int nStartPos, int nEndPos, int lower, int upper) {   //Not including nEndPos
     	int nRangeCnt = 0;
     	
     	if (nEndPos <= nStartPos+1) return 0;
@@ -67,12 +67,13 @@ public class CountRangeSum {
     	
     	for (int i=nStartPos; i<nMid; i++, r++) {   //Search through left half
     		while (nUpBound < nEndPos && sums[nUpBound] - sums[i] <= upper) nUpBound++;     //Search through right half, to find the first one which makes the difference > upper
-    		while (nLowBound < nEndPos && sums[nLowBound] - sums[i] < lower) nLowBound++;   //Search through right half, to find the first one which makes the different >= lower
+    		while (nLowBound < nEndPos && sums[nLowBound] - sums[i] < lower) nLowBound++;   //Search through right half, to find the first one which makes the difference >= lower
     		
-    		nRangeCnt += nUpBound-nLowBound;      //Then the sum different between nUpBound and nLowBound to the sum[i]   (corresponds to the sum of the element from nums[i] ~ (nums[nLowBound], nums[nUpBound]) meet the condition 
+    		nRangeCnt += nUpBound-nLowBound;      //Then the sum difference between nUpBound and nLowBound to the sum[i]   
+    		                                      //(corresponds to the sum of the element from nums[i] ~ (nums[nLowBound], nums[nUpBound]) meet the condition 
     		
     		//Sorted the elements in both left and right into cache
-    		//The elements in right half, if they are smaller than the current one in left half, they could be saved into cache first
+    		//The elements in right half, if they are smaller than the current one (i) in left half, they could be saved into cache first
     		while (t < nEndPos && sums[t] < sums[i]) cache[r++] = sums[t++];   //t is the index in the right half, it is monotically increasing during the for and while loop
     		
     		cache[r] = sums[i];

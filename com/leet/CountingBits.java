@@ -32,7 +32,8 @@ public class CountingBits {
 	}
 	
 	
-	//Every 2^n---2^(n+1)-1 is a segment, the 1s of the numbers in 2^n--2^(n+1)-1 segment will repeat the numbers of 1# in 2^(n-1)--2^n-1, plus One (because the new segment added a 1 at the beginning compared with previous segment)
+	//Every 2^n---2^(n+1)-1 is a segment, the 1s of the numbers in 2^n--2^(n+1)-1 segment will repeat the numbers of 1# in 2^(n-1)--2^n-1, plus One 
+	//(because the new segment added a 1 at the beginning compared with previous segment)
     public int[] countBits(int num) {
         int[] bits = new int[num+1];
         int tmp = 0;

@@ -58,13 +58,13 @@ public class BestTimeBuySellStockIV {
 	
     //Solution B:
 	//The problem is divided into two case:
-	//1) k >= n/2, which makes the problem become Best Time Buy and Sell Stock II
-	//2) k < n/2, then we use 
+	//1) k >= n/2, which makes the problem become Best Time Buy and Sell Stock II    
+	//2) k < n/2, then we use maxProfitHelper
     public int maxProfit(int k, int[] prices) {
 		if (prices == null || prices.length < 2) return 0;
 		int n = prices.length;
 		
-		if (k >= n/2) {
+		if (k >= n/2) {   //A valid transaction needs at least 2 days, so k >= n/2 means we could do all possible useful transactions
 			int nMaxProfit = 0;
 			int nDiff = 0;
 			for (int i=1; i<n; i++) {

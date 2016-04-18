@@ -18,6 +18,7 @@ public class FactorialTrailingZeroes {
 	}
 	
 	//AC
+	//Zero is decided by 5, 25, 125....
     public int trailingZeroes(int n) {
     	int nTrailingZeroCnt = 0;
     	int nRemained = n;

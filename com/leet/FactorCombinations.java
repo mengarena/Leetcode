@@ -82,6 +82,7 @@ public class FactorCombinations {
 		List<List<Integer>> lstlstFactors = new ArrayList<List<Integer>>();
 
 		int max = (int) Math.sqrt(n);
+		
 		for (int i = min; i <= max; i++) {
 			if (n % i != 0)
 				continue;

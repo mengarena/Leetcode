@@ -144,7 +144,7 @@ public class AlienDictionary {
     	}
     	
     	for (Character cc:setAdj) {
-    		if (lstOrder.indexOf(cc) == -1 && hmVisited.get(cc) == true) return false;
+    		if (lstOrder.indexOf(cc) == -1 && hmVisited.get(cc) == true) return false;   //Loop exist
     		
     		if (!hmVisited.get(cc)) {
     			boolean bRet = dfsFindOrder(hmGraph, hmVisited, cc, lstOrder);

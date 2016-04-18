@@ -71,7 +71,7 @@ public class CombinationSumII {
     	if (target < 0) return null;
     	    	
     	for (i=nStartPos; i<n;) {
-    		List<List<Integer>> lstlstCombSumTmp = combinationSum2Helper(candidates, i+1, target-candidates[i]);
+    		List<List<Integer>> lstlstCombSumTmp = combinationSum2Helper(candidates, i+1, target-candidates[i]);    //Not allow duplicate, so next start from i+1
     		if (lstlstCombSumTmp != null) {
     			if (lstlstCombSum == null) lstlstCombSum = new ArrayList<List<Integer>>();
     			if (lstlstCombSumTmp.size() > 0) {

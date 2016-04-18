@@ -33,7 +33,7 @@ public class DivideTwoIntegers {
         int nNeg = 0;
         
         if (nDividend < 0) {
-        	nDividend = 0x0100000000L - (nDividend ^ 0xFFFFFFFF00000000L); 
+        	nDividend = 0x0100000000L - (nDividend ^ 0xFFFFFFFF00000000L);   //i.e. complement, which is invert original (bit by bit) + 1
         	nNeg++;
         }
         
@@ -48,11 +48,13 @@ public class DivideTwoIntegers {
     	//Integer.MAX_VALUE = 2147483647
     	//Integer.MIN_VALUE = -2147483648
     	//nResult might be 2147483648, the process needs to be careful
-    	//If the final result should be negative, after the following 3 lines, it is valid; otherwise (i.e. the final result should be positive), the next 5th line will conclude it to be overflow
-    	if (nNeg == 1) {
-    		nResult = (int) (0x0100000000L - nResult);
+    	//If the final result should be negative (i.e. final result should be -2147483648), after the following 3 lines, it is valid; 
+    	//otherwise (i.e. the final result should be positive), the next 5th line will conclude it to be overflow
+    	if (nNeg == 1) {  
+    		nResult = (int) (0x0100000000L - nResult);    //Negative is presented with its complement, for nResult = 2147483648, will convert to -2147483648 in int.
     	}
     	
+    	//Overflow
     	if (nResult > Integer.MAX_VALUE || nResult < Integer.MIN_VALUE) return Integer.MAX_VALUE;
     	
     	return (int)nResult;
@@ -65,6 +67,7 @@ public class DivideTwoIntegers {
     	
     	if (dividend < divisor) return 0;
     	
+    	//By multiplying by 2 to approach dividend
     	while (nDivisor < dividend) {
     		nDivisor = nDivisor << 1;
     		nBase = nBase << 1;

@@ -33,7 +33,7 @@ public class BestTimeBuySellStockIII {
 	
 	//** This solution is based on the video: https://www.youtube.com/watch?v=oDhu5uGq_ic&feature=youtu.be
 	//
-	//The original DP function:  T[i][j] --- i is the index of transation, j is the index of day for the price
+	//The original DP function:  T[i][j] --- i is the index of transaction, j is the index of day for the price
 	//
 	//T[i][j] = max(T[i][j-1], prices[j]-prices[m] + T[i-1][m])
 	//
@@ -52,7 +52,7 @@ public class BestTimeBuySellStockIII {
     public int maxProfit(int[] prices) {
 		if (prices == null || prices.length < 2) return 0;
 		int n = prices.length;
-		int[][] T = new int[2 + 1][n];
+		int[][] T = new int[2 + 1][n]; //Profit
 		int nMaxDiff = 0;
 
 		for (int i = 1; i <= 2; i++) {

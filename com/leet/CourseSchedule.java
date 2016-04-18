@@ -44,10 +44,10 @@ public class CourseSchedule {
 
 	
 	public void run() {
-		int[][] prerequisites = {{1,0}};   //true
+//		int[][] prerequisites = {{1,0}};   //true
 //		int[][] prerequisites = {{1,0},{0,1}};  //false
 //		int[][] prerequisites = {{2,0},{2,1}};  //true
-//		int[][] prerequisites = {{0,1},{0,2},{1,2}};  //true
+		int[][] prerequisites = {{0,1},{0,2},{1,2}};  //true
 		
 		int numCourses = 2;
 		
@@ -58,11 +58,14 @@ public class CourseSchedule {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
     	if (prerequisites == null || prerequisites.length == 1) return true;
         int nEdgeCnt = prerequisites.length;
-        HashMap<Integer, Set<Integer>> hmGraph = new HashMap<Integer, Set<Integer>>();  //Node, Neighbors
+        HashMap<Integer, Set<Integer>> hmGraph = new HashMap<Integer, Set<Integer>>();  //Node (parent), Neighbors (children)
         int i;
         List<Boolean> lstVisited = new ArrayList<Boolean>();  //Default value is false, visited or not
+        
         Set<Integer> setVisited = new HashSet<Integer>();   //Record node all whose neighbors have been processed
        
+        for (i=0; i<numCourses; i++) lstVisited.add(false);
+        
         //Construct the graph
         for (i=0; i<nEdgeCnt; i++) {
         	int nParent = prerequisites[i][1];
@@ -101,8 +104,8 @@ public class CourseSchedule {
     	
     	for (int nNode:setAdj) { 
     		//If the node has been visited, but has not been put in visited set, and it is less than one of its parent (or grand..parent), there should be a cycle
-    		if (nNode < nStartPos && !setVisited.contains(nNode) && lstVisited.get(nNode)) return false;   
-    		
+    		if (nNode < nStartPos && !setVisited.contains(nNode) && lstVisited.get(nNode)) return false;
+
     		if (!lstVisited.get(nNode)) {
     			boolean bRet = dfsGraph(hmGraph, nNode, lstVisited, setVisited);
     			if (bRet == false) return false;

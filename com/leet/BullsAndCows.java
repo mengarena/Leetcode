@@ -46,8 +46,8 @@ public class BullsAndCows {
         int nBull = 0;
         int nCow = 0;
         int nKey, nCountSecret, nCountGuess;
-        Map<Integer, Integer> mapNumSecret = new HashMap<Integer, Integer>();
-        Map<Integer, Integer> mapNumGuess = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> mapNumSecret = new HashMap<Integer, Integer>();  //Digit, Count
+        Map<Integer, Integer> mapNumGuess = new HashMap<Integer, Integer>();   //Digit, Count
         
         if (secret == null || guess == null) return "";
         if (secret.length() != guess.length()) return "";

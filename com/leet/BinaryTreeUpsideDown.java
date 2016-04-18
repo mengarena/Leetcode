@@ -43,7 +43,7 @@ public class BinaryTreeUpsideDown {
 
   
     //Accepted:  95%
-    //root --> right child;  left child-->left child;  right child --> root
+	//root --> right child;  right child-->left child; left child --> root
 	//Process along left slope
     public TreeNode upsideDownBinaryTree(TreeNode root) {
         if (root == null || (root.left == null && root.right == null)) return root;
@@ -62,6 +62,7 @@ public class BinaryTreeUpsideDown {
         	tmpLeft.right = tmpRoot;
         	
         	tmpRoot = tmpLeft;
+        	
         	tmpLeft = tmpLeftLeft;
         	
         	//Important:
@@ -76,6 +77,9 @@ public class BinaryTreeUpsideDown {
         return tmpRoot;
     }
 
+    
+    
+    
     
     
     //Correct, but Memory Limit Exceed

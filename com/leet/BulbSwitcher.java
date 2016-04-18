@@ -32,13 +32,12 @@ public class BulbSwitcher {
 
 	
 	//Strategy:  for any bulb position,
-	//If we get its factor, like x = a*b, we will always have x = x*1
+	//If we get its factor, like x = a*b, including x = x*1
 	//So if a*b, a != b, the bulb is toggled twice and the effect is cancelled
-	//Then left the x*1 pair, initially it is on and starts from every secon, so only toggle on every xth,
-	//so the total time from initial is 2n+1 times, it will be turned off
+	//so the bulb whose positions does not have x = a*a, it always have two-factor pairs, which will cancel the effect of toggling and the bulb will be in initial status (i.e. OFF)
 	//
-	//Unless, there is x = a*b,  a==b, then the total times will be 2n
-	//So only the x could be x = a*a, it will be on at the end
+	//Unless, there is x = a*b,  a==b, then the total effect will equal to one toggle from initial, which results in "ON"
+	//So only the x could be x = a*a, it will be ON at the end
     public int bulbSwitch(int n) {
         int i=1;
         int nCount = 0;

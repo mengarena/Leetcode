@@ -62,7 +62,7 @@ public class CombinationSum {
     	if (target < 0) return null;
     	    	
     	for (i=nStartIdx; i<n; i++) {
-    		List<List<Integer>> lstlstCombSumTmp = combinationSum(candidates, n, i, target-candidates[i]);
+    		List<List<Integer>> lstlstCombSumTmp = combinationSum(candidates, n, i, target-candidates[i]);  //Could use duplicate number, so still start from i, NOT i+1
     		if (lstlstCombSumTmp != null) {
 	    		if (lstlstCombSumTmp.size() > 0) {
 	    			for (List<Integer> lstCombSumTmp:lstlstCombSumTmp) {

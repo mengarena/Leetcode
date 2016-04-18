@@ -25,7 +25,7 @@ public class BitwiseANDNumbersRange {
         if (m == 0 || n == 0) return 0;
         if (m == n) return m;
         
-        int nBitCntM = (int) (Math.log(m)/Math.log(2));
+        int nBitCntM = (int) (Math.log(m)/Math.log(2));  //The actual #bit - 1; e.g. m = 7, nBitCntM = 2;
         int nBitCntN = (int) (Math.log(n)/Math.log(2));
         
         if (nBitCntM < nBitCntN) {  //Must experience something like 7 (111) & 8 (1000) = 0, one "0" occurs, the final result will be 0)

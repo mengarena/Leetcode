@@ -22,10 +22,13 @@ public class ContainerMostWater {
 	}
 	
 	//Initially, left is at 0, right is at the end; and then try to move the two boards towards the middle (until i >= j)
-	//For the water between two boards, it is only decided by the two border boards (actually the lower one of the two border boards), the boards in-between does not matter (because only two vertical lines will exist)
+	//For the water between two boards, it is only decided by the two border boards (actually the lower one of the two border boards), 
+	//the boards in-between does not matter (because only two vertical lines will exist)
 	//When moving, try to move the left board to right;  try to move the right board to left
-	//When moving left board to right, if meets a board lower than the current left, then for sure, the right board and the candidate left board will contain less water, so could ignore it;
-	//If the new left board is higher than old left board, it might form a larger container with the right board, so it compare with the original container
+	//When moving left board to right, if meets a board lower than the current left, then for sure, 
+	//the right board and the candidate left board will contain less water, so could ignore it;
+	//If the new left board is higher than old left board, it might form a larger container with the right board, 
+	//so it compare with the original container
     public int maxArea(int[] height) {
         if (height == null || height.length == 0 || height.length == 1) return 0;
         int i=0, j=height.length - 1;

@@ -49,6 +49,8 @@ public class CourseScheduleII {
 		System.out.println("dddd");
 	}
 	
+	
+	//acc;  24%
 	//Task: Anyway you have to complete the courses, even there is no prerequisites between courses exist
     public int[] findOrder(int numCourses, int[][] prerequisites) {
     	int[] narrCourseOrder = new int[numCourses];
@@ -58,7 +60,7 @@ public class CourseScheduleII {
         //Important:  Anyway, has to complete all courses. So there is not prerequisites relationship between courses, 
         //Still need to take the courses. So can take the course in order
         //This "if" block could also be omitted, because the for (marked as ** below) covers the function of this part
-    	if (nEdgeCnt == 0) {   
+    	if (nEdgeCnt == 0) {    //Could be removed
         	for (i=0; i<numCourses; i++) {
         		narrCourseOrder[i] = i;
         	}
@@ -69,12 +71,14 @@ public class CourseScheduleII {
 
         List<Boolean> lstVisited = new ArrayList<Boolean>();
         List<Integer> lstCourses = new ArrayList<Integer>();  //Ordered courses, last one comes first
+        
+        for (i=0; i<numCourses; i++) lstVisited.add(false);
  
         //Construct the graph
         for (i=0; i<nEdgeCnt; i++) {
         	int nParent = prerequisites[i][1];
         	int nChild = prerequisites[i][0];
-        	
+        	        	
         	if (hmGraph.containsKey(nParent)) {
         		Set<Integer> setChildren = hmGraph.get(nParent);
         		setChildren.add(nChild);
@@ -95,6 +99,7 @@ public class CourseScheduleII {
         
         narrCourseOrder = new int[numCourses];
         
+        //Reverse order
         for (i=lstCourses.size()-1; i>=0; i--) {
         	narrCourseOrder[lstCourses.size()-1-i] = lstCourses.get(i);
         }

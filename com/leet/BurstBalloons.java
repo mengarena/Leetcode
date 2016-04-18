@@ -39,7 +39,7 @@ public class BurstBalloons {
 		System.out.println("#Coins = " + maxCoins(nums));
 	}
 	
-	//Rule:  Each time, bust the minimal-value balloon in the middle (i.e. expect the head and tail), 
+	//Rule:  Each time, bust the minimal-value balloon in the middle (i.e. except the head and tail), 
 	//process the head and tail in the end
     public int maxCoins(int[] nums) {        
         if (nums.length == 0) return 0;
@@ -56,9 +56,9 @@ public class BurstBalloons {
     	numsNew[n+1] = 1;
     	n = n + 2;
 
-    	int dp[][] = new int[n][n];
+    	int dp[][] = new int[n][n];   //dp[][] records the result through bursting the balloon between left/right
 
-    	for (int len = 2; len <= n-1; len++) {  //Distance between left and right elements
+    	for (int len = 2; len <= n-1; len++) {  //Distance between left and right elements (distance = right - left)
     		
     		for (int left = 0; left < n - len; left++) {  //Position of left element
     			int right = left + len;   //Position of right position

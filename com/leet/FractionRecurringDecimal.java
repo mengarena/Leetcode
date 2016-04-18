@@ -77,15 +77,14 @@ public class FractionRecurringDecimal {
     	long nRem = nRemained*10;
     	Map<Long, Integer> mapRemained = new HashMap<Long, Integer>();   //Remained, Index
     	
-    	int nCount = 0;
+    	int nPos = 0;
     	
     	while (true) {
     		
     		sbRet.append(nRem/nDenominator);
-    		mapRemained.put(nRem, nCount);
+    		mapRemained.put(nRem, nPos);
     		
-    		
-    		nCount++;
+    		nPos++;
     		
     		nRem = (nRem % nDenominator) * 10;	
     		

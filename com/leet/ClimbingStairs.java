@@ -34,6 +34,7 @@ public class ClimbingStairs {
     }
 	
 
+    //The distinct permutation is (nOneCnt+nTwoCnt)!/(nOneCnt! * nTwoCnt!)
     public double getDistinct(int nOneCnt, int nTwoCnt) {
     	double nSet = 1;
     	    

@@ -79,15 +79,17 @@ public class CopyListRandomPointer {
 	//AC:   Deep copy map
     public RandomListNode copyRandomListA(RandomListNode head) {
         if (head == null) return null;
-        Map<RandomListNode, RandomListNode> hmRL = new HashMap<RandomListNode, RandomListNode>();
+        Map<RandomListNode, RandomListNode> hmRL = new HashMap<RandomListNode, RandomListNode>();   //Old node, New node
         
         RandomListNode tmp = head;
 
+        //Create all nodes
         while (tmp != null) {
             hmRL.put(tmp, new RandomListNode(tmp.label));
             tmp = tmp.next;
         }
         
+        //Set up relationship
         for (Map.Entry<RandomListNode, RandomListNode> entry:hmRL.entrySet()) {
             entry.getValue().next = hmRL.get(entry.getKey().next);
             entry.getValue().random = hmRL.get(entry.getKey().random);

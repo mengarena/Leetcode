@@ -45,6 +45,7 @@ public class ConstructBinaryTreeInorderPostorderTraversal {
     	
         if (nInStart > nInEnd || nInStart  < 0 || nInEnd < 0 || nPostStart > nPostEnd || nPostStart < 0 || nPostEnd < 0 || nInEnd - nInStart != nPostEnd - nPostStart) return null;
         
+        //Find the root in inorder
         for (i=nInStart; i<=nInEnd; i++) {
         	if (inorder[i] == postorder[nPostEnd]) {
         		nInRootIdx = i;

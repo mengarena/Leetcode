@@ -62,7 +62,7 @@ public class CreateMaximumNumber {
     	int[] narrNumRet = new int[k];
     	
     	int nMinLen1 = Math.max(0, k-n2);  //From nums1, at least use #nMinLen1 elements
-    	int nMaxLen1 = Math.min(k, n1);    //From nums2, at least use #nMaxLen1 elements
+    	int nMaxLen1 = Math.min(k, n1);    //From nums1, at most use #nMaxLen1 elements
     	
     	for (int i=nMinLen1; i<=nMaxLen1; i++) {
     		int[] subNums1 = getMaxSubArray(nums1, i);
@@ -90,6 +90,7 @@ public class CreateMaximumNumber {
     }
     
     
+    //If the prefix is same for the nums1, nums2, the longer array will be "greater" 
     public boolean IsGreater(int[] nums1, int start1, int[] nums2, int start2) {
         for (; start1 < nums1.length && start2 < nums2.length; start1++, start2++) {
             if (nums1[start1] > nums2[start2]) return true;
@@ -97,6 +98,7 @@ public class CreateMaximumNumber {
         }
         return start1 != nums1.length;
     }
+    
     
     private int[] getMaxSubArray(int[] narrNums, int k) {
     	int[] narrRet = new int[k];

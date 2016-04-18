@@ -45,7 +45,39 @@ public class BinaryTreeInorderTraversal {
 		for (Integer nVal:lstNode) System.out.print(nVal + ",");
 	}
 	
+	
     public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> lstNode = new ArrayList<Integer>();
+        Stack<TreeNode> stkTree = new Stack<TreeNode>();
+        TreeNode tmp = null;
+        
+        if (root == null) return lstNode;
+       
+        while (root != null) {
+        	stkTree.push(root);
+        	root = root.left;
+        }
+
+        while (!stkTree.isEmpty()) {
+        	tmp = stkTree.pop();
+        	lstNode.add(tmp.val);
+        	
+        	if (tmp.right != null) {
+        		tmp = tmp.right;
+        		while (tmp != null) {
+        			stkTree.push(tmp);
+        			tmp = tmp.left;
+        		}
+        		
+        	}
+        }
+              
+        return lstNode;
+    }
+	
+	
+	
+    public List<Integer> inorderTraversalA(TreeNode root) {
         List<Integer> lstNode = new ArrayList<Integer>();
         Stack<TreeNode> stkTree = new Stack<TreeNode>();
         
