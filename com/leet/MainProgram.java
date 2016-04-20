@@ -2,6 +2,8 @@ package com.leet;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,17 +20,43 @@ public class MainProgram {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		SparseMatrixMultiplication myInstance = new SparseMatrixMultiplication();
-
+		
+		//FactorCombinations myInstance = new FactorCombinations();
+		
+//		StringBuilder sb = new StringBuilder();
+//		
+//		sb.append("abd");
+//		System.out.println(sb.delete(sb.length()-1, sb.length()));
+//		System.out.println(sb + sb.reverse().toString());
+//		
+//		System.out.println(sb.delete(sb.length()-1, sb.length()));
+		
+//		List<Boolean> lstVisited = new ArrayList<Boolean>();  
+//		lstVisited.set(0, true);
+//		lstVisited.set(1, true);
+//		lstVisited.set(2, true);
+//		lstVisited.set(3, true);
+		
+		List<Integer> lstKK = new ArrayList<>();
+		
+		List<Integer> lstMM = new ArrayList<>();
+		lstMM.add(3); lstMM.add(4);
+		lstMM.addAll(lstKK);
+		
+		long nResult = 2147483648L;
+		int ret = (int) (0x0100000000L - nResult);
+		
+		System.out.println(ret);
+		
 		long lnTm1 = System.currentTimeMillis();
 
-		myInstance.run();
-
+		//myInstance.run();
+		
 		long lnTm2 = System.currentTimeMillis();
 		
 		System.out.println("Time: " + (lnTm2 - lnTm1) + " ms");
 	
-		
+
 		/////////////////Important//////////////////////
 //		String ss = "12.3.4.5";
 //		String kk[] = ss.split("\\.");

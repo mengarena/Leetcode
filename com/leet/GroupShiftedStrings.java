@@ -48,10 +48,10 @@ public class GroupShiftedStrings {
         
         Arrays.sort(strings);
         
-        Map<String, List<String>> hm = new HashMap<String, List<String>>();
-        
+        Map<String, List<String>> hm = new HashMap<String, List<String>>();   //Key, String
+       
         for (i=0; i<n; i++) {
-        	String sShifted = shiftString(strings[i]);
+        	String sShifted = shiftString(strings[i]);   //Convert every string to key whose starts with 'a'
         	if (hm.containsKey(sShifted)) {
         		hm.get(sShifted).add(strings[i]);
         	} else {
@@ -61,13 +61,14 @@ public class GroupShiftedStrings {
         	}
         }
         
+    
         return new ArrayList<List<String>>(hm.values());
     }
 	
     
     private String shiftString(String s) {
     	if (s.charAt(0) == 'a') return s;
-    	int nDiff = s.charAt(0) - 'a';
+    	int nDiff = s.charAt(0) - 'a';   //For each character, how much to convert
     	StringBuilder sb = new StringBuilder();
     	
     	for (int i=0; i<s.length(); i++) {

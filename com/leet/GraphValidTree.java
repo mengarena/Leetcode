@@ -52,21 +52,21 @@ public class GraphValidTree {
             int root1 = root(roots, edges[i][0]);
             int root2 = root(roots, edges[i][1]);
         
-            if (root1 == root2) return false;
+            if (root1 == root2) return false;  //the three edges: edges[i][0]-edges[i][1], edges[i][0]-root, edges[i][1]-root form a cycle, so NOT a valid tree
             
             if (root1 != root2) {
-                roots[root1] = root2;
-                nCount--;
+                roots[root1] = root2;  //Unite
+                nCount--;              //Reduce one component
             }
         }
         
-        return nCount == 1;
+        return nCount == 1;   //Tree if only one Union
     }	
     
     
     private int root(int[] roots, int i) {
         while (i != roots[i]) {
-            roots[i] = roots[roots[i]];
+            roots[i] = roots[roots[i]];   //Path compression
             i = roots[i];
         }
         

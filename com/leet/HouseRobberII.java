@@ -54,7 +54,7 @@ public class HouseRobberII {
         	}
         }
         
-        return Math.max(nDP0[n-2], nDP1[n-1]);
+        return Math.max(nDP0[n-2], nDP1[n-1]);  //Pay attention
     }
 
 	

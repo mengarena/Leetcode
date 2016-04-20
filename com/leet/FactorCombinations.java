@@ -53,9 +53,9 @@ public class FactorCombinations {
 
 
 	public void run() {
-		int n = 84;
+		int n = 6;
 		
-		List<List<Integer>> lstlstFactors = getFactors(37);
+		List<List<Integer>> lstlstFactors = getFactors(6);
 		
 		System.out.println();
 	}
@@ -93,7 +93,7 @@ public class FactorCombinations {
 
 			for (List<Integer> lstFactorsSmaller : lstlstFactorsSmaller)  lstFactorsSmaller.add(0, i);   //To be the factors of original n, i should be added
 
-			lstlstFactors.addAll(lstlstFactorsSmaller);
+			lstlstFactors.addAll(lstlstFactorsSmaller);   //If lstlstFactorsSmaller is empty list, lstlstFactors does not change
 		}
 
 		return lstlstFactors;

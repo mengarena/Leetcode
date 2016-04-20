@@ -9,10 +9,10 @@ package com.leet;
 //
 //Example: 19 is a happy number
 //
-//12 + 92 = 82
-//82 + 22 = 68
-//62 + 82 = 100
-//12 + 02 + 02 = 1
+//1^2 + 9^2 = 82
+//8^2 + 2^2 = 68
+//6^2 + 8^2 = 100
+//1^2 + 0^2 + 0^2 = 1
 
 
 //Uber
@@ -22,7 +22,41 @@ public class HappyNumber {
 		// TODO Auto-generated constructor stub
 	}
 
-    public boolean isHappy(int n) {
+	
+	//ACC: 84%
+	public int getSquareSum(int n) {
+		int sum = 0, tmp;
+		
+		while (n > 0) {
+			tmp = n % 10;
+			sum += tmp*tmp;
+			n = n/10;
+		}
+		
+		return sum;
+	}
+	
+	//Based on Floyd Cycle detection algorithm, use two pointers to detect cycle
+	//If there is a cycle, fast, slow points will meet in the cycle
+	//If is valid happy number, fast and slow ends at 1
+	public boolean isHappy(int n) {
+		int fast = n, slow = n;
+		
+		do {
+			slow = getSquareSum(slow);   //Slow move one step
+			fast = getSquareSum(fast);   //Fast move two steps
+			fast = getSquareSum(fast);
+		} while (fast != slow);
+		
+		if (slow == 1) return true;
+		return false;
+	}
+	
+	
+	
+	
+	//Works, but not as good as the above one
+    public boolean isHappyA(int n) {
      	boolean bHappy = false;
     	int nNewNumber = 0;
     	
@@ -43,7 +77,7 @@ public class HappyNumber {
     
     
     //Calculate the square sum of the digits of a number
-    public int getSquareSum(int n) {
+    public int getSquareSumA(int n) {
     	int nRemainder = 0;
     	int nQuotient = 0;
     	

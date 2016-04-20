@@ -1,7 +1,10 @@
 package com.leet;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 
 //Find the kth largest element in an unsorted array. 
@@ -29,7 +32,34 @@ public class KthLargestElementArray {
 	}
 	
 
+	//ACC: 73%
     public int findKthLargest(int[] nums, int k) {
+//        Queue<Integer> pq = new PriorityQueue<Integer>(k, new Comparator<Integer>() {
+//            public int compare(Integer a, Integer b) {
+//                return a-b;
+//            }
+//        });
+
+        Queue<Integer> pq = new PriorityQueue<Integer>(k);   //By default, smallest on top
+        
+        int n = nums.length;
+        int i;
+        
+        for (i=0; i<k; i++) pq.add(nums[i]);
+        for (i=k; i<n; i++) {
+            if (nums[i] > pq.peek()) {
+                pq.poll();
+                pq.add(nums[i]);
+            }
+        }
+        
+        return pq.peek();
+    }
+	
+	
+	
+    //ACC: 45%
+    public int findKthLargestA(int[] nums, int k) {
         int n = nums.length;
         int i;
         int nLast = nums[0];

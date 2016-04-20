@@ -31,7 +31,7 @@ public class GeneralizedAbbreviation {
 	
 
 	//AC: 75%
-	//Each characeter has two possibility: abbreviated or not abbreviated
+	//Each character has two possibility: abbreviated or not abbreviated
 	//When processing each abbreviated character, abbreviation count accumulated
 	public List<String> generateAbbreviations(String word) {
 	    List<String> result = new ArrayList<>();
@@ -42,7 +42,7 @@ public class GeneralizedAbbreviation {
 	}
 
 	
-	private void generateAbbreviationsHelper(char[] carr, List<String> result, int nPos, String scur, int nCount) {
+	private void generateAbbreviationsHelper(char[] carr, List<String> result, int nPos, String scur, int nCount) {  //nCount = continuously abbred #character
 		if (nPos == carr.length) {
 			if (nCount > 0) scur = scur + nCount;
 			result.add(scur);
@@ -72,7 +72,7 @@ public class GeneralizedAbbreviation {
 	//
 	//** This code is from others
 	public List<String> generateAbbreviationsB(String word) {
-	    long size = 1 << word.length();
+	    long size = 1 << word.length();   //2^n
 	    List<String> result = new ArrayList<>();
 	    for (long i = 0; i < size; i++) {
 	        result.add(generateString(word, i));

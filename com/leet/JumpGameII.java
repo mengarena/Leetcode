@@ -43,22 +43,21 @@ public class JumpGameII {
         int i;
         int basePos = 0;
         int nStepCnt = 0;
-        int reachable = 0;
         int maxJump = Integer.MIN_VALUE;
         int possibleJump = 0;
         int nextPosAdd = 0;
         
-        while (reachable < n-1) {
+        while (basePos < n-1) {
         	maxJump = Integer.MIN_VALUE;
         	
-        	for (i=1; i<=nums[basePos]; i++) {
+        	for (i=1; i<=nums[basePos]; i++) {  //The possible #step could move
         		if (basePos + i >= n-1) {
         			nextPosAdd = i;
         			break;
         		}
         		
         		//Decide, which is the best next jump (largest jump)
-        		//The next jump is based on:  next possible step + the value at that step,  the larger the better
+        		//The next jump is based on:  next possible position + the value at that step,  the larger the better
         		possibleJump = i + nums[basePos+i];  
         		if (maxJump < possibleJump) {
         			maxJump = possibleJump;
@@ -66,7 +65,6 @@ public class JumpGameII {
         		}
         	}
         	
-        	reachable = reachable + nextPosAdd;
         	basePos = basePos + nextPosAdd;
         	nStepCnt++;
         }
