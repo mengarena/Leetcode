@@ -21,7 +21,7 @@ public class MainProgram {
 		// TODO Auto-generated method stub
 
 		
-		//FactorCombinations myInstance = new FactorCombinations();
+		IncreasingTripletSubsequence myInstance = new IncreasingTripletSubsequence();
 		
 //		StringBuilder sb = new StringBuilder();
 //		
@@ -37,20 +37,20 @@ public class MainProgram {
 //		lstVisited.set(2, true);
 //		lstVisited.set(3, true);
 		
-		List<Integer> lstKK = new ArrayList<>();
+//		List<Integer> lstKK = new ArrayList<>();
+//		
+//		List<Integer> lstMM = new ArrayList<>();
+//		lstMM.add(3); lstMM.add(4);
+//		lstMM.addAll(lstKK);
+//		
+//		long nResult = 2147483648L;
+//		int ret = (int) (0x0100000000L - nResult);
 		
-		List<Integer> lstMM = new ArrayList<>();
-		lstMM.add(3); lstMM.add(4);
-		lstMM.addAll(lstKK);
-		
-		long nResult = 2147483648L;
-		int ret = (int) (0x0100000000L - nResult);
-		
-		System.out.println(ret);
+		//System.out.println(ret);
 		
 		long lnTm1 = System.currentTimeMillis();
 
-		//myInstance.run();
+		myInstance.run();
 		
 		long lnTm2 = System.currentTimeMillis();
 		

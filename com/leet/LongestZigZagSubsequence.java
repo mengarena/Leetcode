@@ -27,7 +27,10 @@ package com.leet;
 //
 //This problem is an extension of longest increasing subsequence problem, but requires more thinking for finding optimal substructure property in this.
 //
-//We will solve this problem by dynamic Programming method, Let A is given array of length n of integers. We define a 2D array Z[n][2] such that Z[i][0] contains longest Zig-Zag subsequence ending at index i and last element is greater than its previous element and Z[i][1] contains longest Zig-Zag subsequence ending at index i and last element is smaller than its previous element, then we have following recurrence relation between them,
+//We will solve this problem by dynamic Programming method, Let A is given array of length n of integers. 
+//We define a 2D array Z[n][2] such that Z[i][0] contains longest Zig-Zag subsequence ending at index i and 
+//last element is greater than its previous element and Z[i][1] contains longest Zig-Zag subsequence ending at index i and last element is smaller than its previous element, 
+//then we have following recurrence relation between them,
 //
 //Z[i][0] = Length of the longest Zig-Zag subsequence 
 //          ending at index i and last element is greater
@@ -41,8 +44,15 @@ package com.leet;
 //             for all j < i and A[j] < A[i] 
 //   Z[i][1] = max (Z[i][1], Z[j][0] + 1); 
 //             for all j < i and A[j] > A[i]
-//The first recurrence relation is based on the fact that, If we are at position i and this element has to bigger than its previous element then for this sequence (upto i) to be bigger we will try to choose an element j ( < i) such that A[j] < A[i] i.e. A[j] can become A[i]¡¯s previous element and Z[j][1] + 1 is bigger than Z[i][0] then we will update Z[i][0].
-//Remember we have chosen Z[j][1] + 1 not Z[j][0] + 1 to satisfy alternate property because in Z[j][0] last element is bigger than its previous one and A[i] is greater than A[j] which will break the alternating property if we update. So above fact derives first recurrence relation, similar argument can be made for second recurrence relation also.
+//
+//The first recurrence relation is based on the fact that, 
+//If we are at position i and this element has to be bigger than its previous element then 
+//for this sequence (upto i) to be bigger we will try to choose an element j ( < i) such that
+//A[j] < A[i] i.e. A[j] can become A[i]¡¯s previous element and Z[j][1] + 1 is bigger than Z[i][0] then we will update Z[i][0].
+//
+//Remember we have chosen Z[j][1] + 1 not Z[j][0] + 1 to satisfy alternate property 
+//because in Z[j][0] last element is bigger than its previous one and A[i] is greater than A[j] which will break the alternating property if we update. 
+//So above fact derives first recurrence relation, similar argument can be made for second recurrence relation also.
 //
 
 
@@ -63,7 +73,7 @@ public class LongestZigZagSubsequence {
 	          than its previous element   */
 	    int Z[][] = new int[n][2];
 	 
-	    /* Initialize all values from 1  */
+	    /* Initialize all values to be 1  */
 	    for (int i = 0; i < n; i++)
 	        Z[i][0] = Z[i][1] = 1;
 	 

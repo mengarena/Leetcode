@@ -40,12 +40,10 @@ public class LongestSubstringAtMostKDistinctCharacters {
         int nLen = 0;
 
         int firstPos = 0;
-        char firstLetter = 0;
         
-        Map<Character, Integer> hmLastPos = new HashMap<Character, Integer>();
+        Map<Character, Integer> hmLastPos = new HashMap<Character, Integer>();   //Last position of each character
                 
         hmLastPos.put(carr[0], 0);
-        firstLetter = carr[0];
         nMaxLen = 1;
         
         for (i = 1; i < n; i++) {      	
@@ -55,7 +53,7 @@ public class LongestSubstringAtMostKDistinctCharacters {
 
         		nMaxLen = i - firstPos + 1;
         		
-        	} else if (hmLastPos.containsKey(carr[i]) && hmLastPos.size() <= k) {
+        	} else if (hmLastPos.containsKey(carr[i])) {
         		hmLastPos.put(carr[i], i);
         		nLen = i - firstPos + 1;
         		nMaxLen = Math.max(nMaxLen, nLen);
@@ -65,7 +63,6 @@ public class LongestSubstringAtMostKDistinctCharacters {
         		int nMin = getMinLastPos(hmLastPos);
         		
         		firstPos = nMin + 1;
-        		firstLetter = carr[firstPos];        			
         		
     			hmLastPos.put(carr[i], i);
     			
@@ -74,12 +71,11 @@ public class LongestSubstringAtMostKDistinctCharacters {
         	}
         	
         }
-        
-        if (hmLastPos.size() < k) nMaxLen = n;
-        
+                
         return nMaxLen;
-        
     }	
+    
+    
     
     private int getMinLastPos(Map<Character, Integer> hmLastPos) {
     	Set<Character> setChar = hmLastPos.keySet();
@@ -93,7 +89,7 @@ public class LongestSubstringAtMostKDistinctCharacters {
     		}
     	}
     	
-    	hmLastPos.remove(letter);
+    	hmLastPos.remove(letter);  //Attention
     	return nMin;
     }
         

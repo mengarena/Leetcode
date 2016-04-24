@@ -42,7 +42,7 @@ public class InorderSuccessorBST {
 	//Utilize the property of BST and utilize that P is a valid node (not a value)
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
         if (root == null) return null;
-        if (root.left == null && root.right == null && root != p) return null;
+        if (root.left == null && root.right == null) return null;
 
         TreeNode tmp = null;
         

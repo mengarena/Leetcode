@@ -18,6 +18,7 @@ public class LongestPalindromicSubstring {
 	}
 
 	
+	//ACC:  97%
 	//Loop from left to right to check each char
 	//Once meet a new char, try to check the substring before this new char (inclusive), with len = nMaxLen + 1 or nMaxLen + 2, 
 	//to see whether the substring is palindromic substring
@@ -29,11 +30,11 @@ public class LongestPalindromicSubstring {
 		int nStartPos = 0, nEndPos = 0;
 		
 		for (int i=0; i<n; i++) {
-			if (IsPalindrome(carr, i-nMaxLen, i)) { //Check the substring with len nMaxLen + 1
+			if (IsPalindrome(carr, i-nMaxLen, i)) { //Check the substring with length nMaxLen + 1
 				nStartPos = i-nMaxLen;
 				nEndPos = i;
 				nMaxLen = nMaxLen + 1;
-			} else if (IsPalindrome(carr, i-nMaxLen-1, i)) {  //Check the substring with len nMaxLen + 2
+			} else if (IsPalindrome(carr, i-nMaxLen-1, i)) {  //Check the substring with length nMaxLen + 2
 				nStartPos = i-nMaxLen-1;
 				nEndPos = i;
 				nMaxLen = nMaxLen + 2;	

@@ -45,19 +45,20 @@ public class LargestBSTSubtree {
 	
 	
 	class Result {
-		int nSize;
-		int nUpper;
-		int nLower;
+		int nSize;   //Size of subtree
+		int nLower;  //min value of the node in subtree
+		int nUpper;  //max value of the node in subtree
 		
 		Result(int size, int lower, int upper) {
 			nSize = size;
-			nUpper = upper;
 			nLower = lower;
+			nUpper = upper;
 		}
-	
 	}
 	
-   public int largestBSTSubtree(TreeNode root) {
+	
+	//Complexity:  O(n)
+    public int largestBSTSubtree(TreeNode root) {
         if (root == null) return 0;
 
         Result ret = traverse(root);
@@ -83,6 +84,8 @@ public class LargestBSTSubtree {
 		return new Result(left.nSize + right.nSize + 1, Math.min(root.val, left.nLower), Math.max(root.val, right.nUpper));
 	}   
     
+	
+	
 	
 	
   

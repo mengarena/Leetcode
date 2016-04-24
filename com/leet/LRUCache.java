@@ -26,14 +26,14 @@ public class LRUCache {
         int val;
     }
     
-	private Map<Integer, MyEntry> hm = null;
-	private MyEntry first = null;
-	private MyEntry last = null;
+	private Map<Integer, MyEntry> hm = null;    //Used to check whether the key is in and quickly locate the element in the link list
+	private MyEntry first = null;   //Point to the most recent element
+	private MyEntry last = null;    //Point to the least recent element
 	private int capacity = 0;
 	
     public LRUCache(int capacity) {
     	this.capacity = capacity;
-        hm = new HashMap<Integer, MyEntry>(capacity);
+        hm = new HashMap<Integer, MyEntry>(capacity); 
     }
 
     public int get(int key) {
@@ -43,6 +43,7 @@ public class LRUCache {
             
             if (first == last || first == me) return value;
         
+            //Below, adjust the first and last
             if (me == last) {
                 first = me;
                 last = me.before;
@@ -73,7 +74,7 @@ public class LRUCache {
             me.key = key;
             me.val = value;
 
-            if (hm.size() < this.capacity) {
+            if (hm.size() < this.capacity) {  //Enough space, don't need to remove element
                 
                 if (first == null) {
                     me.before = me;
@@ -90,6 +91,7 @@ public class LRUCache {
                 
                 hm.put(key, me);
             } else {
+            	//Need to remove the last one
                 me.before = last;
                 me.after = first;
                 first.before = me;

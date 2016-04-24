@@ -21,6 +21,8 @@ public class LongestSubstringWithoutRepeatingCharacters {
 		System.out.println("Len of Longest = " + lengthOfLongestSubstring(s));
 	}
 	
+	
+	//Also could use HashMap<Character, Integer>  (character, position), and needs to remember the starting position
     public int lengthOfLongestSubstring(String s) {
     	if (s == null || s.isEmpty()) return 0;
         int n = s.length();

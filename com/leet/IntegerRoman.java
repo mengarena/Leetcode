@@ -4,6 +4,23 @@ package com.leet;
 //
 //Input is guaranteed to be within the range from 1 to 3999.
 
+//VII--7
+//IX--9
+//XV - 15
+//XVII - 17
+//XX - 20
+//XXV - 25
+//XXVI - 26
+//LX - 60
+//XC - 90
+//CI - 101
+//CCC - 300
+//CD - 400
+//CM - 900
+//MDCC - 1700
+//MCM - 1900
+
+
 public class IntegerRoman {
 
 	public IntegerRoman() {
@@ -24,8 +41,8 @@ public class IntegerRoman {
 	
     public String intToRoman(int num) {
         String sRoman = "";
-        String sBase ="IXCM";
-        String sBaseFive = "VLD";
+        String sBase ="IXCM";   //1, 10, 100, 1000
+        String sBaseFive = "VLD";   //5, 50, 500
         int nRemained;
         int nBitPos = 0;
         int nBigThanFive = 0;

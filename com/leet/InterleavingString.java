@@ -58,13 +58,16 @@ public class InterleavingString {
             for (j=1; j<=n1; j++) {
                 match[i][j] = (match[i-1][j] && (s2.charAt(i-1) == s3.charAt(i-1+j))) || (match[i][j-1] && (s1.charAt(j-1) == s3.charAt(j-1+i)));
                 
-                //index i in match corresponding to index i-i in string
+                //index i in match corresponding to index i-1 in string
             }
         }
 
         return match[n2][n1];    	
     }	
 	
+    
+    
+    
 	
 	//Recursive, time exceeded limit
     public boolean isInterleaveA(String s1, String s2, String s3) {

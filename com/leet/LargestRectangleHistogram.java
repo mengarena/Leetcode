@@ -34,13 +34,13 @@ public class LargestRectangleHistogram {
 	}
 
 	
-	//Accepted
+	//Accepted:  46%
     public int largestRectangleArea(int[] heights) {
         if (heights == null || heights.length == 0) return 0;
         int n = heights.length;
         if (n == 1) return heights[0];
         int i;
-        Stack<Integer> stkSmallerHeight = new Stack<Integer>();
+        Stack<Integer> stkSmallerHeight = new Stack<Integer>();   //Store index
         int nMaxArea = 0;
         int nCurVal = 0;        
 
@@ -50,17 +50,19 @@ public class LargestRectangleHistogram {
             if (i < n) {
                 nCurVal = heights[i];
             } else {
-                nCurVal = 0;
+                nCurVal = 0;  //Make sure always have chance to trigger the following "while", even the heights is monotonically increasing
             }
             
-            while (!stkSmallerHeight.isEmpty() && heights[stkSmallerHeight.peek()] > nCurVal) {
+            //The height in the stack does not continuously increase by this point, so calculate the possible area in the stack
+            //It search towards the beginning, until it find a stick X which is smaller then curVal
+            //Then all the possible area starting from the one-previous stick to stick X is calculated and it get the maximal area
+            //This "while" loop also makes sure that the value on the stack top is always largest, the value at bottom is always smallest
+            while (!stkSmallerHeight.isEmpty() && nCurVal < heights[stkSmallerHeight.peek()]) {  //New height is lower, calculate temporary area before current stick
                 int nHeight = heights[stkSmallerHeight.pop()];
-                int nLeftSmallerIdx = 0;
+                int nLeftSmallerIdx = -1;
                 
                 if (!stkSmallerHeight.isEmpty()) {
                     nLeftSmallerIdx = stkSmallerHeight.peek();
-                } else {
-                    nLeftSmallerIdx = -1;
                 }
                 
                 nMaxArea = Math.max(nMaxArea, (nHeight * (nRightSmallerIdx-nLeftSmallerIdx-1)));
@@ -72,6 +74,8 @@ public class LargestRectangleHistogram {
         return nMaxArea;
     }
 	
+    
+    
 	//Accepted
     public int largestRectangleAreaA(int[] heights) {
         if (heights == null || heights.length == 0) return 0;

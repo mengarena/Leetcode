@@ -23,22 +23,195 @@ public class LargestNumber {
 	}
 
 	
+	
+	//ACC:  35%
     public String largestNumber(int[] nums) {
+        StringBuilder sbResult = new StringBuilder();
+        int i,j;
+        int nInsertPos = -1;
+        
+        List<Integer> lstNum = new ArrayList<Integer>();
+        
+        //Order the nums in lstlstDigits, larger in front
+        for (i=0; i<nums.length; i++) {
+        	if (lstNum.size() == 0) {
+        		lstNum.add(nums[i]);
+        	} else {
+        		nInsertPos = -1;
+        		for (j=0; j<lstNum.size(); j++) {
+        			if (compareDigitList(nums[i], lstNum.get(j)) > 0) {
+        				nInsertPos = j;
+        				break;
+        			}
+        		}
+        		
+        		if (nInsertPos >= 0) {
+        			lstNum.add(nInsertPos, nums[i]);
+        		} else {
+        			lstNum.add(nums[i]);
+        		}
+        	}
+        }
+        
+        //Form the resultant number
+        for (Integer num:lstNum) {
+        	if (sbResult.length() == 0 && num == 0) continue;  //If all zero, not form a string here
+        	sbResult.append(num);
+        }
+                
+        if (sbResult.length() == 0 && lstNum.size() > 0) return "0";
+        
+        return sbResult.toString();
+    }
+	
+    
+    //Works, but slower than compareDigitListKK
+    public int compareDigitList(int numA, int numB) {
+    	String sA = String.valueOf(numA);
+    	String sB = String.valueOf(numB);
+    	
+    	String sAB = sA + sB;
+    	String sBA = sB + sA;
+    	
+    	if (sAB.compareTo(sBA) < 0) {
+    		return -1;
+    	} else {
+    		return 1;
+    	}
+    	
+    }
+    
+	
+    //Compare two lists of digits
+    //Rule:  1) On a digit position, if A > B,  A should be put in front of B
+    //       2) All comparable digits are the same, but A is shorter than B, compare A's last digit with all the rest digits of B, 12 > 121; 12 < 1221;  12 < 128; 12 < 122 
+    //       
+    //Two digit list:  xxxxxaaaaccc
+    //                 cccxxxxxaaaa
+    //A: xxxxxaaaaa, B: ccc
+    public int compareDigitListKK(int numA, int numB) {
+    	int nRelationship = 1;
+    	int i;
+    	int nA, nB;
+    	int nTmp1, nTmp2;
+    	char[] carrA = String.valueOf(numA).toCharArray();
+    	char[] carrB = String.valueOf(numB).toCharArray();
+    	int nSizeA = carrA.length;
+    	int nSizeB = carrB.length;    	
+    	int nMinLen = (int) Math.min(nSizeA, nSizeB);
+    	
+    	//Compare first part (xxx - ccc)
+    	for (i=0; i<nMinLen; i++) {
+    		nA = carrA[i];
+    		nB = carrB[i];
+    		
+    		if (nA < nB) {
+    			nRelationship = -1;
+    			return nRelationship;
+    		} else if (nA > nB) {
+    			nRelationship = 1;
+    			return nRelationship;
+    		}
+    	}
+    	
+    	
+    	if (nSizeA > nSizeB) {
+    		//Compare 2nd part: xxaaaa -- xxxxxa
+    		for (i=0; i<nSizeA-nSizeB; i++) {
+    			nTmp1 = carrA[nMinLen+i];
+    			nTmp2 = carrA[i];
+    			
+    			if (nTmp1 < nTmp2) {
+    				nRelationship = -1;
+    				return nRelationship;
+    			} else if (nTmp1 > nTmp2) {
+    				nRelationship = 1;
+    				return nRelationship;
+    			}
+    		}
+    		
+    		//Compare last part: ccc -- aaa
+    		for (i=0; i<nMinLen; i++) {
+        		nB = carrB[i];
+        		nA = carrA[i+nSizeA-nMinLen];
+        		
+        		if (nB < nA) {
+    				nRelationship = -1;
+    				return nRelationship;    			
+        		} else if (nB > nA) {
+    				nRelationship = 1;
+    				return nRelationship;        			
+        		}
+    		}
+    		
+    	} else if (nSizeA < nSizeB) {
+    		for (i=0; i<nSizeB-nSizeA; i++) {
+    			nTmp1 = carrB[i];
+    			nTmp2 = carrB[nMinLen+i];
+    			
+    			if (nTmp1 < nTmp2) {
+    				nRelationship = -1;
+    				return nRelationship;
+    			} else if (nTmp1 > nTmp2) {
+    				nRelationship = 1;
+    				return nRelationship;    				
+    			}
+    			
+    		}
+    		
+    		for (i=0; i<nMinLen; i++) {
+        		nB = carrB[i+nSizeB-nMinLen];
+        		nA = carrA[i];
+        		
+        		if (nB < nA) {
+    				nRelationship = -1;
+    				return nRelationship;	
+        		} else if (nB > nA) {
+    				nRelationship = 1;
+    				return nRelationship;	        			
+        		}
+    		}
+    		
+    	}
+
+    	return nRelationship;
+    	    	
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	//ACC:  32%
+    public String largestNumberA(int[] nums) {
         String sResult = "";
         int i,j;
         int nInsertPos = -1;
         
         List<List<Integer>> lstlstDigits = new ArrayList<List<Integer>>();
         
+        //Order the nums in lstlstDigits
         for (i=0; i<nums.length; i++) {
-        	List<Integer> lstDigit = convertDigits(nums[i]);
+        	List<Integer> lstDigit = convertDigits(nums[i]);   //Convert a number to a digit list
         	if (lstlstDigits.size() == 0) {
         		lstlstDigits.add(lstDigit);
         	} else {
         		nInsertPos = -1;
         		for (j=0; j<lstlstDigits.size(); j++) {
         			List<Integer> lstTmpDigit = lstlstDigits.get(j);
-        			if (compareDigitList(lstDigit, lstTmpDigit) > 0) {
+        			if (compareDigitListA(lstDigit, lstTmpDigit) > 0) {
         				nInsertPos = j;
         				break;
         			}
@@ -52,12 +225,12 @@ public class LargestNumber {
         	}
         }
         
-        
+        //Form the resultant number
         for (List<Integer> lstTmpDigits : lstlstDigits) {
         	String sTmp = "";
 
         	for (Integer nDigit:lstTmpDigits) {
-        		if (nDigit == 0 && sTmp.length() == 0 && sResult.length() == 0) continue;
+        		if (nDigit == 0 && sTmp.length() == 0 && sResult.length() == 0) continue;  //If all zero, not form a string here
         		
         		sTmp = sTmp + nDigit;
         	}
@@ -69,28 +242,28 @@ public class LargestNumber {
         
         return sResult;
     }
+  
     
     
     //Convert a number to a digit list
     public List<Integer> convertDigits(int num) {
     	List<Integer> lstDigit = new ArrayList<Integer>();
+  	  
+    	if (num < 10) {
+    	    lstDigit.add(num);
+    	    return lstDigit;
+    	} 	
     	
-    	int nRemainder = num % 10;
-    	int nQuotient = num / 10;
-    	
-    	lstDigit.add(nRemainder);
-    	
-    	while (nQuotient >= 10) {
-    		nRemainder = nQuotient % 10;
-    		nQuotient = nQuotient / 10;
-    		lstDigit.add(0, nRemainder);
+    	while (num > 0) {
+    		lstDigit.add(0, num % 10);
+    		num = num/10;
     	}
-    	
-    	if (nQuotient > 0) lstDigit.add(0, nQuotient);
-    	
+    
     	return lstDigit;
     }
-	
+    
+    
+    
     //Compare two lists of digits
     //Rule:  1) On a digit position, if A > B,  A should be put in front of B
     //       2) All comparable digits are the same, but A is shorter than B, compare A's last digit with all the rest digits of B, 12 > 1221;  12 < 128; 12 >= 122 
@@ -98,7 +271,7 @@ public class LargestNumber {
     //Two digit list:  xxxxxaaaaccc
     //                 cccxxxxxaaaa
     //A: xxxxxaaaaa, B: ccc
-    public int compareDigitList(List<Integer> lstDigitA, List<Integer> lstDigitB) {
+    public int compareDigitListA(List<Integer> lstDigitA, List<Integer> lstDigitB) {
     	int nRelationship = 1;
     	int i;
     	int nA, nB;
@@ -184,6 +357,9 @@ public class LargestNumber {
     	return nRelationship;
     	    	
     }
+    
+    
+    
     
     
     public int compareDigitListAA(List<Integer> lstDigitA, List<Integer> lstDigitB) {

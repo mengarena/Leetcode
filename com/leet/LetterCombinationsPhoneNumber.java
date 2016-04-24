@@ -32,21 +32,12 @@ public class LetterCombinationsPhoneNumber {
     public List<String> letterCombinations(String digits) {
         List<String> lstComb = new ArrayList<String>();
         String[] sarrLetter = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+                             // 0   1    2      3      4      5      6      7       8      9  (number and index)
         
         if (digits == null || digits.length() == 0) return lstComb;
         int i;
         int nCurDigit = digits.charAt(0) - '0';
-        
-        if (digits.length() == 1) {
-        	if (sarrLetter[nCurDigit].length() == 0) return lstComb;
-        	for (i=0; i<sarrLetter[nCurDigit].length(); i++) {
-        		lstComb.add(sarrLetter[nCurDigit].charAt(i) + "");
-        	}
-        	
-        	return lstComb;
-        }
-        
-        
+                
         List<String> lstCombTmp = letterCombinations(digits.substring(1));
         
         if (sarrLetter[nCurDigit].length() == 0) return lstCombTmp;

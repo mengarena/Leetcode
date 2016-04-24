@@ -24,7 +24,7 @@ public class LongestValidParentheses {
 	}
 	
 	
-	//AC  Strategy: first round, replace all "()" (i.e. "(" is ")" are direct neighbors) with "11";
+	//AC Strategy: first round, replace all "()" (i.e. "(" and ")" are direct neighbors) with "11";
 	//Second round, from the digits, propagate to the left and right, once find a "(" on the left and a ")" on the right, replace them with "1" "1" each
 	//Last: Count continuous "1" to calculate the length
 	//In Second round, for the consecutive "1", only the first one is based on to propagate
@@ -99,6 +99,9 @@ public class LongestValidParentheses {
 	}
 	
 
+	
+	
+	
 	private boolean isValidParenthese(String s) {
 		if (s == null || s.length() == 0) return true;
 		int n = s.length();
@@ -118,6 +121,15 @@ public class LongestValidParentheses {
 		
 		return true;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public int longestValidParentheseskk(String s) {

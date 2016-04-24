@@ -31,7 +31,11 @@ public class OneEditDistance {
         	int nDiffCount = 0;
         	
         	for (int i=0; i<s.length(); i++) {
-        		if (s.charAt(i) != t.charAt(i)) nDiffCount++;
+        		if (s.charAt(i) != t.charAt(i)) {
+        			nDiffCount++;
+        			if (nDiffCount > 1) break;
+        		}
+        		
         	}
         	
         	if (nDiffCount == 1) return true;

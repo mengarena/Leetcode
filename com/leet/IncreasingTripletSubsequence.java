@@ -25,7 +25,8 @@ public class IncreasingTripletSubsequence {
 	//	int[] nums = {5,4,3,2,1};
 	//	int[] nums = {1,2,3,4,5};
 	//	int[] nums = {3,2,6,4,1,5,7};
-		int[] nums = {1,0,0,2,0,0,-1,-1,-1,3};
+	//	int[] nums = {1,0,0,2,0,0,-1,-1,-1,3};
+		int[] nums = {3,6,5,2,1,6};
 		
 		System.out.println("Triplet Subsequence = " + increasingTriplet(nums));
 	}
@@ -58,7 +59,7 @@ public class IncreasingTripletSubsequence {
         		} else if (nums[i] < nSecondLastSmall && nums[i] > nSmallest) {
         			nSecondLastSmall = nums[i];
         		} else if (nums[i] < nSmallest) {
-        			if (nums[i] < nums[i+1]) {
+        			if (nums[i] < nums[i+1]) {   //Only when both smallest and secondLastSmall could be possibly replaced, replace
             			if (nums[i+1] > nSecondLastSmall) {
             				return true;
             			} 
