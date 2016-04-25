@@ -2,7 +2,7 @@ package com.leet;
 
 import java.util.Stack;
 
-//Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing all ones and return its area.
+//Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing all(only) ones and return its area.
 
 public class MaximalRectangle {
 
@@ -47,7 +47,7 @@ public class MaximalRectangle {
         int i, j;
         int nMaxArea = 0;
         int nTmpArea = 0;
-        int[] narrHeights = new int[nCol+1];
+        int[] narrHeights = new int[nCol+1];  //Last one is always 0
         int nRightPos = 0;
         int nLeftPos = 0;
         int nHeight = 0;
@@ -62,12 +62,12 @@ public class MaximalRectangle {
                 }
             }
             
-            Stack<Integer> stkSmallerHeight = new Stack<Integer>();
+            Stack<Integer> stkSmallerHeight = new Stack<Integer>();   //Store Index
             
-            for (j=0; j<=nCol; j++) {
+            for (j=0; j<=nCol; j++) {   //last narrHeights[j] is always 0, according to the definition of narrHeights[] 
                 nRightPos = j;
                 
-                while (!stkSmallerHeight.isEmpty() && narrHeights[stkSmallerHeight.peek()] > narrHeights[j]) {
+                while (!stkSmallerHeight.isEmpty() && narrHeights[j] < narrHeights[stkSmallerHeight.peek()]) {
                     nHeight = narrHeights[stkSmallerHeight.pop()];
                     
                     if (stkSmallerHeight.isEmpty()) {
@@ -90,6 +90,17 @@ public class MaximalRectangle {
         return nMaxArea;	
     }
 	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 	//Works, but exceeded time limit

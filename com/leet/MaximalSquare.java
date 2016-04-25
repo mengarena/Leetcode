@@ -41,9 +41,11 @@ public class MaximalSquare {
     	i = 0;
     	j = 0;
     	
+    	//Loop through row 0, row 1.... (i.e. base position)
     	while (i + nSquareLen  < nRow ) {
     		j = 0;
     		
+    		//Check from column 0, column 1....
     		while (j + nSquareLen < nCol) {
     			if (matrix[i][j] == '1') {
     				nSquareLen = 1;
@@ -55,7 +57,7 @@ public class MaximalSquare {
     				
     				while (nBaseMaxRow+1 < nRow && nBaseMaxCol+1 < nCol) {
     					boolean bValid = true;
-    					for (int t = nBaseMinRow; t <=nBaseMaxRow; t++) {
+    					for (int t = nBaseMinRow; t <=nBaseMaxRow; t++) {  //Check the possible additional column
     						if (matrix[t][nBaseMaxCol+1] == '0') {
     							bValid = false;
     							break;
@@ -64,7 +66,7 @@ public class MaximalSquare {
     					
     					if (bValid == false) break;
     					
-    					for (int t = nBaseMinCol; t <= nBaseMaxCol; t++) {
+    					for (int t = nBaseMinCol; t <= nBaseMaxCol; t++) {   //Check the possible additional row
     						if (matrix[nBaseMaxRow+1][t] == '0') {
     							bValid = false;
     							break;

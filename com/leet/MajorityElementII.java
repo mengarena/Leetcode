@@ -29,7 +29,52 @@ public class MajorityElementII {
 	}
 	
 	
+	//ACC: 43%
+	//Boyer-Moore Majority Vote algorithm:
+	//http://www.geeksforgeeks.org/majority-element/
     public List<Integer> majorityElement(int[] nums) {
+    	List<Integer> lstMajors = new ArrayList<Integer>();
+    	if (nums == null || nums.length == 0) return lstMajors;
+    	int n = nums.length;
+    	int i;
+    	int nThreshold = n/3;
+    	int candidate1 = 0, candidate2 = 1, count1 = 0, count2 = 0;
+    	
+    	//Find candidates
+    	for (i=0; i<n; i++) {
+    		if (nums[i] == candidate1) {
+    			count1++;
+    		} else if (nums[i] == candidate2) {
+    		    count2++;	
+            } else if (count1 == 0) {
+            	candidate1 = nums[i];
+            	count1 = 1;
+            } else if (count2 == 0) {
+            	candidate2 = nums[i];
+            	count2 = 1;
+            } else {
+            	count1--;
+            	count2--;
+            }
+    	}
+    	
+    	
+    	count1 = 0; count2 = 0;
+    	
+    	//Confirm the majority
+    	for (i=0; i<n; i++) {
+    		if (nums[i] == candidate1) count1++;
+    		if (nums[i] == candidate2) count2++;
+    	}
+    	
+    	if (count1 > nThreshold) lstMajors.add(candidate1);
+    	if (count2 > nThreshold) lstMajors.add(candidate2);
+
+    	return lstMajors;
+    }
+    
+    
+    public List<Integer> majorityElementA(int[] nums) {
     	List<Integer> lstMajors = new ArrayList<Integer>();
     	if (nums == null || nums.length == 0) return lstMajors;
     	int n = nums.length;
@@ -38,7 +83,7 @@ public class MajorityElementII {
     	int nCount = 0;
     	int nCurNum;
     	
-    	Arrays.sort(nums);
+    	Arrays.sort(nums);   //nlog(n), which is not linear
     	
     	nCurNum = nums[0];
     	

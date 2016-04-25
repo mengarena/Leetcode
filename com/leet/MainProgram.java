@@ -21,7 +21,7 @@ public class MainProgram {
 		// TODO Auto-generated method stub
 
 		
-		IncreasingTripletSubsequence myInstance = new IncreasingTripletSubsequence();
+		MissingRanges myInstance = new MissingRanges();
 		
 //		StringBuilder sb = new StringBuilder();
 //		

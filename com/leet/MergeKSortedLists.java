@@ -40,7 +40,7 @@ public class MergeKSortedLists {
         	}
         });
         
-        
+        //Put nodes into PriorityQueue (one node each from each list)
         //Time Complexity:  n
         for (i=0; i<n; i++) {
         	ListNode tmp = lists[i];
@@ -74,6 +74,9 @@ public class MergeKSortedLists {
     }
 	
 	
+    
+    
+    
     
     
 	//Exceed time limit

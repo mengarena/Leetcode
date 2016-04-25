@@ -94,9 +94,9 @@ public class MinimumHeightTrees {
         	return lstMinHeightTree;
         }
         
-        HashMap<Integer, List<Integer>> hmTree = new HashMap<Integer, List<Integer>>();
+        HashMap<Integer, List<Integer>> hmTree = new HashMap<Integer, List<Integer>>();   //Node, its adjacents
         
-        //Construct the grahp
+        //Construct the graph
         for (i=0; i<nEdgeCnt; i++) {
         	int[] edge = edges[i];
         	if (hmTree.containsKey(edge[0])) {
@@ -133,15 +133,16 @@ public class MinimumHeightTrees {
         	
         	List<Integer> lstLeafTmp = new ArrayList<Integer>();  //Remember the new leaves
         	
+        	//Remove current leaves, and find new leaves (after removing current leaf, if a node has only one neighbor left, it becomes a new leaf)
         	for (int nLeaf:lstLeaf) {
-        		List<Integer> lstNeigh = hmTree.get(nLeaf);
+        		List<Integer> lstNeigh = hmTree.get(nLeaf);   //only one node in lstNeigh
         		if (lstNeigh != null) {
         			int nNeigh = lstNeigh.get(0);
         			
         			List<Integer> lstNeighTmp = hmTree.get(nNeigh);
         			if (lstNeighTmp != null) {
         				lstNeighTmp.remove(Integer.valueOf(nLeaf));   //Remove the nLeaf related edge
-        				if (lstNeighTmp.size() == 1)  lstLeafTmp.add(nNeigh);
+        				if (lstNeighTmp.size() == 1)  lstLeafTmp.add(nNeigh);  //Key step
         			}
         			
         		}
@@ -156,6 +157,9 @@ public class MinimumHeightTrees {
         
         return lstMinHeightTree;
     }	
+    
+    
+    
     
     
  /*   

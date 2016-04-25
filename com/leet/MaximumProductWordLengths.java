@@ -41,6 +41,7 @@ public class MaximumProductWordLengths {
         int i, j;
         
         for (i=0; i<n; i++) {
+        	//Convert words[i] into an integer
         	for (j=0; j<words[i].length(); j++) {
         		nBitWords[i] |= 1 << (words[i].charAt(j) - 'a');
         	}

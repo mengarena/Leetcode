@@ -37,24 +37,29 @@ public class MaxPointsOnALine {
         Map<Integer, Map<Integer, Integer>> hmm = new HashMap<Integer, Map<Integer, Integer>>();  //x, y, count (the numbers of points in one line with <x,y>)
         int maxCnt = 0;
         
+        //from each point, to calcualte the slope with other points
         for (i=0; i<n; i++) {
         	int overlapped = 0;
         	int tempMax = 0;
-        	hmm.clear();
+        	hmm.clear();   //avoid duplicate calculate for the same point also avoid calculate parallel lines together
         	
+        	//The reason only needs to check i+1~n:
+        	//Theoretically, needs to check 0~n, except i,
+        	//but say to point A, B,  the slope AB and BA will be the same after divided by nGcd
+        	//so say when i is 1, j is 3,  slope between points[1] points[3] is checked, later when i = 3, it does not need to check the slope between points[3] and points[1]
         	for (j=i+1; j<n; j++) {
         		if (points[i].x == points[j].x && points[i].y == points[j].y) {
         			overlapped++;
         			continue;
         		}
         		
-        		int x = points[j].x - points[i].x;
-        		int y = points[j].y - points[i].y;
+        		int x = points[j].x - points[i].x;   //x difference
+        		int y = points[j].y - points[i].y;   //y difference
         		int nGcd = gcd(x, y);
         		//All the vertical line (i.e. x = 0, y != 0) will be recorded as (x=0, y=1)
         		
         		if (nGcd != 0) {
-        			x = x/nGcd;
+        			x = x/nGcd;     //This makes sure ij, ji will be the same
         			y = y/nGcd;
         		}
         		

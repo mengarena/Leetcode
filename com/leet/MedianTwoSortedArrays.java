@@ -59,7 +59,7 @@ public class MedianTwoSortedArrays {
     }
     
     
-    //Find kth element from two arrays
+    //Find kth element from two arrays  (k starts from 1)
     private int findKth(int[] nums1, int n1, int start1, int[] nums2, int n2, int start2, int k) {
         if (start1 >= n1) return nums2[start2+k-1];
         if (start2 >= n2) return nums1[start1+k-1];
@@ -78,7 +78,7 @@ public class MedianTwoSortedArrays {
         	//some of them might be larger than the elements in right half of nums1
         	//Next, we only need to find the k-k/2 th elements in remaining two arrays, i.e. right half of nums1 and (original) nums2
             return findKth(nums1, n1, mid1+1, nums2, n2, start2, k-k/2);   
-        } else {  //In this case, the prefix k/2 elements of nums2 could be ignored, the overll kth will be in nums2's right half and nums1
+        } else {  //In this case, the prefix k/2 elements of nums2 could be ignored, the overall kth will be in nums2's right half and nums1
             return findKth(nums1, n1, start1, nums2, n2, mid2+1, k-k/2);
         }
     }

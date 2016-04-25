@@ -39,10 +39,10 @@ public class MaximumSizeSubarraySumEqualsK {
         int n = nums.length;
         int nSize = 0;
         int i;
-        HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();   //Sum, End index in nums[] for the "Sum"
         
         hm.put(nums[0], 0);
-        int nSum = nums[0];
+        int nSum = nums[0];    //Cumulative sum, i.e. by index i in nums, nSum is the sum of all the elements from 0 to i
         
         if (nSum == k) nSize = 1;
         
@@ -52,7 +52,7 @@ public class MaximumSizeSubarraySumEqualsK {
         	if (nSum == k) {
         		nSize = i+1;   //Don't need to Math.max compare, by this position, i+1 will be the longest
         	} else {
-        		if (hm.containsKey(nSum - k)) {
+        		if (hm.containsKey(nSum - k)) {   //i.e. remove some prefix of nums (or say a sub array starting from somewhere (not head) to current position) could satisify requirement
         			nSize = Math.max(nSize, i-hm.get(nSum-k));
         		}
         	}
@@ -61,9 +61,9 @@ public class MaximumSizeSubarraySumEqualsK {
             //The reason to check whether hm already contains nSum or not, is that:
             //If the array contains 0 or -2, 2 like sub arrays
             //For example, 3,4,7,0,5,-2,2,6
-            //Sum by 7 and by 0 is the same; sum by 5 and 2 is the same
+            //Sum by '7' and by '0' is the same; sum by '5' and '2' is the same
             //To get the longest subarray for the result, 
-            //For the same value sum, if hm already contains, don't update it, in this way, for the same value, we get the lowest index, which will help to produce longest subarrau
+            //For the same value sum, if hm already contains, don't update it, in this way, for the same value, we get the lowest index, which will help to produce longest subarray
         }
         
         return nSize;

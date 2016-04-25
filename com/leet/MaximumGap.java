@@ -9,8 +9,8 @@ import java.util.Arrays;
 //Return 0 if the array contains less than 2 elements.
 //
 //You may assume all elements in the array are non-negative integers and fit in the 32-bit signed integer range.
-
-
+//
+//
 //"difference" between two elements A and B means the absolute value of (A - B).
 //
 //"in its sorted form" means we need to get the maximum gap in the global sorted order, not the the given unsorted array order.
@@ -28,13 +28,17 @@ public class MaximumGap {
 
 
 	public void run() {
-		int[] nums = {1, 10000000};
+		//int[] nums = {1, 10000000};
+		int[] nums = {1, 30, 35, 60, 82, 100};
 		
 		System.out.println(maximumGap_BucketSort(nums));
 		
 	}
 	
 
+	//ACC: 51%
+	//Bucket Sort Time Complexity O(n+k),  Space Complexity: O(n)
+	//Refer to: https://leetcode.com/discuss/18499/bucket-sort-java-solution-with-explanation-o-time-and-space
     public int maximumGap_BucketSort(int[] nums) {
         if (nums == null || nums.length < 2) return 0;
         int nMax = Integer.MIN_VALUE;
@@ -53,8 +57,8 @@ public class MaximumGap {
         
         int nBucketCount = (nMax - nMin) / nBucketSize + 1;
         
-        int narrMin[] = new int[nBucketCount];
-        int narrMax[] = new int[nBucketCount];
+        int narrMin[] = new int[nBucketCount];   //The min value of each bucket
+        int narrMax[] = new int[nBucketCount];   //The max value of each bucket
         
         Arrays.fill(narrMin, -1);
         Arrays.fill(narrMax, -1);
@@ -62,7 +66,7 @@ public class MaximumGap {
         int nIdx;
         
         for (i=0; i<n; i++) {
-            nIdx = (nums[i] - nMin)/nBucketSize;
+            nIdx = (nums[i] - nMin)/nBucketSize;  //Decide which bucket the element should go
             
             if (narrMin[nIdx] == -1 || nums[i] < narrMin[nIdx]) narrMin[nIdx] = nums[i];
             if (narrMax[nIdx] == -1 || nums[i] > narrMax[nIdx]) narrMax[nIdx] = nums[i];
@@ -71,6 +75,9 @@ public class MaximumGap {
         int nPrevMax = narrMax[0];
         int nMaxGap = narrMax[0] - narrMin[0];
         
+        //Also fine to check the gap within one bucket
+        //According to the analysis in the reference URL, there are n-2 numbers put in n-1 bucket, 
+        //so at least one bucket is empty, so the number around that bucket will generate large gap
         for (i=1; i<nBucketCount; i++) {
             if (narrMin[i] == -1) continue;
             nMaxGap = Math.max(nMaxGap, narrMin[i] - nPrevMax);
@@ -81,7 +88,9 @@ public class MaximumGap {
     }
 	
 	
-	//Solution: Radix Sort
+    //ACC: 79%
+	//Solution: Radix Sort (based on each position digit, from the lowest to highest, round is decided by the maximal value)
+    //Radix sort time complexity: O(nk), Space Complexity: O(n+k) --k is the number of digits in the maximal number
     public int maximumGap_RadixSort(int[] nums) {
         if (nums == null || nums.length < 2) return 0;
         int nMax = Integer.MIN_VALUE;
@@ -96,8 +105,9 @@ public class MaximumGap {
         
         int aux[] = new int[n];
         
+        //Sort the array
         while (nMax / nDivisor > 0) {
-            int[] narrCount = new int[nRadix];
+            int[] narrCount = new int[nRadix];  //count of numbers in each position digit
             
             for (i=0; i<n; i++) {
                 narrCount[(nums[i] % nBase)/nDivisor]++;
@@ -105,6 +115,7 @@ public class MaximumGap {
             
             for (i=1; i<nRadix; i++) narrCount[i] = narrCount[i] + narrCount[i-1];
             
+            //Put nums[i] to the new position based on this round of sorting
             for (i=n-1; i>=0; i--) {
                 aux[--narrCount[(nums[i] % nBase)/nDivisor]] = nums[i];
             }

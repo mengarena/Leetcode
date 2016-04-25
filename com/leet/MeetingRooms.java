@@ -37,7 +37,7 @@ public class MeetingRooms {
         int n = intervals.length;
         int i;
         
-      //  Arrays.sort(intervals, (x, y)->x.start-y.start);    //Works in Java 8
+      //  Arrays.sort(intervals, (x, y)->x.start-y.start);    //Works in Java 8, ASCENDING order
 
         for (i=1; i<n; i++) {
             if (intervals[i].start < intervals[i-1].end) return false;
@@ -56,8 +56,7 @@ public class MeetingRooms {
         Arrays.sort(intervals, new Comparator<Interval>() {
             public int compare(Interval a, Interval b) {
                 return a.start-b.start;   //Smaller will be ordered in front
-            }
-            
+            } 
         });
 
         for (i=1; i<n; i++) {

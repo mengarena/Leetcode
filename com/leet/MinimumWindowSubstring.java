@@ -48,6 +48,7 @@ public class MinimumWindowSubstring {
         
         for (int i=0; i<nt; i++) carr[t.charAt(i)]++;
         
+        //For those characters not in String t, their corresponding carr[i] could at most be 0 in the following while loop (decrease at one place in outer loop and recover at the inner loop)
         while (end < ns) {
             if (carr[s.charAt(end)] > 0) {
                 counter--;

@@ -38,7 +38,7 @@ public class MultiplyStrings {
         for (i=0; i<nLen1; i++) {
         	int digitA = sNum1.charAt(i) - '0';
         	for (j=0; j<nLen2; j++) {
-        		digits[i+j] += digitA * (sNum2.charAt(j) - '0');
+        		digits[i+j] += digitA * (sNum2.charAt(j) - '0');    //Key step
         	}
         }
         

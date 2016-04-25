@@ -33,8 +33,10 @@ public class MeetingRoomsII {
     
     //Accepted: Best performance
     //Strategy:  Check (compare) each meeting's start time with any meeting's end time
-    //1) If at the moment a meeting wants to start, there is a currently going on meeting which could ends before it, the new meeting could use that meeting's room, don't need to open a new meeting room;
-    //2) Otherwise, If at the moment a meeting wants to start, other ongoing meetings' end time is in the future, then this new meeting has to open a new meeting room
+    //1) If at the moment a meeting wants to start, there is a currently going on meeting which could ends before it, 
+    //   the new meeting could use that meeting's room, don't need to open a new meeting room;
+    //2) Otherwise, If at the moment a meeting wants to start, other ongoing meetings' end time is in the future, 
+    //   then this new meeting has to open a new meeting room
     public int minMeetingRooms(Interval[] intervals) {
         if (intervals == null) return 0;
         int n = intervals.length;
@@ -52,14 +54,16 @@ public class MeetingRoomsII {
         Arrays.sort(narrEnd);
         
         int nRoomCnt = 0;
-        int nMeetingEndIdx = 0;
+        int nMeetingEndIdx = 0;  //The index of the meeting ending soon
         
         //Check the situation at the moment each meeting wants to start
         for (i=0; i<n; i++) {
-        	if (narrStart[i] < narrEnd[nMeetingEndIdx]) {    //Means, currently could-as-early-as-possible-to-finish meeting is still in the future, then has to open a new meeting room
+        	if (narrStart[i] < narrEnd[nMeetingEndIdx]) {    //Means, currently could-as-early-as-possible-to-finish meeting is still in the future (i.e. still ongoing), 
+        		                                             //then has to open a new meeting room
         		nRoomCnt++;
         	} else {   
-        		//Means, the starting time is behind the could-as-early-as-possible-to-finish meeting, the new meeting could use that meeting's room, don't need to open a new meeting room.
+        		//Means, the starting time is behind the could-as-early-as-possible-to-finish meeting, 
+        		//the new meeting could use that meeting's room, don't need to open a new meeting room.
         		//And next time, we check on the next-finishing meeting's time
         		nMeetingEndIdx++;
         	}

@@ -39,6 +39,7 @@ public class MergeSortedArray {
 
         int nTotalSize = m + n;
         
+        //Merge, from end to the beginning
         while (m >=1 && n >=1) {
         	if (nums1[m-1] >= nums2[n-1]) {
         		nums1[nTotalSize-1] = nums1[m-1];
