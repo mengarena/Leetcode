@@ -54,6 +54,8 @@ public class NQueensII {
                 nCount = nCount + solveNQueensHelper(board, n, nCurRowIdx+1);
                 
                 recoverInvalid(board, n, nCurRowIdx, i);  //Recover the corresponding column, diagonal before trying next position in current row
+                
+                board[nCurRowIdx][i] = 0;
             }
         }
         
@@ -91,8 +93,6 @@ public class NQueensII {
     //Recover the cell which is set invalid by current row or rows below current row
     private void recoverInvalid(int[][] board, int n, int nRowIdx, int nColIdx) {
         int i,ii,jj;
-        
-        board[nRowIdx][nColIdx] = 0;
         
         for (i=nRowIdx+1; i<n; i++) {
             if (board[i][nColIdx] >= (nRowIdx+1) || board[i][nColIdx] <= -(nRowIdx+1)) board[i][nColIdx] = 0;   //Column

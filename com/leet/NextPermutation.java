@@ -50,13 +50,14 @@ public class NextPermutation {
         int nMin = nums[nPos];
         int nChangePos = nPos;
         
+        //Find the one which is smallest-larger than nums[nPos]
         for (i=nPos+1; i<n; i++) {
         	if (nums[i] > nums[nPos]) {
         		if (nChangePos == nPos) {
         			nChangePos = i;
         			nMin = nums[i];
         		} else {
-        			if (nums[i] < nMin && nums[i] >= nums[nPos]) {
+        			if (nums[i] < nMin) {
         				nChangePos = i;
         				nMin = nums[i];
         			}
@@ -69,12 +70,13 @@ public class NextPermutation {
         	return;
         }
         
+        //Exchange value to put the smallest-larger digit at position nPos
         int nTmp = nums[nChangePos];
         nums[nChangePos] = nums[nPos];
         nums[nPos] = nTmp;
         boolean bChangedPos = false;
         
-        //Sort numbers from nPos+1 ~ n-1 in ascending order
+        //Sort numbers from nPos+1 ~ n-1 in ascending order (bubble sort)
         for (i=nPos+1; i<n-1; i++) {
         	bChangedPos = false;
         	for (j=nPos+2; j<=n-i+nPos; j++) {

@@ -74,6 +74,19 @@ public class NumberConnectedComponentsUndirectedGraph {
     	return i;
     }
 	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //Check whether two nodes are connected
     private boolean IsConnected(int[] roots, int p, int q) {
     	return roots[p] == roots[q];

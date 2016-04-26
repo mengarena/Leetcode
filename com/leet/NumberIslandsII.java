@@ -67,8 +67,9 @@ public class NumberIslandsII {
 	    	int node = x*n + y + 1;  //Make it based on 1 starting
 	    	
 	    	roots[node] = node;
-	    	count++;
+	    	count++;   //Turned into land, a new island
 	    	
+	    	//Check its neighbors
 	    	for (j=0; j<4; j++) {
 	    		int xx = x + dirs[j][0];
 	    		int yy = y + dirs[j][1];

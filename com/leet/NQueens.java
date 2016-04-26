@@ -34,7 +34,7 @@ public class NQueens {
 
 
 	public void run() {
-		int n = 8;
+		int n = 4;
 		
 		List<List<String>> lstlstConfig = solveNQueens(n);
 		
@@ -77,7 +77,7 @@ public class NQueens {
         
         if (bpossible == false) return;
         
-        for (int i=0; i<n; i++) {
+        for (int i=0; i<n; i++) {   //Column
             if (board[nCurRowIdx][i] == 0) {
                 board[nCurRowIdx][i] = nCurRowIdx+1;   //Set a "Q"
                 
@@ -86,6 +86,8 @@ public class NQueens {
                 solveNQueensHelper(board, n, nCurRowIdx+1, lstlstConfigs);
                 
                 recoverInvalid(board, n, nCurRowIdx, i);  //Recover the corresponding column, diagonal before trying next position in current row
+                
+                board[nCurRowIdx][i] = 0;
             }
         }
         
@@ -108,16 +110,19 @@ public class NQueens {
         lstlstConfigs.add(lstRow);
     }
     
+    
     private void setInvalid(int[][] board, int n, int nRowIdx, int nColIdx) {
         int i,ii,jj;
+        
+        //Process column
         for (i=nRowIdx+1; i<n; i++) {
-            if (board[i][nColIdx] == 0)
-            board[i][nColIdx] = -(nRowIdx+1);   //Column
+            if (board[i][nColIdx] == 0) board[i][nColIdx] = -(nRowIdx+1);   //Column
         }
         
         ii = nRowIdx;
         jj = nColIdx;
         
+        //Process diagnoal
         while (ii < n-1 && jj > 0) {
             ii++;
             jj--;
@@ -128,6 +133,7 @@ public class NQueens {
         ii = nRowIdx;
         jj = nColIdx;
         
+        //Process diagnoal
         while (ii < n-1 && jj < n-1) {
             ii++;
             jj++;
@@ -139,15 +145,15 @@ public class NQueens {
     private void recoverInvalid(int[][] board, int n, int nRowIdx, int nColIdx) {
         int i,ii,jj;
         
-        board[nRowIdx][nColIdx] = 0;
-        
+        //Process column
         for (i=nRowIdx+1; i<n; i++) {
-            if (board[i][nColIdx] >= (nRowIdx+1) || board[i][nColIdx] <= -(nRowIdx+1)) board[i][nColIdx] = 0;   //Column
+            if (board[i][nColIdx] >= (nRowIdx+1) || board[i][nColIdx] <= -(nRowIdx+1)) board[i][nColIdx] = 0;   //Column, board[i][nColIdx] >= (nRowIdx+1) => 'Q'
         }
         
         ii = nRowIdx;
         jj = nColIdx;
         
+        //Process diagnoal
         while (ii < n-1 && jj > 0) {
             ii++;
             jj--;
@@ -157,6 +163,7 @@ public class NQueens {
         ii = nRowIdx;
         jj = nColIdx;
         
+        //Process diagnoal
         while (ii < n-1 && jj < n-1) {
             ii++;
             jj++;
