@@ -1,6 +1,8 @@
 package com.leet;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 //The set [1,2,3,бн,n] contains a total of n! unique permutations.
 //
@@ -18,6 +20,7 @@ import java.util.Arrays;
 //
 //Note: Given n will be between 1 and 9 inclusive.
 
+//Twitter
 public class PermutationSequence {
 
 	public PermutationSequence() {
@@ -26,12 +29,42 @@ public class PermutationSequence {
 
 	
 	public void run() {
-		int n = 5;
-		int k = 11;
+		int n = 2;
+		int k = 1;
 		
 		System.out.println(getPermutation(n, k));
 	}
 
+	
+	//ACC: 36%
+	//Strategy: the permuation for n digits could be divided into n groups, each group contains (n-1)! sub-permutations
+	public String getPermutation(int n, int k) {
+		if (k < 1) return "";
+		List<Integer> lstNums = new ArrayList<Integer>();
+		int i;
+		for (i=1; i<=n; i++) lstNums.add(i);
+		StringBuilder sbRet = new StringBuilder();
+		int fact = 1;
+		for (i=1; i<n; i++) fact *= i;
+		int idx = 0;
+		
+		k = k-1;
+		
+		for (i=n; i>=1; i--) {  //There are n digits to process, from the 1st (most significant) to the last
+			idx = k/fact;  //The order/index (ascending) of the digit which should be in this position in the remaining digits
+			
+			k = k % fact;
+			
+			sbRet.append(lstNums.get(idx));
+			lstNums.remove(idx);
+			
+			if (i > 1) fact = fact/(i-1);
+		}
+		
+		return sbRet.toString();
+	}
+	
+	
 	
 	/* Try to recall the complex caogao!!!
 	 * From left to right, to decide each digit in the final result
@@ -48,7 +81,7 @@ public class PermutationSequence {
 	 * 5) And the order of the remained number should change to 3rd (= 9 % 6) permutation from its ascending order
 	 * 6) and goes on, until remained order <= 1
 	 */
-    public String getPermutation(int n, int k) {
+    public String getPermutationA(int n, int k) {
     	if (k < 1) return "";
         StringBuilder sRet = new StringBuilder();
         int i;

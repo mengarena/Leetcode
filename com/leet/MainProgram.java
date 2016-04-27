@@ -21,7 +21,7 @@ public class MainProgram {
 		// TODO Auto-generated method stub
 
 		
-		MissingRanges myInstance = new MissingRanges();
+		PaintHouseII myInstance = new PaintHouseII();
 		
 //		StringBuilder sb = new StringBuilder();
 //		

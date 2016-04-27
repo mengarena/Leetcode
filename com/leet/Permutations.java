@@ -28,6 +28,8 @@ public class Permutations {
 		}
 	}
 	
+	
+	//ACC: 68%
     public List<List<Integer>> permute(int[] nums) {
     	List<List<Integer>> lstlstPerm = new ArrayList<List<Integer>>();
     	
@@ -54,8 +56,6 @@ public class Permutations {
     	}
     	
     	lstlstPermPrev = permute(nums, nValidCnt-1);  //Leave the last one out
-
-    	if (lstlstPermPrev.isEmpty()) return lstlstPerm;
 
     	int nTmpLen = lstlstPermPrev.get(0).size();
     	

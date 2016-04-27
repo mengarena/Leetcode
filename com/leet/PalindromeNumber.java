@@ -31,6 +31,7 @@ public class PalindromeNumber {
 		
 	}
 	
+	//ACC: 94%
 	//sign is also taken into consideration, so if it is negative, it could not be Palindrome
     public boolean isPalindrome(int x) {
     	int nNew = 0;

@@ -45,7 +45,7 @@ public class PalindromePairs {
         List<List<Integer>> lstlstPairs = new ArrayList<List<Integer>>();
         if (words == null || words.length < 2) return lstlstPairs;
         int n = words.length;
-        HashMap<String, Integer> hmStrIdx = new HashMap<String, Integer>();
+        HashMap<String, Integer> hmStrIdx = new HashMap<String, Integer>();  //String, Index
         int i,j;
         int nIdx;
         String str1, str2, stmp;
@@ -89,6 +89,7 @@ public class PalindromePairs {
         
         return lstlstPairs;
     }
+    
     
     private boolean isPalindrome(String s) {
         if (s.length() <= 1) return true;

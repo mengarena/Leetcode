@@ -39,8 +39,10 @@ public class PascalTriangleII {
         if (rowIndex >= 1) {
         	lstRow.add(1); 
         	
+        	//Each row has one more elements than previous row
         	for (int i=2; i<=rowIndex; i++) {
         		lstRow.add(i-1, lstRow.get(i-1-1) + lstRow.get(i-1)); //Insert a new
+        		
         		for (int j=i-2; j>=1; j--) {
         			lstRow.set(j, lstRow.get(j) + lstRow.get(j-1));   //Update old
         		}

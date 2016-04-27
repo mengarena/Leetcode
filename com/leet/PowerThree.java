@@ -26,7 +26,7 @@ public class PowerThree {
     public boolean isPowerOfThree(int n) {
     	if (n == 0) return false;
     	        
-        return (Math.log10(n) / Math.log10(3)) % 1 == 0;
+        return (Math.log10(n) / Math.log10(3)) % 1 == 0;   //log10()--double,  this equals log_3(n)
         
         //OR return n>0 && Math.pow(3, (int)(Math.log(0x7fffffff)/Math.log(3)))%n==0;   //0x7fffffff--Max Integer
     }

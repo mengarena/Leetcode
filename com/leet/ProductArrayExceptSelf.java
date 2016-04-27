@@ -49,8 +49,8 @@ public class ProductArrayExceptSelf {
         nPost[n-1] = 1;
         nPost[n-2] = nums[n-1];
         
-        for (i=2; i<n; i++) nPre[i] = nPre[i-1]*nums[i-1];
-        for (i=n-3; i>=0; i--) nPost[i] = nPost[i+1]*nums[i+1];
+        for (i=2; i<n; i++) nPre[i] = nPre[i-1]*nums[i-1];  //For every position, nPre[i] is the product of the elements before nums[i]
+        for (i=n-3; i>=0; i--) nPost[i] = nPost[i+1]*nums[i+1];  //For every position, nPost[i] is the product of the elements after nums[i]
         
         for (i=0; i<n; i++) output[i] = nPre[i]*nPost[i];
         

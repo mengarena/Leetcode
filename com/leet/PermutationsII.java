@@ -44,9 +44,9 @@ public class PermutationsII {
 	}
 	
 	
-	public void permuterHelper(int[] nums, int nStartPos, List<Integer> lstPerm, List<List<Integer>> lstlstPerm, boolean[] used) {
+	public void permuterHelper(int[] nums, int nCnt, List<Integer> lstPerm, List<List<Integer>> lstlstPerm, boolean[] used) {
 		int nLen = nums.length;
-		if (nStartPos == nLen) {
+		if (nCnt == nLen) {
 			lstlstPerm.add(new ArrayList<Integer>(lstPerm));
 			return;
 		}
@@ -57,7 +57,7 @@ public class PermutationsII {
 			if (!used[i]) {			
 				used[i] = true;
 				lstPerm.add(nums[i]);
-				permuterHelper(nums, nStartPos+1, lstPerm, lstlstPerm, used);
+				permuterHelper(nums, nCnt+1, lstPerm, lstlstPerm, used);
 				lstPerm.remove(lstPerm.size()-1);
 				used[i] = false;
 				

@@ -51,6 +51,7 @@ public class PalindromePermutationII {
         
         for (i=0; i<n; i++) narrCnt[carr[i]]++;
         
+        //Check whether it is possible to be palindrome
         for (i=0; i<256; i++) {
         	if (narrCnt[i] % 2 == 1) {
         		nOddCnt++;
@@ -62,6 +63,7 @@ public class PalindromePermutationII {
         char[] carrHalf = new char[n/2];
         int nLen = 0;
         
+        //Get half of the characters
         for (i=0; i<256; i++) {
         	for (j=0; j<narrCnt[i]/2; j++) {
         		carrHalf[nLen++] = (char) i;
@@ -73,14 +75,15 @@ public class PalindromePermutationII {
         boolean bVisited[] = new boolean[nLen];
         StringBuilder sb = new StringBuilder();
         
+        //Permutate the half characters, the other half will automatically form palindrom with the first half
         getPermutation(lstPalindromes, carrHalf, nLen, 0, bVisited, sb, sOddPart);
         
         return lstPalindromes;
         
     }
 
-    private void getPermutation(List<String> lstPalindromes, char[] carrHalf, int nLen, int nStart, boolean[] bVisited, StringBuilder sb, String sOddPart) {
-    	if (nLen == nStart) {
+    private void getPermutation(List<String> lstPalindromes, char[] carrHalf, int nLen, int nCnt, boolean[] bVisited, StringBuilder sb, String sOddPart) {
+    	if (nLen == nCnt) {
     		lstPalindromes.add(sb.toString() + sOddPart + sb.reverse().toString());
     		return;
     	}
@@ -92,14 +95,16 @@ public class PalindromePermutationII {
     			bVisited[i] = true;
     			
     			String sOrg = sb.toString();
+    			
     			sb.append(carrHalf[i]);
     			
-    			getPermutation(lstPalindromes, carrHalf, nLen, nStart+1, bVisited, sb, sOddPart);
+    			getPermutation(lstPalindromes, carrHalf, nLen, nCnt+1, bVisited, sb, sOddPart);
     			
     			sb.replace(0, sb.length(), sOrg);
     			
     			bVisited[i] = false;
     			
+    			//To be unique, the same character could only be the leading character one round
     			while (i < nLen-1 && carrHalf[i+1] == carrHalf[i]) i++;
     		}
     		

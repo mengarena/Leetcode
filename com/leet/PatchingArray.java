@@ -45,7 +45,7 @@ public class PatchingArray {
 	public int minPatches(int[] nums, int n) {
 		int nLen = nums.length;
 		int nCumSum = 1;  //The up bound (exclusive) of current cumulative sum (i.e. the sum of current numbers in nums[] plus patched); 
-		                  //here nCumSum means all numbers with in [1, nCumSum) could be expressed as sum with numbers in nums[] and already patched numbers
+		                  //here nCumSum means all numbers within [1, nCumSum) could be expressed as sum with numbers in original nums[] and already patched numbers
 		int nNumIdx = 0;
 		int nPatchCnt = 0;
 				
