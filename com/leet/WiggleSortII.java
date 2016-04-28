@@ -20,7 +20,7 @@ public class WiggleSortII {
 	}
 
 
-	public void run() {
+	public void run() { 
 		//int[] nums = {3,3,3,2,2,2,3,2,1,1,2,1,2,3,3,3,1,2};
 		//int[] nums = {2,2,5,4};
 		int[] nums = {1, 3, 2, 2, 3, 1};
@@ -40,12 +40,14 @@ public class WiggleSortII {
         
         int nMedian = findMedian(nums);
         int i = 0;
-        int nn = n | 1;
+        int nn = n | 1;  //Make sure to be odd 
         int nLargePos = 1;  //First position for putting large value
         int nMidPos = 1;
         int nSmallPos = (1+2*(n-1)) % nn;  //Last position for putting small value
         int nTmp;
         
+        //LargePos is always odd (i.e. 1,3,5,7...)
+        //SmallPos is always even (i.e. ....4,2,0)
         while (i < n) {
         	if (nums[nMidPos] > nMedian) {
         		nTmp = nums[nLargePos];
@@ -100,7 +102,7 @@ public class WiggleSortII {
     			}
     		}
     		    		
-    		if (nCntDiff > 0) {
+    		if (nCntDiff > 0) {  //There is more numbers larger than median
     			nLeft = nMedian + 1;
     		} else if (nCntDiff < 0) {
     			nRight = nMedian - 1;

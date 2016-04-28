@@ -25,6 +25,7 @@ public class ValidParentheses {
 	
 	}
 	
+	//'('---1;  '[' --- 2;  '{' -- 3
     public boolean isValid(String s) {
     	Stack<Integer> stkParentheses = new Stack<Integer>();
 

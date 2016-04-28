@@ -128,10 +128,10 @@ public class WordLadder {
 	}
 	
 	
-	//Accepted.
+	//Accepted.  45%
 	//Strategy:  Process level by level. all the path/branch forms a tree.  The root of the tree is the beginWord.
-	//From the leaves at each level, to find the words which could be derived by chaning one letter from these leaves.
-	//These derived words forms the new level (i.e. the new leaves of the tree at one level below)
+	//From the nodes at each level, to find the words which could be derived by changing one letter from these nodes.
+	//These derived words forms the new level (i.e. the new nodes of the tree at one level below)
 	//Once on one level, there occurs the endWord, the process stops.
 	//
 	//Trick:  Once one candidate word (i.e. the word made by changing one letter from a previous valid word) exists in the dictionary
@@ -172,21 +172,23 @@ public class WordLadder {
     
     
     //BFS
+    //Each element in lstlstParent (i.e. lstParent) is the list of element from root to current level
     private int findLadderHelper(Set<String> wordList, int n, String sEndWord, List<List<String>> lstlstParent) {    	   	
     	int i;
     	
     	int nSize = wordList.size();
     	
-    	while (!lstlstParent.isEmpty() && lstlstParent.get(0).size() < nSize + 2) {
-    		
-    		int nParentCnt = lstlstParent.size();
+    	while (!lstlstParent.isEmpty() && lstlstParent.get(0).size() < nSize + 1) {   //lstlstParent.get(0).size() length of path from root to this level
+    		                                                                          //The maximal length should be #wordList + 1 (beginWord)
+    		                                                                         
+    		int nParentCnt = lstlstParent.size();  //Number of path from root to current level
     		
     		List<List<String>> lstlstParentNew = new ArrayList<List<String>>();
     		//One a word is found in this level, it could be removed. 
     		//Because, if we don't remove it, if the words is met in other level at other branches, their final path could not be shorter than this one
     		
     		for (i=nParentCnt-1; i>=0; i--) {
-    			List<String> lstParent = lstlstParent.get(i);
+    			List<String> lstParent = lstlstParent.get(i);   //The list of elements on the path from root to current level
     			String sParent = lstParent.get(lstParent.size()-1);
     			
     	    	List<String> lstLevel = new ArrayList<String>();
@@ -211,6 +213,8 @@ public class WordLadder {
     }
     
     //Find next level
+    //From sBeginWord, get all possible target/candidate words by changing one letter
+    //The derived candidate words are stored in lstLevel
     private boolean findLadderHelperBFS(Set<String> wordList, int n, String sBeginWord, String sEndWord,List<String> lstLevel) {
     	
     	char[] carrElement = sBeginWord.toCharArray();
@@ -242,6 +246,18 @@ public class WordLadder {
     	
     	return false;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     private boolean IsLadderable(String sWord1, String sWord2) {

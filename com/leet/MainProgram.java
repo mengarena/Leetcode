@@ -21,7 +21,7 @@ public class MainProgram {
 		// TODO Auto-generated method stub
 
 		
-		PaintHouseII myInstance = new PaintHouseII();
+		ValidNumber myInstance = new ValidNumber();
 		
 //		StringBuilder sb = new StringBuilder();
 //		
@@ -47,6 +47,10 @@ public class MainProgram {
 //		int ret = (int) (0x0100000000L - nResult);
 		
 		//System.out.println(ret);
+		
+		int kk = +0xEF;
+		
+		System.out.println(kk);
 		
 		long lnTm1 = System.currentTimeMillis();
 

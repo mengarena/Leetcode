@@ -130,9 +130,9 @@ public class WordLadderII {
 	}
 	
 	
-	//Accepted.
+	//Accepted: 22%
 	//Strategy:  Process level by level. all the path/branch forms a tree.  The root of the tree is the beginWord.
-	//From the leaves at each level, to find the words which could be derived by chaning one letter from these leaves.
+	//From the leaves at each level, to find the words which could be derived by changing one letter from these leaves.
 	//These derived words forms the new level (i.e. the new leaves of the tree at one level below)
 	//Once on one level, there occurs the endWord, the process stops.
 	//
@@ -176,24 +176,25 @@ public class WordLadderII {
     	
     	int nSize = wordList.size();
     	
-    	while (!bFound && !lstlstParent.isEmpty() && lstlstParent.get(0).size() < nSize + 2) {
+    	while (!bFound && !lstlstParent.isEmpty() && lstlstParent.get(0).size() < nSize + 1) {
     		
-    		int nParentCnt = lstlstParent.size();
+    		int nParentCnt = lstlstParent.size();  //#path from root to this level
     		
-    		//One a word is found in this level, it could be removed. 
+    		//Once a word is found in this level, it could be removed. 
     		//Because, if we don't remove it, if the words is met in other level at other branches, their final path could not be shorter than this one
     		Set<String> wordsToRemove = new HashSet<String>();  
     		
+    		//Process one level
     		for (i=nParentCnt-1; i>=0; i--) {
     			List<String> lstParent = lstlstParent.get(i);
     			String sParent = lstParent.get(lstParent.size()-1);
     			
-    	    	List<String> lstLevel = new ArrayList<String>();
-    	    	List<Integer> lstFoundIdx = new ArrayList<Integer>();
+    	    	List<String> lstLevel = new ArrayList<String>();  //To save derived (from sParent) new words
+    	    	List<Integer> lstFoundIdx = new ArrayList<Integer>();   //In lstLevel, which equals sEndWord
     	    	
     			boolean bRet = findLadderHelperBFS(wordList, sParent, sEndWord, lstLevel, lstFoundIdx, wordsToRemove);
     			if (bRet == true) {
-    				bFound = true;
+    				bFound = true;   //Will cause the function exist after this "for"
     				
     				for (int nIdx:lstFoundIdx) {
     					List<String> lstNewParentTmp = new ArrayList<String>(lstParent);
@@ -206,7 +207,7 @@ public class WordLadderII {
 	    			
 		    			List<String> lstNewParent = new ArrayList<String>(lstParent);
 		    			lstNewParent.add(lstLevel.get(0));
-		    			lstlstParent.set(i, lstNewParent);
+		    			lstlstParent.set(i, lstNewParent);  //Replace original root to level path
 		    			
 		    			for (int j=1; j<lstLevel.size(); j++) {
 		    				lstNewParent = new ArrayList<String>(lstParent);
@@ -217,8 +218,9 @@ public class WordLadderII {
 	    				lstlstParent.remove(i);
 	    			}
     			}
-    		}
+    		}  //For
     		
+    		if (bFound) break;
 			//Reason to remove the word for next level:
 			//If don't remove, when meets this word at other (higher) level, the final path could not be shorter than this one,
 			//those will not be the result path, so could remove it
@@ -267,6 +269,7 @@ public class WordLadderII {
     	
     	return bRet;
     }
+    
     
     
     private boolean IsLadderable(String sWord1, String sWord2) {

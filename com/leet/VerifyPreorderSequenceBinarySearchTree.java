@@ -42,6 +42,7 @@ public class VerifyPreorderSequenceBinarySearchTree {
             if (i < nLowBound) return false;
             
             while (!stkNode.isEmpty() && i > stkNode.peek()) nLowBound = stkNode.pop();   
+            //When come to this, it is on the right branch, i is the first node on right branch (i.e. sub-root of the sub right tree). by the end of this while, nLowBound is the root 
             //Pop the nodes on the corresponding left branch and find the low bound (which should be the root of this sub tree)
             //After the series of pop(), the top node on the stkNode is the root's root of the current right branch (while the nLowBound is the value of the root node of current right branch)
             //All the coming node should be larger than the low bound, if not, wrong.

@@ -65,7 +65,8 @@ public class WordSearchII {
 	}
 	
 	
-	
+	//Strategy: Construct Trie for the words
+	//Search around the board[][], once meet a valid word, save it
     class TrieNode {
     	String sWord;
     	TrieNode[] children = new TrieNode[26];
@@ -111,9 +112,10 @@ public class WordSearchII {
 	private void searchWords(char[][] board, int i, int j, TrieNode tr, List<String> lstWords) {
 	    int m = board.length;
 	    int n = board[0].length;
-	    char c = board[i][j];
 
-	    if (i >= m || i < 0 || j >= n || j < 0 || c == '#' || tr.children[c-'a'] == null) return;
+	    if (i >= m || i < 0 || j >= n || j < 0 || board[i][j] == '#' || tr.children[board[i][j]-'a'] == null) return;
+	    
+	    char c = board[i][j];
 	    
 	    tr = tr.children[c-'a'];
 	    	    

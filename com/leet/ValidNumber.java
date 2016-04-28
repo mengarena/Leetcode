@@ -79,7 +79,8 @@ public class ValidNumber {
 //		String s = "0e00"; //false;
 //		String s = "1ee1"; //false;
 //		String s = "1e1e"; //false;
-		String s = " -."; //false;
+//		String s = " -."; //false;
+		String s = "-0xEF";  //False
 		
 		System.out.println(isNumber(s));
 	}
@@ -113,7 +114,7 @@ public class ValidNumber {
        
        if (i > n-1) return false;
        
-       //First postion
+       //First position
        if (isSign(carr[i])) {
     	   signed = true;
     	   numberReady = false;
@@ -259,6 +260,9 @@ public class ValidNumber {
     	    	   hexFormated = true;
     	    	   digited = false;
     	    	   numberReady = false;
+    	    	   
+    	    	   i++;
+    	    	   continue;
     		   } else {
     			   return false;
     		   }

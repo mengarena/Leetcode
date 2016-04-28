@@ -30,6 +30,7 @@ public class ValidSudoku {
         Map<Integer, Integer> unitMap = new HashMap<Integer, Integer>();
         int nVal;
         
+        //Check whether every row is valid
         for (i = 0; i < 9; i++) {
         	unitMap.clear();
         	for (j=0; j < 9; j++) {
@@ -44,6 +45,7 @@ public class ValidSudoku {
         	}
         }
 
+        //Check whether every column is valid
         for (i = 0; i < 9; i++) {
         	unitMap.clear();
         	for (j=0; j < 9; j++) {
@@ -58,6 +60,7 @@ public class ValidSudoku {
         	}
         }
 
+        //Check whether every 3x3 unit is valid
         for (i=0; i<3; i++) {
         	for (j=0; j<3; j++) {
         		unitMap.clear();

@@ -50,7 +50,7 @@ public class VerifyPreorderSerializationBinaryTree {
 		System.out.println(preorder + "    IS " + isValidSerialization(preorder));
 	}
 
-	
+	//Strategy: continuously/recursively replace each sub part like "3,#,#" with "#", finally should get only one "#", otherwise it is not valid serialized.
     public boolean isValidSerialization(String preorder) {
         if (preorder == null || preorder.length() == 0) return true;
         int n = preorder.length();
@@ -62,15 +62,7 @@ public class VerifyPreorderSerializationBinaryTree {
         		return false;
         	}
         }
-        
-//        if (preorder.charAt(n-1) == ',') {
-//        	if ((n-2) % 4 != 0) return false;
-//        	if (preorder.charAt(n-2) != '#') return false;
-//        } else {  
-//        	if ((n-1) % 4 != 0) return false;
-//        	if (preorder.charAt(n-1) != '#') return false;
-//        }
-                
+                        
         String sReplace = "";
         if (preorder.charAt(n-1) == ',') {
         	sReplace = preorder.substring(0, n-1);
@@ -108,6 +100,7 @@ public class VerifyPreorderSerializationBinaryTree {
     	int nStartPos = 0;
     	boolean bDigit = false;
     	
+    	//To find xxx,digit,#,# (the position of the digit and also the position before the digit)
     	for (int i=nPos; i>=0; i--) {
     		if (sReplace.charAt(i) >= '0' && sReplace.charAt(i) <= '9') {
     			bDigit = true;
@@ -122,7 +115,7 @@ public class VerifyPreorderSerializationBinaryTree {
     	if (bDigit == false) return sReplace;
     	
     	if (nStartPos > 0) {
-    		sReplace = sReplace.substring(0, nStartPos+1) + "#" + sReplace.substring(nPos + 3);
+    		sReplace = sReplace.substring(0, nStartPos+1) + "#" + sReplace.substring(nPos + 3);   //3 <= "#,#" 
     	} else {
     		sReplace = "#" + sReplace.substring(nPos + 3);
     	}

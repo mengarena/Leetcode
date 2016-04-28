@@ -49,7 +49,44 @@ public class WordPattern {
 		}
 	}
 	
+	//ACC
     public boolean wordPattern(String pattern, String str) {
+        int nPatternLen = 0;
+        int i;
+        Map<Character, Integer> mapPattern = new HashMap<Character, Integer>();
+        Map<String, Integer> mapStr = new HashMap<String, Integer>();
+        char cSingle;
+		String sWord;
+        
+        if (pattern == null && str == null) return true;
+        if (pattern == null || str == null) return false;
+
+        char[] carrP = pattern.toCharArray();
+        String[] sarrS = str.split(" ");
+        if (carrP.length != sarrS.length) return false;
+        
+        nPatternLen = carrP.length;
+        
+        for (i=0; i<nPatternLen; i++) {        	
+        	cSingle = carrP[i];
+        	sWord = sarrS[i];
+        	
+        	if (mapPattern.containsKey(cSingle) && mapStr.containsKey(sWord)) {
+        		if (mapPattern.get(cSingle) != mapStr.get(sWord)) return false;
+        	} else if (mapPattern.containsKey(cSingle) || mapStr.containsKey(sWord)) {
+        		return false;
+        	} else {
+        		mapPattern.put(cSingle, i);
+        		mapStr.put(sWord, i);
+        	}
+        }
+                
+        return true;
+    }
+	
+	
+    //ACC: but the above is better
+    public boolean wordPatternA(String pattern, String str) {
         int nPatternLen = 0;
         int i;
         Map<Character, Integer> mapPattern = new HashMap<Character, Integer>();

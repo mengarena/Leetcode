@@ -3,6 +3,7 @@ package com.leet;
 
 //Add and Search Word - Data structure design
 
+//
 //Design a data structure that supports the following two operations:
 //
 //void addWord(word)
@@ -32,6 +33,7 @@ package com.leet;
 public class WordDictionary {
 	
 	
+	//ACC: 65%
 	class TrieNode {
 		char cNode;
 		boolean bWord;
@@ -94,7 +96,6 @@ public class WordDictionary {
 			}
 			
 		} else {
-			bRet = false;
 			
 			for (i=0; i<26; i++) {
 				if (root.children[i] != null) {
