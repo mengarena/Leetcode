@@ -40,6 +40,7 @@ public class UniquePathsII {
         int narrPath[][] = new int[m][n];
         int i, j;
         
+        //Process first column
         for (i=0; i<m; i++) {
         	if (i == 0) {
         		if (obstacleGrid[i][0] == 1) {
@@ -61,6 +62,7 @@ public class UniquePathsII {
         }
         
         
+        //Process first row
         for (i=1; i<n; i++) {
         	if (obstacleGrid[0][i] == 1) {
         		narrPath[0][i] = 0;
@@ -74,6 +76,7 @@ public class UniquePathsII {
         }
 
         
+        //From top-left to bottom-right
         for (i=1; i<m; i++) {
         	for (j=1; j<n; j++) {
         		if (obstacleGrid[i][j] == 1) {

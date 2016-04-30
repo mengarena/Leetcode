@@ -97,8 +97,8 @@ public class UniqueBinarySearchTreesII {
     		return lstTrees;
     	} 
     	
-		nLeft = -1;
-		nRight = n-1-nLeft;
+		nLeft = -1;  //#node on left sub tree
+		nRight = n-1-nLeft;   //#node on right sub tree
 		while (nRight > 0) {
 			List<TreeNode> lstLeftTree = generateTrees(nStart, nStart+nLeft);
 			List<TreeNode> lstRightTree = generateTrees(nStart+nLeft+2, nEnd);

@@ -21,8 +21,8 @@ class TrieNode {
 	TrieNode[] children = new TrieNode[26];
 	
     public TrieNode() {
-    	bWord = false;
-    	for (int i=0; i<26; i++) children[i] = null;
+    	bWord = false;   //Default is false, this line is not needed
+    	for (int i=0; i<26; i++) children[i] = null;   //Default is null, this line is not needed
     }
    
 }

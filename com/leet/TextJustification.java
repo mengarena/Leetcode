@@ -135,7 +135,7 @@ public class TextJustification {
     	
     	int spaceCnt = maxWidth - nLen;
     	int avgSpaceCnt = spaceCnt/(endIdx-startIdx);
-    	int nExtraCnt = spaceCnt - avgSpaceCnt*(endIdx-startIdx);
+    	int nExtraCnt = spaceCnt - avgSpaceCnt*(endIdx-startIdx);   //To assign the nExtraCnt space, each word get at most one (otherwise, the extra part could be distributed to everyone at least 1)
     	
     	for (i=0; i<nExtraCnt; i++) {
     		sb.append(words[startIdx++]);

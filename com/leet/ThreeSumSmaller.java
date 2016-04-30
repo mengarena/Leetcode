@@ -15,7 +15,7 @@ import java.util.List;
 //[-2, 0, 3]
 //		
 //Follow up:
-//Could you solve it in O(n2) runtime?
+//Could you solve it in O(n^2) runtime?
 
 //Google
 public class ThreeSumSmaller {

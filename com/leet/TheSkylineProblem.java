@@ -86,7 +86,7 @@ public class TheSkylineProblem {
         //the (positive) larger height (i.e. the smaller negated height) will be put in front and processed first
         //For end point, the smaller height will be put in front and processed first
         Collections.sort(lstHeights, new Comparator<int[]>() {
-        	public int compare(int[] a, int[] b) {
+        	public int compare(int[] a, int[] b) {    //In a[], b[],  [0] x axis value; [1] height
         		if (a[0] != b[0]) {
         			return a[0] - b[0];
         		} else {
@@ -109,7 +109,7 @@ public class TheSkylineProblem {
         int prevHeight = 0;
         int curHeight = 0;
         
-        for (int[] h:lstHeights) {
+        for (int[] h:lstHeights) {   //h[1] is height
         	if (h[1] < 0) {   //Starting point; its height comes into play
         		pq.offer(-h[1]);
         	} else {    //End point, its height becomes ineffective (out of effect)

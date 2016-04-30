@@ -64,7 +64,7 @@ public class Triangle {
 	
 	
 	public int minimumTotal(List<List<Integer>> triangle) {
-		int[] total = new int[triangle.size()];
+		int[] total = new int[triangle.size()];  //triangle.size() = #row and also the #column of last row
 		int l = triangle.size() - 1;
 	 
 		for (int i = 0; i < triangle.get(l).size(); i++) {
@@ -73,13 +73,15 @@ public class Triangle {
 	 
 		// iterate from last second row
 		for (int i = triangle.size() - 2; i >= 0; i--) {
-			for (int j = 0; j < triangle.get(i + 1).size() - 1; j++) {
+			for (int j = 0; j < triangle.get(i + 1).size() - 1; j++) {  //#element in Row i
 				total[j] = triangle.get(i).get(j) + Math.min(total[j], total[j + 1]);    //Current + the min of the adjacent element in the row below
 			}
 		}
 	 
 		return total[0];
 	}
+	
+	
 	
 	
     public int minimumTotal_full(List<List<Integer>> triangle) {
@@ -141,6 +143,10 @@ public class Triangle {
         return nMinSum;
     }
 
+    
+    
+    
+    
     
     public int minimumTotal_original(List<List<Integer>> triangle) {
         int nMinSum = 0;

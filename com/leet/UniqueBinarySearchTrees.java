@@ -34,7 +34,7 @@ public class UniqueBinarySearchTrees {
         
         for (int i=3; i<=n; i++) {
         	int nLeft = 0;
-        	int nRight = i-1-nLeft;
+        	int nRight = i-1-nLeft;  // -1: except root
         	
         	int nTmpCnt = 0;
         	while (nRight >= 0) {

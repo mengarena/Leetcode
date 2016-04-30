@@ -46,7 +46,8 @@ public class UniqueWordAbbreviation {
 	//***A word's abbreviation is unique if no other word from the dictionary has the same abbreviation***
 	//If the dictionary has a word "hello",  if we use isUnique to test a word "hello", the two "hello" will be considered the same, so isUnique("hello") = true (if no other h2o words exist)
 	//While in the example given in the question, "cane" has same abbr as "cake", but they are different words
-    private Map<String, List<String>> hmDict = new HashMap<String, List<String>>();
+	
+    private Map<String, List<String>> hmDict = new HashMap<String, List<String>>();   //Key (abbr),  the list of dict words which has the abbr
 
     public void ValidWordAbbr(String[] dictionary) {   //Original version for the question should be (constructor): public ValidWordAbbr(String[] dictionary)
         if (dictionary == null || dictionary.length == 0) return;

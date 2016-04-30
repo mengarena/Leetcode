@@ -26,8 +26,8 @@ public class TwoSumIIIDataStructureDesign {
 
 	
 	//Accepted: 90%
-	private Map<Integer, Integer> hmFreq = new HashMap<Integer, Integer>();
-	private List<Integer> lstNumbers = new ArrayList<Integer>();
+	private Map<Integer, Integer> hmFreq = new HashMap<Integer, Integer>();   //Number, Count
+	private List<Integer> lstNumbers = new ArrayList<Integer>();    //Number
 	
     // Add the number to an internal data structure.
 	public void add(int number) {		
