@@ -82,7 +82,7 @@ public class RegularExpressionMatching {
         int lenS = s.length();
         int lenP = p.length();
         
-        boolean dp[][] = new boolean[lenS+1][lenP+1];
+        boolean dp[][] = new boolean[lenS+1][lenP+1];   //Default false, Whether s[0~i] p[0~j] matches,    i-1 in s corresponds i in dp
         int i, j;
        
         dp[0][0] = true;
@@ -90,7 +90,7 @@ public class RegularExpressionMatching {
         for (i=1; i<=lenS; i++) dp[i][0] = false;
         
         for (j=2; j<=lenP; j++) {
-        	if (p.charAt(j-1) == '*' && dp[0][j-2] == true) dp[0][j] = true;
+        	if (p.charAt(j-1) == '*' && dp[0][j-2] == true) dp[0][j] = true;   //dp[0][j-2] is by p.charAt(j-3); when p.charAt(j-1) = '*', it can cancel p.charAt(j-2)
         }
     	
         for (i=1; i<=lenS; i++) {
@@ -100,9 +100,12 @@ public class RegularExpressionMatching {
         		
         		else if (j >= 2 && p.charAt(j-1) == '*') {    //Sample: P:  mbcda* 
         			if (p.charAt(j-2) == s.charAt(i-1) || p.charAt(j-2) == '.') {
-        				dp[i][j] = dp[i-1][j] || dp[i][j-2];    //dp[i][j-2]: not using "a*" part,   dp[i-1][j]:  "a*" part has been used/matched until s[i-2] (there is one index gap between dp and s/p
+        				dp[i][j] = dp[i-1][j] || dp[i][j-2];    //dp[i][j-2]: not using "a*" part,   
+        				                                        //dp[i-1][j]:  "a*" part has been used/matched until s[i-2] (there is one index gap between dp and s/p)
+        				                                        //             "a*" part always could give a 'a" to match s[i-1], so if s[i-2] and p[j-1] matches, 
+        				                                        //              s[i-1] and p[j-1] also matches
         			} else {
-        				dp[i][j] = dp[i][j-2];   //in P:   mbcda* ,  "a*" part not used, because "a" does not match with s[i-1]
+        				dp[i][j] = dp[i][j-2];   //in P:   mbcda* ,  "a*" part not used (i.e. '*' is consumed with 'a', because "a" does not match with s[i-1]
         			}
         		} 
         	}

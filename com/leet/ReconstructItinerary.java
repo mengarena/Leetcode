@@ -42,12 +42,15 @@ public class ReconstructItinerary {
 	
 	
 	//Strategy:  Convert String Airport code into integer
+	//1. Convert string to integer for each airport (saved in hmAirport)
+	//2. Organize the tickets (each airport maps to its destinations in hmTickets)
+	//3. Find the itinerary. From the start airport, try each of destination (in order) as next airport to see whether it could complete the itinerary; if yes, this will be the result
     public List<String> findItinerary(String[][] tickets) {
         List<String> lstItinerary = new ArrayList<String>();
         if (tickets == null || tickets.length == 0 || tickets[0].length == 0) return lstItinerary;
         
-        HashMap<Integer, List<Integer>> hmTickets = new HashMap<Integer, List<Integer>>();
-        HashMap<Integer, String> hmAirport = new HashMap<Integer, String>();
+        HashMap<Integer, List<Integer>> hmTickets = new HashMap<Integer, List<Integer>>();   //Each airport to its destination, destionation is ASC ordered.
+        HashMap<Integer, String> hmAirport = new HashMap<Integer, String>();  //String airport is converted into integer
         
         int nItLen = tickets.length + 1;
         
@@ -98,7 +101,7 @@ public class ReconstructItinerary {
     		return lstIt;
     	}
 
-    	List<Integer> lstNextAirportBack = hmTickets.get(nStartAirport);
+    	List<Integer> lstNextAirportBack = hmTickets.get(nStartAirport);   //Possible Destinations from nStartAirport
     	
     	if (lstNextAirportBack == null || lstNextAirportBack.isEmpty()) {
     		lstIt.add(nStartAirport);
@@ -107,25 +110,28 @@ public class ReconstructItinerary {
 
     	int nCnt = lstNextAirportBack.size();
     	
+    	//Try each of its possible next airport, to see whether from there, it could complete the itinerary
     	for (int i=1; i<=nCnt; i++) {
     		HashMap<Integer, List<Integer>> hmTicketsBack = new HashMap<Integer, List<Integer>>(hmTickets);  //Deep copy of the hashmap
-    		List<Integer> lstNextAirport = new ArrayList<Integer>(hmTickets.get(nStartAirport));  //Deep copy of the list, otherwise, next remove operation will affect the hmTicketsBack
+    		List<Integer> lstNextAirport = new ArrayList<Integer>(hmTickets.get(nStartAirport));  //Deep copy of the list, otherwise, 
+    		                                                                                      //next remove operation will affect the hmTicketsBack
     		
     		int nNextAirport = lstNextAirport.remove(i-1);
     		
     		hmTickets.replace(nStartAirport, lstNextAirport);
     		List<Integer> lstNextNextAirport = getItinerary(hmTickets, nNextAirport, nItLen-1);
     		
-    		if (lstNextNextAirport.size() == nItLen-1) {
+    		if (lstNextNextAirport.size() == nItLen-1) {   //this one could complete this itinerary
     			lstIt = new ArrayList<Integer>(lstNextNextAirport);
     			lstIt.add(0, nStartAirport);
     			break;
     		}
     		
+    		//Current next airport could not complete the itinerary, need to try another next airport of nStartAirport
     		hmTickets = new HashMap<Integer, List<Integer>>(hmTicketsBack);  //Resort the hashmap for next round
     	}
     	    	
-    	return lstIt;
+    	return lstIt;   //If none of the next airports of nStartAirport could complete the Itinerary, this will be empty.
     }
     
     
@@ -138,7 +144,7 @@ public class ReconstructItinerary {
     		nMid = (i+j)/2;
     		
     		if (lstNumber.get(nMid) >= nVal) {
-    			j = nMid -1;
+    			j = nMid - 1;
     		} else {
     			i = nMid + 1;
     		}

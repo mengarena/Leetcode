@@ -51,16 +51,16 @@ public class ReverseInteger {
     	int nRemainder = x % 10;
     	int nQuotient = x / 10;
     	
-    	nReversed = nReversed*10 + nRemainder;
+    	nReversed = nRemainder;
     	
     	while (nQuotient*nNeg >= 10) {
     		nRemainder = nQuotient % 10;
     		nQuotient = nQuotient / 10;
     		
     		if (nNeg == 1) {
-    			if ((Integer.MAX_VALUE - nRemainder)*1.0/10 < nReversed) return 0;
+    			if ((Integer.MAX_VALUE - nRemainder)*1.0/10 < nReversed) return 0;   //i.e. nReversed*10 + nRemaineder > Integer.MAX_VALUE
     		} else {
-    			if ((Integer.MIN_VALUE - nRemainder)*1.0/10 > nReversed) return 0;
+    			if ((Integer.MIN_VALUE - nRemainder)*1.0/10 > nReversed) return 0;   //i.e. nReversed*10 + nRemaineder < Integer.MIN_VALUE
     		}
     		
     		nReversed = nReversed*10 + nRemainder;

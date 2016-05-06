@@ -65,13 +65,13 @@ public class RepeatedDNASequences {
     	int nRet = 0;
     	
     	for (int i=0; i<s.length(); i++) {
-    		nRet = nRet << 2 | getIntFromChar(s.charAt(i));
+    		nRet = nRet << 2 | getIntFromChar(s.charAt(i));   //Base is 4
     	}
     	
     	return nRet;
     }
     
-    private int getIntFromChar(char c) {
+    private int getIntFromChar(char c) {   //Therefore base could be 4
     	if (c == 'A') {
     		return 0;
     	} else if (c == 'C') {

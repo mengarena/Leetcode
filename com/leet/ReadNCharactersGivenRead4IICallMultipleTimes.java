@@ -71,9 +71,12 @@ public class ReadNCharactersGivenRead4IICallMultipleTimes {
 	
 	
 	//AC:  
-	//What this question is asking is that:  if last time, read4 get some characters, but has not been used all, the remaining part needs to be stored for next call
+	//What this question is asking is that:  if last time, read4 get some characters, but has not been used all, 
+	//the remaining part needs to be stored for next call
 	//Next call might not used the remaining all, then the remaining remaining should be for third call....
-    Queue<Character> qu = new LinkedList<Character>();
+	
+    Queue<Character> qu = new LinkedList<Character>();    //To store read but unused characters
+    
     public int readA(char[] buf, int n) {
         if (n == 0) return 0;
         int buffIdx = 0;
@@ -82,7 +85,7 @@ public class ReadNCharactersGivenRead4IICallMultipleTimes {
         boolean fileEnd = false;
         char carr[] = new char[4];
         
-        while (!qu.isEmpty() && buffIdx < n) {
+        while (!qu.isEmpty() && buffIdx < n) {    //First use last time used character
             buf[buffIdx++] = qu.poll();
         }
         
@@ -109,7 +112,7 @@ public class ReadNCharactersGivenRead4IICallMultipleTimes {
         	for (int j=0; j<Math.min(n-i, actualCnt); j++) buf[buffIdx++] = carr[j];
         	
         	if (n-i < actualCnt) {
-        	    for (int j=n-i; j<actualCnt; j++) qu.offer(carr[j]);
+        	    for (int j=n-i; j<actualCnt; j++) qu.offer(carr[j]);   //Remained characters are stored in queue
         	}
         }
         

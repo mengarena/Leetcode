@@ -36,8 +36,11 @@ public class RemoveDuplicateLetters {
 	}
 	
 	
+	//ACC:  67%
 	//Use stack to remember currently selected letters
-	//When have a letter, compare current top letters in stack, if new letter is smaller and current top letter is not the last one of that letter, remove the top letter, and then put the new letter in
+	//When have a letter, compare current top letters in stack, 
+	//if new letter is smaller and current top letter is not the last one of that letter, remove the top letter, 
+	//and then put the new letter in
     public String removeDuplicateLetters(String s) {
         if (s == null || s.length() == 0) return "";
         int n = s.length();

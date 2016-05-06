@@ -57,7 +57,7 @@ public class RecoverBinarySearchTree {
 	}
 	
 	
-	//AC: Morris Travsal
+	//AC: Morris Traversal:  Build the connection between nodes with in-order traversal order, 
     //Example: 1 5* 3 4 2* 6 7
     //Example: 1 2 3 6* 5 4* 7
     //Example: 1 6* 3 4 5 2* 7
@@ -76,13 +76,13 @@ public class RecoverBinarySearchTree {
                 tmp = root.left;
                 
                 //Find root's left sub tree's right most node
-                //Try to connect the rifht most node to root, because in inorder traversal, these two nodes are consecutive
+                //Try to connect the right most node to root, because in in-order traversal, these two nodes are consecutive in in-order traverse
                 while (tmp.right != null && tmp.right != root) tmp = tmp.right;
                 
-                if (tmp.right == null) {   //Connect the rifht most node to root
-                    tmp.right = root;
+                if (tmp.right == null) {   //To establish the connection
+                    tmp.right = root;    //Connect the right most node to root **
                     root = root.left;
-                } else {  
+                } else {   //To remove the connection
                 	//After have visited all the nodes in left nodes in root's left sub tree, the loop still goes to the root node in the outer "while"
                 	//So it finally traversal again to it (i.e. root)'s left sub tree's right most node,
                 	//So it takes this chance to remove the connection between the right most node and root to recover the tree to its original
@@ -95,7 +95,7 @@ public class RecoverBinarySearchTree {
                         }
                     }
                     
-                    tmp.right = null;
+                    tmp.right = null;   //Remove the connection between the right most node of subtree to root (corresponds to **)
                     pre = root;
                     root = root.right;
                     
@@ -128,10 +128,10 @@ public class RecoverBinarySearchTree {
 	
 	
     //AC: Recursion solution, actually the space complexity will be O(lgN) or O(n) in worst case
-    //This trategy is swapping value of the problematic nodes
+    //This strategy is swapping value of the problematic nodes
     public void recoverTreeA(TreeNode root) {
         if (root == null) return;
-        Stack<TreeNode> stkMis = new Stack<TreeNode>();
+        Stack<TreeNode> stkMis = new Stack<TreeNode>();   //Record the mistaken nodes
         
         inorderTree(root, stkMis);
         
@@ -152,7 +152,7 @@ public class RecoverBinarySearchTree {
     //(Node with * is the problematic node)
     //
     //Inorder traverse
-    //Strategy: First time when meet previous > current, previous is the first mistaken node, current could be possibly the second mistaken node
+    //Strategy: First time when meet previous > current, previous is the first mistaken node, current could/could not be possibly the second mistaken node
     //If there is another set previous > current later, that "current" will be the second mistaken node
     private void inorderTree(TreeNode root, Stack<TreeNode> stkMis) {
     	if (root == null) return;

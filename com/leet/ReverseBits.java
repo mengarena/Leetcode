@@ -1,5 +1,8 @@
 package com.leet;
 
+import java.util.HashMap;
+import java.util.Map;
+
 //Reverse bits of a given 32 bits unsigned integer.
 //
 //For example, given input 43261596 (represented in binary as 00000010100101000001111010011100), 
@@ -10,6 +13,7 @@ package com.leet;
 //
 //Related problem: Reverse Integer
 
+//Apple, Airbnb
 public class ReverseBits {
 
 	public ReverseBits() {
@@ -20,8 +24,10 @@ public class ReverseBits {
 		
 	}
 	
+	
+	//StraightForward Version
     // you need treat n as an unsigned value
-    public int reverseBits(int n) {
+    public int reverseBitsA(int n) {
     	int nRet = 0;
     	int nCount = 0;
     	
@@ -44,5 +50,40 @@ public class ReverseBits {
         
         return nRet;
     }
+    
+    
+    //Optimized version
+    //ACC:  Divided 32-bit integer into 4 bytes, and reverse each byte and then assemble to form a reversed integer
+    //Use cache to save effort
+    private final Map<Byte, Integer> cache = new HashMap<Byte, Integer>();   //Original byte, Reversed byte(integer)
+    
+    public int reverseBits(int n) {
+        int ret = 0;
+        int i;
+        byte[] bytes = new byte[4];
+        
+        for (i=0; i<4; i++) {
+        	bytes[i] = (byte) ((n >>> 8*i) & 0xFF);
+        }
+        
+        for (i=0; i<4; i++) {
+        	ret = (ret << 8) + reverse(bytes[i]);
+        }
+        
+        return ret;	
+    }
 	
+    private int reverse(byte b) {
+    	if (cache.containsKey(b)) return cache.get(b);
+    	
+    	int value = 0;
+    	
+    	for (int i=0; i<8; i++) {
+    		value = (value << 1) + ((b >>> i) & 1);
+    	}
+    	
+    	cache.put(b, value);
+    	
+    	return value;
+    }
 }

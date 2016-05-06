@@ -47,11 +47,11 @@ public class RemoveNthNodeFromEndList {
         	if (lnFast == null) break;
         }
         
-        if (lnFast == null) {
+        if (lnFast == null) {   //Reached the end
         	if (i==n-1) {
-        		return newHead.next;
+        		return newHead.next;   //The nth (from the end) is the head node
         	} else {
-        		return newHead;
+        		return newHead;   //There are fewer than n nodes in the list
         	}
         }
         

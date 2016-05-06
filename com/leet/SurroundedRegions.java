@@ -49,7 +49,7 @@ public class SurroundedRegions {
 	
 	//Strategy:
 	//If 'O' is not on the board, and all the board are 'X', then all the 'O' could be flipped
-	//So only need to check from the four boards, all the 'O' connects to the 'O' on board should be flipped
+	//So only need to check from the four boards, all the 'O' connects to the 'O' on board should NOT be flipped
 	//
 	//Here there is performance issue: In searchRegion, if using recursion, it will cause stack over flow.
     public void solve(char[][] board) {

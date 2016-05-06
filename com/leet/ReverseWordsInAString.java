@@ -40,7 +40,7 @@ public class ReverseWordsInAString {
         int j = 0;
         
         while (i < n) {
-        	while (i < n && (s.charAt(i) == ' ' || s.charAt(i) == '	')) i++;
+        	while (i < n && (s.charAt(i) == ' ' || s.charAt(i) == '	')) i++;  //Space/Tab
         	if (i == n) break;
         	
         	j = i;

@@ -56,6 +56,12 @@ public class ReverseWordsStringII {
         }
     }
     
+    
+    /* Exchange a, b
+       a = a ^ b;
+       b = b ^ a;
+       a = a ^ b;  
+     */
     private void reverse(char[] s, int start, int end) {
         for (int i=start; i<start + (end-start+1)/2; i++) {
             s[i] = (char) (s[i] ^ s[end-(i-start)]);

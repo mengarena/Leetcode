@@ -33,7 +33,7 @@ public class RangeSumQuery2DMutable {
 
 	
 	//ACC:  75%
-	//Calculate the column sum, for each cell, calculate the sum at this column to from first cell at this column to this cell
+	//Calculate the column sum, for each cell, calculate the sum at this column to be from first cell at this column to this cell
 	private int[][] colSum = null;
 	private int[][] matrix = null;
 	

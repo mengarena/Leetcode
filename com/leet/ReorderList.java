@@ -69,9 +69,11 @@ public class ReorderList {
         	lnUnmovedTail = lnSlow.next;
         }
         
-        MyNode myHead = new MyNode();
+        //ListNode right = reverse(lnRightHalfHead);   //Using this will cause stack overflow
+        
+        MyNode myHead = new MyNode();     //Using this part is OK
 
-        reverse(lnRightHalfHead, myHead);
+        reverseA(lnRightHalfHead, myHead);
         
         ListNode right = myHead.head;
         
@@ -90,11 +92,22 @@ public class ReorderList {
     }
     
     
-    private ListNode reverse(ListNode head, MyNode myHead) {
+    //Using this will cause stack overflow
+    private ListNode reverse(ListNode root) {
+    	if (root == null || root.next == null) return root;
+    	
+    	ListNode tmp = reverse(root.next);
+    	root.next.next = root;
+    	root.next = null;
+    	
+    	return tmp;
+    }
+    
+    
+    private ListNode reverseA(ListNode head, MyNode myHead) {
     
     	if (head.next != null && head.next.next != null) {
-    		ListNode tail = reverse(head.next.next, myHead);
-    		head.next = head.next;
+    		ListNode tail = reverseA(head.next.next, myHead);
     		tail.next = head.next;
     		tail = tail.next;
     		
@@ -109,9 +122,8 @@ public class ReorderList {
     		myHead.head = head.next;
     		ListNode newHead = head.next;
     		newHead.next = head;
-    		ListNode tail = head;
-    		tail.next = null;
-    		return tail;
+    		head.next = null;
+    		return head;
     	}
     }
     
