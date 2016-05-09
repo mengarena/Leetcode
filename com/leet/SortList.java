@@ -31,7 +31,7 @@ public class SortList {
 
 	}
 	
-
+	//ACC: 25%
     public ListNode sortList(ListNode head) {
         if (head == null) return null;
         ListNode lnFast = head;
@@ -44,9 +44,9 @@ public class SortList {
         
         ListNode newHead = null;
          
-        if (lnFast.next == null) {
-        	newHead = sortList(head, lnFast);
-        } else {
+        if (lnFast.next == null) {   //Number of node:  Odd,  lnFast is the last node
+        	newHead = sortList(head, lnFast); 
+        } else {    //Number of node: Even, lnFast.next is the last node
         	newHead = sortList(head, lnFast.next);        	
         }
             	
@@ -54,6 +54,7 @@ public class SortList {
     }
     
     
+    //Strategy:  break the whole list into two half, and then sort the two halves separately, and then merge
     private ListNode sortList(ListNode head, ListNode tail) {
     	ListNode lnFast = head;
     	ListNode lnSlow = head;
@@ -102,16 +103,9 @@ public class SortList {
     	    }
     	}
     	
-    	if (left != null) {
-    		while (left != null) {
-    			tmpNode.next = left;
-    			tmpNode = tmpNode.next;
-    			
-    			left = left.next; 
-    		}
-    	}
+    	if (left != null) tmpNode.next = left;
     	
-    	tmpNode.next = right;
+        if (right != null) tmpNode.next = right;
     	
         return newHead;
     }

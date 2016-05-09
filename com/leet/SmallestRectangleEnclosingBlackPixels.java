@@ -41,6 +41,7 @@ public class SmallestRectangleEnclosingBlackPixels {
         boolean valid = false;
         int lowerRow = x, upperRow = x, lowerCol = y, upperCol = y;
         
+        //Find the first row which contains black pixel
         for (i=0; i<x; i++) {
             valid = false;
             for (j=0; j<col; j++) {
@@ -55,6 +56,7 @@ public class SmallestRectangleEnclosingBlackPixels {
             }
         }
 
+        //Find the last row which contains black pixel
         for (i=row-1; i>=x+1; i--) {
             valid = false;
             for (j=0; j<col; j++) {
@@ -69,6 +71,7 @@ public class SmallestRectangleEnclosingBlackPixels {
             }
         }
 
+        //Find the first column which contains black pixel
         for (i=0; i<y; i++) {
             valid = false;
             for (j=lowerRow; j<=upperRow; j++) {
@@ -83,6 +86,7 @@ public class SmallestRectangleEnclosingBlackPixels {
             }
         }
 
+        //Find the last column which contains black pixel
         for (i=col-1; i>=y+1; i--) {
             valid = false;
             for (j=lowerRow; j<=upperRow; j++) {

@@ -48,7 +48,7 @@ public class SingleNumberIII {
         //Based on the bit = 1 or 0, separate the numbers into two groups. 
         for (int i=0; i<n; i++) {
         	if ((nLastOneBit & nums[i]) == 0) {  //Or could == nLastOneBit
-        		a = a ^ nums[i];
+        		a = a ^ nums[i];   //Other normal elements occur twice each, will be cancelled
         	} else {
         		b = b ^ nums[i];
         	}

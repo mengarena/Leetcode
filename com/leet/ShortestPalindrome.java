@@ -9,7 +9,7 @@ package com.leet;
 //
 //Given "abcd", return "dcbabcd".
 
-//Google
+//Google, Pocket Gems
 public class ShortestPalindrome {
 
 	public ShortestPalindrome() {
@@ -17,15 +17,15 @@ public class ShortestPalindrome {
 	}
 
     public void run() {
-        //String s = "aacecaaa";
+        String s = "aacecaaa";
        // String s = null;
-        String s = "ab";
+        //String s = "ab";
         //String s = "adbacecaaa";
         System.out.println(shortestPalindrome(s));
     }
     
-    //Algorithm: based on KMP algorithm
-    public String shortestPalindrome(String s) {
+    //Algorithm: based on KMP algorithm (Complexity: O(n+n))
+    public String shortestPalindromeA(String s) {
         if (s == null || s.isEmpty()) return "";
         int n = s.length();
         if (n == 1) return s;
@@ -34,6 +34,8 @@ public class ShortestPalindrome {
         int[] next = getNext(s);
         int nLongstPalindrome = next[next.length-1];  
         //maximal length equals to the last one in next[] (the last one's position is one beyond(right) of the last one of string),
+        //The question asks to operate in front of the string, so by adding "#" + s.reverse(), 
+        //the last next decides the length palindrome starting from beginning
         //which equals to the maxlen between prefix substring and postfix substring in s + "#" + s.reverse()
         //Which corresponds to the longest palindrome in original string
         
@@ -58,8 +60,8 @@ public class ShortestPalindrome {
     	int n = sb.length();
     	int[] next = new int[n+1];
     	next[0] = -1;
-    	int k = -1;
-    	int j = 0;
+    	int k = -1;   //Pattern index
+    	int j = 0;   //String Index
     	char[] carr = sb.toString().toCharArray();
     	
     	while (j < n) {
@@ -87,15 +89,14 @@ public class ShortestPalindrome {
     
     
     
-    //Manacher Algorithm
-    
-    public String shortestPalindromeA(String s) {
+    //Manacher Algorithm  (Complexity:  O(n))
+    //http://blog.csdn.net/hopeztm/article/details/7932245
+    public String shortestPalindrome(String s) {
         if (s == null || s.isEmpty()) return "";
         int n = s.length();
         if (n == 1) return s;
         StringBuilder sb = new StringBuilder();
 
-        
         int nLongestPldFrom0 = getLongestPalindrome(s);
                 
         sb.append(s.substring(nLongestPldFrom0));
@@ -121,16 +122,18 @@ public class ShortestPalindrome {
     	
     	char[] carr = sb.toString().toCharArray();
     	int narrPalinLen[] = new int[carr.length];  
-    	//Length of the half length of the palindrome centered at position i (including i), 
+    	//narrPalinLen[]: Length of the half length of the palindrome centered at position i (including i), 
     	//correspondingly, the actual length of the palindrome centered at position i will be narrPalinLen[i]-1;
     	//Attention: the new string contains "#"
     	//e.g. #a#b#a#,   at position "b", palindrome[i] will be 4, so the actual length of palindrome centered at b (i.e. aba) will be palindrome[i]-1
     	
-    	for (i=1; carr[i] != '$'; i++) {
-    		j = nMid - (i-nMid);  //nMid is the centered point of the longer palindrome, here j will be the mirrored position of i around nMid
+    	for (i=1; carr[i] != '$'; i++) {  //Possible center point on the right side of the center (i.e. nMid) of current palindrome
+    		j = nMid - (i-nMid);  //nMid is the centered point of the longer palindrome, 
+    		                      //here j will be the mirrored position of i around nMid  (j is on left of nMid;  i is on right of nMid)
     		   		
     		narrPalinLen[i] = (nRight > i) ? Math.min(narrPalinLen[j], nRight-i):1;
     		
+    		//Expand narrPalinLen[i]
     		while (i+narrPalinLen[i] < carr.length && i-narrPalinLen[i] >= 0 && carr[i+narrPalinLen[i]] == carr[i-narrPalinLen[i]]) narrPalinLen[i]++;
     		
     		if (i+narrPalinLen[i] > nRight) {
@@ -139,16 +142,19 @@ public class ShortestPalindrome {
     		}
     	}
     	
-    	
     	int nMaxLen = 0;
     	
     	//Find max-length palindrome starting from head
     	for (i=0; i<narrPalinLen.length; i++) {
-    		if (nMaxLen < narrPalinLen[i] && i-(narrPalinLen[i]-1)<=2) nMaxLen = narrPalinLen[i];   //i-(narrPalinLen[i]-1)<=2 guarantees the string should be starting from head of raw string (^#a#b....)
+    		if (nMaxLen < narrPalinLen[i] && i-(narrPalinLen[i]-1)<=2) nMaxLen = narrPalinLen[i];   
+    		//i-(narrPalinLen[i]-1)<=2 guarantees the string should be starting from head of raw string (^#a#b....)
     	}
     	
     	return nMaxLen-1;  //reduce 1 to get the actual length of Palindrome, because of the definition of narrPalinLen     	
     }
+    
+    
+    
     
     
     

@@ -1,6 +1,6 @@
 package com.leet;
 
-//Given an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
+//Given an integer n, generate a square matrix filled with elements from 1 to n^2 in spiral order.
 //
 //For example,
 //Given n = 3,
@@ -36,7 +36,7 @@ public class SpiralMatrixII {
         int[][] narrRet = new int[n][n];
         if (n == 0) return narrRet;
         int i;
-        int k = n - 1;
+        int k = n - 1;   //Each step how many cells to set (draw the graph will be very clear)
         int nCnt = 0;
         int nX, nY;
         int nNum;

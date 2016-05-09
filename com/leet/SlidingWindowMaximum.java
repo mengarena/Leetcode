@@ -58,6 +58,7 @@ public class SlidingWindowMaximum {
         dq.push(nums[0]);
         dqIdx.push(0);
         
+        //Fill in the first window, elements are ordered
         for (i=1; i<Math.min(k, n); i++) {
             if (nums[i] <= dq.peekLast()) {
             	dq.addLast(nums[i]);
@@ -79,14 +80,15 @@ public class SlidingWindowMaximum {
         	return carrRet;
         }
         
-        int[] carrRet = new int[n-k+1];
+        int[] carrRet = new int[n-k+1];   //n-k+1 steps
         int nHeadIdx = 0;
         
         carrRet[0] = dq.peekFirst();
         
+        //Sliding window
         for (i=k; i<n; i++) {
         	nHeadIdx = dqIdx.peekFirst();
-        	if (i-nHeadIdx+1 > k) {
+        	if (i-nHeadIdx+1 > k) {  //Means headIdx should be out of current window
         		dqIdx.removeFirst();
         		dq.removeFirst();
         	}
@@ -99,7 +101,7 @@ public class SlidingWindowMaximum {
         	dq.addLast(nums[i]);
         	dqIdx.addLast(i);
         	
-        	carrRet[i-(k-1)] = dq.peekFirst();
+        	carrRet[i-(k-1)] = dq.peekFirst();   //Largest elemenet of current window
         }
         
         return carrRet;

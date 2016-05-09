@@ -51,7 +51,7 @@ public class StrobogrammaticNumberII {
         for (int i=0; i<nSize; i++) {
             String stmp = lstTmp.get(i);
             
-            if (n != nTotal) lstResult.add("0" + stmp + "0");
+            if (n != nTotal) lstResult.add("0" + stmp + "0");   //Here n means this round the string will become length = n
             
             lstResult.add("1" + stmp + "1");
             lstResult.add("8" + stmp + "8");

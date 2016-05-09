@@ -1,6 +1,7 @@
 package com.leet;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //Write a program to find the nth super ugly number.
@@ -30,13 +31,134 @@ public class SuperUglyNumber {
 		System.out.println("nthSuperUglyNumber = " + nthSuperUglyNumber(n, primes));
 	}
 
-	
+    
+	//ACC:  98%
     public int nthSuperUglyNumber(int n, int[] primes) {
+    	int nPrimesCnt = primes.length;
+    	int i;
+    	int[] narrNumbers = new int[n];
+    	int[] narrPos = new int[nPrimesCnt];   //for primes[i], next time, which narrNumbers[] to be multiplied
+    	int[] narrHeads = new int[nPrimesCnt];  //Like Ugly Number II, this array remembers the head elements of the rows corresponding to each prime
+    	int nCurPointingPos;
+    	int idx = 0;
+    	int next = 1;   //Next Ugly number
+    	
+    	Arrays.fill(narrHeads, 1);
+    	
+    	while (idx < n) {
+    		narrNumbers[idx] = next;
+    		
+    		next = Integer.MAX_VALUE;
+    		
+    		for (i=0; i<nPrimesCnt; i++) {
+    			if (narrHeads[i] == narrNumbers[idx] ) {  //Current head is selected as the smallest. Here different from Ugly Number II solution, 
+    				                                      //here only when current head is the previous smallest, then update this row
+    				nCurPointingPos = narrPos[i];
+    				narrHeads[i] = narrNumbers[nCurPointingPos]*primes[i];  //narrNumbers[nCurPointingPos] could be considered the next smallest to be used to multiply 
+    				                                                        //(like nCurNum in Ugly Number II)
+    				narrPos[i]++;
+    			}
+    			
+    			next = Math.min(next, narrHeads[i]);   //Select the smallest head of the rows corresponding to each prime as the next Ugly number, 
+    			                                       //just like the solution in Ugly Number II
+    		}
+            
+            idx++;
+    	}
+    	
+    	return narrNumbers[n-1];
+    }
+	
+	
+	
+	
+	//ACC: 78%
+    public int nthSuperUglyNumberC(int n, int[] primes) {
+    	int nPrimesCnt = primes.length;
+    	int i;
+    	int[] narrNumbers = new int[n];
+    	int[] narrPos = new int[nPrimesCnt];   //for primes[i], next time, which narrNumbers[] to be multiplied
+    	int nMin;
+    	int nVal;
+    	int nCurPointingPos;
+    	int idx = 1;
+    	
+    	narrNumbers[0] = 1;
+    	
+    	while (idx < n) {
+    		nMin = Integer.MAX_VALUE;
+    		
+    		for (i=0; i<nPrimesCnt; i++) {
+    			nCurPointingPos = narrPos[i];
+    			nVal = narrNumbers[nCurPointingPos]*primes[i];
+    			if (nMin > nVal) {
+    				nMin = nVal;
+    			}
+    		}
+
+        	narrNumbers[idx] = nMin;
+
+            for (i=0; i<nPrimesCnt; i++) {
+            	if (narrNumbers[narrPos[i]] * primes[i] <= nMin) narrPos[i]++;
+            }
+            
+            idx++;
+    	}
+    	
+    	return narrNumbers[n-1];
+    }
+
+	
+	
+	//ACC:  7%
+    public int nthSuperUglyNumberB(int n, int[] primes) {
+    	int nPrimesCnt = primes.length;
+    	int i;
+    	List<Integer> lstNumbers = new ArrayList<Integer>();
+    	lstNumbers.add(1);
+    	int[] carrPos = new int[nPrimesCnt];
+    	int nMin;
+    	int nMinPos;
+    	int nVal;
+    	int nCurPointingPos;
+    	int nPrevVal = 0;
+    	
+    	while (lstNumbers.size() < n) {
+    		nMin = Integer.MAX_VALUE;
+    		nMinPos = 0;
+    		for (i=0; i<nPrimesCnt; i++) {
+    			nCurPointingPos = carrPos[i];
+    			nVal = lstNumbers.get(nCurPointingPos)*primes[i];
+    			if (nMin > nVal) {
+    				nMin = nVal;
+    				nMinPos = i;
+    			}
+    		}
+
+            if (nMin > nPrevVal) {
+                lstNumbers.add(nMin);
+                nPrevVal = nMin;
+            }
+
+            carrPos[nMinPos]++;
+    	}
+    	
+    	return lstNumbers.get(n-1);
+    }
+	
+    
+    
+    
+    
+	
+    
+	//ACC:  but slow
+    public int nthSuperUglyNumberA(int n, int[] primes) {
     	int nPrimesCnt = primes.length;
     	int i;
     	int nInsertPos;
     	List<Integer> lstNumbers = new ArrayList<Integer>();
-    	List<Integer> lstPos = new ArrayList<Integer>();
+    	List<Integer> lstPos = new ArrayList<Integer>();   //count of each primes has been used. Or for each prime, which element in lstNumbers to multiple based on.
     	int nMin;
     	int nMinPos;
     	int nVal;
@@ -49,6 +171,7 @@ public class SuperUglyNumber {
     	while (lstNumbers.size() < n) {
     		nMin = Integer.MAX_VALUE;
     		nMinPos = 0;
+    		
     		for (i=0; i<nPrimesCnt; i++) {
     			nCurPointingPos = lstPos.get(i);
     			nVal = lstNumbers.get(nCurPointingPos)*primes[i];
@@ -59,7 +182,9 @@ public class SuperUglyNumber {
     		}
     		
 			nInsertPos = getInsertPos(lstNumbers, nMin);
+			
 			if (nInsertPos > 0) lstNumbers.add(nInsertPos, nMin);
+		
 
     		lstPos.set(nMinPos, lstPos.get(nMinPos)+1);
     	}
@@ -122,7 +247,7 @@ public class SuperUglyNumber {
     			j = nMid - 1;
     		} else if (lstNumber.get(nMid) < nNewNumber) {
     			i = nMid + 1;
-    		} else {
+    		} else {   //Exist
     			return -1;
     		}
     	}

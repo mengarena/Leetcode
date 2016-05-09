@@ -10,6 +10,7 @@ package com.leet;
 //Given [5, 7, 7, 8, 8, 10] and target value 8,
 //return [3, 4].
 
+//Linkedin
 public class SearchRange {
 
 	public SearchRange() {
@@ -27,6 +28,7 @@ public class SearchRange {
 		System.out.println("[" + narrRange[0] + "," + narrRange[1] + "]");
 	}
 	
+	//ACC:  66%
     public int[] searchRange(int[] nums, int target) {
         int[] narrRange = new int[2];
         int nLeftPos = -1;
@@ -52,7 +54,7 @@ public class SearchRange {
         if (i <= n-1 && nums[i] == target) nLeftPos = i;   //i <= n-1 to prevent i runs out of the right border
         
         //Find the right pos
-        i = 0; j = n - 1;
+        j = n - 1;
         while (i <= j) {
         	nMiddle = (i+j)/2;
         	

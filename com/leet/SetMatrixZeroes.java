@@ -41,6 +41,7 @@ public class SetMatrixZeroes {
         int i, j;
         boolean bFirstRow = false, bFirstColumn = false;   
         
+        //Check first column, to see whether it needs to be set to all 0
         for (i=0; i<m; i++) {
         	if (matrix[i][0] == 0) {
         		bFirstColumn = true;
@@ -48,6 +49,7 @@ public class SetMatrixZeroes {
         	}
         }
         
+        //Check first row, to see whether it needs to be set to all 0
         for (j=0; j<n; j++) {
         	if (matrix[0][j] == 0) {
         		bFirstRow = true;
@@ -55,6 +57,7 @@ public class SetMatrixZeroes {
         	}
         }
         
+        //Check all other cells, and mark correspondingly in first column, first row
         for (i=1; i<m; i++) {
         	for (j=1; j<n; j++) {
         		if (matrix[i][j] == 0) {
@@ -65,16 +68,19 @@ public class SetMatrixZeroes {
         	}
         }
         
+        //Set cells to 0
         for (i=1; i<m; i++) {
         	for (j=1; j<n; j++) {
         		if (matrix[i][0] == 0 || matrix[0][j] == 0) matrix[i][j] = 0;
         	}
         }
         
+        //Process first column
         if (bFirstColumn) {
         	for (i=0; i<m; i++) matrix[i][0] = 0;
         }
         
+        //Process first row
         if (bFirstRow) {
         	for (j=0; j<n; j++) matrix[0][j] = 0;
         }

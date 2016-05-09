@@ -44,7 +44,36 @@ public class Subsets {
 	}
 	
 	
+	//ACC: 60%
     public List<List<Integer>> subsets(int[] nums) {
+    	List<List<Integer>> lstlstSubsets = new ArrayList<List<Integer>>();
+    	if (nums == null || nums.length == 0) return lstlstSubsets;
+    	int n=nums.length;
+    	int i,j;
+    	
+    	Arrays.sort(nums);
+    	
+    	List<Integer> lstTmp = new ArrayList<Integer>();
+    	lstlstSubsets.add(lstTmp);
+    	
+    	int nTotalLen;
+    	
+    	for (i=0; i<n; i++) {
+    		nTotalLen = lstlstSubsets.size();
+    		for (j=nTotalLen-1; j>= 0; j--) {   //Need to process nProcessSubsetCnt existing subset
+    			List<Integer> lstTmpTmp = new ArrayList<Integer>(lstlstSubsets.get(j));   //The get method *Return a reference*, NOT a value
+    			lstTmpTmp.add(nums[i]);
+    			lstlstSubsets.add(lstTmpTmp);
+    		}
+    	}
+
+    	return lstlstSubsets;
+        
+    }
+	
+	
+	//ACC: not very efficient
+    public List<List<Integer>> subsetsA(int[] nums) {
     	List<List<Integer>> lstlstSubsets = new ArrayList<List<Integer>>();
     	if (nums == null || nums.length == 0) return lstlstSubsets;
     	int n=nums.length;

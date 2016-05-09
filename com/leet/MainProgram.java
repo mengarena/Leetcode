@@ -21,7 +21,7 @@ public class MainProgram {
 		// TODO Auto-generated method stub
 
 		
-		ValidNumber myInstance = new ValidNumber();
+		ShortestPalindrome myInstance = new ShortestPalindrome();
 		
 //		StringBuilder sb = new StringBuilder();
 //		
@@ -48,9 +48,6 @@ public class MainProgram {
 		
 		//System.out.println(ret);
 		
-		int kk = +0xEF;
-		
-		System.out.println(kk);
 		
 		long lnTm1 = System.currentTimeMillis();
 
