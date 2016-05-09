@@ -44,7 +44,7 @@ public class StringToInteger {
 	
     public int myAtoi(String str) {
     	int nLen = str.length();
-    	int nSymbol = 1;
+    	int nSymbol = 1;   //Neg or Pos
     	boolean bSymbolEncounted = false;
     	boolean bDigitEncounted = false;
     	int nResult = 0;
@@ -108,6 +108,21 @@ public class StringToInteger {
     }
 	
 	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     public int org_myAtoi(String str) {

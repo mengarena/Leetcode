@@ -50,7 +50,7 @@ public class SubstringConcatenationAllWords {
         int cnt = words.length;
         int i, j, m;
         int wordLen = words[0].length();
-        Map<String, Integer> dict = new HashMap<String, Integer>();
+        Map<String, Integer> dict = new HashMap<String, Integer>();   //Word and its count
         int totalWordLen = wordLen*cnt;
         if (n < totalWordLen) return lstIdx;
         int startIdx = 0;
@@ -89,12 +89,12 @@ public class SubstringConcatenationAllWords {
         				startIdx = startIdx+wordLen;   //Move one word forward
         			}
         			
-        		} else if (!dict.containsKey(testWord)) {
+        		} else if (!dict.containsKey(testWord)) {  //curDict does not contain testWord, and dict also dies not contain
         			
         			m = startIdx;
         			String sword = s.substring(m, m+wordLen);
         			
-        			while (m+wordLen <= j) {
+        			while (m+wordLen <= j) {   //Spit out until current position j
         				if (curDict.containsKey(sword)) {
         					curDict.put(sword, curDict.get(sword)+1);
         				} else {
@@ -105,7 +105,7 @@ public class SubstringConcatenationAllWords {
         				sword = s.substring(m, m+wordLen);
         			}
         		
-        			startIdx = j+wordLen;
+        			startIdx = j+wordLen;   //And j will be changed to j = j + wordLen in the 'for' loop
 	
         		} else {    //Not in curDict, but is a valid word (in dict), i.e. curDict has used all the quota for this word, 
         			        //so need to recover the quota for this word (then all other words before meeting the first of this word will be recovered 
