@@ -14,6 +14,7 @@ In other words, there should be no "holes" between ranks.
 | 5  | 4.00  |
 | 6  | 3.65  |
 +----+-------+
+
 For example, given the above Scores table, your query should generate the following report (order by highest score):
 
 +-------+------+
@@ -58,6 +59,8 @@ order by Score DESC
 
 (simplify by { select Score, Rank from Scores, NumberRank order by Score DESC }
 
-select @rank := 1, @number := (select Score from Scores order by Score DESC limit 1) --> Initialize the two variable
+select @rank := 1, @number := (select Score from Scores order by Score DESC limit 1) --> Initialize the two variables (to 1 and the highest score)
 
 The two case whens, one is for keeping current rank (if score does not change; the other increase rank)
+
+# Keyword 'Limit' with one argument, the value specifies the number of rows to return from the beginning of the result set.

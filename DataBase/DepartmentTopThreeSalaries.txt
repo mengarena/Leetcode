@@ -22,7 +22,8 @@ The Department table holds all departments of the company.
 | 2  | Sales    |
 +----+----------+
 
-Write a SQL query to find employees who earn the top three salaries in each of the department. For the above tables, your SQL query should return the following rows.
+Write a SQL query to find employees who earn the top three salaries in each of the department. 
+For the above tables, your SQL query should return the following rows.
 
 +------------+----------+--------+
 | Department | Employee | Salary |
@@ -40,11 +41,11 @@ Write a SQL query to find employees who earn the top three salaries in each of t
 select Dep.Name as Department, Emp.Name as Employee, Emp.Salary as Salary
 from Employee Emp, Department Dep
 where Emp.DepartmentId = Dep.Id and 
-(select count(distinct Salary) from Employee where Employee.DepartmentId = Dep.Id and Salary > Emp.Salary) < 3
+(select count(distinct Salary) from Employee where Employee.DepartmentId = Dep.Id and Employee.Salary > Emp.Salary) < 3
 order by Dep.Id, Emp.Salary Desc;
 
 ** Explain:
-1) select count(distinct Salary) from Employee where Employee.DepartmentId = Dep.Id and Salary > Emp.Salary
+1) select count(distinct Salary) from Employee where Employee.DepartmentId = Dep.Id and Employee.Salary > Emp.Salary
 ==>This code is calculate how many records in Employee could has larger salary than Emp.Salary
 If only less than 3 (i.e. 0, 1, 2) records's salary is larger than Emp.Salary, it means Emp.Salary large enough and it is in top 3
 

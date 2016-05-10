@@ -19,7 +19,9 @@ For example, given the above Logs table, 1 is the only number that appears conse
 
 == Answer:
 
-1) select distinct log1.Num from Logs log1, Logs log2, Logs log3 where log1.Num = log2.Num and log2.Num = log3.Num and log2.Id - log1.Id = 1 and log3.Id - log2.Id = 1;
+1) select distinct log1.Num 
+from Logs log1, Logs log2, Logs log3 where log1.Num = log2.Num and log2.Num = log3.Num and log2.Id - log1.Id = 1 and log3.Id - log2.Id = 1;
+
 * Solution 1) is based on an assumption that the Id are consecutive.
 
 
@@ -32,7 +34,8 @@ select distinct Num from
              when @record = Num then @count := @count + 1
              when @record <> @record := Num then @count := 1
          end as Cnt
-   from Logs, (select @count := 0, @record := (select Num from Logs limit 0,1)) as NumCount) as stat
+   from Logs, (select @count := 0, @record := (select Num from Logs limit 0,1)) as NumCount
+) as stat
 where stat.Cnt >= 3;
 
 OR:
@@ -43,7 +46,8 @@ select distinct Num from
              when @record = Num then @count := @count + 1
              when (@record := Num) IS NOT NULL then @count := 1       <---- Difference in this line
          end as Cnt
-   from Logs, (select @count := 0, @record := (select Num from Logs limit 1)) as NumCount) as stat
+   from Logs, (select @count := 0, @record := (select Num from Logs limit 1)) as NumCount
+) as stat
 where stat.Cnt >= 3;
 
 

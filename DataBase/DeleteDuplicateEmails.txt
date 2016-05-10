@@ -23,7 +23,7 @@ For example, after running your query, the above Person table should have the fo
 
 
 ==Answer:
-
+//81%
 1) delete from Person where Person.Id NOT IN (select IdSet.Id from (select A.Id from (select distinct Email, Id from Person order by Id asc) as A group by Email) as IdSet);
    
 1.1) select distinct Email, Id from Person order by Id asc --> get Id in ASC order
@@ -32,8 +32,10 @@ For example, after running your query, the above Person table should have the fo
 1.4) select IdSet.Id from (select A.Id from (select distinct Email, Id from Person order by Id asc) as A group by Email) as IdSet  -->Get the Id list to limit the delete
 (without this "distinct", result seems wrong)
 
+//35%
 2) delete p2 from Person p1, Person p2 where STRCMP(p1.Email, p2.Email) = 0 and p1.Id < p2.Id;
 
+//81%
 3) delete from Person where Person.Id NOT IN (select min_id from (select min(Id) as min_id from Person group by Email) as IdSet);
 
 

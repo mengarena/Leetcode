@@ -32,3 +32,6 @@ Can't write like:  select distinct Salary from Employee order by Salary DESC lim
 * From MySQL document: (Limit does not calcualte expression)
 The LIMIT clause can be used to constrain the number of rows returned by the SELECT statement. 
 LIMIT takes one or two numeric arguments, which must both be nonnegative integer constants (except when using prepared statements).
+With two arguments, the first argument specifies the offset of the first row to return, 
+and the second specifies the maximum number of rows to return. 
+The offset of the initial row is 0 (not 1).
