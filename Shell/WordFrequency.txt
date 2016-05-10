@@ -11,12 +11,15 @@ For example, assume that words.txt has the following content:
 
 the day is sunny the the
 the sunny is is
+
 Your script should output the following, sorted by descending frequency:
+
 the 4
 is 3
 sunny 2
 day 1
 Note:
+
 Don't worry about handling ties, it is guaranteed that each word's frequency count is unique.
 
 [show hint]
@@ -31,3 +34,11 @@ Answer:
 # Read from the file words.txt and output the word frequency list to stdout.
 cat words.txt | tr -cs '[a-zA-Z]' '\n' | awk '{ if (length($1) > 0) words[$1]++; } END { for (var in words) printf("%d %s\n", words[var],var) }' | sort -rn | awk '{print $2" "$1}'
 
+
+# In the code, words[] is an array which records the #occurrence of each word
+
+# cat words.txt | 
+# tr -cs '[a-zA-Z]' '\n' |          <====Create a list of words, one per line
+# awk '{ if (length($1) > 0) words[$1]++; } END { for (var in words) printf("%d %s\n", words[var], var) }' |     <=== Here print out count, word
+# sort -rn |     <==Sort in reverse numerical order (i.e. larger number (here count) comes ahead)
+# awk '{print $2" "$1}'       <=== Finally get word, count

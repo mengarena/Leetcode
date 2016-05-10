@@ -22,3 +22,8 @@ Answer:
 
 # Read from the file file.txt and output all valid phone numbers to stdout.
 awk --posix ' /(^[0-9]{3}-|^\([0-9]{3}\) )[0-9]{3}-[0-9]{4}$/ ' file.txt
+
+#Comment:      (   ^[0-9]{3}-  |   ^\([0-9]{3}\) )
+#Comment:              123     or      (123) 
+#Comment:  '/  /' means pattern matching
+#Comment ^ means line head;  $ means line end

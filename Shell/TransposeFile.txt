@@ -9,6 +9,7 @@ For example, if file.txt has the following content:
 name age
 alice 21
 ryan 30
+
 Output the following:
 
 name alice ryan
