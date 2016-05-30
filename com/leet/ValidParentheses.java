@@ -25,8 +25,50 @@ public class ValidParentheses {
 	
 	}
 	
-	//'('---1;  '[' --- 2;  '{' -- 3
+	
+	//ACC
     public boolean isValid(String s) {
+        if (s == null || s.length() == 0) return true;
+        char carr[] = s.toCharArray();
+        Stack<Character> stk = new Stack<Character>();
+        
+        stk.push(carr[0]);
+        
+        for (int i=1; i<s.length(); i++) {
+            if (carr[i] == '(' || carr[i] == '[' || carr[i] == '{') {
+                stk.push(carr[i]);    
+            } else {
+                if (carr[i] == ')') {
+                    if (!stk.isEmpty() && stk.peek() == '(') {
+                        stk.pop();
+                    } else {
+                        return false;
+                    }
+                } else if (carr[i] == ']') {
+                    if (!stk.isEmpty() && stk.peek() == '[') {
+                        stk.pop();
+                    } else {
+                        return false;
+                    }
+                } else if (carr[i] == '}') {
+                    if (!stk.isEmpty() && stk.peek() == '{') {
+                        stk.pop();
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        if (!stk.isEmpty()) return false;
+        
+        return true;
+    }	
+	
+	
+    //ACC
+	//'('---1;  '[' --- 2;  '{' -- 3
+    public boolean isValidA(String s) {
     	Stack<Integer> stkParentheses = new Stack<Integer>();
 
         int n = 0;

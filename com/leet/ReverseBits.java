@@ -21,8 +21,31 @@ public class ReverseBits {
 	}
 
 	public void run() {
-		
+
 	}
+	
+	
+	//ACC
+    public int reverseBits(int n) {
+        int cnt = 0;
+        int ret = 0;
+        int bit = 0;
+        
+        while (n != 0) {  //Can't be (n > 0), for example if n = 2147483648 (10000000000000000000000000000000), n < 0
+            bit = n & 1;
+            ret = (ret << 1) | bit;
+            n = n >>> 1;
+            cnt++;
+        }
+        
+        while (cnt < 32) {
+            ret = ret << 1;
+            cnt++;
+        }
+        
+        return ret;
+    }
+	
 	
 	
 	//StraightForward Version
@@ -57,7 +80,7 @@ public class ReverseBits {
     //Use cache to save effort
     private final Map<Byte, Integer> cache = new HashMap<Byte, Integer>();   //Original byte, Reversed byte(integer)
     
-    public int reverseBits(int n) {
+    public int reverseBitsB(int n) {
         int ret = 0;
         int i;
         byte[] bytes = new byte[4];

@@ -46,15 +46,13 @@ public class RomanInteger {
         int[]  narrBase = {1, 5, 10, 50, 100, 500, 1000};
         int nLen = s.length();
         char cCur;
-        char cPrev;
         int nCurIdx;
         int nPrevIdx;
         int nIdx = 1;
         
         if (nLen == 0) return 0;
         
-        cPrev = s.charAt(0);
-        nPrevIdx = sBase.indexOf(cPrev);
+        nPrevIdx = sBase.indexOf(s.charAt(0));
         
         while (nIdx < nLen) {
         	cCur = s.charAt(nIdx);
@@ -65,7 +63,6 @@ public class RomanInteger {
         		nNumVal = nNumVal + narrBase[nPrevIdx];
         	}
         	
-        	cPrev = cCur;
         	nPrevIdx = nCurIdx;
         	nIdx = nIdx + 1;
         }
@@ -75,4 +72,62 @@ public class RomanInteger {
     	return nNumVal;
     }
 	
+    
+    
+    public int romanToIntA(String s) {
+        char[] tens = {'I', 'X', 'C', 'M'};   //1, 10, 100, 1000
+        char[] fives = {'V', 'L', 'D'};   //5, 50, 500
+        int nTenIdx = -1;
+        int nFiveIdx = -1;
+       
+        int nPrev = 0;
+        int ret = 0;
+        int i, j;
+        
+        if (s == null || s.length() == 0) return 0;
+        
+        for (i=0; i<s.length(); i++) {
+            nTenIdx = -1;
+            nFiveIdx = -1;
+            
+            for (j=0; j<tens.length; j++) {
+                if (tens[j] == s.charAt(i)) {
+                    nTenIdx = j;
+                    break;
+                }
+            }
+            
+            if (nTenIdx == -1) {
+                for (j=0; j<fives.length; j++) {
+                    if (fives[j] == s.charAt(i)) {
+                        nFiveIdx = j;
+                        break;
+                    }
+                }
+            }
+            
+            if (nTenIdx != -1) {
+                if ((int)Math.pow(10, nTenIdx) > nPrev && nPrev > 0) {
+                    ret = ret - nPrev + (int) Math.pow(10, nTenIdx) - nPrev;
+                } else {
+                    ret += (int) Math.pow(10, nTenIdx);
+                }
+            } else if (nFiveIdx != -1) {
+                if ((int)Math.pow(10, nFiveIdx)*5 > nPrev && nPrev > 0) {
+                    ret = ret - nPrev + (int) Math.pow(10, nFiveIdx)*5 - nPrev;
+                } else {
+                    ret += (int) Math.pow(10, nFiveIdx)*5;
+                }
+            }
+
+            if (nTenIdx != -1) {
+                nPrev = (int) Math.pow(10, nTenIdx);
+            } else {
+                nPrev = 0;
+            }
+        }
+        
+        return ret;
+    }    
+    
 }

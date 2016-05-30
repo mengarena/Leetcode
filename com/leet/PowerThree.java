@@ -15,7 +15,7 @@ public class PowerThree {
 
 	public void run() {
 		int n = 243;
-		boolean bRet = isPowerOfThree(n);
+		boolean bRet = isPowerOfThreeA(n);
 		if (bRet) {
 			System.out.println(n + " IS Power of Three !");
 		} else {
@@ -23,7 +23,17 @@ public class PowerThree {
 		}
 	}
 	
+	//ACC
     public boolean isPowerOfThree(int n) {
+        if (n <= 0) return false; 
+        int nMax = (int) Math.pow(3, (int)(Math.log(Integer.MAX_VALUE)/Math.log(3)));
+        
+        if ((nMax % n) == 0) return true;
+        return false;
+    }
+    
+    //ACC
+    public boolean isPowerOfThreeA(int n) {
     	if (n == 0) return false;
     	        
         return (Math.log10(n) / Math.log10(3)) % 1 == 0;   //log10()--double,  this equals log_3(n)

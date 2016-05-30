@@ -31,8 +31,31 @@ public class RectangleArea {
 	}
 	
 	
-	
-	
+	//ACC
+    public int computeAreaA(int A, int B, int C, int D, int E, int F, int G, int H) {
+        int len11 = C-A;
+        int len12 = D-B;
+        int len21 = G-E;
+        int len22 = H-F;
+        int inter11 = 0;
+        int inter12 = 0;
+        int inter21 = 0;
+        int inter22 = 0;
+        
+        int area = len11*len12 + len21*len22;
+        
+        if (C <= E || G <= A) return area;
+        if (B >= H || F >= D) return area;
+        
+        inter11 = Math.max(A, E);
+        inter12 = Math.min(C, G);
+        inter21 = Math.max(B, F);
+        inter22 = Math.min(D, H);
+        
+        area = area - (inter12-inter11)*(inter22-inter21);
+        
+        return area;
+    }
 	
 	
 	

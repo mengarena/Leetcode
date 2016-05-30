@@ -2,6 +2,7 @@ package com.leet;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 //Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
 //
@@ -75,6 +76,7 @@ public class SymmetricTree {
 		}
 	}
 	
+	//Recursive
 	public boolean isSymmetric(TreeNode root) {
 		if (root == null) return true;
 		
@@ -87,6 +89,49 @@ public class SymmetricTree {
 		
 		return (p.val == q.val) && isEqual(p.left, q.right) && isEqual(p.right, q.left);
 	}
+	
+	
+	//Interative
+    public boolean isSymmetricA(TreeNode root) {
+        if (root == null) return true;
+        
+        Stack<TreeNode> stkLeft = new Stack<TreeNode>();
+        Stack<TreeNode> stkRight = new Stack<TreeNode>();
+        if (root.left == null ^ root.right == null) return false;
+        if (root.left == null && root.right == null) return true;
+        TreeNode tnTmp1, tnTmp2;
+        
+        stkLeft.push(root.left);
+        stkRight.push(root.right);
+
+        while (!stkLeft.isEmpty() && !stkRight.isEmpty()) {
+            tnTmp1 = stkLeft.pop();
+            tnTmp2 = stkRight.pop();
+            
+            if (tnTmp1.val != tnTmp2.val) return false;
+            
+            if (tnTmp1.left != null && tnTmp2.right != null) {
+                stkLeft.push(tnTmp1.left);
+                stkRight.push(tnTmp2.right);
+            } else if (tnTmp1.left == null ^ tnTmp2.right == null) {
+                return false;
+            } 
+            
+            if (tnTmp1.right != null && tnTmp2.left != null) {
+                stkLeft.push(tnTmp1.right);
+                stkRight.push(tnTmp2.left);
+            } else if (tnTmp1.right == null ^ tnTmp2.left == null) {
+                return false;
+            }
+        }
+        
+        if (stkLeft.isEmpty() ^ stkRight.isEmpty()) return false;
+        
+        return true;
+    }
+	
+    
+    
 	
 /* Works	
     public boolean isSymmetric(TreeNode root) {

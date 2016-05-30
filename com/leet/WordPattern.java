@@ -49,8 +49,34 @@ public class WordPattern {
 		}
 	}
 	
+	
 	//ACC
     public boolean wordPattern(String pattern, String str) {
+        if ((pattern == null || pattern.length() == 0) && (str == null || str.length() == 0)) return true;
+        String sarrWords[] = str.split(" ");
+        if (pattern.length() != sarrWords.length) return false;
+        Map<Character, Integer> hmPattern = new HashMap<Character, Integer>();
+        Map<String, Integer> hmWord = new HashMap<String, Integer>();
+        
+        hmPattern.put(pattern.charAt(0), 0);
+        hmWord.put(sarrWords[0], 0);
+        
+        for (int i=1; i<pattern.length(); i++) {
+             if (hmPattern.containsKey(pattern.charAt(i)) ^ hmWord.containsKey(sarrWords[i])) return false;
+             if (hmPattern.containsKey(pattern.charAt(i)) && hmWord.containsKey(sarrWords[i])) {
+                 if (hmPattern.get(pattern.charAt(i)) != hmWord.get(sarrWords[i])) return false;
+             } else {
+                 hmPattern.put(pattern.charAt(i), i);
+                 hmWord.put(sarrWords[i], i);
+             }
+        }
+        
+        return true;
+    }
+	
+    
+	//ACC
+    public boolean wordPatternB(String pattern, String str) {
         int nPatternLen = 0;
         int i;
         Map<Character, Integer> mapPattern = new HashMap<Character, Integer>();

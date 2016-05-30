@@ -25,7 +25,19 @@ public class UglyNumber {
 	}
 	
 	
+	//ACC
     public boolean isUgly(int num) {
+        while ((num > 0) && (num % 2 == 0)) num = num/2;
+        while ((num > 0) && (num % 3 == 0)) num = num/3;
+        while ((num > 0) && (num % 5 == 0)) num = num/5;
+        
+        if (num == 1) return true;
+        return false;
+    }
+	
+	
+    //ACC
+    public boolean isUglyA(int num) {
         boolean bUgly = false;
         int narrPrime[] = {2, 3, 5};
         int i;

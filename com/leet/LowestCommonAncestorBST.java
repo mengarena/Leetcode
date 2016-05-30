@@ -58,8 +58,23 @@ public class LowestCommonAncestorBST {
 		System.out.println("------" + ret.val);
 	}
 
-
-	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+	
+	//ACC
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || p == null || q == null) return null;
+        
+        if ((root.val - p.val)*(root.val - q.val) <= 0) return root;
+        
+        if (root.val > p.val) {
+            return lowestCommonAncestor(root.left, p, q);
+        } else {
+            return lowestCommonAncestor(root.right, p, q);
+        }
+    }
+	
+    
+    //ACC
+	public TreeNode lowestCommonAncestorA(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || p == root || q == root) return root;
         if ((root.val - p.val) * (root.val - q.val) < 0) return root;  //One in left sub tree, the other in right sub tree
         

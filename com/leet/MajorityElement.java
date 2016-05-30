@@ -1,5 +1,6 @@
 package com.leet;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -19,9 +20,67 @@ public class MajorityElement {
 		
 	}
 	
-    public int majorityElement(int[] nums) {
+	
+	public int majorityElement(int[] nums) {
+	    Arrays.sort(nums);
+	    return nums[nums.length / 2];
+	}
+	
+	public int majorityElementC(int[] nums) {
+		int ret = 0;
+		
+		for (int i = 0; i < 32; i++) {
+			int ones = 0;
+			int zeros = 0;
+			
+			for (int j = 0; j < nums.length; j++) {
+				if ((nums[j] & (1 << i)) != 0) {
+				    ++ones;
+				} else {
+					++zeros;
+				}
+				
+			}
+			
+			if (ones > zeros) {
+				ret |= (1 << i);
+			}
+		}
+		
+		return ret;
+	}
+	
+	
+	//Moore¡¯s Voting Algorithm
+    public int majorityElementB(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        if (nums.length == 1) return nums[0];
+        int maj = nums[0];
+        int count = 1;
+        
+        for (int i=1; i<nums.length; i++) {
+            if (count == 0) {
+                maj = nums[i];
+                count++;
+                continue;
+            }
+            
+            if (nums[i] == maj) {
+                count++;
+                if (count > nums.length/2) return maj;
+            } else {
+                count--;
+            }
+        }
+        
+        return maj;
+    }
+	
+	
+    public int majorityElementA(int[] nums) {
         int n = nums.length/2;
         int nCnt;
+        if (nums.length == 1) return nums[0];
         
         Map<Integer, Integer> numMap = new HashMap<Integer, Integer>();
         
@@ -37,7 +96,6 @@ public class MajorityElement {
         	}
         }
         
-		return 0;
-        
+		return 0;    
     }	
 }

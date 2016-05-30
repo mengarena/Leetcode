@@ -16,7 +16,28 @@ public class ClimbingStairs {
 
 	}
 	
+	//ACC
+	//One case: first step: 1 stair;  another case: first step: 2 stairs
     public int climbStairs(int n) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        if (n == 2) return 2;
+        int[] arrSteps = new int[n+1];
+        
+        arrSteps[1] = 1;
+        arrSteps[2] = 2;
+        
+        for (int i=3; i<=n; i++) {
+            arrSteps[i] = arrSteps[i-1] + arrSteps[i-2];  //arrSteps[i-1]:  First step is 1 stair;
+                                                          //arrSteps[i-2]:  First step is 2 stairs
+        }
+        
+        return arrSteps[n];
+    }
+	
+    
+	//ACC
+    public int climbStairsA(int n) {
         int nSet = 0;
         int nTwoCnt = 0;
         int nOneCnt = 0;
@@ -35,6 +56,7 @@ public class ClimbingStairs {
 	
 
     //The distinct permutation is (nOneCnt+nTwoCnt)!/(nOneCnt! * nTwoCnt!)
+    //In the following calculation, nOneCnt! part is already eliminated
     public double getDistinct(int nOneCnt, int nTwoCnt) {
     	double nSet = 1;
     	    

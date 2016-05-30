@@ -20,6 +20,7 @@ public class BestTimeBuySellStock {
 	}
 
 	
+	//ACC
     public int maxProfit(int[] prices) {
         if (prices == null || prices.length == 0) return 0;
         int n = prices.length;
@@ -36,5 +37,31 @@ public class BestTimeBuySellStock {
         
         return nMaxProfit;
     }
+    
+    
+    //ACC
+    public int maxProfitA(int[] prices) {
+        if (prices == null || prices.length == 0) return 0;
+    	int maxProfit = 0;
+        int min = prices[0];
+        int max = prices[0];
+        
+        for (int i=1; i<prices.length; i++) {
+            if (prices[i] < min) {  //Once meets a min, record current profit and reset min/max
+                maxProfit = Math.max(maxProfit, max-min);
+                min = prices[i];
+                max = prices[i];
+            }
+            
+            if (prices[i] > max) {
+                max = prices[i];
+            }
+        }
+        
+        maxProfit = Math.max(maxProfit, max-min);
+        
+        return maxProfit;
+    }
+
 	
 }

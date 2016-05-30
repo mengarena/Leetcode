@@ -2,8 +2,10 @@ package com.leet;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 //Given two arrays, write a function to compute their intersection.
@@ -66,6 +68,39 @@ public class IntersectionOfTwoArraysII {
     	for (int val:lstComm) ret[i++] = val;
     	
     	return ret;
+    }
+    
+    
+    //ACC
+    public int[] intersectA(int[] nums1, int[] nums2) {
+        if (nums1 == null || nums1.length == 0 || nums2 == null || nums2.length == 0) return new int[0];
+        Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        List<Integer> lstRet = new ArrayList<Integer>();
+        int i;
+        
+        for (i=0; i<nums1.length; i++) {
+            if (hm.containsKey(nums1[i])) {
+                hm.put(nums1[i], 1+hm.get(nums1[i]));
+            } else {
+                hm.put(nums1[i], 1);
+            }
+        }
+        
+        for (i=0; i<nums2.length; i++) {
+            if (hm.containsKey(nums2[i])) {
+                lstRet.add(nums2[i]);
+                if (hm.get(nums2[i]) == 1) {
+                    hm.remove(nums2[i]);
+                } else {
+                    hm.put(nums2[i], hm.get(nums2[i])-1);
+                }
+            }
+        }
+        
+        int[] arrRet = new int[lstRet.size()];
+        i = 0;
+        for (int val:lstRet) arrRet[i++] = val;
+        return arrRet;
     }
 
 }

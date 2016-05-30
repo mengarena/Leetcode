@@ -38,7 +38,53 @@ public class BullsAndCows {
 		System.out.println(sSecret + " AND " + sGuess + " has " + getHint(sSecret, sGuess));
 	}
 	
+	
+	//ACC
     public String getHint(String secret, String guess) {
+        if ((secret == null || secret.length() == 0) && (guess == null || guess.length() == 0)) return "";
+        int cntA = 0;
+        int cntB = 0;
+        String sHint = "";
+        Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        int digit;
+        
+        for (int i=0; i<secret.length(); i++) {
+            if (secret.charAt(i) == guess.charAt(i)) {
+                cntA++;
+                continue;
+            }
+            
+            digit = secret.charAt(i)-'0';
+            
+            if (hm.containsKey(digit)) {
+                hm.put(digit, hm.get(digit)+1);
+            } else {
+                hm.put(digit, 1);
+            }
+        }
+        
+        for (int i=0; i<guess.length(); i++) {
+            if (secret.charAt(i) == guess.charAt(i)) continue;
+            digit = guess.charAt(i)-'0';
+            
+            if (hm.containsKey(digit)) {
+                cntB++;
+                if (hm.get(digit) == 1) {
+                    hm.remove(digit);
+                } else {
+                    hm.put(digit, hm.get(digit) -1);
+                }
+            }
+            
+        }
+        
+        sHint = "" + cntA + 'A' + cntB + 'B';
+        
+        return sHint;
+    }	
+	
+    //ACC
+    public String getHintA(String secret, String guess) {
         String sHint = "";
         int n;
         int i;

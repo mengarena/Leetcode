@@ -21,7 +21,7 @@ public class MainProgram {
 		// TODO Auto-generated method stub
 
 		
-		ShortestPalindrome myInstance = new ShortestPalindrome();
+		PascalTriangle myInstance = new PascalTriangle();
 		
 //		StringBuilder sb = new StringBuilder();
 //		

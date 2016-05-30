@@ -47,7 +47,22 @@ public class FactorialTrailingZeroes {
         return (int) nCount;
     }
 
-
+    //ACC
+    public int trailingZeroesB(int n) {
+        if (n < 5) return 0;
+        int zeroCnt = 0;
+        int base = 5;
+        
+        while (base <= n) {
+            zeroCnt += n/base;
+            
+            if (Integer.MAX_VALUE/5 < base) break;
+            
+            base = base * 5;
+        }
+        
+        return zeroCnt;
+    }
     
 /* Works, but not efficient	
     public int trailingZeroes(int n) {
