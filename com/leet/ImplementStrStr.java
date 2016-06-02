@@ -37,12 +37,13 @@ public class ImplementStrStr {
 	 
 	    b[i] = j;
 	    while (i < ptrnLen) {            
-	            while (j >= 0 && ptrn[i] != ptrn[j]) {
+	         while (j >= 0 && ptrn[i] != ptrn[j]) {
 	            // if there is mismatch consider the next widest border
 	            // The borders to be examined are obtained in decreasing order from 
-	            //  the values b[i], b[b[i]] etc.
+	            // the values b[i], b[b[i]] etc.
 	            j = b[j];
 	        }
+	         
 	        i++;
 	        j++;
 	        b[i] = j;
@@ -78,6 +79,7 @@ public class ImplementStrStr {
             while (j >= 0 && text[i] != ptrn[j]) {
                 j = b[j];
             }
+            
             i++;
             j++;
  

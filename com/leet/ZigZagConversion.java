@@ -28,8 +28,46 @@ public class ZigZagConversion {
 		System.out.println("ZigZag Converted String: " + convert(sOrgStr, nNumRows));
 	}
 	
-	
+	//ACC
     public String convert(String s, int numRows) {
+        if (numRows <= 0) return "";
+        if (s == null || s.length() <= 1 || numRows == 1 || s.length() <= numRows) return s;
+        int blockLen = numRows*2-2;
+        int n = s.length();
+        int nRemained = n % blockLen;
+        int nBlockCnt = n / blockLen;
+        int i,j;
+        StringBuilder sb = new StringBuilder();
+        
+        if (nRemained != 0) nBlockCnt++;
+        
+        for (i=0; i<numRows; i++) {
+            for (j=1; j<=nBlockCnt; j++) {
+                if (i == 0) {
+                    sb.append(s.charAt((j-1)*blockLen));
+                } else if (i < numRows-1) {
+                    if ((j-1)*blockLen + i < n) {
+                        sb.append(s.charAt((j-1)*blockLen + i));
+                    }
+                    
+                    if ((j-1)*blockLen + blockLen-i < n) {
+                        sb.append(s.charAt((j-1)*blockLen + blockLen-i));
+                    }
+                } else {
+                    if ((j-1)*blockLen + numRows-1 < n) {
+                        sb.append(s.charAt((j-1)*blockLen + numRows-1));
+                    }
+                }
+            }
+        }
+        
+        return sb.toString();
+    }
+	
+    
+	
+    //ACC
+    public String convertA(String s, int numRows) {
         String sRetStr = "";
         
         if (numRows == 1) return s;

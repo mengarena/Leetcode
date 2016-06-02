@@ -14,6 +14,58 @@ import java.util.Stack;
 //Google, Uber, Amazon, Bloomberg, Zenefits
 public class MinStack {
 
+	//ACC
+    private Stack<Integer> onlyMin = null;
+    private Stack<Integer> normal = null;
+    
+    /** initialize your data structure here. */
+    public MinStack() {
+        onlyMin = new Stack<Integer>();
+        normal = new Stack<Integer>();
+    }
+    
+    public void push(int x) {
+        if (onlyMin.isEmpty()) {
+            onlyMin.push(x);
+            normal.push(x);
+        } else {
+            if (x <= onlyMin.peek()) {
+                onlyMin.push(x);
+            } 
+            
+            normal.push(x);
+        }
+    }
+    
+    public void pop() {
+        if (onlyMin.isEmpty()) return;
+        
+        //Here, must add "intValue()", otherwise, it compares two Integer objects, although their numerical values are the same, the two object is not the same
+        if (onlyMin.peek().intValue() == normal.peek().intValue()) {   
+            onlyMin.pop();
+            normal.pop();
+        } else {
+            normal.pop();
+        }
+    }
+    
+    public int top() {
+        return normal.peek();
+    }
+    
+    public int getMin() {
+        if (onlyMin.isEmpty()) return 0;
+        return onlyMin.peek();
+    }
+
+
+}
+
+
+
+/*  ACC:
+ public class MinStack {
+
 	private Stack<Integer> minStk = new Stack<Integer>();
 	private List<Integer> minLst = new ArrayList<Integer>();    //Save the minimal value at the moment
 
@@ -45,3 +97,4 @@ public class MinStack {
     }
 
 }
+ */

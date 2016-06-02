@@ -21,7 +21,20 @@ public class MainProgram {
 		// TODO Auto-generated method stub
 
 		
-		PascalTriangle myInstance = new PascalTriangle();
+		MinStack myInstance = new MinStack();
+		
+		myInstance.push(512);
+		myInstance.push(-1024);
+		myInstance.push(-1024);
+		myInstance.push(512);
+		
+		myInstance.pop();
+		int a = myInstance.getMin();
+		myInstance.pop();
+		a = myInstance.getMin();
+		myInstance.pop();
+		a = myInstance.getMin();
+		
 		
 //		StringBuilder sb = new StringBuilder();
 //		
@@ -51,7 +64,7 @@ public class MainProgram {
 		
 		long lnTm1 = System.currentTimeMillis();
 
-		myInstance.run();
+		//myInstance.run();
 		
 		long lnTm2 = System.currentTimeMillis();
 		

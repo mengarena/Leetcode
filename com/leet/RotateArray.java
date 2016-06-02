@@ -22,10 +22,10 @@ public class RotateArray {
 
 
 	public void run() {
-		int nums[] = {1,2,3,4,5,6,7, 8};
-		int k = 3;
+		int nums[] = {1,2,3};
+		int k = 2;
 		
-		rotate(nums, k);
+		rotateB(nums, k);
 		
 		for (int i=0; i<nums.length; i++)
 			System.out.print(nums[i] + ",");
@@ -74,4 +74,28 @@ public class RotateArray {
     }
 	
 	
+    public void rotateB(int[] nums, int k) {
+        if (nums == null || nums.length == 0) return;
+        int n = nums.length;
+        int i;
+        int tmp;
+        
+        k = k % n;
+        
+        for (i=1; i<=k; i++) {
+            tmp = nums[n-i];
+            nums[n-i] = nums[k-i];
+            nums[k-i] = tmp;
+        }
+        
+        for (i=n-k-1; i>=k; i--) {
+            for (int j=1; j<=k; j++) {
+                tmp = nums[i+j];
+                nums[i+j] = nums[i+j-1];
+                nums[i+j-1] = tmp;
+            }
+        }
+    }
+    
+    
 }

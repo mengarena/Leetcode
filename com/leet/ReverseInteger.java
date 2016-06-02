@@ -39,8 +39,44 @@ public class ReverseInteger {
 		//System.out.println("==mode =" + (-2147 % 10) + "===" + (-2147/10));
 		
 	}
-
+	
+	
+	//ACC
     public int reverse(int x) {
+        boolean bNeg = x < 0 ? true:false;
+        String s = String.valueOf(x);
+        int n = s.length();
+        int firstPos = 0;
+        int i;
+        int digit;
+        if (bNeg == true) firstPos = 1;
+        int ret = 0;
+        
+        for (i=n-1; i>=firstPos; i--) {
+            digit = s.charAt(i)-'0';
+            
+            if (bNeg) {
+                if ((Integer.MIN_VALUE + digit) / (-10) < ret) {
+                    return 0;
+                }    
+            } else {
+                if ((Integer.MAX_VALUE-digit)/10 < ret) {
+                    return 0;
+                }
+            }
+            
+            ret = ret*10 + digit;
+        }
+        
+        if (bNeg) ret = ret*(-1);
+        
+        return ret;
+    }	
+	
+	
+
+    //ACC
+    public int reverseA(int x) {
         int nReversed = 0;
         int nNeg = 1;
         

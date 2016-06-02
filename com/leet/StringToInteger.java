@@ -42,7 +42,67 @@ public class StringToInteger {
 		System.out.println("===" + myAtoi(sNum));
 	}
 	
+	
+	//ACC
     public int myAtoi(String str) {
+        if (str == null || str.length() == 0) return 0;
+        char carr[] = str.toCharArray();
+        boolean bSign = false;
+        boolean bNeg = false;
+        boolean bDigit = false;
+        int n = str.length();
+        int i = 0;
+        int ret = 0;
+        int digit;
+        
+        while (carr[i] == ' ' || carr[i] == '\t') i++;
+        
+        if (carr[i] == '+') {
+            bSign = true;
+        } else if (carr[i] == '-') {
+            bSign = true;
+            bNeg = true;
+        } else if (carr[i] < '0' || carr[i] > '9') {
+            return 0;
+        } else {
+            ret = carr[i] - '0';
+            bDigit = true;
+        }
+        
+        i++;
+        
+        while (i < n) {
+            if (carr[i] < '0' || carr[i] > '9') {
+                if (bDigit) break;
+                return 0;
+            }
+            
+            bDigit = true;
+            digit = carr[i] - '0';
+            
+            if (bNeg) {
+                if ((Integer.MIN_VALUE+digit) / (-10) < ret) {
+                    return Integer.MIN_VALUE;
+                }
+            } else {
+                if ((Integer.MAX_VALUE - digit)/10 < ret) {
+                    return Integer.MAX_VALUE;
+                }
+            }
+            
+            ret = ret*10 + digit;
+            
+            i++;
+        }
+        
+        if (bNeg) ret = ret * (-1);
+        
+        return ret;
+    }
+	
+	
+	//ACC
+    public int myAtoiA(String str) {
     	int nLen = str.length();
     	int nSymbol = 1;   //Neg or Pos
     	boolean bSymbolEncounted = false;
