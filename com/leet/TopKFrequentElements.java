@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Set;
 
 //Given a non-empty array of integers, return the k most frequent elements.
 //
@@ -26,6 +27,51 @@ public class TopKFrequentElements {
 	public TopKFrequentElements() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+    class ElemFreq {
+        int num;
+        int count;
+        
+        public ElemFreq (int num, int count) {
+            this.num = num;
+            this.count = count;
+        }
+    }
+
+    public List<Integer> topKFrequentA(int[] nums, int k) {
+        List<Integer> lstTopK = new ArrayList<Integer>();
+        if (nums == null || nums.length == 0) return lstTopK;
+        int n = nums.length;
+        int i;
+        Queue<ElemFreq> pqTopK = new PriorityQueue<ElemFreq>(k, new Comparator<ElemFreq>() {
+            public int compare(ElemFreq a, ElemFreq b) {
+                return b.count - a.count;
+            }
+        });
+        
+        Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        for (i=0; i<n; i++) {
+            if (!hm.containsKey(nums[i])) {
+                hm.put(nums[i], 1);
+            } else {
+                hm.put(nums[i], hm.get(nums[i]) + 1);
+            }
+        }
+        
+        Set<Integer> keys = hm.keySet();
+        for (Integer key:keys) {
+            pqTopK.offer(new ElemFreq(key, hm.get(key)));
+        }
+        
+        for (i=1; i<=k; i++) {
+            lstTopK.add(pqTopK.poll().num);
+        }
+        
+        return lstTopK;
+    }	
+	
+	
 	
 	//ACC
 	class FreqStat {
@@ -53,7 +99,7 @@ public class TopKFrequentElements {
         int cnt = 0;
         int tmp = 0;
         
-        Arrays.sort(nums);
+        Arrays.sort(nums);   //This might be nlogn (The problem requires better than nlogn)
 
         tmp = nums[0];
         cnt = 1;
