@@ -31,10 +31,37 @@ public class CountingBits {
 		System.out.println();
 	}
 	
+
+    public int[] countBits(int num) {
+        int[] narrBits = new int[num+1];
+        int i = 1;
+        int j = 0;
+        
+        narrBits[0] = 0;
+        if (num == 0) return narrBits;
+        
+        narrBits[1] = 1;
+        i = i*2;
+        
+        while (i*2-1 <= num) {
+            for (j=i; j<=i*2-1; j++) {
+                narrBits[j] = narrBits[j-i] + 1;
+            }
+
+            i=i*2; 
+        }
+        
+        for (j=i; j<=num; j++) {
+            narrBits[j] = narrBits[j-i] + 1;
+        }
+        
+        return narrBits;
+    }	
+	
 	
 	//Every 2^n---2^(n+1)-1 is a segment, the 1s of the numbers in 2^n--2^(n+1)-1 segment will repeat the numbers of 1# in 2^(n-1)--2^n-1, plus One 
 	//(because the new segment added a 1 at the beginning compared with previous segment)
-    public int[] countBits(int num) {
+    public int[] countBitsA(int num) {
         int[] bits = new int[num+1];
         int tmp = 0;
         int j = 0;

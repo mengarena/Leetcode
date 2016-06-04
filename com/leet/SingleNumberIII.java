@@ -30,6 +30,40 @@ public class SingleNumberIII {
 
 	
     public int[] singleNumber(int[] nums) {
+        if (nums == null || nums.length == 0) return null;
+        int n = nums.length;
+        int i;
+        int sum = 0;
+        int ret = 0;
+        int bitpos = 0;
+        
+        int[] arrDistinct = new int[2];
+        
+        for (i=0; i<n; i++) sum = sum ^ nums[i];
+    
+        bitpos = 1;
+    
+        for (i=0; i<32; i++) {
+            ret = sum & bitpos;
+            if (ret == bitpos) break;
+            bitpos = bitpos*2;
+        }
+        
+        arrDistinct[0] = 0;
+        arrDistinct[1] = 0;
+        
+        for (i=0; i<n; i++) {
+            if ((nums[i] & bitpos) == 0) {
+                arrDistinct[0] = arrDistinct[0] ^ nums[i];
+            } else {
+                arrDistinct[1] = arrDistinct[1] ^ nums[i];
+            }
+        }
+        
+        return arrDistinct;
+    }	
+	
+    public int[] singleNumberA(int[] nums) {
         int[] narrSingleNums= new int[2];
         
         if (nums == null || nums.length == 0) return null;
