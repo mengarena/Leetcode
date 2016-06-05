@@ -39,7 +39,44 @@ public class IntegerRoman {
 	}
 	
 	
+	//ACC
     public String intToRoman(int num) {
+        String sLetterTen = "MCXI";
+        String sLetterFive = "DLV";
+        int[] arrNumsTen = {1000, 100, 10, 1};
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        int cnt = 0;
+        
+        for (i=0; i<=3; i++) {
+            cnt = num / arrNumsTen[i];
+            
+            if (cnt == 0) continue;
+            
+            if (cnt == 4) {
+                sb.append(sLetterTen.charAt(i));
+                sb.append(sLetterFive.charAt(i-1));
+            } else if (cnt == 9) {
+                sb.append(sLetterTen.charAt(i));
+                sb.append(sLetterTen.charAt(i-1));
+            } else {
+                if (cnt >= 5) {
+                    sb.append(sLetterFive.charAt(i-1));
+                    for (int j=0; j<cnt-5; j++) sb.append(sLetterTen.charAt(i));
+                } else {
+                    for (int j=0; j<cnt; j++) sb.append(sLetterTen.charAt(i));
+                }
+            }
+
+            num = num - arrNumsTen[i]*cnt;
+        }
+        
+        return sb.toString();
+    }
+	
+    
+    //ACC
+    public String intToRomanA(int num) {
         String sRoman = "";
         String sBase ="IXCM";   //1, 10, 100, 1000
         String sBaseFive = "VLD";   //5, 50, 500

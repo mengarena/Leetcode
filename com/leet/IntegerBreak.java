@@ -17,10 +17,27 @@ public class IntegerBreak {
 	public IntegerBreak() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	//ACC
+    public int integerBreak(int n) {
+        int prod = 1;
+        
+        if (n <= 3) return 1*(n-1);
+        
+        while (n > 4) {
+            prod = prod*3;
+            n = n - 3;
+        }
+        
+        prod = prod * n;
+        
+        return prod;
+    }
+	
 
 	//ACC
 	//Strategy: Largest product comes when factors are all 3, so try to get as many 3 as possible
-    public int integerBreak(int n) {
+    public int integerBreakA(int n) {
         if (n == 2) return 1;
         if (n == 3) return 2;
         

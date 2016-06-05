@@ -63,4 +63,28 @@ public class BinaryTreePreorderTraversal {
     }
 	
 	
+    //Recursive
+    public List<Integer> preorderTraversalA(TreeNode root) {
+        List<Integer> lstPre = new ArrayList<Integer>();
+        if (root == null) return lstPre;
+    
+        List<Integer> lstRight = null;
+        
+        if (root.left != null) {
+            lstPre = preorderTraversal(root.left);
+        }
+        
+        if (root.right != null) {
+            lstRight = preorderTraversal(root.right);
+        }
+        
+        lstPre.add(0, root.val);
+        
+        if (lstRight != null) {
+            for (int val:lstRight) lstPre.add(val);
+        }
+        
+        return lstPre;
+    }
+    
 }
