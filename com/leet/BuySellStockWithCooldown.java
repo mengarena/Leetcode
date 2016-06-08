@@ -47,7 +47,6 @@ public class BuySellStockWithCooldown {
         int n = prices.length;
         int[] sells = new int[n];   //Max profit by day i with a sell on day i
         int[] buys = new int[n];    //Max profit by day i with a buy on day i
-        if (n <= 1) return 0;
         
         sells[0] = 0; 
         sells[1] = Math.max(0, prices[1] - prices[0]);

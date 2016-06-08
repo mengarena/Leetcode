@@ -39,6 +39,36 @@ public class OddEvenLinkedList {
 	
 
     public ListNode oddEvenList(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode lnOdd = head;
+        ListNode lnEven = head.next;
+        ListNode newHead = head;
+        ListNode evenHead = lnEven;
+        ListNode tmp = head.next.next;
+        int cnt = 2;
+        
+        while (tmp != null) {
+            cnt++;
+            
+            if (cnt % 2 == 1) {
+                lnOdd.next = tmp;
+                lnOdd = lnOdd.next;
+            } else {
+                lnEven.next = tmp;
+                lnEven = lnEven.next;
+            }
+            
+            tmp = tmp.next;
+        }
+        
+        lnEven.next = null;
+        lnOdd.next = evenHead;
+        return newHead;
+    }	
+	
+    
+	//ACC
+    public ListNode oddEvenListA(ListNode head) {
         if (head == null) return null;
         ListNode newHead = head;
         ListNode lnPointOdd = head;

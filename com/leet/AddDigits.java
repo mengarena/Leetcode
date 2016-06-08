@@ -17,6 +17,7 @@ package com.leet;
 //You may find this Wikipedia article useful.
 
 
+//Medium
 //Microsoft
 public class AddDigits {
 

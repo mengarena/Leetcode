@@ -8,6 +8,7 @@ package com.leet;
 //Return "100".
 
 
+//Medium
 //Facebook
 public class AddBinary {
 

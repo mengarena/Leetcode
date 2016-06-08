@@ -37,9 +37,34 @@ public class GrayCode {
 	}
 	
 
+	//ACC
+    public List<Integer> grayCode(int n) {
+        List<Integer> lstGray = new ArrayList<Integer>();
+        if (n == 0) {
+            lstGray.add(0);
+            return lstGray;
+        }
+        
+        int size = 0;
+        int append = 0;
+        lstGray.add(0); lstGray.add(1);
+        
+        for (int i=2; i<=n; i++) {
+            size = lstGray.size();
+            append = 1 << (i-1);
+            for (int j = size-1; j>=0; j--) {
+                lstGray.add(lstGray.get(j) + append);
+            }
+        }
+        
+        return lstGray;
+    }
+	
+	
+	//ACC
 	//https://en.wikipedia.org/wiki/Gray_code
 	//for n, first half will be the same as n-1, the second half will be the reverse order of n-1 plus a bit 1 at the beginning
-    public List<Integer> grayCode(int n) {
+    public List<Integer> grayCodeA(int n) {
         List<Integer> lstGrayCode = new ArrayList<Integer>();
         
         if (n == 0) {
