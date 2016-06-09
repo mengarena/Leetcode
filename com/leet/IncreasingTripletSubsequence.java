@@ -31,9 +31,58 @@ public class IncreasingTripletSubsequence {
 		System.out.println("Triplet Subsequence = " + increasingTriplet(nums));
 	}
 	
+	
+	//ACC
+    public boolean increasingTriplet(int[] nums) {
+        if (nums == null || nums.length < 3) return false;
+        int n = nums.length;
+        int i;
+        int first = nums[0];
+        int second = Integer.MAX_VALUE;
+
+        i = 1;
+        while (i < n && nums[i] < first) {
+            first = nums[i];
+            i++;
+        }
+        
+        if (i == n) return false;
+        
+        if (nums[i] > first) {
+            second = nums[i];
+            i++;
+        }
+        
+        while (i < n-1) {
+            if (nums[i] > second) {
+                return true;
+            } 
+            
+            if (nums[i] > first && nums[i] < second) {
+                second = nums[i];
+            } else if (nums[i] < first) {
+                if (nums[i+1] > nums[i]) {   //Key Step:  only when occurs two new elements which meets first second, then shift original first
+                    
+                    if (nums[i+1] > second) return true;
+                    
+                    first = nums[i];
+                    second = Integer.MAX_VALUE;
+                }
+            } 
+
+            i++;
+        }
+        
+        if (nums[n-1] > second) return true;
+        
+        return false;
+    }
+	
+	
+    //ACC
 	//Strategy: Use dynamic programming
 	//Record the previous smallest number which is greater than one of its previous numbers
-    public boolean increasingTriplet(int[] nums) {
+    public boolean increasingTripletA(int[] nums) {
         if (nums == null || nums.length < 3) return false;
         int n = nums.length;
         int i;

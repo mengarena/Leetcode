@@ -29,9 +29,33 @@ public class RotateImage {
 	}
 	
 	
+	//ACC: Rule:  cell [i][j]  will get value of cell [n-1-j][i]  (All pairs follow this rule)
+    public void rotate(int[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return;
+        int n = matrix.length;
+        if (n == 1) return;
+        int i, j;
+        int tmp = 0;
+        
+        //Pay attention to the two for loops conditions
+        for (i=0; i<n/2; i++) {
+            for (j=0; j<(n+1)/2; j++) {
+                tmp = matrix[i][j];
+                
+                matrix[i][j] = matrix[n-1-j][i];
+                matrix[n-1-j][i] = matrix[n-i-1][n-j-1];
+                matrix[n-i-1][n-j-1] = matrix[j][n-i-1];
+                matrix[j][n-i-1] = tmp;
+            }
+        }
+        
+    }
+	
+	
+    //ACC
 	//Rule:  (after rotate) matrix[j][n-i-1] = (before rotate) matrix[i][j]
 	// ==> (after rotate) matrix[i][j] = (before rotate) matrix[n-1-j][i]
-    public void rotate(int[][] matrix) {
+    public void rotateA(int[][] matrix) {
         int n = matrix.length;
         int xNew, yNew;
         int xOld, yOld;

@@ -21,11 +21,45 @@ import java.util.Queue;
 //https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
 
 //Google, Apple, Yahoo
+
+//ACC
 class PeekingIterator implements Iterator<Integer> {
+
+    private Integer next = null;
+    private Iterator<Integer> iter;
+    
+	public PeekingIterator(Iterator<Integer> iterator) {
+	    // initialize any member here.
+        iter = iterator;
+        if (iter.hasNext()) next = iter.next();
+	}
+
+    // Returns the next element in the iteration without advancing the iterator.
+	public Integer peek() {
+        return next;
+	}
+
+	// hasNext() and next() should behave the same as in the Iterator interface.
+	// Override them if needed.
+	@Override
+	public Integer next() {
+	    Integer ret = next;
+	    next = iter.hasNext()? iter.next():null;
+	    return ret;
+	}
+
+	@Override
+	public boolean hasNext() {
+	    return next != null;
+	}
+}
+
+//ACC
+class PeekingIteratorA implements Iterator<Integer> {
 
 	private Queue<Integer> myQueue = new LinkedList<Integer>();
 	
-	public PeekingIterator(Iterator<Integer> iterator) {
+	public PeekingIteratorA(Iterator<Integer> iterator) {
 	    // initialize any member here.
 		if (iterator != null) {
 			while (iterator.hasNext()) myQueue.offer(iterator.next());
@@ -49,3 +83,5 @@ class PeekingIterator implements Iterator<Integer> {
 	    return !myQueue.isEmpty();
 	}
 }
+
+

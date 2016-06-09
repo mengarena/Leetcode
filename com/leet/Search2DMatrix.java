@@ -32,7 +32,50 @@ public class Search2DMatrix {
 	}
 	
 	
-    public boolean searchMatrix(int[][] matrix, int target) {        
+	//ACC
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return false;
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int i = 0, j = m-1;
+        int mid, midTmp;
+        
+        while (i <= j) {
+            mid = (i+j)/2;
+            
+            if (matrix[mid][n-1] == target) {
+                return true;
+            } else if (target > matrix[mid][n-1]) {
+                i = mid + 1;
+            } else {
+                j = mid - 1;
+            }
+        }
+        
+        if (i >= m) return false;
+        
+        mid = i;
+        
+        i = 0; j = n-2;
+        
+        while (i <= j) {
+            midTmp = (i+j)/2;
+            
+            if (matrix[mid][midTmp] == target) {
+                return true;
+            } else if (target > matrix[mid][midTmp]) {
+                i = midTmp + 1;
+            } else {
+                j = midTmp - 1;
+            }
+        }
+        
+        return false;
+    }
+	
+	
+	//ACC
+    public boolean searchMatrixA(int[][] matrix, int target) {        
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return false;
         
         int m = matrix.length;

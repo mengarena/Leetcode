@@ -32,7 +32,45 @@ public class SortColors {
 		for (int i=0; i<nums.length; i++) System.out.print(nums[i] + ",");
 	}
 	
+    
     public void sortColors(int[] nums) {
+        if (nums == null || nums.length <= 1) return;
+        int n = nums.length;
+        int i = 0;
+        int tmp;
+        int red = 0, blue = n-1;
+        
+        while (red < n && nums[red] == 0) red++;
+        
+        while (blue >= 0 && nums[blue] == 2) blue--;
+        
+        i = red;
+        
+        while (i <= blue) {
+            if (nums[i] == 0) {
+                tmp = nums[red];
+                nums[red] = nums[i];
+                nums[i] = tmp;
+                red++;
+            } else if (nums[i] == 2) {
+                tmp = nums[blue];
+                nums[blue] = nums[i];
+                nums[i] = tmp;
+                blue--;
+                
+                while (blue >= i && nums[blue] == 2) blue--;
+                
+                if (tmp == 0) continue;   //Pay attention, if nums[i] becomes 0, dont increase i
+            }
+            
+            i++;
+        }
+    
+    }
+	
+	
+	//ACC
+	public void sortColorsA(int[] nums) {
         if (nums == null || nums.length <= 1) return;
         
         int n = nums.length;
