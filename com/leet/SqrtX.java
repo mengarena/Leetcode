@@ -15,7 +15,37 @@ public class SqrtX {
 		System.out.println(mySqrt(Integer.MAX_VALUE));
 	}
 	
+	
+	//ACC
     public int mySqrt(int x) {
+        if (x < 0) return (int) Double.NaN;
+        if (x == 0) return 0;
+        int i = 0;
+        int j = x/2 + 1;
+        int mid;
+        
+        while (i <= j) {
+            mid = (i + j)/2;
+            
+            if (mid == 0) {
+                i = mid + 1;
+            } else {
+                if (mid > x/mid) {
+                    j = mid - 1;   
+                } else if (mid < x/mid) {
+                    i = mid + 1;
+                } else {
+                    return mid;
+                }
+            }
+        } 
+        
+        return j;
+    }
+    
+	
+	//ACC
+    public int mySqrtA(int x) {
         if (x < 0) return (int) Double.NaN;
         int i = 0;
         int j = x/2+1;

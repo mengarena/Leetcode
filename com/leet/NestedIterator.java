@@ -3,6 +3,7 @@ package com.leet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Stack;
 
 import com.leet.NestedListWeightSum.NestedInteger;
 
@@ -42,11 +43,48 @@ import com.leet.NestedListWeightSum.NestedInteger;
  */
 
 //Google
+//ACC
 public class NestedIterator implements Iterator<Integer> {
+
+	private Stack<NestedInteger> stkNum = new Stack<NestedInteger>();
+	
+    public NestedIterator(List<NestedInteger> nestedList) {
+        int size = nestedList.size();
+        for (int i=size-1; i>=0; i--) {
+            stkNum.push(nestedList.get(i));
+        }
+    }
+
+    @Override
+    public Integer next() {
+        return stkNum.pop().getInteger();
+    }
+
+    @Override
+    public boolean hasNext() {
+        while (!stkNum.isEmpty()) {
+            if (stkNum.peek().isInteger()) {
+                return true;
+            } else {  //is list
+                NestedInteger ni = stkNum.pop();
+                int size = ni.getList().size();
+                for (int i=size-1; i>=0; i--) {
+                    stkNum.push(ni.getList().get(i));
+                }
+            }
+        }
+        
+        return false;
+    }
+}
+
+
+//ACC
+class NestedIteratorA implements Iterator<Integer> {
 
 	private List<Integer> lstNum = new ArrayList<Integer>();
 	
-    public NestedIterator(List<NestedInteger> nestedList) {
+    public NestedIteratorA(List<NestedInteger> nestedList) {
         for (NestedInteger ni:nestedList) {
         	if (ni.isInteger()) {
         		lstNum.add(ni.getInteger());

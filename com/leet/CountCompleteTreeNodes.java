@@ -38,7 +38,34 @@ public class CountCompleteTreeNodes {
 	}
 
 	
-	public int countNodes(TreeNode root) {
+	//ACC
+    public int countNodes(TreeNode root) {
+		if (root == null) return 0;
+        TreeNode tnTmp = root;
+        int leftCnt = 0;
+        int rightCnt = 0;
+        
+        while (tnTmp != null) {
+            leftCnt++;
+            tnTmp = tnTmp.left;
+        }
+        
+        tnTmp = root;
+        while (tnTmp != null) {
+            rightCnt++;
+            tnTmp = tnTmp.right;
+        }
+        
+        if (leftCnt == rightCnt) {
+            return (1 << leftCnt) - 1;
+        } else {
+            return 1 + countNodes(root.left) + countNodes(root.right);
+        }
+    }
+	
+	
+    //ACC
+	public int countNodesA(TreeNode root) {
 		if (root == null) return 0;
 		int nLeftLevel = 0;
 		int nRightLevel = 0;

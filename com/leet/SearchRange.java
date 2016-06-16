@@ -72,5 +72,67 @@ public class SearchRange {
         
         return narrRange;
     }
+    
+    
+    //ACC: 66%
+    public int[] searchRangeA(int[] nums, int target) {
+        int[] narrRange = new int[2];
+        narrRange[0] = -1;
+        narrRange[1] = -1;
+        if (nums == null || nums.length == 0) return narrRange;
+        int n = nums.length;
+        int i = 0, j = n-1;
+        int mid = -1;
+        int midTmp = -1;
+        
+        while (i <= j) {
+            mid = (i+j)/2;
+            
+            if (nums[mid] == target) {
+                narrRange[0] = mid;
+                narrRange[1] = mid;
+                break;
+            } else if (nums[mid] > target) {
+                j = mid-1;
+            } else {
+                i = mid+1;
+            }
+        }
+        
+        if (narrRange[0] == -1) return narrRange;
+        
+        if (narrRange[0] > 0) {
+            i = 0;
+            j = narrRange[0]-1;
+            
+            while (i<=j) {
+                midTmp = (i+j)/2;
+                
+                if (nums[midTmp] == target) {
+                    narrRange[0] = midTmp;
+                    j = midTmp-1;
+                } else {
+                    i = midTmp+1;
+                }
+            }
+        } 
+        
+        if (narrRange[1] < n-1) {
+            i = narrRange[1]+1;
+            j = n-1;
+            
+            while (i<=j) {
+                midTmp = (i+j)/2;
+                if (nums[midTmp] == target) {
+                    narrRange[1] = midTmp;
+                    i = midTmp + 1;
+                } else {
+                    j = midTmp - 1;
+                }
+            }
+        }
+        
+        return narrRange;
+    }    
 	
 }

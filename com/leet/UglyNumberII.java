@@ -1,6 +1,7 @@
 package com.leet;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //Write a program to find the n-th ugly number.
@@ -32,7 +33,8 @@ public class UglyNumberII {
 		System.out.println(n + "th Ugly number is: " + nthUglyNumber(n));
 	}
 	
-    public int nthUglyNumber(int n) {
+	//ACC: 16%
+    public int nthUglyNumberA(int n) {
     	if (n == 1) return 1;
     	
     	List<Integer> lstNum2 = new ArrayList<Integer>();
@@ -58,4 +60,52 @@ public class UglyNumberII {
     	
     	return nCurNum;
     }	
+    
+    
+    //ACC: 54%:  Similar to Super Ugly Number Solution
+    public int nthUglyNumber(int n) {
+    	if (n == 1) return 1;
+    	int[] factors = {2,3,5};
+        int[] endPos = new int[3];
+        int[] uglyNum = new int[n+1];
+        int[] heads = new int[3];
+        
+        Arrays.fill(endPos, 2);
+        uglyNum[1] = 1;
+        
+        int curNum = Integer.MAX_VALUE;
+        int minIdx = 0;
+        int i;
+        int j;
+        
+        for (i=0; i<3; i++) heads[i] = factors[i];
+        
+        i=2;
+        
+        while (i <= n) {
+            curNum = Integer.MAX_VALUE;
+            minIdx = -1;
+            
+            for (j = 0; j < 3; j++) {
+                if (curNum > heads[j]) {
+                    curNum = heads[j];
+                    minIdx = j;
+                }
+            } 
+            
+            uglyNum[i] = curNum;
+            
+            for (j = 0; j < 3; j++) {
+                if (heads[j] == curNum) {
+                    heads[j] = factors[j]*uglyNum[endPos[j]];
+                    endPos[j]++;
+                }
+            }
+            
+            i++;
+        }
+        
+        return uglyNum[n];
+    }
+    
 }

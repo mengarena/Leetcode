@@ -45,7 +45,72 @@ public class UniqueBinarySearchTreesII {
 	}
 	
 	
+	
+	
+	//ACC
     public List<TreeNode> generateTrees(int n) {
+        List<TreeNode> lstTrees = new ArrayList<TreeNode>();
+        if (n <= 0) return lstTrees;
+        
+        lstTrees = generateTrees(1, n);
+        
+        return lstTrees;
+    }
+    
+    private List<TreeNode> generateTrees(int start, int end) {
+        List<TreeNode> lstTrees = new ArrayList<TreeNode>();
+        if (start > end) return lstTrees;
+        if (start == end) {
+            TreeNode root = new TreeNode(start);
+            root.left = null; root.right = null;
+            lstTrees.add(root);
+            return lstTrees;
+        }
+        
+        for (int i=start; i<=end; i++) {  //root
+            List<TreeNode> lstTreesLeft = new ArrayList<TreeNode>();
+            List<TreeNode> lstTreesRight = new ArrayList<TreeNode>();
+            
+            lstTreesLeft = generateTrees(start, i-1);
+            lstTreesRight = generateTrees(i+1, end);
+            
+            if (lstTreesLeft.size() > 0 && lstTreesRight.size() > 0) {
+                for (TreeNode left:lstTreesLeft) {
+                    for (TreeNode right:lstTreesRight) {
+                        TreeNode root = new TreeNode(i);
+                        root.left = left;
+                        root.right = right;
+                        lstTrees.add(root);
+                    }
+                }
+            } else if (lstTreesLeft.size() > 0) {
+                for (TreeNode left:lstTreesLeft) {
+                    TreeNode root = new TreeNode(i);
+                    root.left = left;
+                    root.right = null;
+                    lstTrees.add(root);
+                }
+            } else if (lstTreesRight.size() > 0) {
+                for (TreeNode right:lstTreesRight) {
+                    TreeNode root = new TreeNode(i);
+                    root.left = null;
+                    root.right = right;
+                    lstTrees.add(root);
+                }
+            }
+        }
+ 
+        return lstTrees;
+    }
+	
+	
+	
+	
+	
+	
+	
+	//ACC
+    public List<TreeNode> generateTreesA(int n) {
         List<TreeNode> lstTrees = new ArrayList<TreeNode>();
         TreeNode root = null;
         //int nLeft, nRight, nRoot;
@@ -67,7 +132,7 @@ public class UniqueBinarySearchTreesII {
     }
 	
     
-    public List<TreeNode> generateTrees(int nStart, int nEnd) {
+    public List<TreeNode> generateTreesA(int nStart, int nEnd) {
     	List<TreeNode> lstTrees = new ArrayList<TreeNode>();
     	int n = nEnd-nStart+1;
     	int nLeft, nRight;

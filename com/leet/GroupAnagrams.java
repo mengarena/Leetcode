@@ -46,7 +46,27 @@ public class GroupAnagrams {
 		
 	}
 
+	//ACC
     public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> lstlstGroups = new ArrayList<List<String>>();
+        if (strs == null || strs.length == 0) return lstlstGroups;
+        Map<String, List<String>> hm = new HashMap<String, List<String>>();
+        Arrays.sort(strs);
+        
+        for (String str:strs) {
+            char[] carr = str.toCharArray();
+            Arrays.sort(carr);
+            String key = String.valueOf(carr);
+            if (!hm.containsKey(key)) hm.put(key, new ArrayList<String>());
+            hm.get(key).add(str);
+        }
+        
+        return new ArrayList<List<String>>(hm.values());
+    }
+	
+	
+    //ACC
+    public List<List<String>> groupAnagramsA(String[] strs) {
     	List<List<String>> lstlstGroup = new ArrayList<List<String>>();
     	if (strs == null || strs.length == 0) return lstlstGroup;
     	int n = strs.length;

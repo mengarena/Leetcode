@@ -39,8 +39,43 @@ public class PalindromePartitioning {
 	}
 	
 	
+	//ACC:  67%:   DP + DFS
+    public List<List<String>> partition(String s) {
+        List<List<String>> lstlstParts = new ArrayList<>();
+        int n = s.length();
+        boolean bPart[][] = new boolean[n][n];   //Where substring[i,j] is palindrome
+        
+        for (int i=0; i<n; i++) {
+            for (int left=0; left<=i; left++) {
+                if (s.charAt(left) == s.charAt(i) && (i-left <= 1 || bPart[left+1][i-1])) {
+                    bPart[left][i] = true;
+                }
+            }
+        }
+        
+        getPartition(s, 0, new ArrayList<String>(), lstlstParts, bPart);
+        
+        return lstlstParts;
+    }
+    
+    private void getPartition(String s, int start, List<String> lstPart, List<List<String>> lstlstParts, boolean[][] bPart) {
+        if (start == s.length()) {
+            lstlstParts.add(new ArrayList<String>(lstPart));
+            return;
+        }
+        
+        for (int i=start; i<s.length(); i++) {
+            if (bPart[start][i]) {
+                lstPart.add(s.substring(start, i+1));
+                getPartition(s, i+1, lstPart, lstlstParts, bPart);
+                lstPart.remove(lstPart.size()-1);
+            }
+        }
+    }
 	
-	public List<List<String>> partition(String s) {
+	
+	//ACC: 32%    DFS
+	public List<List<String>> partitionA(String s) {
 		List<List<String>> lstlstParition = new ArrayList<List<String>>();
 		
 		if (s == null || s.length() == 0) return lstlstParition;
@@ -70,7 +105,51 @@ public class PalindromePartitioning {
 		}
 	}
 	
+    public boolean IsPalindrome(String s) {
+    	int n = s.length();
+    	if (n == 1) return true;
+    	int i=0, j=n-1;
+    	
+    	while (i<=j) {
+    		if (s.charAt(i) != s.charAt(j)) return false;
+    		i++;
+    		j--;
+    	}
+    	    	
+    	return true;
+    }  
+    
+    
 	
+	//ACC: 32%  DP
+    public List<List<String>> partitionB(String s) {
+        int n = s.length();
+        List<List<String>> lstlstParts[] = new List[n+1];
+        boolean bPart[][] = new boolean[n][n];
+        lstlstParts[0] = new ArrayList<List<String>>();
+        lstlstParts[0].add(new ArrayList<String>());
+        int i;
+        int left;
+        
+        for (i=0; i<n; i++) {
+            lstlstParts[i+1] = new ArrayList<List<String>>();
+            for (left=0; left<=i; left++) {
+                if (s.charAt(left) == s.charAt(i) && (i-left <= 1 || bPart[left+1][i-1])) {
+                    bPart[left][i] = true;
+                    String ss = s.substring(left, i+1);
+                    
+                    for (List<String> lstPart:lstlstParts[left]) {
+                        List<String> lstPartTmp = new ArrayList<String>(lstPart);
+                        lstPartTmp.add(ss);
+                        lstlstParts[i+1].add(lstPartTmp);
+                    }
+                }
+            }
+        }
+        
+        
+        return lstlstParts[n];
+    }
 	
 /* Works, but time out	
     public List<List<String>> partition(String s) {
@@ -132,19 +211,7 @@ public class PalindromePartitioning {
     }
 */    
    
-    public boolean IsPalindrome(String s) {
-    	int n = s.length();
-    	if (n == 1) return true;
-    	int i=0, j=n-1;
-    	
-    	while (i<=j) {
-    		if (s.charAt(i) != s.charAt(j)) return false;
-    		i++;
-    		j--;
-    	}
-    	    	
-    	return true;
-    }    
+  
     
 /*    
     public boolean IsPalindrome(String s) {

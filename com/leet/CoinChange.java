@@ -31,7 +31,33 @@ public class CoinChange {
 	}
 	
 
-	public int coinChange(int[] coins, int amount) {
+	//ACC
+    public int coinChange(int[] coins, int amount) {
+        if (amount == 0) return 0;
+        if (coins == null || coins.length == 0) return -1;
+        int n = coins.length;
+        int i,j;
+        int[] dp = new int[amount+1];
+        
+        dp[0] = 0;
+        for (i=1; i<=amount; i++) dp[i] = Integer.MAX_VALUE;
+        
+        for (i=1; i<=amount; i++) {
+            for (j=0; j<n; j++) {
+                if (i-coins[j] >= 0 && dp[i-coins[j]] < Integer.MAX_VALUE) {
+                    dp[i] = Math.min(dp[i], 1 + dp[i-coins[j]]);
+                }
+            }
+        }
+
+        if (dp[amount] == Integer.MAX_VALUE) return -1;
+        
+        return dp[amount];
+    }
+    
+	
+    //ACC
+	public int coinChangeA(int[] coins, int amount) {
         if (amount == 0) return 0;
 		if (coins == null || coins.length == 0) return -1;
 

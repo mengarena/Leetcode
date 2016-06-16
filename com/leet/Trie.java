@@ -14,35 +14,120 @@ import java.util.Set;
 
 
 //Google, Facebook, Uber, Microsoft, Bloomberg
-class TrieNode {
-    // Initialize your data structure here.
-	char cNode;
-	boolean bWord;
-	TrieNode[] children = new TrieNode[26];
-	
-    public TrieNode() {
-    	bWord = false;   //Default is false, this line is not needed
-    	for (int i=0; i<26; i++) children[i] = null;   //Default is null, this line is not needed
-    }
-   
-}
 
 public class Trie {
-    private TrieNode root;
+    class TrieNode {
+        boolean bWord;
+        TrieNode[] children = new TrieNode[26];
+        
+        public TrieNode() {
+            bWord = false;
+            for (int i=0; i<26; i++) {
+                children[i] = null;
+            }
+        }
+    }
 
+    private TrieNode root = null;
+    
     public Trie() {
         root = new TrieNode();
     }
 
     // Inserts a word into the trie.
     public void insert(String word) {
+        if (word == null || word.length() == 0) return;
+        TrieNode tmp = root;
+        int idx = 0;
+        for (int i=0; i<word.length(); i++) {
+            idx = word.charAt(i)-'a';
+            if (tmp.children[idx] == null) tmp.children[idx] = new TrieNode();
+            tmp = tmp.children[idx];
+        }
+        
+        tmp.bWord = true;
+    }
+
+    
+    // Returns if the word is in the trie.
+    public boolean search(String word) {
+        if (word == null || word.length() == 0) return true;
+        TrieNode tmp = root;
+        int idx = 0;
+        
+        for (int i=0; i<word.length(); i++) {
+            idx = word.charAt(i)-'a';
+            if (tmp.children[idx] == null) return false;
+            tmp = tmp.children[idx];
+        }
+        
+        return tmp.bWord;
+    }
+
+    
+    // Returns if there is any word in the trie
+    // that starts with the given prefix.
+    public boolean startsWith(String prefix) {
+        if (prefix == null || prefix.length() == 0) return true;
+        TrieNode tmp = root;
+        int idx = 0;
+        
+        for (int i=0; i<prefix.length(); i++) {
+            idx = prefix.charAt(i)-'a';
+            if (tmp.children[idx] == null) return false;
+            tmp = tmp.children[idx];
+        }
+        
+        return true;
+    }
+}
+
+// Your Trie object will be instantiated and called as such:
+// Trie trie = new Trie();
+// trie.insert("somestring");
+// trie.search("key");
+
+
+
+
+
+
+
+
+
+
+
+
+//ACC
+class TrieNodeA {
+    // Initialize your data structure here.
+	char cNode;
+	boolean bWord;
+	TrieNodeA[] children = new TrieNodeA[26];
+	
+    public TrieNodeA() {
+    	bWord = false;   //Default is false, this line is not needed
+    	for (int i=0; i<26; i++) children[i] = null;   //Default is null, this line is not needed
+    }
+   
+}
+
+ class TrieA {
+    private TrieNodeA root;
+
+    public TrieA() {
+        root = new TrieNodeA();
+    }
+
+    // Inserts a word into the trie.
+    public void insert(String word) {
     	if (word == null || word.length() == 0) return;
-    	TrieNode rootTmp = root;
+    	TrieNodeA rootTmp = root;
     	int i, n = word.length();
     	
     	for (i=0; i<n; i++) {
     		if (rootTmp.children[word.charAt(i)-'a'] == null) {
-    			rootTmp.children[word.charAt(i)-'a'] = new TrieNode();
+    			rootTmp.children[word.charAt(i)-'a'] = new TrieNodeA();
     			rootTmp.children[word.charAt(i)-'a'].cNode = word.charAt(i);    			
     		}
     		
@@ -58,7 +143,7 @@ public class Trie {
     	if (root == null) return false;
     	
         if (word == null || word.length() == 0) return true;
-        TrieNode rootTmp = root;
+        TrieNodeA rootTmp = root;
         int i, n = word.length();
         
         for (i=0; i<n; i++) {
@@ -83,7 +168,7 @@ public class Trie {
     	if (root == null) return false;
     	
         if (prefix == null || prefix.length() == 0) return true;
-        TrieNode rootTmp = root;
+        TrieNodeA rootTmp = root;
         int i, n = prefix.length();
         
         for (i=0; i<n; i++) {

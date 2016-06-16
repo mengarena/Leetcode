@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 //There are a total of n courses you have to take, labeled from 0 to n - 1.
@@ -55,7 +56,72 @@ public class CourseSchedule {
 	}
 	
 	
+
+	//ACC:  62%
     public boolean canFinish(int numCourses, int[][] prerequisites) {
+    	if (prerequisites == null || prerequisites.length <= 1) return true;
+        Map<Integer, Set<Integer>> hm = new HashMap<Integer, Set<Integer>>();
+        int n = prerequisites.length;
+        boolean visited[] = new boolean[numCourses];
+        boolean arrVistied[] = new boolean[numCourses];
+        
+        for (int i=0; i<n; i++) {
+            int parent = prerequisites[i][1];
+            int child = prerequisites[i][0];
+            
+            if (hm.get(parent) != null) {
+                Set<Integer> setAdj = hm.get(parent);
+                setAdj.add(child);
+                hm.replace(parent, setAdj);
+            } else {
+                Set<Integer> setAdj = new HashSet<Integer>();
+                setAdj.add(child);
+                hm.put(parent, setAdj);
+            }
+        }
+        
+        for (int i=0; i<numCourses; i++) {
+            if (!visited[i]) {
+                boolean bRet = dfsSearch(hm, visited, arrVistied, i);
+            
+                if (bRet == false) return false;
+            }
+        }
+        
+        return true;
+    }	
+    
+    private boolean dfsSearch(Map<Integer, Set<Integer>> hm, boolean[] visited, boolean[] arrVistied, int start) {
+        visited[start] = true;
+        
+        Set<Integer> setAdj = hm.get(start);
+        if (setAdj == null) {
+            arrVistied[start] = true;
+            return true;
+        }
+        
+        for (int node:setAdj) {
+    		//If the node has been visited, but has not been put in visited set, 
+        	//and it is less than one of its parent (or grand..parent), there should be a cycle
+        	
+            //if (node < start && visited[node] && !arrVistied[node]) return false;  //Old ACC
+            if (visited[node] && !arrVistied[node]) return false;  //New ACC
+            
+            if (!visited[node]) {
+                boolean bRet = dfsSearch(hm, visited, arrVistied, node);
+                if (bRet == false) return false;
+            }
+        }
+        
+        arrVistied[start] = true;
+        
+        return true;
+    }	
+	
+	
+    
+    
+    public boolean canFinishA(int numCourses, int[][] prerequisites) {
     	if (prerequisites == null || prerequisites.length == 1) return true;
         int nEdgeCnt = prerequisites.length;
         HashMap<Integer, Set<Integer>> hmGraph = new HashMap<Integer, Set<Integer>>();  //Node (parent), Neighbors (children)
@@ -104,7 +170,8 @@ public class CourseSchedule {
     	
     	for (int nNode:setAdj) { 
     		//If the node has been visited, but has not been put in visited set, and it is less than one of its parent (or grand..parent), there should be a cycle
-    		if (nNode < nStartPos && !setVisited.contains(nNode) && lstVisited.get(nNode)) return false;
+    		//if (nNode < nStartPos && !setVisited.contains(nNode) && lstVisited.get(nNode)) return false;   //Old ACC
+    		if (!setVisited.contains(nNode) && lstVisited.get(nNode)) return false;   //New ACC
 
     		if (!lstVisited.get(nNode)) {
     			boolean bRet = dfsGraph(hmGraph, nNode, lstVisited, setVisited);

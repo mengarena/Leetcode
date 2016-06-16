@@ -64,12 +64,7 @@ public class NextPermutation {
         		}
         	}
         }
-        
-        if (nChangePos == nPos) {
-        	Arrays.sort(nums);
-        	return;
-        }
-        
+                
         //Exchange value to put the smallest-larger digit at position nPos
         int nTmp = nums[nChangePos];
         nums[nChangePos] = nums[nPos];

@@ -36,6 +36,8 @@ public class ReverseLinkedListII {
 		}
 	}
 	
+	
+	//ACC
     public ListNode reverseBetween(ListNode head, int m, int n) {
         ListNode newHead = null;
         
@@ -82,4 +84,77 @@ public class ReverseLinkedListII {
         return newHead;
     }
 	
+    
+    //ACC
+    public ListNode reverseBetweenA(ListNode head, int m, int n) {
+        ListNode newHead = null;
+        
+        if (m > n) return reverseBetween(head, n, m);
+        
+        if (head == null || head.next == null) return head;
+        if (m == n) return head;
+
+        ListNode tmp = head;
+        ListNode beforeReverse = null;
+        ListNode afterReverse = null;
+        int i = 1;
+        
+        if (m != 1) {
+            newHead = head;
+            
+            while (i < m && tmp != null) {
+                beforeReverse = tmp;
+                tmp = tmp.next;
+                i++;
+            }
+            
+            if (tmp == null) return head;
+        }
+        
+        while (i <= n && tmp != null) {
+            afterReverse = tmp;
+            tmp = tmp.next;
+            i++;
+        }
+        
+        if (tmp != null) {
+            afterReverse = afterReverse.next;
+        } else {
+            afterReverse = null;
+        }
+        
+        ListNode lnPre = null;
+        ListNode lnCur = null;
+        ListNode lnNext = null;
+        ListNode tail = null;
+        lnPre = beforeReverse;
+        
+        if (beforeReverse == null) {
+            lnCur = head;
+        } else {
+            lnCur = beforeReverse.next; 
+        }
+        
+        while (lnCur != afterReverse) {
+            lnNext = lnCur.next;
+            if (tail == null) {
+                tail = lnCur;
+            } else {
+                lnCur.next = lnPre;
+            }
+            lnPre = lnCur;
+            lnCur = lnNext;
+            
+        }
+        
+        tail.next = afterReverse;
+        if (beforeReverse == null) {
+            newHead = lnPre;
+        } else {
+            beforeReverse.next = lnPre;
+        }
+        
+        return newHead;
+    }
+    
 }

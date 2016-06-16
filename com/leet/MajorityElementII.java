@@ -74,6 +74,7 @@ public class MajorityElementII {
     }
     
     
+    
     public List<Integer> majorityElementA(int[] nums) {
     	List<Integer> lstMajors = new ArrayList<Integer>();
     	if (nums == null || nums.length == 0) return lstMajors;
