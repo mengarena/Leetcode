@@ -2,7 +2,9 @@ package com.leet;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Set;
 
 //Given two words (beginWord and endWord), and a dictionary's word list, 
@@ -119,13 +121,231 @@ public class WordLadder {
 		
 		long aa = System.currentTimeMillis();
 	
-		int nLen = findLadders(beginWord, endWord, wordList);
+		int nLen = ladderLength(beginWord, endWord, wordList);
 		
 		System.out.println("Time = " + (System.currentTimeMillis() - aa));
 		
 		System.out.println("Len = " + nLen);
 		
 	}
+	
+	
+	//ACC:  99%  (Two-end BFS)
+	//Strategy:  Search from both sides (i.e. start--->    <---end)
+    public int ladderLengthM(String beginWord, String endWord, Set<String> wordList) {
+        if (wordList == null || wordList.size() == 0) return 0;
+        Set<String> setA = new HashSet<String>();
+        Set<String> setB = new HashSet<String>();
+        
+        setA.add(beginWord);
+        setB.add(endWord);
+        
+        return findLadder(wordList, setA, setB, 1);
+    }
+    
+    //Each recursion process one end (the end which has fewer elements)
+    private int findLadder(Set<String> wordList, Set<String> setA, Set<String> setB, int nLevel) {
+        if (setA.isEmpty()) return 0;
+        
+        if (setA.size() > setB.size()) return findLadder(wordList, setB, setA, nLevel);
+        
+        wordList.removeAll(setA);
+        wordList.removeAll(setB);
+        
+        Set<String> setNew = new HashSet<String>();
+        
+        for (String word:setA) {
+            char[] carrWord = word.toCharArray();
+            
+            for (int i=0; i<carrWord.length; i++) {
+                char cElem = carrWord[i];
+                
+                for (char j='a'; j<='z'; j++) {
+                    if (cElem != j) {
+                        carrWord[i] = j;
+                        
+                        String sNewWord = String.valueOf(carrWord);
+                        
+                        if (setB.contains(sNewWord)) return nLevel + 1;     //If the new word could be found in end set, the path is done! (there is the path)
+                        
+                        if (wordList.contains(sNewWord)) setNew.add(sNewWord);
+                    }
+                    
+                     
+                }
+                
+                carrWord[i] = cElem;
+            }
+        }
+        
+        return findLadder(wordList, setB, setNew, nLevel + 1);
+    }
+	
+	
+	
+	
+	
+	
+	
+	//ACC:  75%
+	//Use Queue to remember each ladder (i.e. level)
+	
+	//Strategy:  Process level by level. all the path/branch forms a tree.  The root of the tree is the beginWord.
+	//From the leaves at each level, to find the words which could be derived by changing one letter from these leaves.
+	//These derived words forms the new level (i.e. the new leaves of the tree at one level below)
+	//Once on one level, there occurs the endWord, the process stops.
+	//
+	//Trick:  Once one candidate word (i.e. the word made by changing one letter from a previous valid word) exists in the dictionary
+	//The candidate word is added to the end of the branch
+	//AND, the candidate word could be removed from the dictionary, because if don't remove it, it might be met at other branches,
+	//but the final length of the path of those branches could not be shorter than current one
+	//
+    //Different from WordLadder II:
+	//Here at each level, once a word is met, could remove it from the dictionary immediately. One word could only occur at each level once.
+	//If one word occurs at each level many times, the situation below that word is the same for different branches
+	//	
+    public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
+        if (wordList == null || wordList.size() == 0) return 0;
+        int ladderLen = 0;
+        int size = 0;
+        
+        wordList.remove(beginWord);
+        wordList.add(endWord);
+        
+        Queue<String> quLevel =  new LinkedList<String>();
+        
+        quLevel.offer(beginWord);
+        
+        while (!quLevel.isEmpty()) {
+            size = quLevel.size();
+            
+            while (size-- > 0) {
+                String sTmpWord = quLevel.poll();
+                if (sTmpWord.equals(endWord)) return ladderLen+1;
+                
+                char[] carrWord = sTmpWord.toCharArray();
+                
+                for (int i=0; i<carrWord.length; i++) {
+                    char cElem = carrWord[i];
+                    
+                    for (char j='a'; j<='z'; j++) {
+                        if (cElem != j) {
+                            carrWord[i] = j;
+                            
+                            String newWord = new String(carrWord);
+                            
+                            if (wordList.contains(newWord)) {
+                                wordList.remove(newWord);
+                                quLevel.offer(newWord);
+                            }
+                        }
+                    }
+                    
+                    carrWord[i] = cElem;
+                }
+                
+            }
+            
+            ladderLen++;
+        }
+        
+        return 0;
+    }	
+	
+	
+	
+	
+	//ACC
+	//Strategy:  Process level by level. all the path/branch forms a tree.  The root of the tree is the beginWord.
+	//From the nodes at each level, to find the words which could be derived by changing one letter from these nodes.
+	//These derived words forms the new level (i.e. the new nodes of the tree at one level below)
+	//Once on one level, there occurs the endWord, the process stops.
+	//
+	//Trick:  Once one candidate word (i.e. the word made by changing one letter from a previous valid word) exists in the dictionary
+	//The candidate word is added to the end of the branch
+	//AND, the candidate word could be removed from the dictionary, because if don't remove it, it might be met at other branches,
+	//but the final length of the path of those branches could not be shorter than current one
+	//
+	//Different from WordLadder II:
+	//Here at each level, once a word is met, could remove it from the dictionary immediately. One word could only occur at each level once.
+	//If one word occurs at each level many times, the situation below that word is the same for different branches
+	//
+    public int findLaddersM(String beginWord, String endWord, Set<String> wordList) {
+        if (wordList == null || wordList.size() == 0) return 0;
+        
+        int nCnt = 0;
+        
+        for (int i=0; i<beginWord.length(); i++) {
+            if (beginWord.charAt(i) != endWord.charAt(i)) nCnt++;
+            if (nCnt > 1) break;
+        }
+        
+        if (nCnt == 1) return 2;
+                              
+        List<List<String>> lstlstLadder = new ArrayList<List<String>>();
+        
+        wordList.remove(beginWord);
+        wordList.add(endWord);
+        
+        List<String> lstLadder = new ArrayList<String>();
+        lstLadder.add(beginWord);
+        lstlstLadder.add(lstLadder);
+        
+        return findLadderLength(wordList, endWord, endWord.length(), lstlstLadder);
+    }
+    
+    
+    private int findLadderLength(Set<String> wordList, String endWord, int n, List<List<String>> lstlstLadder) {
+        int size = wordList.size();
+        
+        while (!lstlstLadder.isEmpty() && lstlstLadder.get(0).size() < size + 1) {
+            
+            List<List<String>> lstlstLadderNew = new ArrayList<List<String>>();
+            
+            int nParentCnt = lstlstLadder.size();
+            
+            for (int i=nParentCnt-1; i>=0; i--) {
+                List<String> lstLadder = lstlstLadder.get(i);
+                
+                String sLastWord = lstLadder.get(lstLadder.size()-1);
+                
+                char[] carrWord = sLastWord.toCharArray();
+                
+                for (int j=0; j<n; j++) {
+                    char cElem = carrWord[j];
+                    
+                    for (char k='a'; k<='z'; k++) {
+                        if (k != cElem) {
+                            carrWord[j] = k;
+                            
+                            String sNewWord = new String(carrWord);
+                            
+                            if (wordList.contains(sNewWord)) {
+                                if (sNewWord.equals(endWord)) return lstLadder.size() + 1;
+                                
+                                List<String> lstLadderNew = new ArrayList<String>(lstLadder);
+                                lstLadderNew.add(sNewWord);
+                                
+                                lstlstLadderNew.add(lstLadderNew);
+                                
+                                wordList.remove(sNewWord);
+                            } 
+                        }
+                    }
+                    
+                    carrWord[j] = cElem;
+                }
+                
+            }
+            
+            lstlstLadder = lstlstLadderNew;
+        }
+        
+        return 0;
+    }
+	
+	
+	
 	
 	
 	//Accepted.  45%
@@ -143,7 +363,7 @@ public class WordLadder {
 	//Here at each level, once a word is met, could remove it from the dictionary immediately. One word could only occur at each level once.
 	//If one word occurs at each level many times, the situation below that word is the same for different branches
 	//
-    public int findLadders(String beginWord, String endWord, Set<String> wordList) {
+    public int findLaddersA(String beginWord, String endWord, Set<String> wordList) {
         if (wordList == null || wordList.size() == 0) return 0;
                                
     	int n = beginWord.length();

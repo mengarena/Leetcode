@@ -40,7 +40,7 @@ public class DecodeWays {
         dp[0] = 1;   //One way to decoding ""
         dp[1] = 1;   //One way to decoding the first character
         
-        //For example, 1120; when comes to last 0, the "2" has not be consumed by the last "0", so the total valid #decoding will be the same as "11"  (two digit number case)
+        //For example, 1120; when comes to last 0, the "2" has to be consumed by the last "0", so the total valid #decoding will be the same as "11"  (two digit number case)
         //For 1129,   29 is not valid, so when comes to last 9, the last 9 must be independent, 
         //it does not affect the whole number by 112, so total valid #decoding will be the same as "112"  (one digit number case)
         for (int i=2; i<=n; i++) {

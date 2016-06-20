@@ -14,26 +14,117 @@ public class MainProgram {
 		// TODO Auto-generated constructor stub
 	}
 
+    private static int findMedian(int[] nums) {
+    	if (nums == null || nums.length == 0) return 0;
+    	if (nums.length == 1) return nums[0];
+    	int nMedth = (nums.length-1)/2+1;  //Median position
+    	int nLeft = Integer.MIN_VALUE; 
+    	int nRight = Integer.MAX_VALUE;
+    	int nMedian = 0;
+		int nSmallerCnt = 0, nLargerCnt = 0;
+		int nCntDiff = 0;
+    	
+    	while (nLeft <= nRight) {
+    		nMedian = (nLeft < 0 && nRight > 0) ? (nLeft + nRight) / 2 : nLeft + (nRight - nLeft) / 2;
+    		nSmallerCnt = 0;
+    		nLargerCnt = 0;
+    		nCntDiff = 0;
+    		
+    		for (int i=0; i<nums.length; i++) {
+    			if (nums[i] > nMedian) {
+    				nLargerCnt++;
+    				if (nLargerCnt > nMedth) {
+    					nCntDiff = 1;
+    					break;
+    				}
+    			} else if (nums[i] < nMedian) {
+    				nSmallerCnt++;
+    				if (nSmallerCnt > nMedth) {
+    					nCntDiff = -1;
+    					break;
+    				}
+    			}
+    		}
+    		    		
+    		if (nCntDiff > 0) {
+    			nLeft = nMedian + 1;
+    		} else if (nCntDiff < 0) {
+    			nRight = nMedian - 1;
+    		} else {
+    			break;
+    		}
+
+    	}
+    	
+    	return nMedian;
+    }
+    
+	private static int findPos(int[] nums, int target) {
+		if (nums == null || nums.length == 0) return 0;
+		int n = nums.length;
+		int i = 0, j = n - 1;
+		int mid = 0;
+		
+		while (i <= j) {
+			mid = (i+j)/2;
+			
+			if (nums[mid] == target) {
+				System.out.println("#Number.Length = " + n + ", Mid = " + mid);
+
+				return mid;
+			} else if (nums[mid] > target) {
+				j = mid - 1;
+			} else {
+				i = mid + 1;
+			}
+		}
+		
+		System.out.println("#Number.Length = " + n + ", Pos = " + i + "    (j = " + j + ")");
+		
+		return i;
+	}
+ 	
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		//int[] nums = {4, 5, 8, 10, 14};
+		//int[] nums = {4, 5, 8, 10, 14, 17};
+		int[] nums = {4,5,6,7,8};
 		
-		MinStack myInstance = new MinStack();
+		System.out.println("Median = " + findMedian(nums));
+		//int target = 2;
 		
-		myInstance.push(512);
-		myInstance.push(-1024);
-		myInstance.push(-1024);
-		myInstance.push(512);
+		//int pos = findPos(nums, target);
 		
-		myInstance.pop();
-		int a = myInstance.getMin();
-		myInstance.pop();
-		a = myInstance.getMin();
-		myInstance.pop();
-		a = myInstance.getMin();
+		//System.out.println("Insert/Find Pos = " + pos);
+		
+		String ss = "mengrufeng";
+		
+		char[] carr = ss.toCharArray();
+		String sss = new String(carr, 0, 4);
+		
+		System.out.println(sss);
+		
+		return;
+		
+		
+//		MinStack myInstance = new MinStack();
+		
+//		myInstance.push(512);
+//		myInstance.push(-1024);
+//		myInstance.push(-1024);
+//		myInstance.push(512);
+//		
+//		myInstance.pop();
+//		int a = myInstance.getMin();
+//		myInstance.pop();
+//		a = myInstance.getMin();
+//		myInstance.pop();
+//		a = myInstance.getMin();
 		
 		
 //		StringBuilder sb = new StringBuilder();
@@ -62,13 +153,13 @@ public class MainProgram {
 		//System.out.println(ret);
 		
 		
-		long lnTm1 = System.currentTimeMillis();
+//		long lnTm1 = System.currentTimeMillis();
 
 		//myInstance.run();
 		
-		long lnTm2 = System.currentTimeMillis();
+//		long lnTm2 = System.currentTimeMillis();
 		
-		System.out.println("Time: " + (lnTm2 - lnTm1) + " ms");
+//		System.out.println("Time: " + (lnTm2 - lnTm1) + " ms");
 	
 
 		/////////////////Important//////////////////////
@@ -154,7 +245,7 @@ public class MainProgram {
 		// 1/0 ==> run time error
 		// 1/0.0,   1.0/0, 1.0/0.0 ==> all are OK, generate Infinity
 		
-		return;
+//		return;
 	
 	}
 

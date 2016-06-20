@@ -40,7 +40,33 @@ public class ValidateBinarySearchTree {
 	}
 	
 	
+	//ACC: 33%
+	//Strategy:  left sub tree should be BST;  right sub tree should be BST;  the right most node of left sub tree should be < root.val; the left most node of the right sub tree should be > root.val
     public boolean isValidBST(TreeNode root) {
+        if (root == null) return true;
+        TreeNode leftRight = root.left;
+        
+        while (leftRight != null) {
+            if (leftRight.right == null) break;
+            leftRight = leftRight.right;
+        }
+        
+        TreeNode rightLeft = root.right;
+        
+        while (rightLeft != null) {
+            if (rightLeft.left == null) break;
+            rightLeft = rightLeft.left;
+        }
+        
+        if ((leftRight == null || leftRight.val < root.val) && (rightLeft == null || rightLeft.val > root.val) && isValidBST(root.left) && isValidBST(root.right)) return true;
+        
+        return false;
+    }	
+	
+	
+	
+    //ACC
+    public boolean isValidBSTA(TreeNode root) {
         List<Integer> lstTree = new ArrayList<Integer>();
         
         return InOrderTravse(root, lstTree);

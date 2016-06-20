@@ -24,8 +24,152 @@ public class LargestNumber {
 
 	
 	
-	//ACC:  35%
+	//ACC:  54%
     public String largestNumber(int[] nums) {
+        StringBuilder sbResult = new StringBuilder();
+        int i,j;
+        int nInsertPos = -1;
+        
+        List<Integer> lstNum = new ArrayList<Integer>();
+        
+        //Order the nums in lstlstDigits
+        for (i=0; i<nums.length; i++) {
+        	if (lstNum.size() == 0) {
+        		lstNum.add(nums[i]);
+        	} else {
+        		nInsertPos = -1;
+        		for (j=0; j<lstNum.size(); j++) {
+        			if (compareDigitList(nums[i], lstNum.get(j)) > 0) {
+        				nInsertPos = j;
+        				break;
+        			}
+        		}
+        		
+        		if (nInsertPos >= 0) {
+        			lstNum.add(nInsertPos, nums[i]);
+        		} else {
+        			lstNum.add(nums[i]);
+        		}
+        	}
+        }
+        
+        //Form the resultant number
+        for (Integer num:lstNum) {
+        	if (sbResult.length() == 0 && num == 0) continue;
+        	sbResult.append(num);
+        }
+                
+        if (sbResult.length() == 0) return "0";
+        
+        return sbResult.toString();
+    }
+    
+    
+    //Compare two lists of digits
+    //Rule:  1) On a digit position, if A > B,  A should be put in front of B
+    //       2) All comparable digits are the same, but A is shorter than B, compare A's last digit with all the rest digits of B, 12 > 121; 12 < 1221;  12 < 128; 12 < 122 
+    //       
+    //Two digit list:  xxxxxaaaaccc
+    //                 cccxxxxxaaaa
+    //A: xxxxxaaaaa, B: ccc
+    public int compareDigitList(int numA, int numB) {
+    	int nRelationship = 1;
+    	int i;
+    	int nA, nB;
+    	int nTmp1, nTmp2;
+    	String strNumA = Integer.toString(numA);
+    	String strNumB = Integer.toString(numB);
+    	
+    	int nSizeA = strNumA.length();
+    	int nSizeB = strNumB.length();  
+    	
+    	if (nSizeA < nSizeB) return compareDigitList(numB, numA)*(-1);
+    	
+    	char[] carrA = strNumA.toCharArray();
+    	char[] carrB = strNumB.toCharArray();
+ 
+    	int nMinLen = nSizeB;
+    	
+    	//Compare first part (xxx - ccc)
+    	for (i=0; i<nMinLen; i++) {
+    		nA = carrA[i];
+    		nB = carrB[i];
+    		
+    		if (nA < nB) {
+    			nRelationship = -1;
+    			return nRelationship;
+    		} else if (nA > nB) {
+    			nRelationship = 1;
+    			return nRelationship;
+    		}
+    	}
+    	
+		//Compare 2nd part: xxaaaa -- xxxxxa
+		for (i=0; i<nSizeA-nSizeB; i++) {
+			nTmp1 = carrA[nMinLen+i];
+			nTmp2 = carrA[i];
+			
+			if (nTmp1 < nTmp2) {
+				nRelationship = -1;
+				return nRelationship;
+			} else if (nTmp1 > nTmp2) {
+				nRelationship = 1;
+				return nRelationship;
+			}
+		}
+		
+		//Compare last part: ccc -- aaa
+		for (i=0; i<nMinLen; i++) {
+    		nB = carrB[i];
+    		nA = carrA[i+nSizeA-nMinLen];
+    		
+    		if (nB < nA) {
+				nRelationship = -1;
+				return nRelationship;    			
+    		} else if (nB > nA) {
+				nRelationship = 1;
+				return nRelationship;        			
+    		}
+		}
+    		
+    	return nRelationship;
+    	    	
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//ACC:  35%
+    public String largestNumberB(int[] nums) {
         StringBuilder sbResult = new StringBuilder();
         int i,j;
         int nInsertPos = -1;
@@ -59,14 +203,14 @@ public class LargestNumber {
         	sbResult.append(num);
         }
                 
-        if (sbResult.length() == 0 && lstNum.size() > 0) return "0";
+        if (sbResult.length() == 0) return "0";
         
         return sbResult.toString();
     }
 	
     
     //Works, but slower than compareDigitListKK
-    public int compareDigitList(int numA, int numB) {
+    public int compareDigitListA(int numA, int numB) {
     	String sA = String.valueOf(numA);
     	String sB = String.valueOf(numB);
     	
@@ -97,7 +241,7 @@ public class LargestNumber {
     	char[] carrA = String.valueOf(numA).toCharArray();
     	char[] carrB = String.valueOf(numB).toCharArray();
     	int nSizeA = carrA.length;
-    	int nSizeB = carrB.length;    	
+    	int nSizeB = carrB.length;   
     	int nMinLen = (int) Math.min(nSizeA, nSizeB);
     	
     	//Compare first part (xxx - ccc)

@@ -29,6 +29,7 @@ public class MaximalSquare {
 		System.out.println("Maximal Squre = " + maximalSquare(matrix));
 	}
 	
+	//ACC:  92%
 	//From current valid square, to detect whether next-bigger square based on the current square is valid, 
 	//only need to check the elements which wrap current square at the one-element right and bottom of current square
     public int maximalSquare(char[][] matrix) {
@@ -42,11 +43,11 @@ public class MaximalSquare {
     	j = 0;
     	
     	//Loop through row 0, row 1.... (i.e. base position)
-    	while (i + nSquareLen  < nRow ) {
+    	while (i + nMaxSquareLen < nRow ) {
     		j = 0;
     		
     		//Check from column 0, column 1....
-    		while (j + nSquareLen < nCol) {
+    		while (j + nMaxSquareLen < nCol) {
     			if (matrix[i][j] == '1') {
     				nSquareLen = 1;
     				
