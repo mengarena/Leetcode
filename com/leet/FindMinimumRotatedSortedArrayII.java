@@ -23,7 +23,34 @@ public class FindMinimumRotatedSortedArrayII {
 		System.out.println("The Min = " + findMin(nums));
 	}
 	
+	
+	//ACC:  Worst case O(n)
     public int findMin(int[] nums) {
+        int i = 0;
+        int j = nums.length-1;
+        int mid;
+        
+        while (i < j) {
+            mid = i + (j-i)/2;
+            
+            if (nums[mid] > nums[j]) {
+                i = mid+1;
+            } else if (nums[mid] < nums[j]) {
+                j = mid;
+            } else {  //[Different from Find Minimum in Rotated Sorted Array]
+            	      //Here nums[mid] == nums[j], we don't know the minimal is on mid's left or right, here just reduce the j once.  
+            	      //If made a wrong move, later i will correct the moving direction
+            	      //So: To the question: Would this affect the run-time complexity? How and why?  Yes, it will affect. Worst case becomes O(n)
+                j--;
+            }
+        }
+        
+        return nums[j];
+    }	
+	
+    
+    //ACC
+    public int findMinA(int[] nums) {
         int i;
         int nMin = nums[0];
         

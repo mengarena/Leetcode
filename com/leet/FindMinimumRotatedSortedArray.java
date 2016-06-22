@@ -24,7 +24,28 @@ public class FindMinimumRotatedSortedArray {
 	}
 	
 
-	public int findMin(int[] nums) {
+	//ACC:  O(logn)
+    public int findMin(int[] nums) {
+        int i = 0;
+        int j = nums.length-1;
+        int mid;
+        
+        while (i < j) {
+            mid = i + (j-i)/2;
+            
+            if (nums[mid] > nums[j]) {
+                i = mid+1;
+            } else if (nums[mid] < nums[j]) {
+                j = mid;
+            }
+        }
+        
+        return nums[j];
+    }
+	
+	
+    //ACC
+	public int findMinA(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         int n = nums.length;
         int nPos = 0;

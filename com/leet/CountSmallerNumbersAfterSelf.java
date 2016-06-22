@@ -66,6 +66,10 @@ public class CountSmallerNumbersAfterSelf {
 	private int insertTree(TreeNodeS root, int nNum) {
 		int nCount = 0;
 		
+		//Attention: when the node is a right node, its left child cnt = 1
+		//i.e. root.nCount only remember the count of node on left CHILD tree, 
+		//it does not remember count of all the node before it in binary search tree order (i.e. the its parent node or sibling are not counted)
+
 		while (true) {
 			if (root.val >= nNum) {
 				root.nCount++;
@@ -81,7 +85,7 @@ public class CountSmallerNumbersAfterSelf {
 				nCount = nCount + root.nCount;
 				
 				if (root.right == null) {
-					root.right = new TreeNodeS(nNum);
+					root.right = new TreeNodeS(nNum);  //Here Don't need to set root.right.nCount to nCount (Wrong)
 					break;
 				} else {
 					root = root.right;

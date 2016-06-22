@@ -79,7 +79,6 @@ public class NQueens {
         
         for (int i=0; i<n; i++) {   //Column
             if (board[nCurRowIdx][i] == 0) {
-                board[nCurRowIdx][i] = nCurRowIdx+1;   //Set a "Q"
                 
                 setInvalid(board, n, nCurRowIdx, i);   //Invalid the corresponding column, diagonal
                 
@@ -87,7 +86,6 @@ public class NQueens {
                 
                 recoverInvalid(board, n, nCurRowIdx, i);  //Recover the corresponding column, diagonal before trying next position in current row
                 
-                board[nCurRowIdx][i] = 0;
             }
         }
         
@@ -113,6 +111,8 @@ public class NQueens {
     
     private void setInvalid(int[][] board, int n, int nRowIdx, int nColIdx) {
         int i,ii,jj;
+        
+        board[nRowIdx][nColIdx] = nRowIdx+1;
         
         //Process column
         for (i=nRowIdx+1; i<n; i++) {
@@ -144,6 +144,8 @@ public class NQueens {
     //Recover the cell which is set invalid by current row or rows below current row
     private void recoverInvalid(int[][] board, int n, int nRowIdx, int nColIdx) {
         int i,ii,jj;
+        
+        board[nRowIdx][nColIdx] = 0;
         
         //Process column
         for (i=nRowIdx+1; i<n; i++) {

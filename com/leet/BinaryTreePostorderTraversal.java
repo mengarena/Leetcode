@@ -68,4 +68,24 @@ public class BinaryTreePostorderTraversal {
     }
 
 	
+    
+    //ACC:  Resursive
+    public List<Integer> postorderTraversalA(TreeNode root) {
+        List<Integer> lstNode = new ArrayList<Integer>();
+        
+        if (root == null) return lstNode;
+        
+        lstNode = postorderTraversal(root.left);
+        
+        List<Integer> rightNodes = postorderTraversal(root.right);
+        
+        if (!rightNodes.isEmpty()) {
+            for (Integer rightNode:rightNodes) lstNode.add(rightNode);
+        }
+        
+        lstNode.add(root.val);
+        return lstNode;
+    }
+    
+    
 }

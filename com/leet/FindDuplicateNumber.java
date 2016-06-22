@@ -26,9 +26,9 @@ public class FindDuplicateNumber {
 		System.out.println("The duplicate number is: " + findDuplicate(nums));
 	}
 	
-	//Refer to: http://keithschwarz.com/interesting/code/?dir=find-duplicate
+	//Refer to: http://keithschwarz.com/interesting/code/?dir=find-duplicate  (Floyd's loop detection)
 	//
-	//Say before entrying the cycle, need to go x steps from the starting point (here n-1)
+	//Say before entering the cycle, need to go x steps from the starting point (here n-1)
 	//Say the meeting point in cycle has length y from the entry point
 	//Say the length of the cycle is c and the remaining part of the cycle beyond y is z
 	//So with the first do-while, slow goes: x + mc + y  (mc--means multiple cycles)
@@ -61,6 +61,9 @@ public class FindDuplicateNumber {
         return slow;
     }
 	
+    
+    
+    
     public int findDuplicateA(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         int n = nums.length;

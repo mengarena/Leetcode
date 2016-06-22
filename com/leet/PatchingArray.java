@@ -42,6 +42,7 @@ public class PatchingArray {
 	}
 	
 	
+	//ACC: 12%  (1 ms)
 	public int minPatches(int[] nums, int n) {
 		int nLen = nums.length;
 		int nCumSum = 1;  //The up bound (exclusive) of current cumulative sum (i.e. the sum of current numbers in nums[] plus patched); 
@@ -49,9 +50,9 @@ public class PatchingArray {
 		int nNumIdx = 0;
 		int nPatchCnt = 0;
 				
-		while (nNumIdx <= nLen-1|| nCumSum <= n) {	
+		while (nNumIdx <= nLen-1 || nCumSum <= n) {	
 			if (nNumIdx <= nLen-1) {
-				if (nums[nNumIdx] > nCumSum) {
+				if (nums[nNumIdx] > nCumSum) {  //i.e. nums[nNumIdx] larger than the number going to be patched
 					nPatchCnt++;   //Path nCumSum as a new number
 					if (n - nCumSum < nCumSum) break;
 					nCumSum = nCumSum*2;    //Cumulative sum increase to nCumSum+nCumSum
@@ -64,7 +65,7 @@ public class PatchingArray {
 			} else {			
 				nPatchCnt++;   //Path nCumSum as a new number
 				if (n - nCumSum < nCumSum) break;
-				nCumSum = nCumSum*2;    //Cumulative sum increase to nCumSum+nCumSum				
+				nCumSum = nCumSum*2;    //Cumulative sum increase to nCumSum+nCumSum	 (i.e. this round patch nCumSum)			
 
 			}
 		}
@@ -73,6 +74,60 @@ public class PatchingArray {
 	}
 	
 
+	//ACC: 12%  (1 ms)
+    public int minPatchesA(int[] nums, int n) {
+        int cnt = nums.length;
+        int patchCnt = 0;
+        int cumSum = 0;
+        int nextNum = 1;
+        int patchedNum = 0;
+        int idx = 0;
+        
+        while (cumSum < n && idx < cnt) {
+            if (cumSum > nextNum - nums[idx]) {
+                if (nextNum < nums[idx]) {
+                    patchCnt++;
+                    patchedNum = nextNum;
+                    
+                    if (cumSum >= n - nextNum) return patchCnt;
+                    
+                    cumSum = cumSum + nextNum;
+                    nextNum = cumSum + 1;
+                } else {
+                    if (cumSum >= n - nums[idx]) return patchCnt;
+                    cumSum = cumSum + nums[idx];
+                    idx++;
+                    nextNum = cumSum + 1;
+                }
+            } else if (cumSum == nextNum - nums[idx]) {
+                cumSum = nextNum;
+                idx++;
+                nextNum = cumSum + 1;
+            } else {
+                if (cumSum >= n - nums[idx]) return patchCnt;
+                cumSum = cumSum + nums[idx];
+                idx++;
+            }
+            
+        }
+        
+        if (cumSum >= n) return patchCnt;
+        
+        while (cumSum < n) {
+            patchedNum = nextNum;
+            patchCnt++;
+            
+            if (cumSum >= n - patchedNum) break;
+            
+            cumSum += patchedNum;
+            nextNum = cumSum+1;
+        }
+        
+        return patchCnt;
+    }
+	
+	
+	
 /*	
 	//Exceed memory limit
     public int minPatches(int[] nums, int n) {
