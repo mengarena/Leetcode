@@ -41,13 +41,14 @@ public class BestTimeBuySellStockIII {
 	//The first option means on jth day, do nothing, so the profit will be the profit of last day, which is T[i][j-1]
 	//The second option is try to sell with prices[j], say this stock was buy on day m, 
 	//so the total profit will be the profit earned on jth day (prices[j]-prices[m]) plus the profit earned by mth day
+	//
 	//*in any one day, could sell and then buy
 	//
 	//prices[j]-prices[m] + T[i-1][m] could be rewrote as prices[j] + (T[i-1][m]-prices[m])
 	//
-	//For ith transation, if use DP to calculate from day 1 to day n-1, 
+	//For ith transaction, if use DP to calculate from day 1 to day n-1, 
 	//we will find that (T[i-1][m]-prices[m]) will be the maximal of the past (i.e. before we come to day j)
-	//So don't need to calculate the maximal value again and again. only when current different is larger, 
+	//So don't need to calculate the maximal value again and again. only when current difference is larger, 
 	//then we update it (i.e. the nMaxDiff in the code)
     public int maxProfit(int[] prices) {
 		if (prices == null || prices.length < 2) return 0;

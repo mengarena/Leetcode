@@ -54,8 +54,8 @@ public class LargestRectangleHistogram {
             }
             
             //The height in the stack does not continuously increase by this point, so calculate the possible area in the stack
-            //It search towards the beginning, until it find a stick X which is smaller then curVal
-            //Then all the possible area starting from the one-previous stick to stick X is calculated and it get the maximal area
+            //It search towards the beginning, until it find a stick X which is smaller than curVal
+            //Then all the possible area starting from the one-previous stick (of i) to stick X is calculated and it get the maximal area
             //This "while" loop also makes sure that the value on the stack top is always largest, the value at bottom is always smallest
             while (!stkSmallerHeight.isEmpty() && nCurVal < heights[stkSmallerHeight.peek()]) {  //New height is lower, calculate temporary area before current stick
                 int nHeight = heights[stkSmallerHeight.pop()];

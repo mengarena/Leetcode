@@ -36,8 +36,43 @@ public class JumpGameII {
 	}
 
 	
-	//ACC:  57%
+	
+	//ACC
     public int jump(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        int n = nums.length;
+        int i;
+        int basePos = 0;
+        int nextPos = 0;
+        int maxNextPos = Integer.MIN_VALUE;
+        int stepCnt = 0;
+        
+        while (basePos < n-1) {
+            
+            maxNextPos = Integer.MIN_VALUE;
+            
+            for (i=1; i<=nums[basePos]; i++) {
+                if (basePos + i >= n-1) {
+                    nextPos = basePos+i;
+                    break;
+                }
+                
+                if (i + basePos + nums[i + basePos] > maxNextPos) {
+                    maxNextPos = i + basePos + nums[i + basePos];
+                    nextPos = i + basePos;
+                }
+            }
+            
+            basePos = nextPos;
+            stepCnt++;
+        }
+        
+        return stepCnt;
+    }
+	
+	
+	//ACC:  57%
+    public int jumpA(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         int n = nums.length;
         int i;

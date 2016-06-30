@@ -85,6 +85,13 @@ public class MainProgram {
 	}
  	
 	
+	public static void change(StringBuilder x) {
+		x.delete(0, 2).append("cd");
+	}	
+	
+	public static void change(String y) {
+		y = "cd";
+	}	
 	/**
 	 * @param args
 	 */
@@ -93,21 +100,31 @@ public class MainProgram {
 
 		//int[] nums = {4, 5, 8, 10, 14};
 		//int[] nums = {4, 5, 8, 10, 14, 17};
-		int[] nums = {4,5,6,7,8};
 		
-		System.out.println("Median = " + findMedian(nums));
-		//int target = 2;
+		StringBuilder x = new StringBuilder("ab");
+		change(x);
+		System.out.println(x);
 		
-		//int pos = findPos(nums, target);
 		
-		//System.out.println("Insert/Find Pos = " + pos);
+		String y = "mm";
+		change(y);
+		System.out.println(y);
 		
-		String ss = "mengrufeng";
-		
-		char[] carr = ss.toCharArray();
-		String sss = new String(carr, 0, 4);
-		
-		System.out.println(sss);
+//		int[] nums = {4,5,6,7,8};
+//		
+//		System.out.println("Median = " + findMedian(nums));
+//		//int target = 2;
+//		
+//		//int pos = findPos(nums, target);
+//		
+//		//System.out.println("Insert/Find Pos = " + pos);
+//		
+//		String ss = "mengrufeng";
+//		
+//		char[] carr = ss.toCharArray();
+//		String sss = new String(carr, 0, 4);
+//		
+//		System.out.println(sss);
 		
 		return;
 		

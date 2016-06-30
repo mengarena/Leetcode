@@ -48,7 +48,7 @@ public class CountRangeSum {
     private int mergeSort(long[] sums, int nStartPos, int nEndPos, int lower, int upper) {   //Not including nEndPos
     	int nRangeCnt = 0;
     	
-    	if (nEndPos <= nStartPos+1) return 0;
+    	if (nEndPos <= nStartPos+1) return 0;   //Here uses sum, so if nEndPos-1 = nStartPos, there is no element (of nums) between
     	int nMid = nStartPos + (nEndPos-nStartPos)/2;
     	
     	//Sort left half and right half
@@ -58,7 +58,7 @@ public class CountRangeSum {
     	//From this step below, the left half and right half has already been sorted, i.e. the sums in left and right half are in ascending order
     	
     	//At this moment, it is possible that some elements in right half < elements in left half. Through following steps, all the elements will be in order
-    	//Since the count in left half and right half has already been calculated, we only need to calcuate the count across the left and right half
+    	//Since the count in left half and right half has already been calculated, we only need to calculate the count across the left and right half
     	long[] cache = new long[nEndPos-nStartPos];  //Used for sorting
     	int nUpBound = nMid;
     	int nLowBound = nMid;

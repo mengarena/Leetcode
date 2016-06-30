@@ -50,6 +50,7 @@ public class BinaryTreeMaximumPathSum {
     }
 
 	
+    //Get the larger left or right path of root (including root)
     private int maxPathSumHelper(TreeNode root) {
     	if (root == null) return 0;
     	

@@ -33,8 +33,133 @@ public class ExpressionAddOperators {
 		for (String sExpression:lstExpression) System.out.print(sExpression + ", ");
 	}
 	
-
+	
+	//ACC:  93%
+    public List<String> addOperatorsK(String num, int target) {
+        List<String> lstExp = new ArrayList<String>();
+        if (num == null || num.length() == 0) return lstExp;
+        char[] digits = num.toCharArray();
+        int len = num.length();
+        char[] path = new char[len*2-1];  //The digits in num could at most form a path (i.e. expression) with length len*2-1
+        
+        long n = 0;
+        
+        for (int i=0; i<len; i++) {
+            n = n*10  + (digits[i] - '0');
+            path[i] = digits[i];
+            dfs(lstExp, digits, target, path, i+1, 0, n, i+1);
+            if (n == 0) break;  //If the digit is 0, only if it a one-digit number, it is valid, otherwise, not valid
+        }
+        
+        return lstExp;
+    }
+    
+    private void dfs(List<String> lstExp, char[] digits, int target, char[] path, int pathLen, long left, long cur, int pos) {
+        if (left + cur == target && pos == digits.length) {
+            lstExp.add(new String(path, 0, pathLen));
+        }
+        
+        long n = 0;
+        int opPos = pathLen+1;
+        for (int i=pos; i<digits.length; i++) {
+            n = n*10 + digits[i] - '0';
+            path[opPos++] = digits[i];
+            
+            path[pathLen] = '+';
+            dfs(lstExp, digits, target, path, opPos, left + cur, n, i+1);
+            
+            path[pathLen] = '-';
+            dfs(lstExp, digits, target, path, opPos, left + cur, -n, i+1);
+            
+            path[pathLen] = '*';
+            dfs(lstExp, digits, target, path, opPos, left, cur*n, i+1);
+            
+            if (digits[pos] == '0') break;  //If the digit is 0, only if it a one-digit number, it is valid, otherwise, not valid
+        }
+    }
+	
+	
+	
+	//ACC:  76%  (almost the same as addOperatorsB, but here use StringBuilder, which make it faster
     public List<String> addOperators(String num, int target) {
+        List<String> lstExp = new ArrayList<String>();
+        if (num == null || num.length() == 0) return lstExp;
+        
+        StringBuilder sb = new StringBuilder();
+        
+        dfsHelper(num, target, lstExp, sb, 0l, 0l);
+        
+        return lstExp;
+    }
+    
+    private void dfsHelper(String num, int target, List<String> lstExp, StringBuilder sbExp, long prev, long sum) {
+        if (num.length() == 0 && sum == target) {
+            lstExp.add(sbExp.toString());
+            return;
+        }
+        
+        for (int i=1; i<=num.length(); i++) {
+            String sInitNum = num.substring(0, i);
+            
+            if (sInitNum.length() > 1 && sInitNum.charAt(0) == '0') continue;
+            
+            long lInitNum = Long.valueOf(sInitNum).longValue();
+            int len = sbExp.length();
+            
+            if (sbExp.length() != 0) {
+                dfsHelper(num.substring(i), target, lstExp, sbExp.append("+").append(sInitNum), lInitNum, sum+lInitNum);
+                sbExp.setLength(len);
+                dfsHelper(num.substring(i), target, lstExp, sbExp.append("-").append(sInitNum), -lInitNum, sum-lInitNum);
+                sbExp.setLength(len);
+                dfsHelper(num.substring(i), target, lstExp, sbExp.append("*").append(sInitNum), prev*lInitNum, sum-prev+prev*lInitNum);
+                sbExp.setLength(len);
+            } else {
+                dfsHelper(num.substring(i), target, lstExp, sbExp.append(sInitNum), lInitNum, lInitNum);
+                sbExp.setLength(len);
+            }
+        }
+    }
+	
+	
+	
+	//ACC: 23%
+    public List<String> addOperatorsB(String num, int target) {
+        List<String> lstExp = new ArrayList<String>();
+        if (num == null || num.length() == 0) return lstExp;
+        
+        dfsHelper(num, target, lstExp, "", 0l, 0l);
+        
+        return lstExp;
+    }
+    
+    private void dfsHelper(String num, int target, List<String> lstExp, String sExp, long prev, long sum) {
+        if (num.length() == 0 && sum == target) {
+            lstExp.add(sExp);
+            return;
+        }
+        
+        for (int i=1; i<=num.length(); i++) {
+            String sInitNum = num.substring(0, i);
+            
+            if (sInitNum.length() > 1 && sInitNum.charAt(0) == '0') continue;
+            
+            long lInitNum = Long.valueOf(sInitNum).longValue();
+            
+            if (sExp.length() != 0) {
+                dfsHelper(num.substring(i), target, lstExp, sExp + "+" + sInitNum, lInitNum, sum+lInitNum);
+                dfsHelper(num.substring(i), target, lstExp, sExp + "-" + sInitNum, -lInitNum, sum-lInitNum);
+                dfsHelper(num.substring(i), target, lstExp, sExp + "*" + sInitNum, prev*lInitNum, sum-prev+prev*lInitNum);
+            } else {
+                dfsHelper(num.substring(i), target, lstExp, sInitNum, lInitNum, lInitNum);
+            }
+        }
+    }
+    	
+	
+	
+
+	//ACC
+    public List<String> addOperatorsA(String num, int target) {
         List<String> lstExpression = new ArrayList<String>();
         if (num == null || num.length() == 0) return lstExpression;
 

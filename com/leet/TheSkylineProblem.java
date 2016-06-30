@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.TreeMap;
 
 import com.leet.MeetingRoomsII.Interval;
 
@@ -60,7 +63,206 @@ public class TheSkylineProblem {
 		System.out.println();
 	}
 
+	
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+	//The segment tree use Lazy propagation (https://www.hackerearth.com/notes/segment-tree-and-lazy-propagation/)
+	class SegmentTree {
+		private int[] st;
+		private int[] lazy;
+		private int N;
+		
+		public SegmentTree(int N) {
+			this.N = N;
+			if (N == 0) return;
+			
+			int height = (int)Math.ceil(Math.log(N)/Math.log(2));
+			int maxNodeCnt = 2*(int)Math.pow(2, height) - 1;  //Possible max number of node in the segment tree
+			this.st = new int[maxNodeCnt];
+			this.lazy = new int[maxNodeCnt];
+		}
+		
+		public void updateRange(int i, int j, int val) {   //val will be the height of buildings in this question
+			if (N == 0) return;
+			updateRangeUtil(0, N-1, i, j, val, 0);
+		}
+		
+		//ss, se is the start/end index of raw elements (managed) in current node (raw elements are the leafs in the Segment tree)
+		//si is current node in st (0 => root); 2*si+1 is its left child, 2*si+2 is its right child
+		//qs, qe is the index of query range (corresponding to raw elements, i.e. leafs)
+		//val is the new value
+		private void updateRangeUtil(int ss, int se, int qs, int qe, int val, int si) {
+			if (lazy[si] > 0) {  //has lazy, update first
+				if (st[si] < lazy[si]) st[si] = lazy[si];
+				
+				if (ss != se) {  //not leaf
+					if (lazy[2*si+1] < lazy[si]) lazy[2*si+1] = lazy[si]; 
+					if (lazy[2*si+2] < lazy[si]) lazy[2*si+2] = lazy[si];
+				}
+				
+				lazy[si] = 0;
+			}
+			
+			if (qe < ss || se < qs) return;  //out of range, no overlap
+			
+			if (qs <= ss && se <= qe) {
+				if (st[si] < val) st[si] = val;   //Keep the max value
+				if (ss != se) {
+					if (lazy[2*si+1] < val) lazy[2*si+1] = val; 
+					if (lazy[2*si+2] < val) lazy[2*si+2] = val;					
+				}
+			} else if (ss < se) {
+				int mid = ss + (se-ss)/2;
+				updateRangeUtil(ss, mid, qs, qe, val, 2*si+1);
+				updateRangeUtil(mid+1, se, qs, qe, val, 2*si+2);
+				st[si] = Math.max(st[2*si +1], st[2*si +2]);
+			}
+		}
+		
+		//Get max height at i
+		public int getMax(int i) {
+			if (N == 0) return 0;
+			return getMaxUtil(0, N-1, i, 0);
+		}
+		
+		
+		private int getMaxUtil(int ss, int se, int idx, int si) {
+			if (lazy[si] > 0) {  //has lazy, update first
+				if (st[si] < lazy[si]) st[si] = lazy[si];
+				
+				if (ss != se) {  //not leaf
+					if (lazy[2*si+1] < lazy[si]) lazy[2*si+1] = lazy[si]; 
+					if (lazy[2*si+2] < lazy[si]) lazy[2*si+2] = lazy[si];
+				}
+				
+				lazy[si] = 0;
+			}
+			
+			if (ss == se) {
+				return st[si];  //leaf
+			} else {
+				int mid = ss + (se-ss)/2;
+				if (idx <= mid) {
+					return getMaxUtil(ss, mid, idx, 2*si+1);
+				} else {
+					return getMaxUtil(mid+1, se, idx, 2*si+2);
+				}
+			}
+		}
+	}
+	
+	//Refer to https://leetcode.com/discuss/107742/segment-using-propagation-solution-with-explanation-42ms
+	//Idea:  segment the X-axis with the start/end point of the buildings, get the height on each segment
+	//Strategy:  Use segment tree to maintain and get the max height on each segment
+	//Each segment including the starting point but excluding the end point
+	public List<int[]> getSkylineK(int[][] buildings) {
+        List<int[]> lstPoints = new ArrayList<>();
+        if (buildings == null || buildings.length == 0 || buildings[0].length == 0) return lstPoints;
+        
+        List<Integer> lstLocations = new ArrayList<>();
+        
+        for (int[] b:buildings) {
+        	lstLocations.add(b[0]);
+        	lstLocations.add(b[1]);
+        }
+        
+        Collections.sort(lstLocations);
+        
+        Map<Integer, Integer> mapLoc2Idx = new HashMap<Integer, Integer>();  //X-axis coordinates, Index
+        int idx = 0;
+        for (int i:lstLocations) {
+        	if (!mapLoc2Idx.containsKey(i)) mapLoc2Idx.put(i, idx++);
+        }
+        
+        SegmentTree st = new SegmentTree(idx+1);
+        for (int[] b:buildings) {
+        	st.updateRange(mapLoc2Idx.get(b[0]), mapLoc2Idx.get(b[1]) - 1, b[2]);
+        }
+        
+        int prevHeight = 0;
+        int curHeight = 0;
+        for (int x:lstLocations) {  //x-axis coordinates
+        	curHeight = st.getMax(mapLoc2Idx.get(x));
+        	if (curHeight != prevHeight) {
+        		lstPoints.add(new int[]{x, curHeight});
+        	    prevHeight = curHeight;	
+        	}
+        	
+        }
+        
+        return lstPoints;
+	}
+	
+	
+	
+	
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	//ACC: 79%
+    public List<int[]> getSkylineA(int[][] buildings) {
+        List<int[]> lstPoints = new ArrayList<>();
+        if (buildings == null || buildings.length == 0 || buildings[0].length == 0) return lstPoints;
+        List<int[]> lstHeights = new ArrayList<>();
+        int n = buildings.length;
+        int i;
+        
+        for (i=0; i<n; i++) {
+            lstHeights.add(new int[]{buildings[i][0], -buildings[i][2]});
+            lstHeights.add(new int[]{buildings[i][1], buildings[i][2]});
+        }
+        
+        //Collections.sort(lstHeights, (a, b)->(a[0] == b[0]? a[1]-b[1]:a[0]-b[0]));   //Java 8
+        
+        //Sort the critical points based on x axis value (and the heights at these points)
+        //Small x-axis value put in front; if x-axis values are the same, sort based on height (*Trick here)
+        //Since for the starting point, height has been negated, so for starting points; if two segments have same starting points, 
+        //the (positive) larger height (i.e. the smaller negated height) will be put in front and processed first
+        //For end point, the smaller height will be put in front and processed first
+        Collections.sort(lstHeights, new Comparator<int[]>() {
+        	public int compare(int[] a, int[] b) {    //In a[], b[],  [0] x axis value; [1] height
+        		if (a[0] != b[0]) {
+        			return a[0] - b[0];
+        		} else {
+        			return a[1] - b[1];
+        		}
+        	}
+        });
+        
+        
+        //      Height,   Cnt
+        TreeMap<Integer, Integer> heightMap = new TreeMap<>(Collections.reverseOrder());   //TreeMap allows duplicates
+        
+        heightMap.put(0, 1);
+        int prevHeight = 0;
+        int curHeight = 0;
+        
+        for (int[] heights: lstHeights) {
+            if (heights[1] < 0) {
+                Integer cnt = heightMap.get(-heights[1]);
+                cnt = (cnt == null)? 1:cnt+1;
+                heightMap.put(-heights[1], cnt);
+            } else {
+                Integer cnt = heightMap.get(heights[1]);
+                if (cnt == 1) {
+                    heightMap.remove(heights[1]);
+                } else {
+                    heightMap.put(heights[1], cnt-1);
+                }
+            }
+            
+            curHeight = heightMap.firstKey();
+            
+            if (curHeight != prevHeight) {
+                lstPoints.add(new int[]{heights[0], curHeight});
+                prevHeight = curHeight;
+            }
+        }
+        
+        return lstPoints;
+    }
+	
+	
+	
 	//ACC: 54%
     public List<int[]> getSkyline(int[][] buildings) {
         List<int[]> lstKeyPoints = new ArrayList<>();
@@ -68,13 +270,7 @@ public class TheSkylineProblem {
         int n = buildings.length;
         List<int[]> lstHeights = new ArrayList<>();
         int i;
-        
-        if (n == 1) {
-        	lstKeyPoints.add(new int[]{buildings[0][0], buildings[0][2]});
-        	lstKeyPoints.add(new int[]{buildings[0][1], 0});
-        	return lstKeyPoints;
-        }    
-        
+                
         for (i=0; i<n; i++) {
         	lstHeights.add(new int[]{buildings[i][0], -buildings[i][2]});   //Negative to represent start point
         	lstHeights.add(new int[]{buildings[i][1], buildings[i][2]});    //Positive to represent end point
@@ -113,7 +309,7 @@ public class TheSkylineProblem {
         	if (h[1] < 0) {   //Starting point; its height comes into play
         		pq.offer(-h[1]);
         	} else {    //End point, its height becomes ineffective (out of effect)
-        		pq.remove(h[1]);
+        		pq.remove(h[1]);  //This step is slow (O(n))
         	}
         	
         	curHeight = pq.peek();
