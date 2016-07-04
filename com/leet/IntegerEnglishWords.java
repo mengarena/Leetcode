@@ -54,7 +54,7 @@ public class IntegerEnglishWords {
         	}
         	
         	sLevel = convert2Words(nRemained);
-        	if (nLevel >= 1 && nRemained > 0) sLevel = sLevel + " " + BigNumbers[nLevel-1];
+        	if (nLevel >= 1) sLevel = sLevel + " " + BigNumbers[nLevel-1];
         	
     		if (sWords.length() > 0) {
     			sWords = sLevel + " " + sWords; 

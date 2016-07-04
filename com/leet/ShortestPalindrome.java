@@ -24,6 +24,9 @@ public class ShortestPalindrome {
         System.out.println(shortestPalindrome(s));
     }
     
+    
+    
+    
     //Algorithm: based on KMP algorithm (Complexity: O(n+n))
     public String shortestPalindromeA(String s) {
         if (s == null || s.isEmpty()) return "";
@@ -107,6 +110,8 @@ public class ShortestPalindrome {
     }   
 
     
+    
+    
     //Get the max length of palindrome starting from position 0 of s
     private int getLongestPalindrome(String s) {
     	if (s == null || s.isEmpty()) return 0;
@@ -134,7 +139,8 @@ public class ShortestPalindrome {
     		narrPalinLen[i] = (nRight > i) ? Math.min(narrPalinLen[j], nRight-i):1;
     		
     		//Expand narrPalinLen[i]
-    		while (i+narrPalinLen[i] < carr.length && i-narrPalinLen[i] >= 0 && carr[i+narrPalinLen[i]] == carr[i-narrPalinLen[i]]) narrPalinLen[i]++;
+    		//while (i+narrPalinLen[i] < carr.length && i-narrPalinLen[i] >= 0 && carr[i+narrPalinLen[i]] == carr[i-narrPalinLen[i]]) narrPalinLen[i]++;
+    		while (carr[i+narrPalinLen[i]] == carr[i-narrPalinLen[i]]) narrPalinLen[i]++;
     		
     		if (i+narrPalinLen[i] > nRight) {
     			nRight = i + narrPalinLen[i];

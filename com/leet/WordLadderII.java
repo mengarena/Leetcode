@@ -176,7 +176,7 @@ public class WordLadderII {
     	
     	int nSize = wordList.size();
     	
-    	while (!bFound && !lstlstParent.isEmpty() && lstlstParent.get(0).size() < nSize + 1) {
+    	while (!bFound && !lstlstParent.isEmpty() && lstlstParent.get(0).size() < nSize + 1) {  // +1 because there is a beginWord (which does not in dict) in lstlstParent
     		
     		int nParentCnt = lstlstParent.size();  //#path from root to this level
     		
@@ -224,7 +224,8 @@ public class WordLadderII {
 			//Reason to remove the word for next level:
 			//If don't remove, when meets this word at other (higher) level, the final path could not be shorter than this one,
 			//those will not be the result path, so could remove it
-    		for (String sRemove:wordsToRemove) wordList.remove(sRemove);	
+    		//for (String sRemove:wordsToRemove) wordList.remove(sRemove);	
+    		wordList.removeAll(wordsToRemove);
     	}
     	    	
     	return lstlstLadders;

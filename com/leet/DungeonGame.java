@@ -42,13 +42,43 @@ public class DungeonGame {
 	}
 	
 	
+	//ACC: 52%  (Basically, same as the solution below, but simplified a little)
+    public int calculateMinimumHP(int[][] dungeon) {
+        if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0) return 0;
+        int m = dungeon.length;
+        int n = dungeon[0].length;
+        int i, j;
+        int[][] dpInit = new int[m][n];
+
+        dpInit[m-1][n-1] = dungeon[m-1][n-1] >= 0? 1:1-dungeon[m-1][n-1];
+        
+        for (i=m-2; i>=0; i--) {
+            dpInit[i][n-1] = dungeon[i][n-1] >= dpInit[i+1][n-1]? 1:dpInit[i+1][n-1] - dungeon[i][n-1];
+        }
+        
+        for (i=n-2; i>=0; i--) {
+            dpInit[m-1][i] = dungeon[m-1][i] >= dpInit[m-1][i+1]? 1:dpInit[m-1][i+1] - dungeon[m-1][i];
+        }
+        
+        for (i=m-2; i>=0; i--) {
+            for (j=n-2; j>=0; j--) {
+                dpInit[i][j] = Math.max(1, Math.min(dpInit[i+1][j], dpInit[i][j+1]) - dungeon[i][j]);
+            }
+        }
+        
+        return dpInit[0][0];
+    }
+	
+	
+	
+	
 	//ACC:  10%
 	//
 	//DP: but from the last cell to the first cell
 	//At each cell, need to make sure:
 	//Initial value should be at least 1, and also make sure with the initial value and the value in this cell, 
 	//should meet the requirement for the initial value for the next (i.e. right, bottom) cell
-    public int calculateMinimumHP(int[][] dungeon) {
+    public int calculateMinimumHPA(int[][] dungeon) {
         if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0) return 0;
         int m = dungeon.length;
         int n = dungeon[0].length;

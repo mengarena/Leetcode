@@ -101,14 +101,14 @@ public class MainProgram {
 		//int[] nums = {4, 5, 8, 10, 14};
 		//int[] nums = {4, 5, 8, 10, 14, 17};
 		
-		StringBuilder x = new StringBuilder("ab");
-		change(x);
-		System.out.println(x);
-		
-		
-		String y = "mm";
-		change(y);
-		System.out.println(y);
+//		StringBuilder x = new StringBuilder("ab");
+//		change(x);
+//		System.out.println(x);
+//		
+//		
+//		String y = "mm";
+//		change(y);
+//		System.out.println(y);
 		
 //		int[] nums = {4,5,6,7,8};
 //		
@@ -126,10 +126,10 @@ public class MainProgram {
 //		
 //		System.out.println(sss);
 		
-		return;
+//		return;
 		
 		
-//		MinStack myInstance = new MinStack();
+		MaxSumRectangleNoLargerThanK myInstance = new MaxSumRectangleNoLargerThanK();
 		
 //		myInstance.push(512);
 //		myInstance.push(-1024);
@@ -172,7 +172,7 @@ public class MainProgram {
 		
 //		long lnTm1 = System.currentTimeMillis();
 
-		//myInstance.run();
+		myInstance.run();
 		
 //		long lnTm2 = System.currentTimeMillis();
 		
@@ -262,7 +262,7 @@ public class MainProgram {
 		// 1/0 ==> run time error
 		// 1/0.0,   1.0/0, 1.0/0.0 ==> all are OK, generate Infinity
 		
-//		return;
+		return;
 	
 	}
 

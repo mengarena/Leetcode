@@ -113,6 +113,7 @@ public class WordSearchII {
 	    int m = board.length;
 	    int n = board[0].length;
 
+	    //Here the order of "board[i][j] == '#' || tr.children[board[i][j]-'a'] == null" is important
 	    if (i >= m || i < 0 || j >= n || j < 0 || board[i][j] == '#' || tr.children[board[i][j]-'a'] == null) return;
 	    
 	    char c = board[i][j];

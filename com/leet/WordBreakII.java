@@ -1,7 +1,9 @@
 package com.leet;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 //Given a string s and a dictionary of words dict, add spaces in s to construct a sentence where each word is a valid dictionary word.
@@ -22,8 +24,86 @@ public class WordBreakII {
 	}
 
 	
-	//ACC: 24%
+	//ACC: 91%
+    private Map<String, List<String>> hm = new HashMap<>();
+    
+    public List<String> wordBreakK(String s, Set<String> wordDict) {
+        int maxLen = 0;
+        
+        for (String sWord:wordDict) maxLen = Math.max(maxLen, sWord.length());
+        
+        return wordBreakHelper(s, wordDict, maxLen);
+    }
+    
+    public List<String> wordBreakHelper(String s, Set<String> wordDict, int maxLen) {
+        List<String> lstBreaks = new ArrayList<String>();
+        if (s == null || s.length() == 0 || wordDict == null || wordDict.size() == 0) return lstBreaks;
+        int n = s.length();
+        int i;
+        
+        if (hm.containsKey(s)) return hm.get(s);  //Important, avoid duplicated processing
+                                                  //For example, s = "aaaaaaaaaaaa"
+                                                  //it could be divided/processed as "aa" "aaa" "aaaaaaa"
+                                                  //or:                              "a" "aaaa" "aaaaaaa"
+                                                  //Then "aaaaaaa" will be processed twice.  
+                                                  //With this "if", it could save the effort
+        
+        for (i=0; i<Math.min(n, maxLen); i++) {  //Compare the solution below, use maxLen help recude unnecessary processing
+            String sFirst = s.substring(0, i+1);
+            
+            if (wordDict.contains(sFirst)) {
+                List<String> lstTmpBreaks = wordBreakHelper(s.substring(i+1), wordDict, maxLen);
+                
+                if (!lstTmpBreaks.isEmpty()) {
+                    for (String sTmpBreak:lstTmpBreaks) lstBreaks.add(sFirst + " " + sTmpBreak);
+                } else {
+                    if (i == n-1) lstBreaks.add(sFirst);
+                }
+            }
+        }
+
+        hm.put(s, lstBreaks);
+        
+        return lstBreaks;
+    }
+	
+	
+	
+	//ACC:  50%
+    //private Map<String, List<String>> hm = new HashMap<>();
+    
     public List<String> wordBreak(String s, Set<String> wordDict) {
+        List<String> lstBreaks = new ArrayList<String>();
+        if (s == null || s.length() == 0 || wordDict == null || wordDict.size() == 0) return lstBreaks;
+        int n = s.length();
+        int i;
+        
+        if (hm.containsKey(s)) return hm.get(s);
+        
+        for (i=0; i<n; i++) {
+            String sFirst = s.substring(0, i+1);
+            
+            if (wordDict.contains(sFirst)) {
+                List<String> lstTmpBreaks = wordBreak(s.substring(i+1), wordDict);
+                
+                if (!lstTmpBreaks.isEmpty()) {
+                    for (String sTmpBreak:lstTmpBreaks) lstBreaks.add(sFirst + " " + sTmpBreak);
+                } else {
+                    if (i == n-1) lstBreaks.add(sFirst);
+                }
+            }
+        }
+
+        hm.put(s, lstBreaks);
+        
+        return lstBreaks;
+    }
+	
+	
+	
+	
+	//ACC: 24%
+    public List<String> wordBreakB(String s, Set<String> wordDict) {
         List<String> lstBreaks = new ArrayList<String>();
         if (s == null || s.length() == 0 || wordDict == null || wordDict.size() == 0) return lstBreaks;
         int n = s.length();
@@ -57,6 +137,8 @@ public class WordBreakII {
     }
 	
 	
+    
+    
     
     
 	
