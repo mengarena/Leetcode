@@ -129,7 +129,7 @@ public class MainProgram {
 //		return;
 		
 		
-		MaxSumRectangleNoLargerThanK myInstance = new MaxSumRectangleNoLargerThanK();
+		RearrangeStringKDistanceApart myInstance = new RearrangeStringKDistanceApart();
 		
 //		myInstance.push(512);
 //		myInstance.push(-1024);
@@ -262,6 +262,7 @@ public class MainProgram {
 		// 1/0 ==> run time error
 		// 1/0.0,   1.0/0, 1.0/0.0 ==> all are OK, generate Infinity
 		
+		System.out.println("--------Done--------");
 		return;
 	
 	}
