@@ -129,7 +129,7 @@ public class MainProgram {
 //		return;
 		
 		
-		RearrangeStringKDistanceApart myInstance = new RearrangeStringKDistanceApart();
+		SuperPow myInstance = new SuperPow();
 		
 //		myInstance.push(512);
 //		myInstance.push(-1024);
