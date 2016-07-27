@@ -33,8 +33,10 @@ For the above tables, Max has the highest salary in the IT department and Henry 
 
 ==Answer:
 
-select Department.Name, Employee.Name, Employee.Salary
+select Department.Name as Department, Employee.Name as Employee, Employee.Salary as Salary
 from Employee, Department, (select DepartmentId, max(Salary) as MaxSalary from Employee group by DepartmentId) as MaxStat
 where Employee.DepartmentId = Department.Id and MaxStat.DepartmentId = Department.Id and Employee.Salary = MaxStat.MaxSalary
 order by Department.Id;
 
+
+* Here pay attention: The result table's column caption should be set
