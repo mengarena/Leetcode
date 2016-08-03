@@ -74,7 +74,6 @@ public class UglyNumberII {
         uglyNum[1] = 1;
         
         int curNum = Integer.MAX_VALUE;
-        int minIdx = 0;
         int i;
         int j;
         
@@ -84,12 +83,10 @@ public class UglyNumberII {
         
         while (i <= n) {
             curNum = Integer.MAX_VALUE;
-            minIdx = -1;
             
             for (j = 0; j < 3; j++) {
                 if (curNum > heads[j]) {
                     curNum = heads[j];
-                    minIdx = j;
                 }
             } 
             
