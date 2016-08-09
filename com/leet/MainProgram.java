@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class MainProgram {
 
@@ -92,12 +93,53 @@ public class MainProgram {
 	public static void change(String y) {
 		y = "cd";
 	}	
+	
+	
+	private static void Swaps(int a, int b) {
+		System.out.println("Before = " + a + ", " + b);
+		a = a ^ b;
+		b = a ^ b;
+		a = a ^ b;
+		
+		System.out.println("After = " + a + ", " + b);
+	}
+	
+	
+	private static void testkk() {
+		Map<Integer, List<Integer>> hm = new HashMap<>();
+		
+		List<Integer> kk = new ArrayList<>();
+		kk.add(3); kk.add(6); kk.add(9);
+		
+		hm.put(5, kk);
+		
+		List<Integer> mm = hm.get(5);
+		
+		mm.remove(1);
+		
+		List<Integer> nn = hm.get(5);
+		
+		for (int k : nn) {
+			System.out.println(k);
+		}
+	}
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		testkk();
+		
+		//float[] accMagOrientation = new float[3];
+		
+		//if (accMagOrientation == null) {
+		//	System.out.println("adfad");
+		//} else {
+		//	System.out.println("3333");
+		//}
+		
 		//int[] nums = {4, 5, 8, 10, 14};
 		//int[] nums = {4, 5, 8, 10, 14, 17};
 		
@@ -128,8 +170,9 @@ public class MainProgram {
 		
 //		return;
 		
+		//Swaps(15, 73);
 		
-		SuperPow myInstance = new SuperPow();
+		//FactorCombinations myInstance = new FactorCombinations();
 		
 //		myInstance.push(512);
 //		myInstance.push(-1024);
@@ -172,7 +215,7 @@ public class MainProgram {
 		
 //		long lnTm1 = System.currentTimeMillis();
 
-		myInstance.run();
+		//myInstance.run();
 		
 //		long lnTm2 = System.currentTimeMillis();
 		
