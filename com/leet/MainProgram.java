@@ -124,13 +124,26 @@ public class MainProgram {
 		}
 	}
 	
+	
+	private int test11() {
+		try {
+			return 1;
+		} finally {
+			System.out.println("Finally");
+		}
+	}
+	
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		testkk();
+		MainProgram dd = new MainProgram();
+		dd.test11();
+		
+		//testkk();
 		
 		//float[] accMagOrientation = new float[3];
 		
