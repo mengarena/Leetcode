@@ -140,8 +140,8 @@ public class MainProgram {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		MainProgram dd = new MainProgram();
-		dd.test11();
+		//MainProgram dd = new MainProgram();
+		//dd.test11();
 		
 		//testkk();
 		
@@ -185,7 +185,8 @@ public class MainProgram {
 		
 		//Swaps(15, 73);
 		
-		//FactorCombinations myInstance = new FactorCombinations();
+		TreeDfsBfs myInstance = new TreeDfsBfs();
+		myInstance.run();
 		
 //		myInstance.push(512);
 //		myInstance.push(-1024);
