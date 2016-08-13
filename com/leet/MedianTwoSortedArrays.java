@@ -20,6 +20,109 @@ public class MedianTwoSortedArrays {
     	System.out.println(findMedianSortedArrays(nums1, nums2));
     }
     
+ 
+    //ACC:  47%
+    public double findMedianSortedArraysM(int[] nums1, int[] nums2) {
+        if ((nums1 == null || nums1.length == 0) && (nums2 == null || nums2.length == 0)) return 0;
+        int n1 = nums1.length;
+        int n2 = nums2.length;
+        int medianIdx1 = 0;
+        int i=0, j=0;
+        int num1 = 0, num2 = 0;
+        boolean bNum1 = false;
+        boolean bSecondMedian = false;
+        
+        if (((n1+n2) % 2) == 1) {
+            medianIdx1 = (n1+n2)/2+1;
+        } else {
+            medianIdx1 = (n1+n2)/2;
+            bSecondMedian = true;
+        }
+        
+        while (i < n1 && j < n2) {
+            if (nums1[i] <= nums2[j]) {
+                num1 = nums1[i];
+                i++;
+            } else {
+                num1 = nums2[j];
+                j++;
+            }
+            
+            if (i+j == medianIdx1) {
+                bNum1 = true;
+                break;
+            }
+        }
+        
+        if (bSecondMedian == false && bNum1 == true) {
+            return num1*1.0;
+        } 
+      
+        if (bSecondMedian) {
+            if (i < n1 && j < n2) {
+                num2 = Math.min(nums1[i], nums2[j]);
+                return (num1+num2)*1.0/2;
+            } else if (i < n1) {
+                if (bNum1 == false) {
+                    while (i < n1) {
+                        i++;
+                        if (i+j == medianIdx1) {
+                            bNum1 = true;
+                            num1 = nums1[i-1];
+                            break;
+                        }
+                    }
+                    
+                    i++;
+                    num2 = nums1[i-1];
+                    return (num1+num2)*1.0/2;
+                } else {
+                    i++;
+                    num2 = nums1[i-1];
+                    return (num1+num2)*1.0/2;
+                }
+            } else {
+                if (bNum1 == false) {
+                    while (j < n2) {
+                        j++;
+                        if (i+j == medianIdx1) {
+                            bNum1 = true;
+                            num1 = nums2[j-1];
+                            break;
+                        } 
+                    }
+                    
+                    j++;
+                    num2 = nums2[j-1];
+                    return (num1+num2)*1.0/2;
+                } else {
+                    j++;
+                    num2 = nums2[j-1];
+                    return (num1+num2)*1.0/2;
+                }
+            }
+        } else {
+             if (i == n1) {
+                 while (j < n2) {
+                     j++;
+                     if (i+j == medianIdx1) {
+                         return nums2[j-1]*1.0;
+                     }
+                 }
+             } else {
+                 while (i < n1) {
+                     i++;
+                     if (i+j == medianIdx1) {
+                         return nums1[i-1]*1.0;
+                     }
+                 }
+             }
+        }
+
+        
+        return 0;
+        
+    }
     
     
     
