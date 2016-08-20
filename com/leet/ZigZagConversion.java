@@ -28,6 +28,44 @@ public class ZigZagConversion {
 		System.out.println("ZigZag Converted String: " + convert(sOrgStr, nNumRows));
 	}
 	
+	
+	//ACC: 83%
+	//Find the index of char in the original string into the rows of the result
+    public String convertB(String s, int numRows) {
+        if (numRows <= 0) return "";
+        if (s == null || s.length() <= 1 || numRows == 1 || s.length() <= numRows) return s;
+        int i,j,k;
+        StringBuilder sb = new StringBuilder();
+        int len = numRows*2-2;
+        int n = s.length();
+        
+        for (i=0; i<numRows; i++) {
+            if (i == 0 || i == numRows-1) {   //One char in each segment
+                j = i;
+                while (j < n) {
+                    sb.append(s.charAt(j));
+                    j = j + len;
+                }
+            } else {   //Two chars in each segment
+                j = i;
+                k = len + 1 - j - 1;
+                
+                while (j < n) {
+                    sb.append(s.charAt(j));
+                    j = j + len;
+                    
+                    if (k < n) {
+                        sb.append(s.charAt(k));
+                    }
+                    k = k + len;
+                }
+            }
+        }
+
+        return sb.toString();
+    }	
+	
+	
 	//ACC
     public String convert(String s, int numRows) {
         if (numRows <= 0) return "";
