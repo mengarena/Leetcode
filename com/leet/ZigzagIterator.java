@@ -1,6 +1,7 @@
 package com.leet;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 //Given two 1d vectors, implement an iterator to return their elements alternately.
@@ -29,6 +30,65 @@ public class ZigzagIterator {
 		// TODO Auto-generated constructor stub
 	}
 
+	//ACC:  25%
+	//Could for K list
+	private List<Iterator> lstOverallK = null;
+	
+    public void ZigzagIteratorB(List<Integer> v1, List<Integer> v2) {
+    	lstOverallK = new ArrayList<>();
+        if (v1 != null && !v1.isEmpty()) lstOverallK.add(v1.iterator());
+        if (v2 != null && !v2.isEmpty()) lstOverallK.add(v2.iterator());
+    }
+
+    public int nextB() {
+        if (lstOverallK == null || lstOverallK.isEmpty()) return 0;
+        Iterator vTmp = lstOverallK.remove(0);
+        int val = (Integer) vTmp.next();   //"(Integer)" convert is needed
+        
+        if (vTmp.hasNext()) lstOverallK.add(vTmp);
+        
+        return val;
+    }
+
+    public boolean hasNextB() {
+        return !lstOverallK.isEmpty();
+    }    	
+	
+	
+	
+	//ACC:  25%
+    //Could for K list
+	private List<List<Integer>> lstlstOverall = new ArrayList<List<Integer>>();
+	private int nIdxA = 0;
+	
+    public void ZigzagIteratorA(List<Integer> v1, List<Integer> v2) {
+        if ((v1 == null || v1.isEmpty()) && (v2 == null || v2.isEmpty())) return;
+        if (v1 != null && !v1.isEmpty()) lstlstOverall.add(v1);
+        if (v2 != null && !v2.isEmpty()) lstlstOverall.add(v2);
+        nIdxA = 0;
+    }
+
+    public int nextA() {
+        if (lstlstOverall.isEmpty()) return 0;
+        List<Integer> vTmp = lstlstOverall.get(nIdxA);
+        int val = vTmp.remove(0);
+        if (vTmp.isEmpty()) {
+            lstlstOverall.remove(nIdxA);
+            if (nIdxA >= lstlstOverall.size()) nIdxA = 0;
+        } else {
+        	nIdxA++;
+            nIdxA = nIdxA % lstlstOverall.size();
+        }
+        return val;
+    }
+
+    public boolean hasNextA() {
+        return !lstlstOverall.isEmpty();
+    }    	
+	
+    
+    
+	
 	//Accepted:  45%
 	private List<Integer> lstOverall = new ArrayList<Integer>();
 	private int nIdx = 0;
