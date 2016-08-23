@@ -36,8 +36,55 @@ public class EditDistance {
 	}
 
 	
-	//Strategy: DTW
+	//ACC:   94%
+	//Less space
     public int minDistance(String word1, String word2) {
+        if ((word1 == null && word2 == null) || (word1.length() == 0 && word2.length() == 0))  return 0;
+        int n1 = word1.length();
+        int n2 = word2.length();
+        
+        if (n1 == 0) return n2;
+        if (n2 == 0) return n1;
+    
+        int i, j;
+        int[] narrDist = new int[n2+1];
+        int prev, corner;
+        int fromCorner;
+        int cost;
+        
+        for (j=1; j<=n2; j++) narrDist[j] = j;
+        
+        //Along with the increasing of i; the intersection of i, j is actually one row (that's why we only need on 1-D array), the row is moving high.
+        //To decide the current narrDist[j], it depends on 3 elements: the one below (i.e. the previous value of narrDist[j]; the value before it in the same row (here use "prev" to represent); the value at the corner position related to narrDist[j] (here use "corner" to represent)
+        //i.e. the total required space is O(n2) + 2 (the old narrDist[j] and the "corner")
+        for (i=1; i<=n1; i++) {
+            prev = i;    //when j == 0, prev distance is the length in word1 to current i
+            corner = i-1;  //When j == 0, corner distance is the length in word1 to i-1
+            
+            for (j=1; j<=n2; j++) {
+                if (word1.charAt(i-1) == word2.charAt(j-1)) {
+                    cost = 0;
+                } else {
+                    cost = 1;
+                }
+                
+                fromCorner = corner;
+                fromCorner += cost;
+                
+                corner = narrDist[j];  //For next round
+                
+                narrDist[j] = Math.min(fromCorner, Math.min(narrDist[j], prev)+1);
+                
+                prev = narrDist[j];   //For next round
+            }
+        }
+        
+        return narrDist[n2];
+    }
+	
+	
+	//Strategy: DTW
+    public int minDistanceA(String word1, String word2) {
         if ((word1 == null && word2 == null) || (word1.length() == 0 && word2.length() == 0))  return 0;
         int n1 = word1.length();
         int n2 = word2.length();
@@ -367,7 +414,7 @@ public class EditDistance {
     
     
     
-    public int minDistanceA(String word1, String word2) {
+    public int minDistanceD(String word1, String word2) {
         if ((word1 == null && word2 == null) || (word1.length() == 0 && word2.length() == 0))  return 0;
         int n1 = word1.length();
         int n2 = word2.length();
