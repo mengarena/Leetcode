@@ -34,6 +34,52 @@ public class ReverseWordsInAString {
 	}
 	
 	
+	//ACC;  73%
+	public static String reverseWordsM(String s) {
+	    StringBuilder res = new StringBuilder();
+	    for (int start = s.length() - 1; start >= 0; start--) {
+	        if (s.charAt(start) == ' ') continue;
+	        int end = start;
+	        while (start >= 0 && s.charAt(start) != ' ') start--;
+	        res.append(s.substring(start + 1, end + 1)).append(" ");
+	    }
+	    return res.toString().trim();
+	}
+	
+	
+	//ACC
+	public String reverseWordsMM(String s) {
+        String[] res = s.trim().split("\\s+");
+        StringBuilder sb = new StringBuilder();
+        for(int i=res.length-1;i>=0;i--){
+            sb.append(res[i]).append(" ");
+        }
+        return sb.toString().trim();
+    }
+	
+	//ACC:  99%
+	public String reverseWordsAA(String s) {
+        if(s.isEmpty())return s;
+        StringBuilder sb = new StringBuilder();
+        int endIndex = s.length();
+        int beginIndex;
+        while((beginIndex = s.lastIndexOf(' ', endIndex -1)) != -1){
+            String value = s.substring(beginIndex + 1, endIndex);
+            if(!value.isEmpty()){
+                sb.append(value).append(" ");
+            }
+            endIndex = beginIndex;
+        }
+        if(endIndex == 0 && sb.length() != 0){
+            sb.deleteCharAt(sb.length() -1);
+        }else{
+            sb.append(s.substring(0, endIndex));
+        }
+        return sb.toString();
+    }
+	
+	
+	
 	//ACC: 63%
 	//Strategy:  Reverse whole string, and then reverse each word
 	//Consecutive ' ' becomes one ' '

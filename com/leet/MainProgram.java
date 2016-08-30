@@ -11,6 +11,9 @@ import java.util.Map;
 
 public class MainProgram {
 
+	static int DD;
+	int ling = 11;
+	
 	public MainProgram() {
 		// TODO Auto-generated constructor stub
 	}
@@ -108,6 +111,7 @@ public class MainProgram {
 	private static void testkk() {
 		Map<Integer, List<Integer>> hm = new HashMap<>();
 		
+		
 		List<Integer> kk = new ArrayList<>();
 		kk.add(3); kk.add(6); kk.add(9);
 		
@@ -140,7 +144,23 @@ public class MainProgram {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		//MainProgram dd = new MainProgram();
+//		final int mm;
+//		mm = 99;
+//
+//		DD = 88;
+//		
+//		System.out.println(mm);
+//		System.out.println(DD);
+//		
+//		DD= 0;
+//		System.out.println(DD);
+//		
+		
+
+		
+		LexicographicalNumbers instance = new LexicographicalNumbers();
+		instance.run();
+		
 		//dd.test11();
 		
 		//testkk();
@@ -185,8 +205,8 @@ public class MainProgram {
 		
 		//Swaps(15, 73);
 		
-		TreeDfsBfs myInstance = new TreeDfsBfs();
-		myInstance.run();
+		//TreeDfsBfs myInstance = new TreeDfsBfs();
+		//myInstance.run();
 		
 //		myInstance.push(512);
 //		myInstance.push(-1024);
