@@ -158,7 +158,7 @@ public class MainProgram {
 		
 
 		
-		LexicographicalNumbers instance = new LexicographicalNumbers();
+		FindSmallestIntegerBySwappingAPairOfDigits instance = new FindSmallestIntegerBySwappingAPairOfDigits();
 		instance.run();
 		
 		//dd.test11();
