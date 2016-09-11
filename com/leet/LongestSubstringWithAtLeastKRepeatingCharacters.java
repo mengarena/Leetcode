@@ -39,7 +39,9 @@ public class LongestSubstringWithAtLeastKRepeatingCharacters {
 	//Strategy: Go through the string and calculate the count for each character
 	//If one character has less than k times, the whole string could be broken into several segments by this character
 	//Another trick is to use the HashMap to remember processed string
-	
+	//Average O(nlogn), worst O(n^2)
+	//In the average case, because we divide evenly, so T(n) = s * T(n/s) + n and T(n) = O(nlogn); 
+	//if we divide very pathologically, then T(n) = T(n - 2) + n, so T(n) = O(n^2).
     public int longestSubstring(String s, int k) {
 	    return longestSubstring(s, k, new HashMap<String,Integer>());
     }
