@@ -28,7 +28,7 @@ import java.util.Map;
 //
 //The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated 3 times.
 
-
+//Baidu
 public class LongestSubstringWithAtLeastKRepeatingCharacters {
 
 	public LongestSubstringWithAtLeastKRepeatingCharacters() {
