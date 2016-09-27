@@ -158,7 +158,7 @@ public class MainProgram {
 		
 
 		
-		FindSmallestIntegerBySwappingAPairOfDigits instance = new FindSmallestIntegerBySwappingAPairOfDigits();
+		QueueReconstructionByHeight instance = new QueueReconstructionByHeight();
 		instance.run();
 		
 		//dd.test11();
