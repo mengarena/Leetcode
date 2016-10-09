@@ -156,10 +156,23 @@ public class MainProgram {
 //		System.out.println(DD);
 //		
 		
-
+//		int[][] aa = {{3,2},{5,8},{2,4}};
+//		
+//		Arrays.sort(aa, new Comparator<int[]>() {
+//			public int compare(int[] a, int[] b) {
+//				return b[0]-a[0];
+//			}
+//		});
+//
+//		
+//		System.out.println();
 		
-		QueueReconstructionByHeight instance = new QueueReconstructionByHeight();
+		System.out.println("Begin: " + System.currentTimeMillis());
+		
+		MinimumUniqueWordAbbreviation instance = new MinimumUniqueWordAbbreviation();
 		instance.run();
+		
+		System.out.println("End: " + System.currentTimeMillis());
 		
 		//dd.test11();
 		
