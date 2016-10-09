@@ -169,7 +169,7 @@ public class MainProgram {
 		
 		System.out.println("Begin: " + System.currentTimeMillis());
 		
-		MinimumUniqueWordAbbreviation instance = new MinimumUniqueWordAbbreviation();
+		SentenceScreenFitting instance = new SentenceScreenFitting();
 		instance.run();
 		
 		System.out.println("End: " + System.currentTimeMillis());
