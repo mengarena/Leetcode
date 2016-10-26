@@ -167,12 +167,12 @@ public class MainProgram {
 //		
 //		System.out.println();
 		
-		System.out.println("Begin: " + System.currentTimeMillis());
+		//System.out.println("Begin: " + System.currentTimeMillis());
 		
-		SentenceScreenFitting instance = new SentenceScreenFitting();
+		FindFirstTarget instance = new FindFirstTarget();
 		instance.run();
 		
-		System.out.println("End: " + System.currentTimeMillis());
+		//System.out.println("End: " + System.currentTimeMillis());
 		
 		//dd.test11();
 		
