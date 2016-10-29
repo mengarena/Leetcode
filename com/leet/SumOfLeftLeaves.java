@@ -17,6 +17,7 @@ import java.util.Queue;
 
 
 //Facebook
+//Easy
 public class SumOfLeftLeaves {
 
 	public SumOfLeftLeaves() {
