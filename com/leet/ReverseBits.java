@@ -14,6 +14,7 @@ import java.util.Map;
 //Related problem: Reverse Integer
 
 //Apple, Airbnb
+//Easy
 public class ReverseBits {
 
 	public ReverseBits() {
