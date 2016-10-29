@@ -9,6 +9,7 @@ package com.leet;
 //determine the maximum amount of money you can rob tonight without alerting the police.
 
 //Linkedin, Airbnb
+//Easy
 public class HouseRobber {
 
 	public HouseRobber() {
