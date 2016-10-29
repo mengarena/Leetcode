@@ -23,7 +23,8 @@ import java.util.List;
 //Update (2014-11-10):
 //Test cases had been added to test the overflow behavior.
 
-//Bloomberg
+//Bloomberg, Apple
+//Easy
 public class ReverseInteger {
 
 	public ReverseInteger() {
