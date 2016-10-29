@@ -7,7 +7,7 @@ import java.util.List;
 //
 //Now, instead outputting board configurations, return the total number of distinct solutions.
 
-
+//Zenefits
 public class NQueensII {
 
 	public NQueensII() {
