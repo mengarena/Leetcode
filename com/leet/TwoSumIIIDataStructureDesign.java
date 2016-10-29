@@ -18,6 +18,7 @@ import java.util.Set;
 //find(7) -> false
 
 //Linkedin
+//Easy
 public class TwoSumIIIDataStructureDesign {
 
 	public TwoSumIIIDataStructureDesign() {
