@@ -26,6 +26,7 @@ import java.util.Set;
 //Note: For the return value, each inner list's elements must follow the lexicographic order.
 
 //Google, Uber
+//Easy
 public class GroupShiftedStrings {
 
 	public GroupShiftedStrings() {
