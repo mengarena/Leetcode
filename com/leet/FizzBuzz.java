@@ -5,8 +5,8 @@ import java.util.List;
 
 //Write a program that outputs the string representation of numbers from 1 to n.
 //
-//But for multiples of three it should output ¡°Fizz¡± instead of the number and for the multiples of five output ¡°Buzz¡±. 
-//For numbers which are multiples of both three and five output ¡°FizzBuzz¡±.
+//But for multiples of three it should output Â¡Â°FizzÂ¡Â± instead of the number and for the multiples of five output Â¡Â°BuzzÂ¡Â±. 
+//For numbers which are multiples of both three and five output Â¡Â°FizzBuzzÂ¡Â±.
 //
 //Example:
 //
@@ -31,7 +31,7 @@ import java.util.List;
 //    "FizzBuzz"
 //]
 
-
+//Easy
 public class FizzBuzz {
 
 	public FizzBuzz() {
