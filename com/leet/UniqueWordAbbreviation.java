@@ -35,6 +35,7 @@ import java.util.Set;
 //isUnique("make") -> true
 
 //Google
+//Easy
 public class UniqueWordAbbreviation {
 
 	public UniqueWordAbbreviation() {
