@@ -30,7 +30,7 @@ import java.util.Set;
 //There may be multiple valid order of letters, return any one of them is fine.
 
 
-//Google, Facebook, Airbnb
+//Google, Facebook, Airbnb, Snapchat, Twitter, Pocket Gems
 public class AlienDictionary {
 
 	public AlienDictionary() {
