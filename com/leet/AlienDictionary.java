@@ -48,54 +48,67 @@ public class AlienDictionary {
 
 	//New ACC
 public String alienOrder(String[] words) {
-    Map<Character, Set<Character>> map=new HashMap<Character, Set<Character>>();
-    Map<Character, Integer> degree=new HashMap<Character, Integer>();
-    String result="";
-    if(words==null || words.length==0) return result;
-    for(String s: words){
-        for(char c: s.toCharArray()){
-            degree.put(c,0);
-        }
+    List<Set<Integer>> adj = new ArrayList<>();
+    
+    for (int i = 0; i < 26; i++) {
+        adj.add(new HashSet<Integer>());
     }
-    for(int i=0; i<words.length-1; i++){
-        String cur=words[i];
-        String next=words[i+1];
-        int length=Math.min(cur.length(), next.length());
-        for(int j=0; j<length; j++){
-            char c1=cur.charAt(j);
-            char c2=next.charAt(j);
-            if(c1!=c2){
-                Set<Character> set=new HashSet<Character>();
-                if(map.containsKey(c1)) set=map.get(c1);
-                if(!set.contains(c2)){
-                    set.add(c2);
-                    map.put(c1, set);
-                    degree.put(c2, degree.get(c2)+1);
+    
+    int[] degree = new int[26];
+    Arrays.fill(degree, -1);
+    
+    for (int i = 0; i < words.length; i++) {
+        for (char c : words[i].toCharArray()) {
+            if (degree[c - 'a'] < 0) {
+                degree[c - 'a'] = 0;
+            }
+        }
+        if (i > 0) {
+            String w1 = words[i - 1], w2 = words[i];
+            int len = Math.min(w1.length(), w2.length());
+            for (int j = 0; j < len; j++) {
+                int c1 = w1.charAt(j) - 'a', c2 = w2.charAt(j) - 'a';
+                if (c1 != c2) {
+                    if (!adj.get(c1).contains(c2)) {
+                        adj.get(c1).add(c2);
+                        degree[c2]++;
+                    }
+                    break;
                 }
-                break;
+                if (j == w2.length() - 1 && w1.length() > w2.length()) { // "abcd" -> "ab"
+                    return "";
+                }
             }
         }
     }
-	
-    Queue<Character> q=new LinkedList<Character>();
-    for(char c: degree.keySet()){
-        if(degree.get(c)==0) q.add(c);
+    
+    Queue<Integer> q = new LinkedList<>();
+    for (int i = 0; i < degree.length; i++) {
+        if (degree[i] == 0) {
+            q.add(i);       
+        }
     }
-	
-    while(!q.isEmpty()){
-        char c=q.remove();
-        result+=c;
-        if(map.containsKey(c)){
-            for(char c2: map.get(c)){
-                degree.put(c2,degree.get(c2)-1);
-                if(degree.get(c2)==0) q.add(c2);
+    
+    StringBuilder sb = new StringBuilder();
+    while (!q.isEmpty()) {
+        int i = q.poll();
+        sb.append((char) ('a'  + i));
+        for (int j : adj.get(i)) {
+            degree[j]--;
+            if (degree[j] == 0) {
+                q.add(j);        
             }
         }
     }
-	
-    if(result.length()!=degree.size()) return "";
-    return result;
-}	
+    
+    for (int d : degree) {
+        if (d > 0) {
+            return "";
+        }
+    }
+    
+    return sb.toString();
+}
 	
 	
 	//Old: if input is ["wrtka", "wrt"] should return "", because in dictionary, "wrt" should appear before "wrtka"
