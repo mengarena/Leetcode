@@ -7,6 +7,7 @@ package com.leet;
 
 
 //Bloomberg
+//Easy
 public class BalancedBinaryTree {
 	//Definition for a binary tree node.
 	public class TreeNode {
