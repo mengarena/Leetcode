@@ -1,7 +1,7 @@
 package com.leet;
 
 //Given an integer, write an algorithm to convert it to hexadecimal. 
-//For negative integer, two¡¯s complement method is used.
+//For negative integer, twoÂ¡Â¯s complement method is used.
 //
 //Note:
 //
@@ -27,6 +27,7 @@ package com.leet;
 //Output:
 //"ffffffff"
 
+//Easy
 public class ConvertNumberToHexadecimal {
 
 	public ConvertNumberToHexadecimal() {
