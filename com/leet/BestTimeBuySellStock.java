@@ -6,7 +6,8 @@ package com.leet;
 //design an algorithm to find the maximum profit.
 
 
-//Facebook, Uber, Microsoft, Bloomberg
+//Facebook, Uber, Microsoft, Bloomberg, Amazon
+//Easy
 public class BestTimeBuySellStock {
 
 	public BestTimeBuySellStock() {
