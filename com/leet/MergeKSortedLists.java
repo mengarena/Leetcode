@@ -7,6 +7,7 @@ import java.util.PriorityQueue;
 
 
 //Google, Facebook, Linkedin, Uber, Airbnb, Twitter, Amazon, Microsoft
+//Hard
 public class MergeKSortedLists {
 
 	public MergeKSortedLists() {
