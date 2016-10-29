@@ -6,7 +6,8 @@ import java.util.Set;
 
 //Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.
 
-//Linkedin
+//Linkedin, Apple, Twitter
+//Hard
 public class MaxPointsOnALine {
 	
 	 //Definition for a point.
