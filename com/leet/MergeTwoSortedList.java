@@ -4,7 +4,8 @@ package com.leet;
 //The new list should be made by splicing together the nodes of the first two lists.
 
 
-//Linkedin, Amazon, Microsoft
+//Linkedin, Amazon, Microsoft, Apple
+//Easy
 public class MergeTwoSortedList {
 	//Definition for singly-linked list.
 	public class ListNode {
