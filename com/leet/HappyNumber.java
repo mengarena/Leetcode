@@ -15,7 +15,8 @@ package com.leet;
 //1^2 + 0^2 + 0^2 = 1
 
 
-//Uber
+//Uber, Airbnb, Twitter
+//Easy
 public class HappyNumber {
 
 	public HappyNumber() {
