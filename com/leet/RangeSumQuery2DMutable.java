@@ -22,9 +22,10 @@ package com.leet;
 //Note:
 //The matrix is only modifiable by the update function.
 //You may assume the number of calls to update and sumRegion function is distributed evenly.
-//You may assume that row1 ¡Ü row2 and col1 ¡Ü col2.
+//You may assume that row1 Â¡Ãœ row2 and col1 Â¡Ãœ col2.
 
-
+//Google
+//Hard
 public class RangeSumQuery2DMutable {
 
 	public RangeSumQuery2DMutable() {
