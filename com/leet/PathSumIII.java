@@ -27,6 +27,7 @@ package com.leet;
 //2.  5 -> 2 -> 1
 //3. -3 -> 11
 
+//Easy
 public class PathSumIII {
 
 	public PathSumIII() {
