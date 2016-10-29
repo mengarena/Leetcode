@@ -10,6 +10,7 @@ package com.leet;
 //Given "abcd", return "dcbabcd".
 
 //Google, Pocket Gems
+//Hard
 public class ShortestPalindrome {
 
 	public ShortestPalindrome() {
