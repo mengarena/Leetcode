@@ -7,6 +7,7 @@ import java.util.List;
 //
 //The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
 
+//Easy
 public class MinimumDepthBinaryTree {
 
 	public MinimumDepthBinaryTree() {
