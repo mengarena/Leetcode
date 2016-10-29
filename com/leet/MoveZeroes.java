@@ -10,6 +10,7 @@ package com.leet;
 
 
 //Facebook, Bloomberg
+//Easy
 public class MoveZeroes {
 
 	public MoveZeroes() {
