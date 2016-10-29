@@ -4,7 +4,8 @@ package com.leet;
 //
 //The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 
-//Uber
+//Uber, Linkedin, Apple, Yahoo
+//Easy
 public class MaximumDepthBinaryTree {
 
 	public class TreeNode {
