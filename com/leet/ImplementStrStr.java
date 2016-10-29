@@ -5,7 +5,8 @@ package com.leet;
 //Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
 
 
-//Facebook, Microsoft
+//Facebook, Microsoft, Apple, Pocket Gems
+//Easy
 public class ImplementStrStr {
 
 	public ImplementStrStr() {
