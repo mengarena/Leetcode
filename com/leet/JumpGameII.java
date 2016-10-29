@@ -17,6 +17,7 @@ import java.util.List;
 //Note:
 //You can assume that you can always reach the last index.
 
+//Hard
 public class JumpGameII {
 
 	public JumpGameII() {
