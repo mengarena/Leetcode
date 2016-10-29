@@ -15,7 +15,8 @@ import java.util.List;
 //Follow up:
 //What if the inputs contain unicode characters? How would you adapt your solution to such case?
 	
-//Amazon
+//Amazon, Uber, Yelp
+//Easy
 public class ValidAnagram {
 
 	public ValidAnagram() {
