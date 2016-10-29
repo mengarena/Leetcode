@@ -11,6 +11,7 @@ import java.util.List;
 //b) Delete a character
 //c) Replace a character
 
+//Hard
 public class EditDistance {
 
 	public EditDistance() {
