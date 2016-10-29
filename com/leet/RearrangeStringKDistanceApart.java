@@ -34,6 +34,7 @@ import java.util.Queue;
 
 
 //Google
+//Hard
 public class RearrangeStringKDistanceApart {
 
 	public RearrangeStringKDistanceApart() {
