@@ -25,6 +25,7 @@ package com.leet;
 
 
 //Google
+//Easy
 public class NthDigit {
 
 	public NthDigit() {
