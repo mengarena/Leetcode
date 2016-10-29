@@ -7,6 +7,7 @@ package com.leet;
 //
 //Note that 1 is typically treated as an ugly number.
 
+//Easy
 public class UglyNumber {
 
 	public UglyNumber() {
