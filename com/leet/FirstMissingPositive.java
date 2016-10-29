@@ -8,6 +8,7 @@ package com.leet;
 //
 //Your algorithm should run in O(n) time and uses constant space.
 
+//Hard
 public class FirstMissingPositive {
 
 	public FirstMissingPositive() {
