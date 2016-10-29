@@ -7,7 +7,8 @@ package com.leet;
 //Hint:
 //A linked list can be reversed either iteratively or recursively. Could you implement both?
 
-//Facebook, Uber, Amazon
+//Facebook, Uber, Amazon, Uber, Twitter, Zenefits, Microsoft, Snapchat, Apple, Yahoo, Bloomberg, Yelp, Adobe
+//Easy
 public class ReverseLinkedList {
 	//Definition for singly-linked list.
 	public class ListNode {
