@@ -4,6 +4,7 @@ package com.leet;
 //
 //The order of elements can be changed. It doesn't matter what you leave beyond the new length.
 
+//Easy
 public class RemoveElement {
 
 	public RemoveElement() {
