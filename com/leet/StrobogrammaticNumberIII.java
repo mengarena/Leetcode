@@ -10,6 +10,7 @@ package com.leet;
 //Note:
 //Because the range might be a large number, the low and high numbers are represented as string.
 
+//Hard
 public class StrobogrammaticNumberIII {
 
 	public StrobogrammaticNumberIII() {
