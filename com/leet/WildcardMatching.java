@@ -19,7 +19,8 @@ package com.leet;
 //isMatch("ab", "?*") → true
 //isMatch("aab", "c*a*b") → false
 
-//Google
+//Google, Facebook, Snapchat, Twitter, Two Sigma
+//Hard
 public class WildcardMatching {
 
 	public WildcardMatching() {
