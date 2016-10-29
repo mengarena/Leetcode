@@ -16,7 +16,8 @@ import java.util.List;
 //0.1 < 1.1 < 1.2 < 13.37
 
 
-//Microsoft
+//Microsoft, Apple
+//Easy
 public class CompareVersionNumbers {
 
 	public CompareVersionNumbers() {
