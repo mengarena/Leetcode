@@ -23,6 +23,7 @@ package com.leet;
 //Return false.
 
 //Google
+//Easy
 public class ValidWordAbbreviation {
 
 	public ValidWordAbbreviation() {
