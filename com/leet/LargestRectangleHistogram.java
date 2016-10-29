@@ -15,7 +15,8 @@ import java.util.Stack;
 //For example,
 //Given heights = [2,1,5,6,2,3],
 //return 10.
-		
+	
+//Hard
 public class LargestRectangleHistogram {
 
 	public LargestRectangleHistogram() {
