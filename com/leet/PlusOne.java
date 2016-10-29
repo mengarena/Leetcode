@@ -8,6 +8,7 @@ import java.util.List;
 //The digits are stored such that the most significant digit is at the head of the list.
 
 //Google
+//Easy
 public class PlusOne {
 
 	public PlusOne() {
