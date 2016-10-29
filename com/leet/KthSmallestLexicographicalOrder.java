@@ -2,7 +2,7 @@ package com.leet;
 
 //Given integers n and k, find the lexicographically k-th smallest integer in the range from 1 to n.
 //
-//Note: 1 ¡Ü k ¡Ü n ¡Ü 109.
+//Note: 1 Â¡Ãœ k Â¡Ãœ n Â¡Ãœ 109.
 //
 //Example:
 //
@@ -16,6 +16,7 @@ package com.leet;
 //The lexicographical order is [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9], so the second smallest number is 10.
 
 //Hulu
+//Hard
 public class KthSmallestLexicographicalOrder {
 
 	public KthSmallestLexicographicalOrder() {
