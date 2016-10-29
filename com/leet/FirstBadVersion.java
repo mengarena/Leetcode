@@ -11,6 +11,7 @@ package com.leet;
 //Implement a function to find the first bad version. You should minimize the number of calls to the API.
 
 //Facebook
+//Easy
 public class FirstBadVersion {
 
 	public FirstBadVersion() {
