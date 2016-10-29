@@ -12,7 +12,8 @@ import java.util.List;
 //return [1,6],[8,10],[15,18].
 
 
-//Google, Linkedin, Microsoft, Bloomberg
+//Google, Linkedin, Microsoft, Bloomberg, Facebook, Twitter, Yelp
+//Hard
 public class MergeIntervals {
 
 	public MergeIntervals() {
