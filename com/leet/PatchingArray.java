@@ -27,6 +27,7 @@ import java.util.List;
 //Return 0.
 
 //Google
+//Hard
 public class PatchingArray {
 
 	public PatchingArray() {
