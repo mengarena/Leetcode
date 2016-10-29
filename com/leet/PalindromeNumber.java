@@ -13,6 +13,7 @@ package com.leet;
 //
 //There is a more generic way of solving this problem.
 
+//Easy
 public class PalindromeNumber {
 
 	public PalindromeNumber() {
