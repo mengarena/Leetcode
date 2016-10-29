@@ -20,6 +20,7 @@ import java.util.List;
 //If there is no valid move, return an empty list [].
 
 //Google
+//Easy
 public class FlipGame {
 
 	public FlipGame() {
