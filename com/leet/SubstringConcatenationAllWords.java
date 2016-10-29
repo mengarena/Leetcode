@@ -18,7 +18,7 @@ import java.util.Set;
 //You should return the indices: [0,9].
 //(order does not matter).
 
-
+//Hard
 public class SubstringConcatenationAllWords {
 
 	public SubstringConcatenationAllWords() {
