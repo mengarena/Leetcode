@@ -9,7 +9,8 @@ import java.util.Set;
 //
 //You may assume that the array is non-empty and the majority element always exist in the array.
 
-//Zenefits
+//Zenefits, Adobe
+//Easy
 public class MajorityElement {
 
 	public MajorityElement() {
@@ -51,7 +52,7 @@ public class MajorityElement {
 	}
 	
 	
-	//Moore¡¯s Voting Algorithm
+	//MooreÂ¡Â¯s Voting Algorithm
     public int majorityElementB(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         if (nums.length == 1) return nums[0];
