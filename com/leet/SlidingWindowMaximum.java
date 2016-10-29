@@ -20,7 +20,7 @@ import java.util.LinkedList;
 //Therefore, return the max sliding window as [3,3,5,5,6,7].
 //
 //Note: 
-//You may assume k is always valid, ie: 1 ¡Ü k ¡Ü input array's size for non-empty array.
+//You may assume k is always valid, ie: 1 Â¡Ãœ k Â¡Ãœ input array's size for non-empty array.
 //
 //Follow up:
 //Could you solve it in linear time?
@@ -28,10 +28,10 @@ import java.util.LinkedList;
 //Hint:
 //
 //How about using a data structure such as deque (double-ended queue)?
-//The queue size need not be the same as the window¡¯s size.
+//The queue size need not be the same as the windowÂ¡Â¯s size.
 //Remove redundant elements and the queue should store only elements that need to be considered.
 
-//Zenefits
+//Zenefits, Google, Amazon
 public class SlidingWindowMaximum {
 
 	public SlidingWindowMaximum() {
