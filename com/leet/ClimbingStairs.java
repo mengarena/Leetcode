@@ -4,6 +4,8 @@ package com.leet;
 //
 //Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 
+//Apple, Adobe
+//Easy
 public class ClimbingStairs {
 
 	public ClimbingStairs() {
