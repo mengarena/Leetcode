@@ -14,6 +14,7 @@ import java.util.TreeMap;
 //
 //Insertion, deletion or replace of any one character are all considered as one change.
 
+//Hard
 public class StrongPasswordChecker {
 
 	public StrongPasswordChecker() {
