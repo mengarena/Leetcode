@@ -13,6 +13,7 @@ import java.util.Arrays;
 //There is only one duplicate number in the array, but it could be repeated more than once.
 
 //Bloomberg, Hedvig
+//Hard
 public class FindDuplicateNumber {
 
 	public FindDuplicateNumber() {
