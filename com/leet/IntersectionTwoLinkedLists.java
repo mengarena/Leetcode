@@ -5,11 +5,11 @@ package com.leet;
 //
 //For example, the following two linked lists:
 //
-//A:          a1 ¡ú a2
-//                   ¨K
-//                     c1 ¡ú c2 ¡ú c3
-//                   ¨J            
-//B:     b1 ¡ú b2 ¡ú b3
+//A:          a1 Â¡Ãº a2
+//                   Â¨K
+//                     c1 Â¡Ãº c2 Â¡Ãº c3
+//                   Â¨J            
+//B:     b1 Â¡Ãº b2 Â¡Ãº b3
 //begin to intersect at node c1.
 //
 //
@@ -20,7 +20,8 @@ package com.leet;
 //You may assume there are no cycles anywhere in the entire linked structure.
 //Your code should preferably run in O(n) time and use only O(1) memory.
 
-//Amazon, Microsoft, Bloomberg
+//Amazon, Microsoft, Bloomberg, Airbnb
+//Easy
 public class IntersectionTwoLinkedLists {
 
 	//Definition for singly-linked list.
