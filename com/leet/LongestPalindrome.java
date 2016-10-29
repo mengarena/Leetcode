@@ -20,6 +20,7 @@ package com.leet;
 //One longest palindrome that can be built is "dccaccd", whose length is 7.
 
 //Google
+//Easy
 public class LongestPalindrome {
 
 	public LongestPalindrome() {
