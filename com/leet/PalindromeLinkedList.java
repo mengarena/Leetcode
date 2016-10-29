@@ -6,6 +6,7 @@ package com.leet;
 //Could you do it in O(n) time and O(1) space?
 	
 //Amazon, Facebook
+//Easy
 public class PalindromeLinkedList {
 
 	public PalindromeLinkedList() {
