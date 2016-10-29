@@ -23,7 +23,8 @@ import java.util.Map;
 //Return [[0, 1], [1, 0], [3, 2], [2, 4]]
 //The palindromes are ["dcbaabcd", "abcddcba", "slls", "llssssll"]
 
-//Google
+//Google, Airbnb
+//Hard
 public class PalindromePairs {
 
 	public PalindromePairs() {
