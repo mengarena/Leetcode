@@ -17,6 +17,7 @@ package com.leet;
 //Could you solve it in O(nk) runtime?
 		
 //Facebook
+//Hard
 public class PaintHouseII {
 
 	public PaintHouseII() {
