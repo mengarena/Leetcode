@@ -15,6 +15,7 @@ package com.leet;
 //If you still see your function signature accepts a const char * argument, please click the reload button  to reset your code definition.
 
 //Linkedin
+//Hard
 public class ValidNumber {
 
 	public ValidNumber() {
