@@ -10,6 +10,7 @@ package com.leet;
 //
 //Return 3.
 
+//Hard
 public class DistinctSubsequences {
 
 	public DistinctSubsequences() {
