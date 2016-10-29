@@ -169,7 +169,7 @@ public class MainProgram {
 		
 		//System.out.println("Begin: " + System.currentTimeMillis());
 		
-		FindFirstTarget instance = new FindFirstTarget();
+		TernaryExpressionParser instance = new TernaryExpressionParser();
 		instance.run();
 		
 		//System.out.println("End: " + System.currentTimeMillis());
