@@ -4,7 +4,9 @@ package com.leet;
 //
 //Note:
 //Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
-		
+
+//Palantir, Airbnb
+//Easy
 public class SingleNumber {
 
 	public SingleNumber() {
