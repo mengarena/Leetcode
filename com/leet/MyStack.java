@@ -22,6 +22,7 @@ import java.util.Queue;
 //The class name of the Java function had been updated to MyStack instead of Stack.
 
 //Bloomberg
+//Easy
 public class MyStack {
 	
 	private Queue<Integer> orgQueue = new LinkedList<Integer>();
