@@ -18,7 +18,8 @@ import java.util.Stack;
 //You may assume that all operations are valid (for example, no pop or peek operations will be called on an empty queue).
 
 
-//Microsoft
+//Microsoft, Bloomberg
+//Easy
 public class MyQueue {
 
 	Stack<Integer> skOrg = new Stack<Integer>();
