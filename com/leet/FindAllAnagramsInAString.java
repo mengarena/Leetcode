@@ -37,6 +37,7 @@ import java.util.Map;
 //The substring with start index = 2 is "ab", which is an anagram of "ab".
 
 //Amazon
+//Easy
 public class FindAllAnagramsInAString {
 
 	public FindAllAnagramsInAString() {
