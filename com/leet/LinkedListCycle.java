@@ -5,7 +5,8 @@ package com.leet;
 //Follow up:
 //Can you solve it without using extra space?
 
-//Bloomberg
+//Bloomberg, Amazon, Microsoft, Yahoo
+//Easy
 public class LinkedListCycle {
 
 	public LinkedListCycle() {
