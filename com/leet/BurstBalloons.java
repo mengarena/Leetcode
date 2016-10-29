@@ -12,7 +12,7 @@ import java.util.List;
 //
 //Note: 
 //(1) You may imagine nums[-1] = nums[n] = 1. They are not real therefore you can not burst them.
-//(2) 0 ¡Ü n ¡Ü 500, 0 ¡Ü nums[i] ¡Ü 100
+//(2) 0 Â¡Ãœ n Â¡Ãœ 500, 0 Â¡Ãœ nums[i] Â¡Ãœ 100
 //
 //Example:
 //
@@ -24,7 +24,8 @@ import java.util.List;
 //   coins =  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   = 167
 
 
-//Google
+//Google, Snapchat
+//Hard
 public class BurstBalloons {
 
 	public BurstBalloons() {
