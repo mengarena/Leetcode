@@ -12,7 +12,8 @@ package com.leet;
 //If each character occurs even number of times, then it must be a palindrome. 
 //How about character which occurs odd number of times?
 
-//Google, Uber
+//Google, Uber, Bloomberg
+//Easy
 public class PalindromePermutation {
 
 	public PalindromePermutation() {
