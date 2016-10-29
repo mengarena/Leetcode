@@ -15,7 +15,8 @@ import java.util.*;
 //Notes:
 //You may assume pattern contains only lowercase letters, and str contains lowercase letters separated by a single space.
 
-//Dropbox
+//Dropbox, Uber
+//Easy
 public class WordPattern {
 
 	public WordPattern() {
