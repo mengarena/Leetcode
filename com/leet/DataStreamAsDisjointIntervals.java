@@ -18,6 +18,8 @@ import java.util.List;
 
 
 //In the question, the class name is: SummaryRanges
+
+//Easy
 public class DataStreamAsDisjointIntervals {
 
 
