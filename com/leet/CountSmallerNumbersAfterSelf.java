@@ -18,6 +18,7 @@ import java.util.List;
 
 
 //Google
+//Hard
 public class CountSmallerNumbersAfterSelf {
 	
 	public class TreeNodeS {
