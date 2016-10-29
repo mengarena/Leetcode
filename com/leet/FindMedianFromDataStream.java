@@ -26,6 +26,7 @@ import java.util.PriorityQueue;
 
 
 //Google
+//Hard
 public class FindMedianFromDataStream {
 
 	public FindMedianFromDataStream() {
