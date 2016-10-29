@@ -6,6 +6,7 @@ package com.leet;
 //
 //Another example is ")()())", where the longest valid parentheses substring is "()()", which has length = 4.
 
+//Hard
 public class LongestValidParentheses {
 
 	public LongestValidParentheses() {
