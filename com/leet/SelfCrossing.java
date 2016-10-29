@@ -17,6 +17,7 @@ package com.leet;
 //Given x = [1, 1, 1, 1]
 //Return true (self crossing)
 
+//Hard
 public class SelfCrossing {
 
 	public SelfCrossing() {
