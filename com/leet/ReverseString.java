@@ -5,6 +5,7 @@ package com.leet;
 //Example:
 //Given s = "hello", return "olleh".
 
+//Easy
 public class ReverseString {
 
 	public ReverseString() {
