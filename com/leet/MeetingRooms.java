@@ -11,6 +11,7 @@ import java.util.Comparator;
 //return false.
 
 //Facebook
+//Easy
 public class MeetingRooms {
 	
 	public class Interval {
