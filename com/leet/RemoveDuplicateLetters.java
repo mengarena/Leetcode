@@ -19,6 +19,7 @@ import java.util.Stack;
 //Return "acdb"
 
 //Google
+//Hard
 public class RemoveDuplicateLetters {
 
 	public RemoveDuplicateLetters() {
