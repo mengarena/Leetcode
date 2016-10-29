@@ -14,6 +14,8 @@ import java.util.Set;
 //
 //Your algorithm should run in O(n) complexity.
 
+//Google, Facebook
+//Hard
 public class LongestConsecutiveSequence {
 
 	public LongestConsecutiveSequence() {
