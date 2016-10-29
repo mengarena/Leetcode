@@ -13,7 +13,8 @@ import java.util.Set;
 //set(key, value) - Set or insert the value if the key is not already present. 
 //When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.
 
-//Google, Uber, Zenefits, Amazon, Microsoft, Bloomberg
+//Google, Uber, Facebook, Twitter, Zenefits, Amazon, Microsoft, Snapchat, Yahoo, Bloomberg, Palantir
+//Hard
 public class LRUCache {
 
 	
@@ -137,7 +138,65 @@ public class LRUCache {
         }
     }
 
+////////////////////////////////////////////////////////////
+import java.util.LinkedHashMap;
+
+public class LRUCache {
+    
+    private Map<Integer, Integer> map;
+    
+    public LRUCache(int capacity) {
+        map = new LinkedCappedHashMap<>(capacity);
+    }
+    
+    public int get(int key) {
+        if(!map.containsKey(key)) { return -1; }
+        return map.get(key);
+    }
+    
+    public void set(int key, int value) {
+        map.put(key,value);
+    }
+
+    private static class LinkedCappedHashMap<K,V> extends LinkedHashMap<K,V> {
+        
+        int maximumCapacity;
+        
+        LinkedCappedHashMap(int maximumCapacity) {
+            super(16, 0.75f, true);
+            this.maximumCapacity = maximumCapacity;
+        }
+        
+        protected boolean removeEldestEntry(Map.Entry eldest) {
+            return size() > maximumCapacity;
+        }
+    }
+}
 	
+///////////////////////////////////////////////////////////
+import java.util.LinkedHashMap;
+
+public class LRUCache {
+
+    private Map<Integer, Integer> map;
+
+    public LRUCache(int capacity) {
+        map = new LinkedHashMap<Integer, Integer>(16, 0.75f, true) {
+            protected boolean removeEldestEntry(Map.Entry eldest) {
+                return size() > capacity;
+            }
+        };
+    }
+
+    public int get(int key) {
+        return map.getOrDefault(key, -1);
+    }
+
+    public void set(int key, int value) {
+        map.put(key,value);
+    }
+}	
+///////////////////////////////////////////////////////////	
 	
 	
 	
