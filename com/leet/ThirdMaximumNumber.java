@@ -30,6 +30,7 @@ package com.leet;
 //Both numbers with value 2 are both considered as second maximum.
 
 //Amazon
+//Easy
 public class ThirdMaximumNumber {
 
 	public ThirdMaximumNumber() {
