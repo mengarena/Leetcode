@@ -6,7 +6,8 @@ import java.util.Stack;
 //
 //The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
 
-//Google, Amazon, Bloomberg
+//Google, Amazon, Bloomberg, Facebook, Airbnb, Zenefits, Microsoft, Twitter
+//Easy
 public class ValidParentheses {
 
 	public ValidParentheses() {
