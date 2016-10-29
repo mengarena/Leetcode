@@ -16,7 +16,8 @@ import java.util.Stack;
 //return [3,2,1].
 
 //Note: Recursive solution is trivial, could you do it iteratively?
-		
+	
+//Hard
 public class BinaryTreePostorderTraversal {
 
 	public BinaryTreePostorderTraversal() {
