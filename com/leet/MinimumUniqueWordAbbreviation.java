@@ -19,7 +19,7 @@ import java.util.Set;
 //
 //Note:
 //In the case of multiple answers as shown in the second example below, you may return any one of them.
-//Assume length of target string = m, and dictionary size = n. You may assume that m ¡Ü 21, n ¡Ü 1000, and log2(n) + m ¡Ü 20.
+//Assume length of target string = m, and dictionary size = n. You may assume that m Â¡Ãœ 21, n Â¡Ãœ 1000, and log2(n) + m Â¡Ãœ 20.
 //
 //Examples:
 //"apple", ["blade"] -> "a4" (because "5" or "4e" conflicts with "blade")
@@ -28,6 +28,7 @@ import java.util.Set;
 
 
 //Google
+//Hard
 public class MinimumUniqueWordAbbreviation {
 
 	public MinimumUniqueWordAbbreviation() {
