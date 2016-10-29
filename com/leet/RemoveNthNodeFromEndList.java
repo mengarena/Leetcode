@@ -12,6 +12,7 @@ package com.leet;
 //Given n will always be valid.
 //Try to do this in one pass.
 
+//Easy
 public class RemoveNthNodeFromEndList {
 
 	public RemoveNthNodeFromEndList() {
