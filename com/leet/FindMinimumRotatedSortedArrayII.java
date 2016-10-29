@@ -12,6 +12,7 @@ package com.leet;
 //
 //The array may contain duplicates.
 
+//Hard
 public class FindMinimumRotatedSortedArrayII {
 
 	public FindMinimumRotatedSortedArrayII() {
