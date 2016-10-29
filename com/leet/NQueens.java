@@ -3,7 +3,7 @@ package com.leet;
 import java.util.ArrayList;
 import java.util.List;
 
-//The n-queens puzzle is the problem of placing n queens on an n°¡n chessboard such that no two queens attack each other.
+//The n-queens puzzle is the problem of placing n queens on an n¬°√Ån chessboard such that no two queens attack each other.
 //
 //
 //Given an integer n, return all distinct solutions to the n-queens puzzle.
@@ -26,6 +26,7 @@ import java.util.List;
 //  ".Q.."]
 //]
 
+//Hard
 public class NQueens {
 
 	public NQueens() {
