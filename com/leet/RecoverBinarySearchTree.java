@@ -25,6 +25,7 @@ import java.util.Stack;
 //     5
 //The above binary tree is serialized as "{1,2,3,#,#,4,#,#,5}".
 
+//Hard
 public class RecoverBinarySearchTree {
 
 	public RecoverBinarySearchTree() {
