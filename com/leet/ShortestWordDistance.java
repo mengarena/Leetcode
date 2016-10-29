@@ -5,13 +5,14 @@ package com.leet;
 //For example,
 //Assume that words = ["practice", "makes", "perfect", "coding", "makes"].
 //
-//Given word1 = ¡°coding¡±, word2 = ¡°practice¡±, return 3.
+//Given word1 = Â¡Â°codingÂ¡Â±, word2 = Â¡Â°practiceÂ¡Â±, return 3.
 //Given word1 = "makes", word2 = "coding", return 1.
 //
 //Note:
 //You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.
 
 //Linkedin
+//Easy
 public class ShortestWordDistance {
 
 	public ShortestWordDistance() {
