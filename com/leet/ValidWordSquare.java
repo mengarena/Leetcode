@@ -5,7 +5,7 @@ import java.util.List;
 //Given a sequence of words, check whether it forms a valid word square.
 //
 //A sequence of words forms a valid word square 
-//if the kth row and column read the exact same string, where 0 ¡Ü k < max(numRows, numColumns).
+//if the kth row and column read the exact same string, where 0 Â¡Ãœ k < max(numRows, numColumns).
 //
 //Note:
 //The number of words given is at least 1 and does not exceed 500.
@@ -74,6 +74,7 @@ import java.util.List;
 //
 
 //Google
+//Easy
 public class ValidWordSquare {
 
 	public ValidWordSquare() {
