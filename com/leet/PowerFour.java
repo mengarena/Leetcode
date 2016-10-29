@@ -8,6 +8,7 @@ package com.leet;
 //Follow up: Could you solve it without loops/recursion?
 
 //Two Sigma
+//Easy
 public class PowerFour {
 
 	public PowerFour() {
