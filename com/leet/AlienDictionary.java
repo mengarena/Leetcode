@@ -31,6 +31,7 @@ import java.util.Set;
 
 
 //Google, Facebook, Airbnb, Snapchat, Twitter, Pocket Gems
+//Hard
 public class AlienDictionary {
 
 	public AlienDictionary() {
