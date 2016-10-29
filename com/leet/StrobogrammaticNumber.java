@@ -7,6 +7,7 @@ package com.leet;
 //For example, the numbers "69", "88", and "818" are all strobogrammatic.
 
 //Google
+//Easy
 public class StrobogrammaticNumber {
 
 	public StrobogrammaticNumber() {
