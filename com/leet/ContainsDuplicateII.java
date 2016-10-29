@@ -8,7 +8,8 @@ import java.util.Map;
 //such that nums[i] = nums[j] and the difference between i and j is at most k.
 
 
-//Airbnb
+//Airbnb, Palantir
+//Easy
 public class ContainsDuplicateII {
 
 	public ContainsDuplicateII() {
