@@ -17,6 +17,7 @@ package com.leet;
 //Return 6.
 
 //Google
+//Hard
 public class SmallestRectangleEnclosingBlackPixels {
 
 	public SmallestRectangleEnclosingBlackPixels() {
