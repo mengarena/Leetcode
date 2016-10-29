@@ -29,6 +29,7 @@ package com.leet;
 //If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.
 
 //Uber, Microsoft, Amazon, Bloomberg
+//Easy
 public class StringToInteger {
 
 	public StringToInteger() {
