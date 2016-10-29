@@ -9,6 +9,7 @@ package com.leet;
 //Given s = "leetcode", return "leotcede".
 
 //Google
+//Easy
 public class ReverseVowelsOfString {
 
 	public ReverseVowelsOfString() {
