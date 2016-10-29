@@ -7,6 +7,7 @@ package com.leet;
 //Rectangle Area
 //Assume that the total area is never beyond the maximum possible value of int.
 
+//Easy
 public class RectangleArea {
 
 	public RectangleArea() {
