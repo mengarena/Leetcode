@@ -17,7 +17,8 @@ import java.util.Map;
 //Notes:
 //You may assume both pattern and str contains only lowercase letters.
 
-//Dropbox
+//Dropbox, Uber
+//Hard
 public class WordPatternII {
 
 	public WordPatternII() {
