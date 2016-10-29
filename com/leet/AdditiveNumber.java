@@ -132,7 +132,7 @@ public class AdditiveNumber {
         	
         	sFirstVal = num.substring(0, nFirstLen);
         	
-        	if (sFirstVal.length() > 1 && sFirstVal.charAt(0) == '0') continue;
+        	if (nFirstLen > 1 && sFirstVal.charAt(0) == '0') break;
         	        	
         	//Decide possible length of second number
         	nSecondMaxLen = (n - nFirstLen)/2;
@@ -140,7 +140,7 @@ public class AdditiveNumber {
         	for (int nSecondLen = 1; nSecondLen <= nSecondMaxLen; nSecondLen++) {
         		
         		sSecondVal = num.substring(nFirstLen, nFirstLen+nSecondLen);
-        		if (sSecondVal.length() > 1 && sSecondVal.charAt(0) == '0') continue;
+        		if (nSecondLen > 1 && sSecondVal.charAt(0) == '0') break;
         		
         		//Decide possible length of third number
         		nRemainedLen = n - nFirstLen - nSecondLen;
@@ -155,7 +155,7 @@ public class AdditiveNumber {
         		
         		for (int nThirdLen = nThirdStartLen; nThirdLen <= nThirdMaxLen; nThirdLen++) {
         			sThirdVal = num.substring(nFirstLen + nSecondLen, nFirstLen + nSecondLen + nThirdLen);
-        			if (sThirdVal.length() > 1 && sThirdVal.charAt(0) == '0') continue;
+        			if (nThirdLen > 1 && sThirdVal.charAt(0) == '0') break;
         			        			
         			boolean bEqual = isEqual(sFirstVal, sSecondVal, sThirdVal);
         			
