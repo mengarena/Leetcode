@@ -5,7 +5,8 @@ package com.leet;
 //For example,
 //Given 1->1->2, return 1->2.
 //Given 1->1->2->3->3, return 1->2->3.
-		
+
+//Easy
 public class RemoveDuplicatesSortedList {
 	//Definition for singly-linked list.
 	public class ListNode {
