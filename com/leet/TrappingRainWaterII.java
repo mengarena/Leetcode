@@ -26,6 +26,7 @@ import java.util.Comparator;
 
 
 //Google, Twitter
+//Hard
 public class TrappingRainWaterII {
 
 	public TrappingRainWaterII() {
