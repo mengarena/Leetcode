@@ -19,7 +19,7 @@ import java.util.Arrays;
 //
 //We need to sort the the array into [1, 3, 3, 7], and get the maximum gap between the successive elements in this sorted array, which is (7 - 3) = 4.
 
-
+//Hard
 public class MaximumGap {
 
 	public MaximumGap() {
