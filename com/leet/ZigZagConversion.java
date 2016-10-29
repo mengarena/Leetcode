@@ -14,7 +14,8 @@ import java.util.List;
 //
 //string convert(string text, int nRows);
 //convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
-		
+	
+//Easy
 public class ZigZagConversion {
 
 	public ZigZagConversion() {
