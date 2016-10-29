@@ -14,6 +14,7 @@ import java.util.Queue;
 //The read function may be called multiple times.
 
 //Google, Facebook, Bloomberg
+//Hard
 public class ReadNCharactersGivenRead4IICallMultipleTimes {
 
 	public ReadNCharactersGivenRead4IICallMultipleTimes() {
