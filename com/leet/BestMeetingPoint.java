@@ -21,6 +21,8 @@ import java.util.List;
 //
 //Try to solve it in one dimension first. How can this solution apply to the two dimension case?
 
+//Twitter
+//Hard
 public class BestMeetingPoint {
 
 	public BestMeetingPoint() {
