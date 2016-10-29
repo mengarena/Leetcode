@@ -59,6 +59,7 @@ import java.util.List;
 
 
 //Google
+//Hard
 public class PerfectRectangle {
 
 	public PerfectRectangle() {
