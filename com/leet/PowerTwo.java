@@ -2,6 +2,8 @@ package com.leet;
 
 //Given an integer, write a function to determine if it is a power of two.
 
+//Google
+//Easy
 public class PowerTwo {
 
 	public PowerTwo() {
