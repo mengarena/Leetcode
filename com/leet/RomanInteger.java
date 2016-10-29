@@ -20,7 +20,8 @@ package com.leet;
 //MDCC - 1700
 //MCM - 1900
 
-//Uber, Bloomberg
+//Uber, Bloomberg, Microsoft, Facebook, Yahoo
+//Easy
 public class RomanInteger {
 
 	public RomanInteger() {
