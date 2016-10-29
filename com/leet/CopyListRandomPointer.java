@@ -8,7 +8,8 @@ import java.util.Map;
 //Return a deep copy of the list.
 
 
-//Uber, Microsoft
+//Uber, Microsoft, Amazon, Bloomberg
+//Hard
 public class CopyListRandomPointer {
 
 	class RandomListNode {
