@@ -25,6 +25,7 @@ package com.leet;
 
 
 //Amazon
+//Easy
 public class RotateFunction {
 
 	public RotateFunction() {
