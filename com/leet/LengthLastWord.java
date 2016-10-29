@@ -11,6 +11,7 @@ package com.leet;
 //Given s = "Hello World",
 //return 5.
 
+//Easy
 public class LengthLastWord {
 
 	public LengthLastWord() {
