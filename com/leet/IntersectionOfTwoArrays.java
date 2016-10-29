@@ -12,7 +12,8 @@ import java.util.Set;
 //Each element in the result must be unique.
 //The result can be in any order.
 
-
+//Two Sigma
+//Easy
 public class IntersectionOfTwoArrays {
 
 	public IntersectionOfTwoArrays() {
