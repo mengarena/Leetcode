@@ -6,6 +6,7 @@ package com.leet;
 //Could you do it without using any loop / recursion?
 
 //Google
+//Easy
 public class PowerThree {
 
 	public PowerThree() {
