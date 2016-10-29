@@ -13,6 +13,7 @@ package com.leet;
 
 
 //Apple
+//Easy
 public class RansomNote {
 
 	public RansomNote() {
