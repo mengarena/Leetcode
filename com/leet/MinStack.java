@@ -11,7 +11,7 @@ import java.util.Stack;
 //top() -- Get the top element.
 //getMin() -- Retrieve the minimum element in the stack.
 
-//Google, Uber, Amazon, Bloomberg, Zenefits
+//Google, Uber, Amazon, Bloomberg, Zenefits, Snapchat
 public class MinStack {
 
 	//ACC
