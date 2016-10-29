@@ -16,7 +16,8 @@ import java.util.Set;
 //
 //A solution is ["cats and dog", "cat sand dog"].
 
-//Google, Uber
+//Google, Uber, Dropbox, Snapchat, Twitter
+//Hard
 public class WordBreakII {
 
 	public WordBreakII() {
