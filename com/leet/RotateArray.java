@@ -14,6 +14,7 @@ package com.leet;
 //Related problem: Reverse Words in a String II
 
 //Microsoft, Bloomberg
+//Easy
 public class RotateArray {
 
 	public RotateArray() {
