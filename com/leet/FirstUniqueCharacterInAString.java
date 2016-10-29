@@ -13,7 +13,8 @@ package com.leet;
 //Note: You may assume the string contain only lowercase letters.
 
 
-//Amazon
+//Amazon, Bloomberg, Microsoft
+//Easy
 public class FirstUniqueCharacterInAString {
 
 	public FirstUniqueCharacterInAString() {
