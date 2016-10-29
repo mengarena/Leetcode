@@ -14,6 +14,8 @@ package com.leet;
 //
 //If there are 5 stones in the heap, could you figure out a way to remove the stones such that you will always be the winner?
 
+//Adobe
+//Easy
 public class NimGame {
 
 	public NimGame() {
