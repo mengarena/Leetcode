@@ -15,7 +15,8 @@ package com.leet;
 //There are many edge cases. What are some good test cases? 
 //Does your code work with input such as 0? Or 1000010? (middle chunk is zero and should not be printed out)
 
-//Facebook
+//Facebook, Microsoft
+//Hard
 public class IntegerEnglishWords {
 
 	private static final String SmallNumbers[] = {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
