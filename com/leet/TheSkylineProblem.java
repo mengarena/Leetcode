@@ -21,7 +21,7 @@ import com.leet.MeetingRoomsII.Interval;
 //
 //The geometric information of each building is represented by a triplet of integers [Li, Ri, Hi], 
 //where Li and Ri are the x coordinates of the left and right edge of the ith building, respectively, and Hi is its height. 
-//It is guaranteed that 0 ¡Ü Li, Ri ¡Ü INT_MAX, 0 < Hi ¡Ü INT_MAX, and Ri - Li > 0. 
+//It is guaranteed that 0 Â¡Ãœ Li, Ri Â¡Ãœ INT_MAX, 0 < Hi Â¡Ãœ INT_MAX, and Ri - Li > 0. 
 //You may assume all buildings are perfect rectangles grounded on an absolutely flat surface at height 0.
 //
 //For instance, the dimensions of all buildings in Figure A are recorded as: [ [2 9 10], [3 7 15], [5 12 12], [15 20 10], [19 24 8] ] .
@@ -43,7 +43,8 @@ import com.leet.MeetingRoomsII.Interval;
 //the three lines of height 5 should be merged into one in the final output as such: [...[2 3], [4 5], [12 7], ...]
 
 		
-//Google, Microsoft
+//Google, Microsoft, Facebook, Twitter, Yelp
+//Hard
 public class TheSkylineProblem {
 
 	public TheSkylineProblem() {
