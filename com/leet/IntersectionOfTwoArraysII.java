@@ -22,6 +22,7 @@ import java.util.Set;
 //What if nums1's size is small compared to num2's size? Which algorithm is better?
 //What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
 
+//Easy
 public class IntersectionOfTwoArraysII {
 
 	public IntersectionOfTwoArraysII() {
