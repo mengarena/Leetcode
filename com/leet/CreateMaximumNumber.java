@@ -24,6 +24,7 @@ package com.leet;
 //return [9, 8, 9]
 
 //Google
+//Hard
 public class CreateMaximumNumber {
 
 	public CreateMaximumNumber() {
