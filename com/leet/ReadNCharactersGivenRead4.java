@@ -10,6 +10,8 @@ package com.leet;
 //Note:
 //The read function will only be called once for each test case.
 
+//Facebook
+//Easy
 public class ReadNCharactersGivenRead4 {
 
 	public ReadNCharactersGivenRead4() {
