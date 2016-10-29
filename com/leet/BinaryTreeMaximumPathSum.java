@@ -16,6 +16,7 @@ import java.util.Stack;
 //Return 6.
 
 //Microsoft
+//Hard
 public class BinaryTreeMaximumPathSum {
 
 	public BinaryTreeMaximumPathSum() {
