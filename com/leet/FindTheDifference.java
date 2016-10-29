@@ -19,6 +19,7 @@ package com.leet;
 //'e' is the letter that was added.
 
 //Google
+//Easy
 public class FindTheDifference {
 
 	public FindTheDifference() {
