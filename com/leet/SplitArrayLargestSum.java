@@ -5,7 +5,7 @@ package com.leet;
 //Write an algorithm to minimize the largest sum among these m subarrays.
 //
 //Note:
-//Given m satisfies the following constraint: 1 ¡Ü m ¡Ü length(nums) ¡Ü 14,000.
+//Given m satisfies the following constraint: 1 Â¡Ãœ m Â¡Ãœ length(nums) Â¡Ãœ 14,000.
 //
 //Examples:
 //
@@ -21,8 +21,9 @@ package com.leet;
 //The best way is to split it into [7,2,5] and [10,8],
 //where the largest sum among the two subarrays is only 18.
 //
-//
-//Baidu
+
+//Baidu, Facebook
+//Hard
 public class SplitArrayLargestSum {
 
 	public SplitArrayLargestSum() {
