@@ -2,7 +2,7 @@ package com.leet;
 
 //Range Sum Query - Immutable
 
-//Given an integer array nums, find the sum of the elements between indices i and j (i ¡Ü j), inclusive.
+//Given an integer array nums, find the sum of the elements between indices i and j (i Â¡Ãœ j), inclusive.
 //
 //Example:
 //Given nums = [-2, 0, 3, -5, 2, -1]
@@ -15,6 +15,7 @@ package com.leet;
 //There are many calls to sumRange function.
 
 //Palantir
+//Easy
 public class NumArray {
 
 	private int[] narrSum = null;
