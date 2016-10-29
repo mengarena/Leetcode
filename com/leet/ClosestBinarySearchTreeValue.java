@@ -8,6 +8,7 @@ package com.leet;
 
 
 //Google, Snapchat, Microsoft
+//Easy
 public class ClosestBinarySearchTreeValue {
 
 	public ClosestBinarySearchTreeValue() {
