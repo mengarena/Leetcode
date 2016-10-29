@@ -17,7 +17,8 @@ import java.util.List;
 //["1->2->5", "1->3"]
 
 
-//Google, Facebook
+//Google, Facebook, Apple
+//Easy
 public class BinaryTreePaths {
 
 	public BinaryTreePaths() {
