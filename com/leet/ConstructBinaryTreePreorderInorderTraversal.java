@@ -30,7 +30,7 @@ public class ConstructBinaryTreePreorderInorderTraversal {
         if (inorder == null || preorder == null || inorder.length == 0 || preorder.length == 0 || inorder.length != preorder.length) return null;
         int n = inorder.length;
         
-        root = buildTree(inorder, 0, n-1, preorder, 1, n-1);
+        root = buildTree(inorder, 0, n-1, preorder, 0， n-1);
                 
         return root;
         
