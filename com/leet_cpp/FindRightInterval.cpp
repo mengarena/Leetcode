@@ -68,7 +68,7 @@ public:
         StartIdx(int st, int index): start(st), orgIdx(index) {}
         
         static bool sortStartIdx (StartIdx siA, StartIdx siB) {  //Should be static
-            return siA.start < siB.start;    
+            return siA.start < siB.start;    // order: small, large
         }
     };
     
