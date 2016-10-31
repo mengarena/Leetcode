@@ -138,6 +138,51 @@ public class MainProgram {
 	}
 	
 	
+	public static class StartIdx implements Comparable<StartIdx> {
+		int start;
+		int idx;
+		
+		public StartIdx(int start, int idx) {
+			this.start = start;
+			this.idx = idx;
+		}
+		
+		public int compareTo(StartIdx other) {
+			//return this.start - other.start;   //Order:  Small ---> Large
+			
+			return other.start - this.start;   //Order: Large ---> Small
+			
+			//if (this.start < other.start) {
+			//	return -1;
+			//} else {
+			//	return 1;
+			//}
+		}
+	}
+	
+	
+	public static void TestRun() {
+		List<StartIdx> lstRet = new ArrayList<>();
+		StartIdx a1 = new StartIdx(3, 1);
+		StartIdx a2 = new StartIdx(2, 2);
+		StartIdx a3 = new StartIdx(4, 3);
+		StartIdx a4 = new StartIdx(1, 4);
+		
+		lstRet.add(a1);
+		lstRet.add(a2);
+		lstRet.add(a3);
+		lstRet.add(a4);
+		
+		Collections.sort(lstRet);
+		
+		int n = lstRet.size();
+		
+		System.out.println("Start Order: ");
+		for (int i=0; i<n; i++) {
+			System.out.println(lstRet.get(i).start);
+		}
+	}
+	
 	/**
 	 * @param args
 	 */
@@ -169,8 +214,12 @@ public class MainProgram {
 		
 		//System.out.println("Begin: " + System.currentTimeMillis());
 		
-		TernaryExpressionParser instance = new TernaryExpressionParser();
-		instance.run();
+		//TernaryExpressionParser instance = new TernaryExpressionParser();
+		//instance.run();
+		
+		TestRun();
+		
+		
 		
 		//System.out.println("End: " + System.currentTimeMillis());
 		
