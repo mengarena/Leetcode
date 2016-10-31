@@ -83,7 +83,7 @@ public:
         vector<StartIdx> vSI;
 
         for (vector<int>::size_type i = 0; i != intervals.size(); ++i) {
-            vSI.push_back(StartIdx(intervals[i].start, i));  //struct, no new
+            vSI.push_back(StartIdx(intervals[i].start, i));  //could also new an object then add the object of struct
         }
         
         sort(vSI.begin(), vSI.end(), StartIdx::sortStartIdx);
