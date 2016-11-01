@@ -29,29 +29,29 @@ public class FirstBadVersion {
 	
 	//[1, 2, ..., n]
     public int firstBadVersion(int n) {        
-        if (n <= 0) return 0;
-        if (n == 1) return 1;
+        if (n <= 1) return n;
+        
         int nStart = 1;
         int nEnd = n;
-        int nMiddle, nPreMiddle;
+        int nMiddle;
         
         while (nStart < nEnd) {
         	nMiddle = nStart + (nEnd - nStart)/2;   //Don't use (nStart + nEnd)/2, which will lead to overflow
         	        	
-        	if (nMiddle == nStart) {
-        		if (isBadVersion(nMiddle)) {
-        			return nMiddle;
-        		} else {
-        			return nEnd;
-        		}
+        	//if (nMiddle == nStart) {
+           //   if (isBadVersion(nMiddle)) {
+        	//       return nMiddle;
+        	//    } else {
+           //       return nEnd;
+        	//    }
         		
-        	} else {
+        	//} else {
         		if (isBadVersion(nMiddle)) {
         			nEnd = nMiddle;
         		} else {
         			nStart = nMiddle + 1;
         		}
-        	}
+        	//}
         	
         }
         
