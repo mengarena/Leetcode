@@ -97,6 +97,7 @@ public class IsSubsequence {
         List<List<Integer>> lstlstCharPos = new ArrayList<List<Integer>>();  //26 list for 26 letters
         
         //Attention: in Java, code like List<Integer>[] lstarr = new ArrayList<Integer>[26]; is NOT allowed
+        //but, List<Integer>[] lstarr = new ArrayList[26];
         
         int loc = 0;
         int i;
