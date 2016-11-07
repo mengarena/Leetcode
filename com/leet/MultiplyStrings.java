@@ -57,8 +57,15 @@ public class MultiplyStrings {
         
         return sResult.toString();
     }
+
+
+
+
+
+
+
 	
-/* The following solution is accepted, but not very efficient	
+/* wThe following solution is accepted, but not very efficient	
     public String multiply(String num1, String num2) {
         String sResult = "";
         String sTmpResult = "";

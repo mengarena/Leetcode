@@ -162,7 +162,7 @@ public class MinimumUniqueWordAbbreviation {
         Map<Integer, Set<String>> hmDictAbbr = new HashMap<Integer, Set<String>>();
         
         for (String sDict:dictionary) {
-            Map<Integer, Set<String>> hmDictAbbrTmp = generateAbbr(sDict);
+            Map<Integer, Set<String>> hmDictAbbrTmp = generateAbbr(sDict); 
             
             Set<Integer> setKeys = hmDictAbbrTmp.keySet();
             

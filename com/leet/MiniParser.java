@@ -91,7 +91,7 @@ public class MiniParser {
             if (c == '[') {
                 stk.push(new NestedInteger());
             } else if (c == ']') {
-                NestedInteger tmp = stk.pop();
+                NestedInteger tmp = stk.pop();   // the [ ... ] object
                 
                 if (!stk.isEmpty()) {
                     stk.peek().add(tmp);

@@ -35,7 +35,8 @@ public class MovingAverage {
         	sum += val;
         }
         
-        return sum*1.0/size;
+        //return sum*1.0/size;
+        return sum*1.0/myQu.size();
     }
 }
 
