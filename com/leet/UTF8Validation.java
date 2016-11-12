@@ -56,6 +56,7 @@ public class UTF8Validation {
             nByteCnt = getByteCnt(data[i]);
             if (nByteCnt == 0) return false;
             
+            
             if (nByteCnt+i > n) return false;
             
             for (int j=1; j<nByteCnt; j++) {
@@ -70,9 +71,9 @@ public class UTF8Validation {
     
     //Check whether it is the valid starting byte of UTF-8, and how many bytes UTF-8 it is
     private int getByteCnt(int num) {
-        if (((num >> 3) & 0x1E) == 0x1E) return 4;
-        if (((num >> 4) & 0xE) == 0xE) return 3;
-        if (((num >> 5) & 0x6) == 0x6) return 2;
+        if (((num >> 3) & 0x1F) == 0x1E) return 4;
+        if (((num >> 4) & 0xF) == 0xE) return 3;
+        if (((num >> 5) & 0x7) == 0x6) return 2;
         if ((num & 0x80) == 0) return 1;
         
         return 0;
