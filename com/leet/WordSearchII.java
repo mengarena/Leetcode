@@ -126,7 +126,7 @@ public class WordSearchII {
 	    	tr.sWord = null;
 	    }
 	    
-	    board[i][j] = '#';
+	    board[i][j] = '#';   //make sure each cell will only be used once for each traverse
 			
 		if (j < n-1) searchWords(board, i, j+1, tr, lstWords);
 		if (j > 0) searchWords(board, i, j-1, tr, lstWords);

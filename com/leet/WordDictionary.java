@@ -100,7 +100,7 @@ public class WordDictionary {
 			for (i=0; i<26; i++) {
 				if (root.children[i] != null) {
 					if (nStartPos == n-1) {
-					    if (root.children[i].bWord == true)	{
+					    if (root.children[i].bWord == true) {
 					    	bRet = true;
 					    	break;
 					    }
