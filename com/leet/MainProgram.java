@@ -63,16 +63,14 @@ public class MainProgram {
     	return nMedian;
     }
     
-	
-    //Find a position to insert target into the array
-    private static int findPos(int[] nums, int target) {
+	private static int findPos(int[] nums, int target) {
 		if (nums == null || nums.length == 0) return 0;
 		int n = nums.length;
 		int i = 0, j = n - 1;
 		int mid = 0;
 		
 		while (i <= j) {
-			mid = i + (j-i)/2;
+			mid = (i+j)/2;
 			
 			if (nums[mid] == target) {
 				System.out.println("#Number.Length = " + n + ", Mid = " + mid);
@@ -216,10 +214,10 @@ public class MainProgram {
 		
 		//System.out.println("Begin: " + System.currentTimeMillis());
 		
-		//TernaryExpressionParser instance = new TernaryExpressionParser();
-		//instance.run();
+		ArithmeticSlicesIISubsequence instance = new ArithmeticSlicesIISubsequence();
+		instance.run();
 		
-		TestRun();
+		//TestRun();
 		
 		
 		
