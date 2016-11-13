@@ -98,7 +98,7 @@ public class TotalImageFileLen {
         			level = 0;
     			}
     			
-    			level++;
+    			level++;   //one indent (space) corresponds to one level
     			
     		} else {
     			if (start == -1) {
@@ -140,7 +140,7 @@ public class TotalImageFileLen {
     	int len = 0;
     	
     	for (int i=nIdx; i>=0; i--) {
-    		len += lstLevelLen.get(i) + 1;
+    		len += lstLevelLen.get(i) + 1;   //1: for the "/" in path
     	}
     	
     	return len;
