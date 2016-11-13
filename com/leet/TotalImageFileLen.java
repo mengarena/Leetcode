@@ -98,7 +98,7 @@ public class TotalImageFileLen {
         			level = 0;
     			}
     			
-    			level++;   //one indent (space) corresponds to one level
+    			level++;
     			
     		} else {
     			if (start == -1) {
