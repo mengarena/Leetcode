@@ -36,4 +36,12 @@ public class Draft_PoorPigs {
 		return count;
 	}
 
+
+    /*
+     int nAttempt = minutesToTest/minutesToDie;  //drink everytime
+     int base = nAttempt + 1;  //1: one round not drink
+     //every pig has base status, how many pigs to represent buckets
+     int ans = (int) Math.ceil(Math.log(buckets)/Math.log(base));
+     */
+
 }

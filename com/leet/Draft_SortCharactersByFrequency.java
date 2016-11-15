@@ -42,9 +42,7 @@ import java.util.Map;
 //Explanation:
 //"bbaA" is also a valid answer, but "Aabb" is incorrect.
 //Note that 'A' and 'a' are treated as two different characters.
-//Show Company Tags
-//Show Tags
-//Show Similar Problems
+
 
 //Google, Amazon
 //Medium

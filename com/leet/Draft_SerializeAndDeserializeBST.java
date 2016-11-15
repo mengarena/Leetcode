@@ -49,7 +49,8 @@ public class Draft_SerializeAndDeserializeBST {
 	    return dummy.left;
 	}
 
-	private int deserializedfs(String[] list, int pos, TreeNode par, boolean isleft, 
+	//tree: preorder
+    private int deserializedfs(String[] list, int pos, TreeNode par, boolean isleft, 
 	                                                    int lower, int upper){
 	    if(pos >= list.length) return pos;
 
