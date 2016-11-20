@@ -68,7 +68,7 @@ public:
         StartIdx(int st, int index): start(st), orgIdx(index) {}
         
         static bool sortStartIdx (StartIdx siA, StartIdx siB) {  //Should be static
-            return siA.start < siB.start;    // order: small, large
+            return siA.start < siB.start;    
         }
     };
     
@@ -83,7 +83,7 @@ public:
         vector<StartIdx> vSI;
 
         for (vector<int>::size_type i = 0; i != intervals.size(); ++i) {
-            vSI.push_back(StartIdx(intervals[i].start, i));  //could also new an object then add the object of struct
+            vSI.push_back(StartIdx(intervals[i].start, i));
         }
         
         sort(vSI.begin(), vSI.end(), StartIdx::sortStartIdx);
