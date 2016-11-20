@@ -8,7 +8,7 @@
 //
 //Note:
 //
-//The number of stones is ¡Ý 2 and is < 1,100.
+//The number of stones is Â¡Ã 2 and is < 1,100.
 //Each stone's position will be a non-negative integer < 231.
 //The first stone's position is always 0.
 //Example 1:
@@ -76,3 +76,4 @@ public:
         return false;
     }
 };
+
