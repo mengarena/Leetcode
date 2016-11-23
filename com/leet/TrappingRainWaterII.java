@@ -46,7 +46,7 @@ public class TrappingRainWaterII {
         }
         
         public int compareTo(Cell o) {
-            return this.height - o.height;
+            return this.height - o.height;   //Small, Large
         }
     }
     
