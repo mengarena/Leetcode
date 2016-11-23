@@ -21,6 +21,19 @@ public class ImplementStrStr {
 	}
 	
 	
+	//ACC: 25%
+	public int strStr(String haystack, String needle) {
+            for (int i=0; ; i++) {
+                for (int j=0; ;j++) {
+                    if (j == needle.length()) return i;
+                
+                    if (i+j == haystack.length()) return -1;
+                
+                    if (needle.charAt(j) != haystack.charAt(i+j)) break; 
+                }
+            }
+        }
+	
 	//ACC: 53% 
 	//KMP Algorithm:  Refer to https://tekmarathon.com/2013/05/14/algorithm-to-find-substring-in-a-string-kmp-algorithm/
 	/**
