@@ -36,10 +36,16 @@ public:
         //bool operator < (const Cell &a) {  //Wrong
         bool operator < (const Cell &a) const {  //Correct
         //bool operator < (Cell a) const {   //Correct
-            return a.height < height;   //Small, Large
+            return a.height < height;   //Equals to "greater", lead to order: Small, Large
         }
     };
     
+    
+    struct cmp {
+        bool operator()(Cell a, Cell b) {
+            return a.height > b.height;    //Equals to "greater", lead to order: Small, Large
+        }  
+    };
     
     //Correct
     int trapRainWaterA(vector<vector<int>>& heightMap) {
@@ -52,6 +58,7 @@ public:
         int neiRow, neiCol;
         vector<vector<bool>> visited(r, vector<bool>(c, false));
         
+        priority_queue<Cell, vector<Cell>, cmp> pq;   //Correct, Small on top
         priority_queue<Cell> pq;  //Small on top
        
         for (i=0; i<r; i++) {
