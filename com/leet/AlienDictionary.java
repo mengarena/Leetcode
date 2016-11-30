@@ -48,19 +48,19 @@ public class AlienDictionary {
 
 	//New ACC
 public String alienOrder(String[] words) {
-    List<Set<Integer>> adj = new ArrayList<>();
+    List<Set<Integer>> adj = new ArrayList<>();   // the letters behind me
     
     for (int i = 0; i < 26; i++) {
         adj.add(new HashSet<Integer>());
     }
     
-    int[] degree = new int[26];
+    int[] degree = new int[26];  //in degree (i.e the number of letter before me)
     Arrays.fill(degree, -1);
     
     for (int i = 0; i < words.length; i++) {
         for (char c : words[i].toCharArray()) {
             if (degree[c - 'a'] < 0) {
-                degree[c - 'a'] = 0;
+                degree[c - 'a'] = 0;  //letter appears
             }
         }
         if (i > 0) {
@@ -75,7 +75,7 @@ public String alienOrder(String[] words) {
                     }
                     break;
                 }
-                if (j == w2.length() - 1 && w1.length() > w2.length()) { // "abcd" -> "ab"
+                if (j == w2.length() - 1 && w1.length() > w2.length()) { // "abcd" -> "ab" (in dictionary, "ab" should appear before "abcd"
                     return "";
                 }
             }
@@ -101,7 +101,7 @@ public String alienOrder(String[] words) {
         }
     }
     
-    for (int d : degree) {
+    for (int d : degree) { // there is a loop
         if (d > 0) {
             return "";
         }
