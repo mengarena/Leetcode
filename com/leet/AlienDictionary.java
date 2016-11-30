@@ -48,7 +48,7 @@ public class AlienDictionary {
 
 	//New ACC
 public String alienOrder(String[] words) {
-    List<Set<Integer>> adj = new ArrayList<>();   // the letters behind me
+    List<Set<Integer>> adj = new ArrayList<>();   // the letters behind me （use difference with 'a' to stand for letters)
     
     for (int i = 0; i < 26; i++) {
         adj.add(new HashSet<Integer>());
