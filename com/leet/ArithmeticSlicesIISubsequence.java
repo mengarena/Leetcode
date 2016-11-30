@@ -18,14 +18,14 @@ import java.util.Set;
 //1, 1, 2, 5, 7
 //
 //A zero-indexed array A consisting of N numbers is given. 
-//A subsequence slice of that array is any sequence of integers (P0, P1, ..., Pk) such that 0 ¡Ü P0 < P1 < ... < Pk < N.
+//A subsequence slice of that array is any sequence of integers (P0, P1, ..., Pk) such that 0 Â°â€¹ P0 < P1 < ... < Pk < N.
 //
 //A subsequence slice (P0, P1, ..., Pk) of array A is called arithmetic if the sequence A[P0], A[P1], ..., A[Pk-1], A[Pk] is arithmetic. 
-//In particular, this means that k ¡Ý 2.
+//In particular, this means that k Â°â€º 2.
 //
 //The function should return the number of arithmetic subsequence slices in the array A.
 //
-//The input contains N integers. Every integer is in the range of -231 and 231-1 and 0 ¡Ü N ¡Ü 1000. 
+//The input contains N integers. Every integer is in the range of -231 and 231-1 and 0 Â°â€¹ N Â°â€¹ 1000. 
 //The output is guaranteed to be less than 231-1.
 //
 //
@@ -86,7 +86,7 @@ public class ArithmeticSlicesIISubsequence {
                 int d = (int)diff;
                 int c1 = map[i].getOrDefault(d, 0);   //might contain duplicate elements, so same d might occur more than once for the same i (i.a. different j might have same value)
                 int c2 = map[j].getOrDefault(d, 0);
-                res += c2;
+                res += c2;   //c2 could be thought as #2-element slices, then by adding A[i], it is the number of 3-element slices (i.e. arithmetic) (i.e. by A[i] and this d, will have c2 slices
                 map[i].put(d, c1 + c2 + 1);  //It actually remembers:  how many elements we have before i to form the difference d slice
             }
         }
