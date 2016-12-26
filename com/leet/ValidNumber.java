@@ -86,12 +86,52 @@ public class ValidNumber {
 		System.out.println(isNumber(s));
 	}
 
+
+    //ACC: 30%	
+    public boolean isNumber(String s) {
+        if (s == null) return false;
+        s = s.trim();
+        if (s.length() == 0) return false;
+        
+        boolean bDigit = false;
+        boolean bE = false;
+        boolean bPoint = false;
+        boolean bDigitAfterE = true;
+        char c = 0;
+        
+        for (int i=0; i<s.length(); i++) {
+            c = s.charAt(i);
+            
+            if (Character.isDigit(c)) {
+                bDigit = true;
+                bDigitAfterE = true;
+            } else if (c == '+' || c == '-') {
+                if (i != 0 && s.charAt(i-1) != 'E' && s.charAt(i-1) != 'e') {
+                    return false;
+                }
+            } else if (c == '.') {
+                if (bE || bPoint) return false;
+                bPoint = true;
+            } else if (c == 'e' || c == 'E') {
+                if (bE || !bDigit) return false;
+                bE = true;
+                bDigitAfterE = false;
+            } else {
+                return false;
+            }
+        }
+        
+        return bDigit && bDigitAfterE;
+    }
+	
+	
+	
 	
 	//ACC:  73%
 	//
 	//Attention:  The test case in LeetCode does not consider the tailing type symbol (d, D, f, F, l, L), it treats these as error
 	//To treat these type symbol, uncomment the related code
-    public boolean isNumber(String s) {
+    public boolean isNumberK(String s) {
        if (s == null || s.length() == 0) return false;
        int n = s.length();
        int i = 0;
