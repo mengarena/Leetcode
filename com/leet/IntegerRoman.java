@@ -38,9 +38,26 @@ public class IntegerRoman {
 		System.out.println(num + " is converted to Roman: " + intToRoman(num));
 	}
 	
+	//ACC
+	public String intToRoman(int num) {
+	    String[] romanArr = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+	    int[] intArr = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i=0; i<romanArr.length; i++) {
+		    while (num >= intArr[i]) {
+			    num -= intArr[i];
+			    sb.append(romanArr[i]);
+			}
+		}
+		
+		return sb.toString();	
+	}
+	
 	
 	//ACC
-    public String intToRoman(int num) {
+    public String intToRomanB(int num) {
         String sLetterTen = "MCXI";
         String sLetterFive = "DLV";
         int[] arrNumsTen = {1000, 100, 10, 1};

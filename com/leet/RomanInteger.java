@@ -30,7 +30,9 @@ public class RomanInteger {
 
 	//Rule for Roman:
 	/*
-	 * I -- 1;    V -- 5;  X -- 10;  L -- 50;  C -- 100;  D -- 500;  M -- 1000
+	 * I -- 1;    X -- 10;  C -- 100;  M -- 1000
+	 * V -- 5;    L -- 50;  D -- 500
+	 * 
 	 * if ab (a < b), value = b-a
 	 */
 	public void run() {
@@ -40,7 +42,127 @@ public class RomanInteger {
 	}
 	
 	
-    public int romanToInt(String s) {
+	/*
+	 * Special case:
+	 * 
+	 * 1) I, X, C could continuous up to 3 times; M could be continuous more than 3 times
+	 * 2) V, L, D could only continuous occur 1 once
+	 * 3) The next letter after V,L,D could not be larger than V, L, D  (e.g. VX is wrong)
+	 * 4) Could not put more than one roman letter in front of a larger letter
+	 * 
+	 */
+	//Check whether thr roman string is valid
+	private boolean checkRomanString(String s) {
+	    Map<Character, Integer> hm = new HashMap<Character, Integer>();
+	    hm.put('I', 1);
+	    hm.put('V', 5);
+	    hm.put('X', 10);
+	    hm.put('L', 50);
+	    hm.put('C', 100);
+	    hm.put('D', 500);
+	    hm.put('M', 1000);
+	    
+	    char[] romArr = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
+	    
+	    String[] invalidArr = {"IIII", "XXXX", "CCCC", "MMMMM", "VV", "LL", "DD"};
+	    int idx = 0;
+	    int i;
+	    
+	    // 1), 2)
+	    for (i=0; i<invalidArr.length; i++) {
+		    if (s.indexOf(invalidArr[i]) != -1) return false;
+		}
+		
+		//3)
+		for (i=1; i<s.length(); i++) {
+		    if ((s.charAt(i-1) == 'V' || s.charAt(i-1) == 'L' || s.charAt(i-1) == 'D') && (hm.get(s.charAt(i-1)) < hm.get(s.charAt(i)))) return false;
+		}
+		
+		//4) 
+        Map<Character, Integer> hmm = new HashMap<Character, Integer>();
+        
+        for (i=0; i<s.length(); i++) {
+		    hmm.put(s.charAt(i), hmm.getOrDefault(s.charAt(i), 0) + 1);
+		    
+		    if (i >= 2) {
+			    int nRomIdx = Arrays.asList(romArr).indexOf(s.charAt(i));
+			    int count = 0;
+			    
+			    for (int j=0; j<nRomIdx; j++) {
+				    count += hmm.getOrDefault(romArr[j] ,0);
+				    if (count > 1) return false;
+				}
+			}
+			
+		}
+        
+        
+	    return true;
+	}
+	
+	
+	//ACC
+	public int romanToIntAA(String s) {
+		if (s.isEmpty()) return 0;
+		
+	    Map<Character, Integer> hm = new HashMap<Character, Integer>();
+	    hm.put('I', 1);
+	    hm.put('V', 5);
+	    hm.put('X', 10);
+	    hm.put('L', 50);
+	    hm.put('C', 100);
+	    hm.put('D', 500);
+	    hm.put('M', 1000);
+
+        char[] carr = s.toCharArray();
+        int result = 0;
+        int tmpVal = 0;
+        
+        for (int i = 0; i < carr.length; i++) {
+			tmpVal = hm.get(carr[i]);
+			if (i != carr.length-1) {
+			    if (tmpVal < hm.get(carr[i+1])) tmpVal = -tmpVal;
+			}
+			
+			result += tmpVal;
+	    }
+	    
+	    return result;	
+	}
+	
+	public int romanToInt(String s) {
+		if (s.isEmpty()) return 0;
+		
+	    Map<Character, Integer> hm = new HashMap<Character, Integer>();
+	    hm.put('I', 1);
+	    hm.put('V', 5);
+	    hm.put('X', 10);
+	    hm.put('L', 50);
+	    hm.put('C', 100);
+	    hm.put('D', 500);
+	    hm.put('M', 1000);
+
+        char[] carr = s.toCharArray();
+        int result = 0;
+        int tmpVal = 0;
+        int prev = 0;
+        
+        for (int i = carr.length-1; i >= 0; i--) {
+			tmpVal = hm.get(carr[i]);
+            if (tmpVal < prev) {
+			    result -= tmpVal;
+			} else  {
+				result += tmpVal;
+			}
+			
+			prev = tmpVal;
+	    }
+	    
+	    return result;	
+	}
+	
+	
+    public int romanToIntB(String s) {
         int nNumVal = 0;
 
         String sBase ="IVXLCDM";
