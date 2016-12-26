@@ -43,9 +43,112 @@ public class StringToInteger {
 		System.out.println("===" + myAtoi(sNum));
 	}
 	
-	
 	//ACC
     public int myAtoi(String str) {
+        if (str == null || str.length() == 0) return 0;
+        char[] carr = str.toCharArray();
+        boolean bSign = false;
+        boolean bNeg = false;
+        int n = carr.length;
+        int i = 0;
+        int ret = 0;
+        int digit = 0;
+        
+        while ((i < n) && (carr[i] == ' ' || carr[i] == '\t')) i++;
+        
+        if (i == n) return 0;
+        
+        if (carr[i] == '-') {
+            bSign = true;
+            bNeg = true;
+            i++;
+        } else if (carr[i] == '+') {
+            bSign = true;
+            i++;
+        }
+        
+        while (i < n && Character.isDigit(carr[i])) {
+            if (ret > Integer.MAX_VALUE/10 || (ret == Integer.MAX_VALUE/10 && carr[i]-'0' > 7)) {
+                if (bNeg) {
+                    return Integer.MIN_VALUE;
+                } else {
+                    return Integer.MAX_VALUE;
+                }
+            }
+            
+            ret = ret * 10 + carr[i] - '0';
+            
+            i++;
+        }
+        
+        if (bNeg) ret = ret*(-1);
+        
+        return ret;
+    }
+	
+	
+	
+    public int myAtoiK(String str) {
+        if (str == null || str.length() == 0) return 0;
+        char[] carr = str.toCharArray();
+        boolean bSign = false;
+        boolean bNeg = false;
+        boolean bDigit = false;
+        int n = carr.length;
+        int i = 0;
+        int ret = 0;
+        int digit = 0;
+        
+        while ((i < n) && (carr[i] == ' ' || carr[i] == '\t')) i++;
+        
+        if (i == n) return 0;
+        
+        if (carr[i] == '-') {
+            bSign = true;
+            bNeg = true;
+        } else if (carr[i] == '+') {
+            bSign = true;
+        } else if (Character.isDigit(carr[i])) {
+            bDigit = true;
+            ret = carr[i] - '0';
+        } else {
+            return 0;
+        }
+        
+        i++;
+        
+        while (i < n) {
+            if (Character.isDigit(carr[i])) {
+                bDigit = true;
+                
+                if (bNeg) {
+                    if (ret > (Integer.MIN_VALUE + (carr[i]-'0'))/(-10)) {
+                        return Integer.MIN_VALUE;
+                    }
+                } else {
+                    if (ret > (Integer.MAX_VALUE - (carr[i]-'0'))/10) {
+                        return Integer.MAX_VALUE;
+                    }
+                }
+                
+                ret = ret * 10 + (carr[i] - '0');
+            } else {
+                break;
+            }
+            
+            i++;
+        }
+        
+        if (bDigit == false) return 0;
+        
+        if (bNeg) ret = ret*(-1);
+        
+        return ret;
+    }	
+	
+	
+	//ACC
+    public int myAtoiB(String str) {
         if (str == null || str.length() == 0) return 0;
         char carr[] = str.toCharArray();
         boolean bSign = false;

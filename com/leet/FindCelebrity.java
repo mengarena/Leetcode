@@ -32,7 +32,25 @@ public class FindCelebrity {
 	public void run() {
 		
 	}
-	
+
+
+    //ACC
+    public int findCelebrity(int n) {
+	    int candidate = 0;
+	    
+	    for (int i=1; i<n; i++) {
+		    if (knows(candidate, i)) {
+			    candidate = i;
+			}
+		}
+		
+		for (int i=0; i<n; i++) {
+			if ((candidate != i) && (knows(candidate, i) || !knows(i, candidate))) return -1;
+		}
+		
+		return candidate;
+	}
+
 
 	//AC: 25%
 	//Rule:  knows(A, B)
@@ -40,7 +58,7 @@ public class FindCelebrity {
 	//No ==> A might be;  B is NOT celebrity
 	//
 	//Attention: for non-celebrity, they might know each other mutually
-    public int findCelebrity(int n) {
+    public int findCelebrityA(int n) {
         List<Integer> lstCandidate = new ArrayList<Integer>();
         int nCelId = -1;
         int i;
