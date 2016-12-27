@@ -38,11 +38,47 @@ public class NestedListWeightSumII {
 	}
 	
 	
+	//ACC
+    public int depthSumInverse(List<NestedInteger> nestedList) {
+        if (nestedList == null || nestedList.isEmpty()) return 0;
+        
+        List<Integer> lstSum = new ArrayList<>();
+        
+        depthSumInverseHelper(nestedList, 0, lstSum);
+        
+        int size = lstSum.size();
+        int sum = 0;
+        
+        for (int i=0; i<size; i++) {
+            sum += lstSum.get(i)*(size-i);
+        }
+        
+        return sum;
+    }
+    
+    private void depthSumInverseHelper(List<NestedInteger> nestedList, int level, List<Integer> lstSum) {
+        if (level + 1 > lstSum.size()) {
+            lstSum.add(0);
+        }
+        
+        for (NestedInteger ni:nestedList) {
+            if (ni.isInteger()) {
+                lstSum.set(level, lstSum.get(level) + ni.getInteger());
+            } else {
+                depthSumInverseHelper(ni.getList(), level+1, lstSum);
+            }
+        }
+    }
+	
+	
+	
+	
+	
 	
 	//ACC:  Based on depth, form list of list; first element is the root, whose weight is the largest
     private List<List<Integer>> lstlstNums = null;
     
-    public int depthSumInverse(List<NestedInteger> nestedList) {
+    public int depthSumInverseA(List<NestedInteger> nestedList) {
         if (nestedList == null) return 0;
         int sum = 0;
         lstlstNums = new ArrayList<List<Integer>>();

@@ -36,10 +36,58 @@ public class EditDistance {
 		System.out.println("Distance = " + minDistance(word1, word2));
 	}
 
+	//ACC
+    public int minDistance(String word1, String word2) {
+        if (word1 == null || word1.length() == 0) {
+            if (word2 == null || word2.length() == 0) return 0;
+            return word2.length();
+        }
+        
+        if (word2 == null || word2.length() == 0) return word1.length();
+        int n1 = word1.length();
+        int n2 = word2.length();
+        
+        int[] narrDist = new int[n2+1];
+        int i,j;
+        int prev = 0;
+        int corn = 0;
+        int cost = 0;
+        int tmpCorn = 0;
+        
+        for (i=0; i<=n2; i++) narrDist[i] = i;
+        
+        j = 1;
+        
+        while (j <= n1) {
+            prev = j;
+            corn = j-1;
+            
+            for (i=1; i<=n2; i++) {
+                if (word1.charAt(j-1) == word2.charAt(i-1)) {
+                    cost = 0;
+                } else {
+                    cost = 1;
+                }
+                
+                tmpCorn = narrDist[i];
+                
+                narrDist[i] = Math.min(prev+1, Math.min(narrDist[i]+1, corn + cost));
+                
+                prev = narrDist[i];
+                corn = tmpCorn;
+            }
+            
+            j++;
+        }
+        
+        return narrDist[n2];
+    }
+	
+	
 	
 	//ACC:   94%
 	//Less space
-    public int minDistance(String word1, String word2) {
+    public int minDistanceK(String word1, String word2) {
         if ((word1 == null && word2 == null) || (word1.length() == 0 && word2.length() == 0))  return 0;
         int n1 = word1.length();
         int n2 = word2.length();
