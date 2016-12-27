@@ -24,13 +24,65 @@ public class MaxPointsOnALine {
 	}
 
 	
+	//ACC
+    public int maxPoints(Point[] points) {
+        if (points == null) return 0;
+        if (points.length <= 2) return points.length;
+        int result = 1;
+        Map<Integer, Map<Integer, Integer>> hmm = new HashMap<>();
+
+        for (int i=0; i<points.length; i++) {
+            int same = 1;    //"1" is itself
+            int tmpResult = 0;
+            
+            hmm.clear();
+            
+            for (int j=i+1; j<points.length; j++) {
+                int xx = points[i].x - points[j].x;
+                int yy = points[i].y - points[j].y;
+
+                if (xx == 0 && yy == 0) {
+                    same++;
+                    continue;
+                }
+                
+                int ncd = gcd(yy, xx);
+                
+                xx = xx/ncd;
+                yy = yy/ncd;
+                
+                if (!hmm.containsKey(xx)) {
+                    Map<Integer, Integer> hm = new HashMap<>();
+                    hm.put(yy, 1);
+                    hmm.put(xx, hm);
+                } else {
+                    if (!hmm.get(xx).containsKey(yy)) {
+                        hmm.get(xx).put(yy, 1);
+                    } else {
+                        hmm.get(xx).put(yy, hmm.get(xx).get(yy)+1);
+                    }
+                }
+                
+                tmpResult = Math.max(tmpResult, hmm.get(xx).get(yy));
+            }
+            
+            result = Math.max(result, tmpResult + same);
+        }
+        
+        return result;
+    }
+    
+
+
+	
+	
 	//ACC:  40%
 	//
 	//Strategy: from each point, to calcualte the slope with other points
 	//Here the important thing is that NOT using double as the key in hashmap
 	//Here the key is represented as two integers: x, y (NOT their ratio), GCD removed
 	//For each <x, y>, accumulate its count
-    public int maxPoints(Point[] points) {
+    public int maxPointsA(Point[] points) {
         if (points == null || points.length == 0) return 0;
         int n = points.length;
         if (n <= 2) return n;

@@ -48,7 +48,6 @@ public class FindTriangle {
 	    int i,j;
 	    int count = 0;
 	    
-	    
 	    for (i=0; i<n-2; i++) {  //(a)
 		
 		    int startIdx = i+2;
@@ -76,7 +75,6 @@ public class FindTriangle {
 	    int n = narr.length;
 	    int i,j,k;
 	    int count = 0;
-	    
 	    
 	    for (i=0; i<n-2; i++) {  //(a)
 		
