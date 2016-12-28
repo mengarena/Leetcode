@@ -41,11 +41,68 @@ public class BinaryTreeUpsideDown {
 		System.out.println();
 	}
 
+
+    //ACC:  59%
+    //Turn rules:  
+    //  1) original right -> left;  original left -> root; original root -> right
+    //  2) The top sub tree (root, left, right) is put to the bottom at the right side
+    public TreeNode upsideDownBinaryTree(TreeNode root) {
+        if (root == null || (root.left == null && root.right == null)) return root;
+        
+        TreeNode orgRoot = root;
+ //       TreeNode orgLeft = root.left;
+        TreeNode orgRight = root.right;
+        
+        TreeNode newRoot = upsideDownBinaryTree(root.left);
+        
+        TreeNode newRight = newRoot;
+        while (newRight.right != null) {
+            newRight = newRight.right;
+        }
+        
+        newRight.left = orgRight;
+        newRight.right = orgRoot;
+        
+        orgRoot.left = null;
+        orgRoot.right = null;
+        
+        return newRoot;
+    }
+
+
+
+    //ACC
+    public TreeNode upsideDownBinaryTreeK(TreeNode root) {
+        if (root == null || (root.left == null && root.right == null)) return root;
+        
+        TreeNode tmpRoot = root;
+        TreeNode tmpLeft = root.left;
+        TreeNode tmpRight = root.right;
+        TreeNode tmpLeftLeft = null;
+        
+        while (tmpLeft != null) {
+            tmpLeftLeft = tmpLeft.left;
+            
+            tmpLeft.left = tmpRight;
+            tmpRight = tmpLeft.right;
+            tmpLeft.right = tmpRoot;
+            
+            tmpRoot = tmpLeft;
+            tmpLeft = tmpLeftLeft;
+        }
+
+        root.left = null;
+        root.right = null;
+         
+        return tmpRoot;
+    }
+
+
   
     //Accepted:  95%
 	//root --> right child;  right child-->left child; left child --> root
 	//Process along left slope
-    public TreeNode upsideDownBinaryTree(TreeNode root) {
+    public TreeNode upsideDownBinaryTreeA(TreeNode root) {
         if (root == null || (root.left == null && root.right == null)) return root;
         
         TreeNode tmpRight = root.right;
