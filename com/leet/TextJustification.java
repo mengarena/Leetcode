@@ -56,8 +56,100 @@ public class TextJustification {
 	}
 	
 	
-	//ACC: 34%
+	
+    //ACC
     public List<String> fullJustify(String[] words, int maxWidth) {
+        List<String> lstTxt = new ArrayList<>();
+        if (words == null || words.length == 0) return lstTxt;
+        int n = words.length;
+        int start = 0;
+        int end = -1;
+        int i = 0;
+        int tmpLen = 0;
+        int maxLen = 0;
+        String sRet;
+        
+        for (i=0; i<n; i++) maxLen = Math.max(maxLen, words[i].length());
+        if (maxLen > maxWidth) return lstTxt;
+        
+        tmpLen = words[0].length();
+        start = 0;
+        end = 0;
+        
+        i = 1;
+        
+        while (i < n) {
+            if (tmpLen + 1 + words[i].length() <= maxWidth) {
+                tmpLen = tmpLen + 1 + words[i].length();
+                end = i;
+            } else {
+                sRet = getJustifiedTxt(words, start, end, maxWidth);
+                lstTxt.add(sRet);
+
+                start = i;
+                end = i;
+                tmpLen = words[start].length();
+            }
+            
+            i++;
+        }
+        
+        //Process last line
+        sRet = "";
+        for (i=start; i<end; i++) sRet += words[i] + " ";
+        sRet += words[end];
+        
+        tmpLen = sRet.length();
+        for (i=0; i<maxWidth-tmpLen; i++) sRet = sRet + " ";
+        
+        lstTxt.add(sRet);
+        
+        return lstTxt;
+    }
+    
+    private String getJustifiedTxt(String[] words, int start, int end, int maxWidth) {
+        int count = end - start;  //Number of spaces between these words
+        int totalLen = 0;
+        int i;
+        
+        if (start == end) {
+            String sRet = words[start];
+            for (i=words[start].length(); i<maxWidth; i++) sRet = sRet + " ";
+            return sRet;
+        }
+        
+        for(i=start; i<=end; i++) {
+            totalLen += words[i].length();
+        }
+        
+        int remainedSpace = maxWidth - totalLen;
+        
+        int spaceCnt = remainedSpace/count;  //Standard #space
+        int headPart = remainedSpace % count;   //Extra 1 space for these "spaces"
+        
+        StringBuilder sb = new StringBuilder();
+        for (i=0; i<headPart; i++) {
+            sb.append(words[start+i]);
+            for (int j=0; j<spaceCnt+1; j++) sb.append(" ");
+        }
+        
+        for (i=headPart; i<count; i++) {
+            sb.append(words[start+i]);
+            for (int j=0; j<spaceCnt; j++) sb.append(" ");
+        }
+        
+        sb.append(words[end]);
+        
+        return sb.toString();
+    }
+
+
+	
+	
+	
+	
+	//ACC: 34%
+    public List<String> fullJustifyA(String[] words, int maxWidth) {
         List<String> lstFull = new ArrayList<String>();
         if (words == null || words.length == 0) return lstFull;
         int n = words.length;
