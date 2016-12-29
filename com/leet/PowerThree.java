@@ -24,6 +24,14 @@ public class PowerThree {
 		}
 	}
 	
+	
+	//ACC
+    public boolean isPowerOfThree(int n) {
+        return (n > 0) && (Math.pow(3, (int)(Math.log(Integer.MAX_VALUE)/Math.log(3))) % n) == 0;
+    }
+		
+	
+	
 	//ACC
     public boolean isPowerOfThree(int n) {
         if (n <= 0) return false; 

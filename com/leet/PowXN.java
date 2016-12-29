@@ -19,6 +19,36 @@ public class PowXN {
 	}
 	
 	
+	
+	//ACC: Correct
+    public double myPow(double x, int n) {
+        if (n < 0) {
+            if (n == Integer.MIN_VALUE) {
+                return 1.0/(myPowHelper(x, Integer.MAX_VALUE)*x);
+            } else {
+                return 1.0/myPowHelper(x, -n);
+            }
+        } else {
+            return myPowHelper(x, n);
+        }
+    }
+    
+    private double myPowHelper(double x, int n) {
+        if (n == 0) return 1;
+
+        double ret = myPowHelper(x, n/2);
+        
+        if ((n % 2) == 1) {
+            return ret*ret*x;
+        } else {
+            return ret*ret;
+        }
+    }	
+	
+	
+	
+	
+	//This now wrong, when n = Integer.MIN_VALUE!!
 	//This is efficient, this solution is testing different skills from the solution written below
 	public double myPow(double x, int n) {
 		if (n < 0) {

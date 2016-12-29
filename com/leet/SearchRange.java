@@ -28,6 +28,54 @@ public class SearchRange {
 		System.out.println("[" + narrRange[0] + "," + narrRange[1] + "]");
 	}
 	
+	//ACC
+    public int[] searchRange(int[] nums, int target) {
+        int[] ans = new int[2];
+        Arrays.fill(ans, -1);
+        
+        int i = 0;
+        int j = nums.length-1;
+        int mid;
+        int left = -1;
+        
+        while (i <= j) {
+            mid = i + (j-i)/2;
+            
+            if (nums[mid] == target) {
+                left = mid;
+                j = mid-1;
+            } else if (nums[mid] < target) {
+                i = mid+1;
+            } else {
+                j = mid-1;
+            }
+        }
+        
+        if (left == -1) return ans;
+        
+        i = left;
+        j = nums.length-1;
+        int right = i;
+        
+        while (i <= j) {
+            mid = i + (j-i)/2;
+            
+            if (nums[mid] == target) {
+                right = mid;
+                i = mid+1;
+            } else {
+                j = mid-1;
+            }
+        }
+        
+        ans[0] = left;
+        ans[1] = right;
+        
+        return ans;
+    }
+	
+	
+	
 	//ACC:  66%
     public int[] searchRange(int[] nums, int target) {
         int[] narrRange = new int[2];
