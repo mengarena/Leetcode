@@ -96,6 +96,7 @@ class CustomLinkedBlockingQueue<E> {
 
 
 
+
 public class CustomLinkedBlockingQueueTest {
     public static void main(String[] args) throws InterruptedException {
         CustomLinkedBlockingQueue<Integer> cbq = new CustomLinkedBlockingQueue<Integer>(10);
@@ -106,6 +107,15 @@ public class CustomLinkedBlockingQueueTest {
         System.out.println("take()>" + cbq.take());
         System.out.println("take()>" + cbq.take());
         
+        CustomLinkedBlockingQueue<String> cbqA = new CustomLinkedBlockingQueue<String>(10);
+        
+        cbqA.putX("ddd");
+        cbqA.putX("tttg");
+        cbqA.putX("hhhhh");
+        
+        System.out.println("take()>" + cbqA.takeX());
+        System.out.println("take()>" + cbqA.takeX());
+        System.out.println("take()>" + cbqA.takeX());        
     }
 }
 
