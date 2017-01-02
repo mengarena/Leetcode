@@ -24,12 +24,35 @@ public class MaximumProductSubarray {
 	}
 	
 	
+	//ACC
+    public int maxProduct(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        int n = nums.length;
+        int nMaxProduct = nums[0];
+        
+        int preMax = nums[0];
+        int preMin = nums[0];
+        int curMax, curMin;
+        
+        for (int i=1; i<n; i++) {
+		    curMax = Math.max(Math.max(preMax*nums[i], preMin*nums[i]), nums[i]);
+		    curMin = Math.min(Math.min(preMax*nums[i], preMin*nums[i]), nums[i]);
+		    nMaxProduct = Math.max(nMaxProduct, curMax);
+		    
+		    preMax = curMax;
+		    preMin = curMin;
+		}
+		
+		return nMaxProduct;
+    }	
+	
+	
 	//Strategy:  Find 0s, use 0 to segment the original array
 	//In each segment, find the total number of negative elements and the first/last negative elements
 	//If in each segment, total number of negative elements are even, the max product is the product of the total segment
 	//Otherwise, check the sub-segment which ends at the first negative and the sub-segment which starts at the last negative, 
 	//compare them and then to divide the larger one from the total product of the segment
-    public int maxProduct(int[] nums) {
+    public int maxProductA(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         int n = nums.length;
         if (n == 1) return nums[0];
