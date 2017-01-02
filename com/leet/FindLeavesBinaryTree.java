@@ -50,9 +50,39 @@ public class FindLeavesBinaryTree {
 	//ACC: 26%
 	//Strategy:  The leaves could be divided layers, not get the leaves at the same layer at once.
 	//The bottom leaves (raw leaves) is at level 0
-    private List<List<Integer>> lstlstLeaves = new ArrayList<List<Integer>>();
+	//O(n), O(n)
     
     public List<List<Integer>> findLeaves(TreeNode root) {
+        List<List<Integer>> lstlstLeaves = new ArrayList<List<Integer>>();
+
+        if (root == null) return lstlstLeaves;
+        
+        findLeavesHelper(root, lstlstLeaves);
+        
+        return lstlstLeaves;
+    }
+    
+    private int findLeavesHelper(TreeNode root, List<List<Integer>> lstlstLeaves) {
+        if (root == null) return -1;
+        
+        int level = 1 + Math.max(findLeavesHelper(root.left, lstlstLeaves), findLeavesHelper(root.right, lstlstLeaves));
+        
+        if (level+1 > lstlstLeaves.size()) {
+            List<Integer> lstLeaves = new ArrayList<>();
+            lstlstLeaves.add(lstLeaves);
+        }
+        
+        lstlstLeaves.get(level).add(root.val);
+        
+        return level;
+        
+    }
+	
+	
+	
+    private List<List<Integer>> lstlstLeaves = new ArrayList<List<Integer>>();
+    
+    public List<List<Integer>> findLeavesA(TreeNode root) {
         if (root == null) return lstlstLeaves;
         
         findLeavesHelper(root);
