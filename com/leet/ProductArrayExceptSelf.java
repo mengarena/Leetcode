@@ -29,6 +29,7 @@ public class ProductArrayExceptSelf {
 		}
 	}
 	
+	
     public int[] productExceptSelf(int[] nums) {
         if (nums == null) return null;
         int n = nums.length;
@@ -39,6 +40,10 @@ public class ProductArrayExceptSelf {
         	output[0] = 0;
         	return output;
         }
+        
+        //Better to add check 0
+        //If there are two 0, every elements in the result will be 0
+        //If only one 0 exist, in the result, only the element at the 0's position is non-zero, all other are 0
         
         int nPre[] = new int[n];
         int nPost[] = new int[n];
