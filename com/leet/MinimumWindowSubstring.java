@@ -35,6 +35,7 @@ public class MinimumWindowSubstring {
 	
 	
 	//Accepted, Even better
+	//O(n)
     public String minWindow(String s, String t) {
         if (s == null || s.length() == 0) return "";
         if (t == null || t.length() == 0) return s.substring(0, 1);
