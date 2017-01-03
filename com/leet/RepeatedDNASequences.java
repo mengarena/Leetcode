@@ -36,6 +36,52 @@ public class RepeatedDNASequences {
 		for (String sDnaSeq:lstDnaSeq) System.out.println(sDnaSeq);
 	}
 
+
+    //ACC
+    public List<String> findRepeatedDnaSequencesA(String s) {
+        List<String> res = new ArrayList<>();
+        Set<String> st = new HashSet<>();
+        
+        int i = 0;
+        
+        while (i+10 <= s.length()) {
+            String sTmp = s.substring(i, i+10);
+            
+            if (!st.contains(sTmp)) {
+                st.add(sTmp);
+            } else {
+                if (!res.contains(sTmp)) res.add(sTmp);
+            }
+            i++;
+        }
+        
+        return res;
+    }
+    
+
+    public List<String> findRepeatedDnaSequencesB(String s) {
+        List<String> res = new ArrayList<>();
+        Set<String> resSt = new HashSet<>(); 
+        Set<String> st = new HashSet<>();
+        
+        int i = 0;
+        
+        while (i+10 <= s.length()) {
+            String sTmp = s.substring(i, i+10);
+            
+            if (!st.contains(sTmp)) {
+                st.add(sTmp);
+            } else {
+                if (!resSt.contains(sTmp)) resSt.add(sTmp);
+            }
+            i++;
+        }
+        
+        res.addAll(resSt);
+        
+        return res;
+    }    
+
 	//Strategy:  Convert String into integer and operate integer
     public List<String> findRepeatedDnaSequences(String s) {
     	List<String> lstDnaSeq = new ArrayList<String>();
