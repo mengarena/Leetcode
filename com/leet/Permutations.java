@@ -30,6 +30,7 @@ public class Permutations {
 	
 	
 	//ACC: 68%
+	//Time Complexity:  O(n!)
     public List<List<Integer>> permute(int[] nums) {
     	List<List<Integer>> lstlstPerm = new ArrayList<List<Integer>>();
     	

@@ -29,6 +29,7 @@ public class PermutationsII {
 	}
 
 	//AC: 78%
+	//Complexity: O(n!)
     public List<List<Integer>> permuteUnique(int[] nums) {
 		List<List<Integer>> lstlstPerm = new ArrayList<List<Integer>>();
 		if (nums == null || nums.length == 0) return lstlstPerm;
