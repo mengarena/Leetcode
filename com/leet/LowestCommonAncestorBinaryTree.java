@@ -49,6 +49,7 @@ public class LowestCommonAncestorBinaryTree {
 	}
 	
 	//This function return the first one which is p or q in each recursion
+	//Complixity: O(n), just DFS
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || root == p || root == q) return root;   //Don't use val to compare. In test case, there might be two nodes, which have same values, but the two nodes are different
         
@@ -66,6 +67,45 @@ public class LowestCommonAncestorBinaryTree {
     
     }
     
+    
+    //Iterative
+    public TreeNode lowestCommonAncestorA(TreeNode root, TreeNode p, TreeNode q) {
+        Map<TreeNode, TreeNode> hm = new HashMap<>();
+        Queue<TreeNode> qu = new LinkedList<>();
+        
+        hm.put(root, null);
+        qu.offer(root);
+        
+        //Set parents for all nodes
+        while (!hm.containsKey(p) || !hm.containsKey(q)) {
+            TreeNode tmp = qu.poll();
+            
+            if (tmp.left != null) {
+                hm.put(tmp.left, tmp);
+                qu.offer(tmp.left);
+            }
+            
+            if (tmp.right != null) {
+                hm.put(tmp.right, tmp);
+                qu.offer(tmp.right);
+            }
+        }
+        
+        Set<TreeNode> st = new HashSet<>();
+        
+        //Trace back to root 
+        while (p != null) {
+            st.add(p);
+            p = hm.get(p);
+        }
+        
+        //Trace back to root and check whether find a common ancestor
+        while (!st.contains(q)) {
+            q = hm.get(q);
+        }
+        
+        return q;
+    }
     
  
 /*    
