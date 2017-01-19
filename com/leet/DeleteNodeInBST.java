@@ -55,11 +55,46 @@ Another valid answer is [5,2,6,null,4,null,7].
  
 public class Solution {
 	
+	
+	//ACC: 
+	//Complexity: O(h), h is height
+	//Worst case occurs:  1) deleting a leaf  2) deleting any node on a full BST
+    public TreeNode deleteNode(TreeNode root, int key) {
+        if (root == null) return null;
+        
+        if (key < root.val) {
+            root.left = deleteNode(root.left, key);
+        } else if (key > root.val) {
+            root.right = deleteNode(root.right, key);
+        } else {
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            } else {
+                TreeNode minNode = findMin(root.right);
+                root.val = minNode.val;
+                root.right = deleteNode(root.right, root.val);
+            }
+        }
+
+        return root;
+    }
+    
+    private TreeNode findMin(TreeNode root) {
+        while (root.left != null) root = root.left;
+        
+        return root;
+    }
+	
+	
+	
+	
 	//ACC
 	//Basic Idea: 
 	//1) check whether key exists
 	//2) Find the target node, and replace it with the smallest node on its right sub tree
-    public TreeNode deleteNode(TreeNode root, int key) {
+    public TreeNode deleteNodeA(TreeNode root, int key) {
         TreeNode target = root;
         TreeNode parent = null;
         boolean bLeftChild = false;
