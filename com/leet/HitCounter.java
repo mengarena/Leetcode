@@ -105,6 +105,38 @@ public class HitCounter {
 }
 
 
+public class HitCounter {
+    private final int timeRange = 300;
+    private LinkedHashMap<Integer, Integer> map;
+    
+    /** Initialize your data structure here. */
+    public HitCounter() {
+        map = new LinkedHashMap<Integer, Integer>() {
+            protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+                return map.size() > timeRange;
+            }  
+        };
+    }
+    
+    /** Record a hit.
+        @param timestamp - The current timestamp (in seconds granularity). */
+    public void hit(int timestamp) {
+        map.put(timestamp, map.getOrDefault(timestamp, 0)+1);
+    }
+    
+    /** Return the number of hits in the past 5 minutes.
+        @param timestamp - The current timestamp (in seconds granularity). */
+    public int getHits(int timestamp) {
+        int startTm = timestamp - timeRange;
+        int sum = 0;
+        
+        for (int tm:map.keySet()) {
+            if (tm > startTm) sum += map.get(tm);
+        }
+        
+        return sum;
+    }
+}
 
 
 
