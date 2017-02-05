@@ -39,14 +39,67 @@ public class CombinationSum {
 
 	}
 	
+	
+	//Get #combinations
+	public int combinationSumCount(int[] candidates, int target) {
+		if (candidates == null || candidates.length == 0) return 0;
+	    int[] dp = new int[target+1];
+	    dp[0] = 1;
+	    
+	    for (int i=0; i<candidates.length; i++) {
+			for (int j=0; j<target+1; j++) {
+			    if (j >= candidates[i]) dp[j] += dp[j-candidates[i]];
+			}
+		}
+		
+		return dp[target];
+	}
+	
+	
+	//Time complexity: O(n!)
+	//n is number of elements in candidates
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> lstlstCombSum = new ArrayList<List<Integer>>();
+        if (candidates == null || candidates.length == 0) return lstlstCombSum;
+
+        Arrays.sort(candidates);
+
+        combinationSumHelper(lstlstCombSum, new ArrayList<Integer>(), candidates, 0, target);
+        return lstlstCombSum;
+    }
+    
+    private void combinationSumHelper(List<List<Integer>> lstlstCombSum, List<Integer> lstComb, int[] candidates, int startIdx, int target) {
+        
+        if (target < 0) return;
+        if (target == 0) {
+            lstlstCombSum.add(new ArrayList<Integer>(lstComb));
+            return;
+        }
+        
+        for (int i=startIdx; i<candidates.length; i++) {
+            lstComb.add(candidates[i]);
+            
+            combinationSumHelper(lstlstCombSum, lstComb, candidates, i, target-candidates[i]);
+            
+            lstComb.remove(lstComb.size()-1);
+        }
+        
+    }	
+	
+	
+	
+	
+	
+	
+	
+    public List<List<Integer>> combinationSumA(int[] candidates, int target) {
     	List<List<Integer>> lstlstCombSum = null; 
     	if (candidates == null || candidates.length == 0) return lstlstCombSum;
     	int n = candidates.length;
     	
     	Arrays.sort(candidates);
     	
-    	lstlstCombSum = combinationSum(candidates, n, 0, target);
+    	lstlstCombSum = combinationSumA(candidates, n, 0, target);
     	    	
     	if (lstlstCombSum == null) lstlstCombSum = new ArrayList<List<Integer>>();
     	
@@ -54,7 +107,7 @@ public class CombinationSum {
     }
 	
     
-    public List<List<Integer>> combinationSum(int[] candidates, int n, int nStartIdx, int target) {
+    public List<List<Integer>> combinationSumA(int[] candidates, int n, int nStartIdx, int target) {
     	List<List<Integer>> lstlstCombSum = new ArrayList<List<Integer>>();
     	int i;
     	
@@ -62,7 +115,7 @@ public class CombinationSum {
     	if (target < 0) return null;
     	    	
     	for (i=nStartIdx; i<n; i++) {
-    		List<List<Integer>> lstlstCombSumTmp = combinationSum(candidates, n, i, target-candidates[i]);  //Could use duplicate number, so still start from i, NOT i+1
+    		List<List<Integer>> lstlstCombSumTmp = combinationSumA(candidates, n, i, target-candidates[i]);  //Could use duplicate number, so still start from i, NOT i+1
     		if (lstlstCombSumTmp != null) {
 	    		if (lstlstCombSumTmp.size() > 0) {
 	    			for (List<Integer> lstCombSumTmp:lstlstCombSumTmp) {

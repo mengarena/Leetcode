@@ -42,14 +42,46 @@ public class CombinationSumII {
 		
 	}
 	
+		
 	
+	//Get combinations
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        if (candidates == null || candidates.length == 0) return ret;
+        
+        Arrays.sort(candidates);
+        
+        combinationSum2Helper(ret, new ArrayList<Integer>(), candidates, 0, target);
+        
+        return ret;
+    }
+    
+    private void combinationSum2Helper(List<List<Integer>> ret, List<Integer> lstComb, int[] candidates, int startIdx, int target) {
+        if (target < 0) return;
+        if (target == 0) {
+            ret.add(new ArrayList<Integer>(lstComb));
+            return;
+        }
+        
+        for (int i=startIdx; i<candidates.length; i++) {
+            if (i > startIdx && candidates[i] == candidates[i-1]) continue;
+            lstComb.add(candidates[i]);
+            combinationSum2Helper(ret, lstComb, candidates, i+1, target-candidates[i]);
+            lstComb.remove(lstComb.size()-1);
+        }
+    }	
+	
+	
+	
+	
+	
+    public List<List<Integer>> combinationSum2A(int[] candidates, int target) {
     	List<List<Integer>> lstlstCombSum = new ArrayList<List<Integer>>();
     	if (candidates == null || candidates.length == 0) return lstlstCombSum;
     	
     	Arrays.sort(candidates);
     	    	
-    	lstlstCombSum = combinationSum2Helper(candidates, 0, target);
+    	lstlstCombSum = combinationSum2HelperA(candidates, 0, target);
     	
     	if (lstlstCombSum == null) {
     		lstlstCombSum = new ArrayList<List<Integer>>();
@@ -59,7 +91,7 @@ public class CombinationSumII {
     }
 
     
-    public List<List<Integer>> combinationSum2Helper(int[] candidates, int nStartPos, int target) {
+    public List<List<Integer>> combinationSum2HelperA(int[] candidates, int nStartPos, int target) {
     	List<List<Integer>> lstlstCombSum = null; 
     	int n = candidates.length;
     	int i;
@@ -71,7 +103,7 @@ public class CombinationSumII {
     	if (target < 0) return null;
     	    	
     	for (i=nStartPos; i<n;) {
-    		List<List<Integer>> lstlstCombSumTmp = combinationSum2Helper(candidates, i+1, target-candidates[i]);    //Not allow duplicate, so next start from i+1
+    		List<List<Integer>> lstlstCombSumTmp = combinationSum2HelperA(candidates, i+1, target-candidates[i]);    //Not allow duplicate, so next start from i+1
     		if (lstlstCombSumTmp != null) {
     			if (lstlstCombSum == null) lstlstCombSum = new ArrayList<List<Integer>>();
     			if (lstlstCombSumTmp.size() > 0) {
