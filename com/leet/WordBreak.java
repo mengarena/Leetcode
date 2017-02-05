@@ -34,8 +34,30 @@ public class WordBreak {
 		System.out.println(wordBreak(s, wordDict));
 		
 	}
+	
+	//ACC
+	//O(n^2) * O(operation of wordDict.contains(x))
+    public boolean wordBreak(String s, List<String> wordDict) {
+        if (s == null || s.length() == 0) return true;
+        if (wordDict == null || wordDict.isEmpty()) return false;
+        int n = s.length();
+        boolean[] dp = new boolean[n+1];   //The substring to position i is breakable
+        dp[0] = true;
+        
+        for (int i=1; i<=n; i++) {
+            for (int j=i-1; j>=0; j--) {
+                if (dp[j] && wordDict.contains(s.substring(j,i))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+         
+        return dp[n];   
+    }	
+	
 
-    public boolean wordBreak(String s, Set<String> wordDict) {
+    public boolean wordBreakA(String s, Set<String> wordDict) {
         if (s == null || s.isEmpty()) return true;
         if (wordDict == null || wordDict.isEmpty()) return false;
         int n = s.length();

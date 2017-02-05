@@ -25,6 +25,69 @@ public class WordBreakII {
 	}
 
 	
+	//ACC
+	//If there is no memo (i.e. hm), the time complexity is O(2^n) --- at every position, there could be a cut, or not a cut
+	//If with memo (i.e. hm), the time complexity is O(n^2)
+	
+//https://discuss.leetcode.com/topic/27855/my-concise-java-solution-based-on-memorized-dfs/23	
+//Let's start form an example. Assume we have a word "leet" and length is four(just forget the dictionary). 
+//We want to get final result. Assume we have a function "p()" to solve this solution, that is "res = p(leet)";
+//In the brut force method(back tracking), we have the following solution:
+//res = Math.min("l" + p("eet") , "le" + p("et") , "lee" + p("t") , "leet");
+//(for "le" + p("et") the left part is atomic , there is no cut in "le").
+//we use the cutting position to show every calculate. We can get an recursion tree just like 
+//but in the memo solution, we don't need to solve subproblems over and over again, 
+//we can use the result we have worked out before, so we can pruning the above tree in 
+//(all of the pictures are from "Introduction to Algorithms")
+//So we can reduce the runtime from exponential-time to polynominal-time.
+//now we have an dictionary, we even not need to call our recursion function letter by letter so the running time is even less.
+//(I don't calculate the "substring()" into notice because it is build in method)
+	
+    private Map<String, List<String>> hm = new HashMap<String,List<String>>();
+    
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        List<String> res = new ArrayList<>();
+        if (s == null || s.isEmpty() || wordDict == null || wordDict.isEmpty()) return res;
+        int maxLen = 0;
+        int minLen = Integer.MAX_VALUE;
+        
+        for (String word:wordDict) {
+            maxLen = Math.max(maxLen, word.length());
+            minLen = Math.min(minLen, word.length());
+        }
+        
+        res = wordBreakHelper(s, wordDict, maxLen, minLen);
+        
+        return res;
+    }
+    
+    private List<String> wordBreakHelper(String s, List<String> wordDict, int maxLen, int minLen) {
+        List<String> res = new ArrayList<>();
+        
+        if (hm.containsKey(s)) return hm.get(s);
+        
+        for (int i=minLen; i<=Math.min(maxLen, s.length()); i++) {
+            String sFirst = s.substring(0, i);
+    
+            if (wordDict.contains(sFirst)) {
+                List<String> tmpRes = wordBreakHelper(s.substring(i), wordDict, maxLen, minLen);
+                
+                if (!tmpRes.isEmpty()) {
+                    for (String sTmp:tmpRes) res.add(sFirst + " " + sTmp);
+                } else {
+                    if (i == s.length()) res.add(s);
+                }
+            }
+        }
+        
+        hm.put(s, res);
+        
+        return res;
+    }	
+	
+	
+	
+	
 	//ACC: 91%
     private Map<String, List<String>> hm = new HashMap<>();
     
