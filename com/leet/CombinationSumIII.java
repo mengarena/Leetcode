@@ -50,15 +50,42 @@ public class CombinationSumIII {
 	
 	
     public List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        if (k <= 0 || n <= 0 || k > n) return ret;
+        
+        combinationSum3Helper(ret, new ArrayList<Integer>(), 1, k, n);
+        
+        return ret;
+    }
+    
+    private void combinationSum3Helper(List<List<Integer>> ret, List<Integer> lstComb, int startVal, int count, int remained) {
+        if (remained < 0 || lstComb.size() > count) return;
+        if (remained == 0 && lstComb.size() == count) {
+            ret.add(new ArrayList<Integer>(lstComb));
+            return;
+        } 
+        
+        for (int i=startVal; i<=9; i++) {
+            lstComb.add(i);
+            combinationSum3Helper(ret, lstComb, i+1, count, remained-i);
+            lstComb.remove(lstComb.size()-1);
+        }
+    }	
+	
+	
+	
+	
+	///////////////
+    public List<List<Integer>> combinationSum3A(int k, int n) {
     	List<List<Integer>> lstlstCombSum = new ArrayList<List<Integer>>();
     	
-    	lstlstCombSum = getCandidate(1, k, n);
+    	lstlstCombSum = getCandidateA(1, k, n);
     	
     	return lstlstCombSum;
     }
 	
     
-    public List<List<Integer>> getCandidate(int nStartVal, int k, int n) {   // K #remained,  remained sum n
+    public List<List<Integer>> getCandidateA(int nStartVal, int k, int n) {   // K #remained,  remained sum n
     	//Decide possible value for first value
     	int nMin; 
     	int nMax; 
@@ -80,7 +107,7 @@ public class CombinationSumIII {
     	
     	for (i = nMin; i <= nMax; i++) {  //Possible value of the first
     		List<List<Integer>> lstlstCombSumTmp = new ArrayList<List<Integer>>();
-    		lstlstCombSumTmp = getCandidate(i+1, k-1, n-i);
+    		lstlstCombSumTmp = getCandidateA(i+1, k-1, n-i);
     		
     		if (lstlstCombSumTmp.isEmpty()) continue;
     		

@@ -35,10 +35,25 @@ public class CombinationSumIV {
 		// TODO Auto-generated constructor stub
 	}
 
+    //ACC
+    public int combinationSum4(int[] nums, int target) {
+        if (nums == null || nums.length == 0) return 0;
+        int dp[] = new int[target+1];
+        dp[0] = 1;
+        
+        for (int i=1; i<=target; i++) {
+            for (int j=0; j<nums.length; j++) {
+                if (i >= nums[j]) dp[i] += dp[i-nums[j]];
+            }
+        }
+        
+        return dp[target];
+    }
+
 	//ACC
 	//For follow up question, if -1, 1 like pair exist, the number of combination could be infinite
 	//Possible limitation to add: length of the combination sequence to be restricted
-    public int combinationSum4(int[] nums, int target) {
+    public int combinationSum4A(int[] nums, int target) {
         if (nums == null || nums.length == 0) return 0;
         int n = nums.length;
         Arrays.sort(nums);

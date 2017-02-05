@@ -40,20 +40,6 @@ public class CombinationSum {
 	}
 	
 	
-	//Get #combinations
-	public int combinationSumCount(int[] candidates, int target) {
-		if (candidates == null || candidates.length == 0) return 0;
-	    int[] dp = new int[target+1];
-	    dp[0] = 1;
-	    
-	    for (int i=0; i<candidates.length; i++) {
-			for (int j=0; j<target+1; j++) {
-			    if (j >= candidates[i]) dp[j] += dp[j-candidates[i]];
-			}
-		}
-		
-		return dp[target];
-	}
 	
 	
 	//Time complexity: O(n!)
