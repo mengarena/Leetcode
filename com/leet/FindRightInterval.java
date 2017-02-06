@@ -119,6 +119,7 @@ public class FindRightInterval {
             }
         }
         
+        //Here get the original right index
         if (rightPos != -1) return lstSI.get(rightPos).orgIdx;
         
         return -1;
