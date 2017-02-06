@@ -102,24 +102,24 @@ public class FindRightInterval {
     }
     
     private int findMinLarger(List<StartIdx> lstSI, int target) {
-        int n = lstSI.size();
         int i = 0;
-        int j = n-1;
+        int j = lstSI.size()-1;
         int mid;
+        int rightPos = -1;
         
         while (i <= j) {
             mid = i + (j-i)/2;
             
             if (lstSI.get(mid).start < target) {
                 i = mid+1;
-            } else if (lstSI.get(mid).start > target) {
-                j = mid-1;
             } else {
-                return lstSI.get(mid).orgIdx;
+                rightPos = mid;
+                j = mid-1;
+                
             }
         }
         
-        if (i < n && lstSI.get(i).start > target) return lstSI.get(i).orgIdx;
+        if (rightPos != -1) return lstSI.get(rightPos).orgIdx;
         
         return -1;
     }
