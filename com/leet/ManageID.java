@@ -16,8 +16,26 @@ import java.util.concurrent.locks.*;
 
 class ManageID {
 	
+
+    //Each node is responsible for half of the segment
+    //Top node (root)'s left half is for the first half IDs; the right is for the second half IDs
+    //The leaves corresponds to each IDs, it tells whehter each ID has been used
+    //For example, there are 7 IDs (1 ~ 7)
+    //    root's left for 1~4
+    //    root's right for 5~7
+    //Tree looks like:
+    //                    O(1~7)
+    //        O(1~4)                    O(5~7)
+    //  O(1~2)      O(3~4)        O(5~6)      O(7)
+    //O(1)  X(2)   X(3)  O(4)  O(5)    O(6)  
+    //
+    //In this example, ID 2, 3 has been used, ID 1,4,5,6,7 have not been used  
+    //
+    //Store:   
+    //Operation:  Allocatecheck each node, if "used = 1", there is no available IDs on the subtree 	
 	class IdNode {
-		int used;        //1: used, 0: not used
+		char used;        //'X': used, 'O': not used
+		int ID;    //On the leaf, it tells the ID
 		IdNode left;
 		IdNode right;
 		IdNode parent;
