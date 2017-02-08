@@ -41,6 +41,7 @@ Input 2: start coordinate (rowStart, colStart) = (0, 4)
 Input 3: destination coordinate (rowDest, colDest) = (3, 2)
 
 Output: false
+
 Explanation: There is no way for the ball to stop at the destination.
 
 Note:
