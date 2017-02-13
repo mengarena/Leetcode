@@ -119,7 +119,7 @@ class CustomMap<K, V>
     }
  
     public int size() { return size; }
-    public boolean isEmpty() { return size() == 0; }
+    public boolean isEmpty() { return size == 0; }
  
     // This implements hash function to find index
     // for a key
