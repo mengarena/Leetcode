@@ -37,8 +37,62 @@ public class CountCompleteTreeNodes {
 		System.out.println("#Node = " + countNodes(root));
 	}
 
+
+
+    //ACC:  95%    O(logn + n/2)  n = number of nodes   (logn is the height)
+    //
+    //Idea: 
+    //Basically my solution contains 2 steps.
+    //(1) Firstly, we need to find the height of the binary tree and count the nodes above the last level.
+    //(2) Then we should find a way to count the nodes on the last level.
+    //
+    //Here I used a kind of binary search. We define the "midNode" of the last level as a node following 
+    //the path "root->left->right->right->...->last level".
+    //
+    //If midNode is null, then it means we should count the nodes on the last level in the left subtree.
+    //
+    //If midNode is not null, then we add half of the last level nodes to our result and 
+    //then count the nodes on the last level in the right subtree.
+    public int countNodes(TreeNode root) {
+        if (root == null) return 0;
+        int height = 1;
+        TreeNode tmp = root;
+
+        while (tmp.left != null) {    //O(logn)
+            tmp = tmp.left;
+            height++;
+        }
+        
+        if (height == 1) return 1;
+        
+        return ((1 << (height-1)) - 1) + countLastLevel(root, height);
+    }
+    
+    //This part, O(n/2), i.e. it basically the worst case, it visits the half of the tree
+    private int countLastLevel(TreeNode root, int height) {
+        if (height == 2) {
+            if (root.right != null) return 2;
+            else if (root.left != null) return 1;
+            else return 0;
+        }
+        
+        TreeNode midNode = root.left;
+        int curHeight = 2;
+        
+        while (curHeight < height) {
+            curHeight++;
+            midNode = midNode.right;
+        }
+        
+        if (midNode == null) return countLastLevel(root.left, height-1);
+        
+        return (1 << (height-2)) + countLastLevel(root.right, height-1);
+    }
+
+
+
 	
-	//ACC
+	//Previously accepted, NOW  TLE
     public int countNodes(TreeNode root) {
 		if (root == null) return 0;
         TreeNode tnTmp = root;
