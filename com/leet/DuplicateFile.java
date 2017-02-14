@@ -54,12 +54,12 @@ public class DuplicateFile {
 	private boolean CompareFiles(String sFileA, String sFileB) {
 	    RandomAccessFile rafA = new RandomAccessFile(sFileA, "r");
 	    RandomAccessFile rafB = new RandomAccessFile(sFileB, "r");
-	    
-	    byte[] bA = new byte[size];
-	    byte[] bB = new byte[size];
-	    
+
 	    int offset = 0;
 	    int size = 1000;
+	    	    
+	    byte[] bA = new byte[size];
+	    byte[] bB = new byte[size];
 	    
 	    while (offset + size < rafA.length()) {
 			int nA = rafA.read(bA, offset, size);
