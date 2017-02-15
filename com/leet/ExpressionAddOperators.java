@@ -102,7 +102,7 @@ public class ExpressionAddOperators {
         for (int i=1; i<=num.length(); i++) {
             String sInitNum = num.substring(0, i);
             
-            if (sInitNum.length() > 1 && sInitNum.charAt(0) == '0') continue;  //use break; better
+            if (sInitNum.length() > 1 && sInitNum.charAt(0) == '0') break;
             
             long lInitNum = Long.valueOf(sInitNum).longValue();
             int len = sbExp.length();
