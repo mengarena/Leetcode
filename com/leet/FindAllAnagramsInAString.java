@@ -44,8 +44,77 @@ public class FindAllAnagramsInAString {
 		// TODO Auto-generated constructor stub
 	}
 
-	//ACC
+
+    //ACC:  O(ns + np)  (ns = length of s,  np = length of p)
+    //Strategy:
+    //Use hashmap to record the number of characters
+    //Use start/end pointers and move linearly
     public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> ans = new ArrayList<>();
+        if (s == null || s.length() < p.length()) return ans;
+        Map<Character, Integer> myMap = new HashMap<>();
+        char c;
+        
+        for (int i = 0; i<p.length(); i++) {
+            c = p.charAt(i);
+            myMap.put(c, myMap.getOrDefault(c, 0) + 1);
+        }
+        
+        int start = 0;
+        int end = 0;
+        int count;
+        
+        while (end < p.length()) {
+            c = s.charAt(end);
+            
+            if (myMap.containsKey(c)) {
+                count = myMap.get(c);
+                if (count == 1) {
+                    myMap.remove(c);
+                } else {
+                    myMap.put(c, count-1);
+                }
+            } else {
+                myMap.put(c, -1);
+            }
+            
+            end++;
+        }
+        
+        if (myMap.isEmpty()) ans.add(start);
+        
+        while (end < s.length()) {
+            c = s.charAt(start);
+            
+            myMap.put(c, myMap.getOrDefault(c, 0) + 1);
+            if (myMap.get(c) == 0) myMap.remove(c);   //In case before adding 1, the count is -1
+            
+            start++;
+
+            c = s.charAt(end);
+            
+            if (myMap.containsKey(c)) {
+                count = myMap.get(c);
+                if (count == 1) {
+                    myMap.remove(c);
+                } else {
+                    myMap.put(c, count-1);
+                }
+            } else {
+                myMap.put(c, -1);
+            }
+            
+            if (myMap.isEmpty()) ans.add(start);  //If empty, consumed all characters, i.e. just had a p in s
+            
+            end++;
+        }
+        
+        return ans;
+    }
+
+
+	//ACC
+    public List<Integer> findAnagramsA(String s, String p) {
         List<Integer> lstIdx = new ArrayList<>();
         if (s == null || s.length() < p.length()) return lstIdx;
         int np = p.length();
