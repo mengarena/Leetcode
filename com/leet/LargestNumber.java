@@ -65,6 +65,15 @@ public class LargestNumber {
     }
     
     
+    public int compareDigitList(int numA, int numB) {
+        String sAB = "" + numA + "" + numB;
+        String sBA = "" + numB + "" + numA;
+        
+        if (sAB.compareTo(sBA) >= 0) return 1;
+        return -1;
+    }
+        
+    
     //Compare two lists of digits
     //Rule:  1) On a digit position, if A > B,  A should be put in front of B
     //       2) All comparable digits are the same, but A is shorter than B, compare A's last digit with all the rest digits of B, 12 > 121; 12 < 1221;  12 < 128; 12 < 122 
@@ -72,7 +81,7 @@ public class LargestNumber {
     //Two digit list:  xxxxxaaaaccc
     //                 cccxxxxxaaaa
     //A: xxxxxaaaaa, B: ccc
-    public int compareDigitList(int numA, int numB) {
+    public int compareDigitListA(int numA, int numB) {
     	int nRelationship = 1;
     	int i;
     	int nA, nB;
