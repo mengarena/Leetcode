@@ -25,7 +25,7 @@ public class MyReadWriteLock {
 		    wait();
 		}
 		
-		readThreads.put(callingThread, readThreads.get(callingThread)+1);
+		readThreads.put(callingThread, readThreads.getOrDefault(callingThread,0)+1);
 	}
 	
 	
