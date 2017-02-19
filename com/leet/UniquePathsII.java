@@ -52,30 +52,20 @@ public class UniquePathsII {
         		if (obstacleGrid[i][0] == 1) {
         			narrPath[i][0] = 0;
         		} else {
-        			if (narrPath[i-1][0] == 0) {
-        				narrPath[i][0] = 0;
-        			} else {
-        				narrPath[i][0] = 1;
-        			}
+        		    narrPath[i][0] = narrPath[i-1][0];
         		}
         	}
         }
-        
         
         //Process first row
         for (i=1; i<n; i++) {
         	if (obstacleGrid[0][i] == 1) {
         		narrPath[0][i] = 0;
         	} else {
-        		if (narrPath[0][i-1] == 0) {
-        			narrPath[0][i] = 0;
-        		} else {
-        			narrPath[0][i] = 1;
-        		}
+        	    narrPath[0][i] = narrPath[0][i-1];
         	}
         }
 
-        
         //From top-left to bottom-right
         for (i=1; i<m; i++) {
         	for (j=1; j<n; j++) {
