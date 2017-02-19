@@ -82,4 +82,35 @@ public class KthSmallestLexicographicalOrder {
         return ans;
     }
 
+
+    //////////////
+    //Based on Lexicographical Numbers.java
+    //Works, But exceed time limit for very large k, because, here has to visit every number
+    public int findKthNumberA(int n, int k) {
+        int base = 1;
+        int count = 1;
+        
+        while (count < k) {
+            if (base <= n/10) {
+                base = base*10;
+                count++;
+                continue;
+            }
+            
+            if (base <= n-1 && (base % 10) != 9) {
+                base++;
+            } else {
+                base = base/10;
+                base++;
+                while (base % 10 == 0) base = base/10;
+            }
+            
+            count++;
+        }
+        
+        return base;
+    }    
+    
+
+
 }
