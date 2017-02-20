@@ -56,7 +56,8 @@ public class RemoveDuplicateLetters {
         
         for (i=0; i<n; i++) {
         	//Compare with the top of the stack
-        	while (!stkRet.isEmpty() && s.charAt(i) < stkRet.peek() && barrExisted[s.charAt(i)-'a'] == false && narrLetterCnt[stkRet.peek()-'a'] != narrLetterVisited[stkRet.peek()-'a']) {
+        	while (!stkRet.isEmpty() && s.charAt(i) < stkRet.peek() && barrExisted[s.charAt(i)-'a'] == false &&
+        	        narrLetterCnt[stkRet.peek()-'a'] != narrLetterVisited[stkRet.peek()-'a']) {
         		barrExisted[stkRet.peek()-'a'] = false;
         		stkRet.pop();
         	}
