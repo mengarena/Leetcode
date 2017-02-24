@@ -129,10 +129,11 @@ public class DuplicateFile {
 	    
 	    //Further, Group files based on Content
 	    for (int i=lstlstSG.size()-1; i>=0; i--) {			
+			List<String> lstSG = lstlstSG.remove(i);
+
 			if (lstSG.size() < 2) {
 			    lstlstSG.remove(i);
 		    } else {
-				List<String> lstSG = lstlstSG.remove(i);
 			    List<List<String>> llSG = getSubGroupsByContent(lstSG);
 			    
 			    lstlstSG.addAll(i, llSG);
