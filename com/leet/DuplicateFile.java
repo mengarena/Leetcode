@@ -177,12 +177,12 @@ public class DuplicateFile {
 	    groups = new ArrayList<List<String>>(hm.values());
 	    
 	    for (int i=groups.size()-1; i>=0; i++) {
+		    List<String> lstFiles = groups.remove(i);
 					    
 		    if (lstFiles.size() < 2) {
 			    groups.remove(i);
 			} else {
-				List<String> lstFiles = groups.remove(i);
-				
+					
 			    List<List<String>> lstlstSubGroups = getSubGroups(lstFiles);
 				
 			    for (List<String> lstSG:lstlstSubGroups) {
