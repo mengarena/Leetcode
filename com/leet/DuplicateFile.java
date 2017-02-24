@@ -66,7 +66,7 @@ public class DuplicateFile {
 			int nB = rafB.read(bB, offset, size);
 			
 			if (nA != nB) return false;
-			for (int i=0; i<size; i++) {
+			for (int i=0; i<nA; i++) {
 				if (bA[i] != bB[i]) return false;
 			}
 			
