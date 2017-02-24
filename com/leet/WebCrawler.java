@@ -117,13 +117,13 @@ class WebCrawler {
 		    
 		    crawlPage(curUrl, nextUrls, tmpWords);
 		    
+			urlVisited.add(curUrl);
+		    
 		    for (String nextUrl:nextUrls) {
 			    if (!urlVisited.contains(nextUrl)) urlToVisit.offer(nextUrl);
 			}   
 			
-			mergeWords(curUrl, tmpWords);
-			
-			urlVisited.add(curUrl);
+			mergeWords(curUrl, tmpWords);			
 		}    
 	}
 		
