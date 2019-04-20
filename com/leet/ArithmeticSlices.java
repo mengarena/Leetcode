@@ -41,7 +41,7 @@ public class ArithmeticSlices {
 	//ACC:
 	//Strategy:  calcualte the consecutive difference
 	//Each arithmetic should be at least two consecutive same difference
-	//Each sequence, for example, there are n (n >= 2) same difference, #arithmetic = (n+1)*n/2
+	//Each sequence, for example, there are n (n >= 2) same difference, #arithmetic = (n-1+1)*(n-1)/2=n*(n-1)/2
     public int numberOfArithmeticSlices(int[] A) {
         if (A == null || A.length < 3) return 0;
         int n = A.length;
