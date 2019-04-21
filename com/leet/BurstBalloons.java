@@ -65,7 +65,9 @@ public class BurstBalloons {
     			int right = left + len;   //Position of right position
     			
     			for (int k = left+1; k < right; k++) {   
-    				//try every Element between left and right, to get maxmimal dp[left][right], suppose this is the last balloon we burst
+    				//try every Element between left and right, to get maxmimal dp[left][right],
+				// suppose this is the LAST balloon we burst
+				// (i.e. by this step, the bursting between left--k, and k--right (i.e. dp[left][k] and dp[k][right] are already calculated.
     				//dp[][] records the result through bursting the balloon between left/right,
     				//i.e. in case "a b c", it records the situation when b is bursted, it does not record the result after bursting b,
     				//i.e. it does not contain the coins for "a c"
