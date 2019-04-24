@@ -43,7 +43,8 @@ public class GasStation {
         	// Starting point must after i.  
         	//If at i, nRemained < 0; say this session, 
         	//the starting station is x, it means the total travel costs between x and i is more than gas could be fueled. 
-        	//Say a random station y between x and i, then the total gas[x~y] >= cost[x~y], then the gas[y~i] < cost[y~i], therefore, y could not be the valid starting station;
+        	//Say a random station y between x and i, then the total gas[x~y] >= cost[x~y], then the gas[y~i] < cost[y~i], 
+		//therefore, y could not be the valid starting station;
         	//So any station [x~i] could not be valid starting station
         	if (nRemained < 0) {  
         		nStartingIdx = i+1; 
