@@ -73,22 +73,27 @@ getSize() : return the size of the HT
 add() : adds new valid key, value pair to the HT, if already present updates the value
 remove() : removes the key, value pair
 isEmpty() : returns true if size is zero
+
 Every Hash Map must have an array list/linked list with an initial size and a bucket size 
 which gets increased by unity every time a key, value pair is added and decreased by unity every time a node is deleted
 
 ArrayList<HashNode<K, V>> bucket = new ArrayList<>();
+
 A Helper Function is implemented to get the index of the key, to avoid redundancy in other functions like get, 
 add and remove. This function uses the in built java function to generate a hash code and we compress 
 the hash code by the size of the HT so that the index is within the range of the size of the HT
 
 get()
-The get function just takes a key as an input and returns the corresponding value if the key is present in 
-the table otherwise returns null. Steps are:
 
+The get function just takes a key as an input and returns the corresponding value if the key is present in 
+the table otherwise returns null. 
+
+Steps are:
 Retrieve the input key to find the index in the HT
 Traverse the liked list corresponding to the HT, if you find the value then return it else if 
 you fully traverse the list without returning it means the value is not present in the table and can’t be fetched 
 so return null
+
 remove()
 
 Fetch the index corresponding to the input key using the helper function
@@ -96,7 +101,9 @@ The traversal of linked list similar like in get() but what is special here is t
 the key along with finding it and two cases arise
 If the key to be removed is present at the head of the linked list
 If the key to be removed is not present at head but somewhere else
+
 add()
+
 Now to the most interesting and challenging function of this entire implementation.
 It is interesting because we need to dynamically increase the size of our list when load factor is above the value 
 we specified.
