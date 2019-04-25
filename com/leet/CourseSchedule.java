@@ -62,8 +62,8 @@ public class CourseSchedule {
     	if (prerequisites == null || prerequisites.length <= 1) return true;
         Map<Integer, Set<Integer>> hm = new HashMap<Integer, Set<Integer>>();
         int n = prerequisites.length;
-        boolean visited[] = new boolean[numCourses];
-        boolean arrVistied[] = new boolean[numCourses];
+        boolean visited[] = new boolean[numCourses];    // To remember whether course i is done
+        boolean arrVistied[] = new boolean[numCourses]; // To remember whether all courses rely on course i are done
         
         for (int i=0; i<n; i++) {
             int parent = prerequisites[i][1];
@@ -99,13 +99,11 @@ public class CourseSchedule {
             arrVistied[start] = true;
             return true;
         }
-        
+        // By now, course[start] is done,
+	// So we can check whether other courses relying on course[start] could be finished
         for (int node:setAdj) {
-    		//If the node has been visited, but has not been put in visited set, 
-        	//and it is less than one of its parent (or grand..parent), there should be a cycle
-        	
-            //if (node < start && visited[node] && !arrVistied[node]) return false;  //Old ACC
-            if (visited[node] && !arrVistied[node]) return false;  //New ACC
+    	    //If the node has been visited, but has not been put in visited set, there should be a cycle        	
+            if (visited[node] && !arrVistied[node]) return false;
             
             if (!visited[node]) {
                 boolean bRet = dfsSearch(hm, visited, arrVistied, node);
@@ -159,7 +157,8 @@ public class CourseSchedule {
     }	
     
     
-    private boolean dfsGraph(HashMap<Integer, Set<Integer>> hmGraph, int nStartPos, List<Boolean> lstVisited, Set<Integer> setVisited) {
+    private boolean dfsGraph(HashMap<Integer, Set<Integer>> hmGraph, int nStartPos, List<Boolean> lstVisited, 
+			     Set<Integer> setVisited) {
     	lstVisited.set(nStartPos, true);
     	
     	Set<Integer> setAdj = hmGraph.get(nStartPos);
@@ -168,10 +167,11 @@ public class CourseSchedule {
     		return true;
     	}
     	
+	// By now, course[start] is done,
+	// So we can check whether other courses relying on course[start] could be finished
     	for (int nNode:setAdj) { 
-    		//If the node has been visited, but has not been put in visited set, and it is less than one of its parent (or grand..parent), there should be a cycle
-    		//if (nNode < nStartPos && !setVisited.contains(nNode) && lstVisited.get(nNode)) return false;   //Old ACC
-    		if (!setVisited.contains(nNode) && lstVisited.get(nNode)) return false;   //New ACC
+    		//If the node has been visited, but has not been put in visited set, there should be a cycle
+    		if (!setVisited.contains(nNode) && lstVisited.get(nNode)) return false;
 
     		if (!lstVisited.get(nNode)) {
     			boolean bRet = dfsGraph(hmGraph, nNode, lstVisited, setVisited);
