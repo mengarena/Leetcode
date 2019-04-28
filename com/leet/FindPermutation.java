@@ -59,6 +59,7 @@ public class Solution {
             }
         }
         
+	//dAfter[i] decides which nth number to take from the remained ascending numbers
         //Set the numbers at each position
         for (i=0; i<n-1; i++) {
            ans[i] = lstNum.remove(dAfter[i]);  // From the remained numbers in lstNum, which one to take 
