@@ -64,6 +64,7 @@ public class FindKPairsWithSmallestSums {
         int n2 = nums2.length;
         int i,j;
 
+	// Smallest on top
         Queue<Pair> pq = new PriorityQueue<Pair>(k, new Comparator<Pair>(){
             public int compare(Pair X, Pair Y) {
                 if (X.a - Y.a + X.b - Y.b == 0) {
