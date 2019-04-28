@@ -65,8 +65,10 @@ public class FindLeavesBinaryTree {
     private int findLeavesHelper(TreeNode root, List<List<Integer>> lstlstLeaves) {
         if (root == null) return -1;
         
+	// Valid Level starts from 0 (if a node is null, its level is -1)
         int level = 1 + Math.max(findLeavesHelper(root.left, lstlstLeaves), findLeavesHelper(root.right, lstlstLeaves));
         
+	// Since valid level starts from 0, so need to use +1 to compare with size()
         if (level+1 > lstlstLeaves.size()) {
             List<Integer> lstLeaves = new ArrayList<>();
             lstlstLeaves.add(lstLeaves);
