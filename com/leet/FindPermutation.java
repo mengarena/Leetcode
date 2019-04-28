@@ -61,7 +61,8 @@ public class Solution {
         
         //Set the numbers at each position
         for (i=0; i<n-1; i++) {
-           ans[i] = lstNum.remove(dAfter[i]);
+           ans[i] = lstNum.remove(dAfter[i]);  // From the remained numbers in lstNum, which one to take 
+		                               //(the one to take is the dAfter[i] -th of the remained numbers)
         }
         
         //There is one remained (n numbers, n-1 "D"/"I"
