@@ -43,7 +43,7 @@ public class LexicographicalNumbers {
                 base = base * 10;   //Process 10, 100, 1000
             } else if (base <= n-1 && (base % 10) != 9) {
                 base++;             //Process 1001, 1002 .... 1009
-            } else {                //Process 199 --> 19 --> 2
+            } else {                //Process 179->17->18;    199 --> 19 --> 2
                 base = base/10;
                 base++;
                 while (base % 10 == 0) base = base/10;
