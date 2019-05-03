@@ -43,13 +43,13 @@ import java.util.Set;
 //Hard
 public class InsertDeleteGetRandom_O1_DuplicatesAllowed {
 
-    private List<Integer> lstNums = null;
+    private List<Integer> lstNums = null;    // Record all the numbers
     private Map<Integer, Set<Integer>> hm = null;
     private java.util.Random mRd = new java.util.Random();
     
     /** Initialize your data structure here. */
     public InsertDeleteGetRandom_O1_DuplicatesAllowed() {   //In the question, name should be RandomizedCollection
-        lstNums = new ArrayList<Integer>();
+        lstNums = new ArrayList<Integer>();   // Number, set of its locations
         hm = new HashMap<Integer, Set<Integer>>();
     }
     
