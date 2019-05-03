@@ -86,6 +86,7 @@ public class InsertDeleteGetRandom_O1_DuplicatesAllowed {
             setPos.remove(loc);
         }
         
+        // Use the last number in lstNums to fill in the position of the num being deleted
         if (loc != lstNums.size() - 1) {
             int lastNum = lstNums.get(lstNums.size()-1);
             
