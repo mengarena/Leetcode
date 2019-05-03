@@ -45,6 +45,7 @@ public class LongestSubstringWithAtLeastKRepeatingCharacters {
 	//if we divide very pathologically, then T(n) = T(n - 2) + n, so T(n) = O(n^2).
     public int longestSubstring(String s, int k) {
 	    return longestSubstring(s, k, new HashMap<String,Integer>());
+	                                                         // The hashmap record: string and len of its longest substr
     }
     
     public int longestSubstring(String s, int k, Map<String,Integer> longestMap) {
