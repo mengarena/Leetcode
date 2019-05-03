@@ -91,7 +91,8 @@ public class LongestSubstringWithAtLeastKRepeatingCharacters {
     
     //ACC: 6 ms
     public int longestSubstringB(String s, int k) {
-	    return longestSubstring(s, k, new HashMap<String,Integer>());
+	    return longestSubstring(s, k, new HashMap<String,Integer>()); 
+	                                                      // The hashmap record: string and len of its longest substr
     }
     
     public int longestSubstringB(String s, int k, Map<String,Integer> longestMap) {
