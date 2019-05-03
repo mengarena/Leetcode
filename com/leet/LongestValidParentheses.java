@@ -27,7 +27,8 @@ public class LongestValidParentheses {
 	
 	
 	//AC Strategy: first round, replace all "()" (i.e. "(" and ")" are direct neighbors) with "11";
-	//Second round, from the digits, propagate to the left and right, once find a "(" on the left and a ")" on the right, replace them with "1" "1" each
+	//Second round, from the digits, propagate to the left and right, once find a "(" on the left and a ")" on the right, 
+	//replace them with "1" "1" each
 	//Last: Count continuous "1" to calculate the length
 	//In Second round, for the consecutive "1", only the first one is based on to propagate
 	public int longestValidParentheses(String s) {
@@ -183,7 +184,8 @@ public class LongestValidParentheses {
         return nMaxLen;
 	}
 	
-	//This is wrong, because it is different from what is required in the question. (the require only asks for a substring)
+	//This is wrong, because it is different from what is required in the question. 
+	//(the require only asks for a substring)
 	public int longestValidParenthesesA(String s) {
         if (s == null || s.length() <= 1) return 0;
         int n = s.length();
