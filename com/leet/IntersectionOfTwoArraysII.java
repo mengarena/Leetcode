@@ -75,7 +75,7 @@ public class IntersectionOfTwoArraysII {
     //ACC
     public int[] intersectA(int[] nums1, int[] nums2) {
         if (nums1 == null || nums1.length == 0 || nums2 == null || nums2.length == 0) return new int[0];
-        Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> hm = new HashMap<Integer, Integer>();  // Number, Count
         List<Integer> lstRet = new ArrayList<Integer>();
         int i;
         
