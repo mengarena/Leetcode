@@ -52,9 +52,9 @@ public class IntegerReplacement {
         if (n % 2 == 0) {
             return integerReplacement(n/2)+1;
         } else {
-        	//Here choose the bigger between n+1 and n-1
+        	//Here choose the smaller between n+1 and n-1
         	//Here need to consider the case when n = Integer.MAX_VALUE
-        	//So, for n+1, use (n-1)/2+1 instead, which goes two steps
+        	//So, for n+1, use (n-1)/2+1 instead, which goes two steps (i.e. one step is -1, 2nd step is /2)
             return Math.min(integerReplacement((n-1)/2+1)+2, integerReplacement(n-1)+1);
         }
         
