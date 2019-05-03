@@ -6,8 +6,8 @@ import java.util.List;
 //Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
 //
 //According to the definition of LCA on Wikipedia: 
-//¡°The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants 
-//(where we allow a node to be a descendant of itself).¡±
+//Â¡Â°The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants 
+//(where we allow a node to be a descendant of itself).Â¡Â±
 //
 //        _______3______
 //       /              \
@@ -51,12 +51,14 @@ public class LowestCommonAncestorBinaryTree {
 	//This function return the first one which is p or q in each recursion
 	//Complixity: O(n), just DFS
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null || root == p || root == q) return root;   //Don't use val to compare. In test case, there might be two nodes, which have same values, but the two nodes are different
+        if (root == null || root == p || root == q) return root;   //Don't use val to compare. In test case, 
+	                         //there might be two nodes, which have same values, but the two nodes are different
         
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
         
-        if (left != null && right != null) return root;   //When this happens, must be: one of p,q is found in left sub tree; the other if found in right sub tree. Their common node must be the root. 
+        if (left != null && right != null) return root;   //When this happens, must be: one of p,q is found in left sub tree; 
+	                                            //the other if found in right sub tree. Their common node must be the root. 
         
         //If not the above case, the common node must be in the left or right sub tree. Up-propagate the common.
         if (left == null) {
