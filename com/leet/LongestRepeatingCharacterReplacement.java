@@ -54,7 +54,7 @@ public class LongestRepeatingCharacterReplacement {
         for (end=0; end<s.length(); end++) {
             maxCount = Math.max(maxCount, ++arrCnt[s.charAt(end)-'A']);   //Remember the count of the most frequent letter
             
-            while (end-start+1 - maxCount > k) {   //The number of letters which are different from the most frequent letter, 
+            if (end-start+1 - maxCount > k) {   //The number of letters which are different from the most frequent letter, 
             	                                   //at least has this many different (from most frequent) letters
                 arrCnt[s.charAt(start)-'A']--;
                 start++;
