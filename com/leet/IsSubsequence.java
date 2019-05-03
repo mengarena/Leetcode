@@ -85,7 +85,8 @@ public class IsSubsequence {
     
     //For the follow-up question:
     //Strategy:  use a list list to remember the position of each character in t
-    //Later, for each character in s, do binary search to see whether it is possible to find it based on certain conditions (i.e. should larger than certain position)
+    //Later, for each character in s, do binary search to see whether it is possible to find it based on certain conditions 
+    //(i.e. should larger than certain position)
     
     //ACC: 70ms
     public boolean isSubsequenceK(String s, String t) {
