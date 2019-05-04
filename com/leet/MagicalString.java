@@ -3,7 +3,8 @@
 
 A magical string S consists of only '1' and '2' and obeys the following rules:
 
-The string S is magical because concatenating the number of contiguous occurrences of characters '1' and '2' generates the string S itself.
+The string S is magical because concatenating the number of contiguous occurrences of characters '1' and '2' 
+generates the string S itself.
 
 The first few elements of string S is the following: S = "1221121221221121122……"
 
@@ -56,22 +57,22 @@ public class Solution {
                     if (lstNum.size() == numIdx+1) {
                         lstNum.add(2);
                     }
-                } else {
+                } else {  // ==2
                     if (lstNum.size() == numIdx+1) {
                         lstNum.add(1);
                     }
                 }
                 
-                numIdx++;
-            } else {
-                if (lstNum.get(numIdx) == 1) {
-                    if (lstNum.size() == numIdx+1) {
+                numIdx++;   // next element to check
+            } else {   // count == 2  (i.e. two consecutive numbers are same
+                if (lstNum.get(numIdx) == 1) {  // the corresponding element is 1
+                    if (lstNum.size() == numIdx+1) {   // If it is the last one, to meet the rule, need to add new elements
                         lstNum.add(1);
                         lstNum.add(2);
                     } else if (lstNum.size() == numIdx+2) {
                         lstNum.add(2);
                     }
-                } else {
+                } else {   // the corresponding element is 1
                     if (lstNum.size() == numIdx+1) {
                         lstNum.add(2);
                         lstNum.add(1);
@@ -80,10 +81,10 @@ public class Solution {
                     }
                 }
                 
-                numIdx += 2;
+                numIdx += 2;  // Next element to check
             }
             
-            countIdx++;
+            countIdx++;  // next count to check
         }
 
         return oneCount;
