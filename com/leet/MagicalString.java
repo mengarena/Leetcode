@@ -53,7 +53,7 @@ public class Solution {
             if (count == 1) {
                 oneCount++;
                 
-                if (lstNum.get(numIdx) == 1) {
+                if (lstNum.get(numIdx) == 1) {  // the corresponding element is 1, so next should be 2 since count = 1
                     if (lstNum.size() == numIdx+1) {
                         lstNum.add(2);
                     }
