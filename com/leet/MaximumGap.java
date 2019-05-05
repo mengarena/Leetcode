@@ -143,6 +143,8 @@ public class MaximumGap {
     //ACC: 79%
     //Solution: Radix Sort (based on each position digit, from the lowest to highest, round is decided by the maximal value)
     //Radix sort time complexity: O(nk), Space Complexity: O(n+k) --k is the number of digits in the maximal number
+    //This sort guarantees (between two numbers): If all other digits are same, only one is different, 
+    //the number with small digit will be put ahead of the number with larger digit
     public int maximumGap_RadixSort(int[] nums) {
         if (nums == null || nums.length < 2) return 0;
         int nMax = Integer.MIN_VALUE;
