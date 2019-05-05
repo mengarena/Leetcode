@@ -17,7 +17,8 @@ import java.util.Arrays;
 //
 //For example, given a array [1, 7, 3, 3], the expected result it 4, not (7 - 1) = 6.
 //
-//We need to sort the the array into [1, 3, 3, 7], and get the maximum gap between the successive elements in this sorted array, which is (7 - 3) = 4.
+//We need to sort the the array into [1, 3, 3, 7], and get the maximum gap between the successive elements in this sorted array, 
+//which is (7 - 3) = 4.
 
 //Hard
 public class MaximumGap {
