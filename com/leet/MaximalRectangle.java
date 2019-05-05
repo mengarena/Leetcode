@@ -44,13 +44,13 @@ public class MaximalRectangle {
 	}
 	
 	
-	//Accepted:
-	//Use strategy used in LargestRectangleHistogram
-	//Process row by row
-	//At each row, calculate the heights corresponding to columns
-	//When meet "1", increase height for that column;
-	//When meet "0", height is reset to 0 for that column
-	//At each row, get an array of heights, and then use the strategy in LargestRectangleHistogram to calculate the max area
+    //Accepted:
+    //Use strategy used in LargestRectangleHistogram
+    //Process row by row
+    //At each row, calculate the heights corresponding to columns
+    //When meet "1", increase height for that column;
+    //When meet "0", height is reset to 0 for that column
+    //At each row, get an array of heights, and then use the strategy in LargestRectangleHistogram to calculate the max area
     public int maximalRectangle(char[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return 0;
         int nRow = matrix.length;
