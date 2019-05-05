@@ -88,9 +88,9 @@ public class MaximumGap {
 	
 	
 
-	//ACC: 51%
-	//Bucket Sort Time Complexity O(n+k),  Space Complexity: O(n)
-	//Refer to: https://leetcode.com/discuss/18499/bucket-sort-java-solution-with-explanation-o-time-and-space
+    //ACC: 51%
+    //Bucket Sort Time Complexity O(n+k),  Space Complexity: O(n)
+    //Refer to: https://leetcode.com/discuss/18499/bucket-sort-java-solution-with-explanation-o-time-and-space
     public int maximumGap_BucketSortA(int[] nums) {
         if (nums == null || nums.length < 2) return 0;
         int nMax = Integer.MIN_VALUE;
@@ -145,6 +145,9 @@ public class MaximumGap {
     //Radix sort time complexity: O(nk), Space Complexity: O(n+k) --k is the number of digits in the maximal number
     //This sort guarantees (between two numbers): If all other digits are same, only one is different, 
     //the number with small digit will be put ahead of the number with larger digit
+    //For example, for 3 numbers:   35, 27, 34
+    //After round 1):     34, 35, 27    (i.e. sorted based on last digit)
+    //After round 2):     27, 34, 35    (i.e. softed based on second last digit)
     public int maximumGap_RadixSort(int[] nums) {
         if (nums == null || nums.length < 2) return 0;
         int nMax = Integer.MIN_VALUE;
