@@ -169,6 +169,7 @@ public class MaximumGap {
             for (i=1; i<nRadix; i++) narrCount[i] = narrCount[i] + narrCount[i-1];   
 	     
             //Put nums[i] to the new position based on this round of sorting
+	    //i.e. based on the position digit of this round
             for (i=n-1; i>=0; i--) aux[--narrCount[(nums[i] % nBase)/nDivisor]] = nums[i];
             
             for (i=0; i<n; i++) nums[i] = aux[i];
