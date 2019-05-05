@@ -10,8 +10,9 @@ public class MyReadWriteLock {
     //0) Only one thread could have write lock; multi thread could have read lock
     //   * Remember the thread which has read lock, and write lock
     //1) If write lock is in use, read lock has to wait
-    //2) If there are read lock in use, write lock has not wait
-    //3) If write lock is in use, but the new requesting thread is the same as the thread which occupies the write lock, could grant the write access
+    //2) If there are read lock in use, write lock has to wait
+    //3) If write lock is in use, but the new requesting thread is the same as the thread which occupies the write lock, 
+    //   could grant the write access
     //4) Exception to 1) If write lock is in use, a read lock request comes, 
     //   if the requesting thread is the same as the thread occupies the write lock, grant read lock
     //5) If a reading thread(which has read lock) requests read lock again, grant read lock 
