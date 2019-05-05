@@ -140,7 +140,7 @@ public class MaximumGap {
 	
 	
     //ACC: 79%
-	//Solution: Radix Sort (based on each position digit, from the lowest to highest, round is decided by the maximal value)
+    //Solution: Radix Sort (based on each position digit, from the lowest to highest, round is decided by the maximal value)
     //Radix sort time complexity: O(nk), Space Complexity: O(n+k) --k is the number of digits in the maximal number
     public int maximumGap_RadixSort(int[] nums) {
         if (nums == null || nums.length < 2) return 0;
@@ -160,10 +160,13 @@ public class MaximumGap {
         while (nMax / nDivisor > 0) {
             int[] narrCount = new int[nRadix];  //count of numbers in each position digit
             
+	    // In 1st round of "while", this "for" process the last digit, i.e. sort the numbers based on last digit
+            // In 2nd round, it will process and sort based on 10th position digit; and then 100th position digit
             for (i=0; i<n; i++) narrCount[(nums[i] % nBase)/nDivisor]++;
             
-            for (i=1; i<nRadix; i++) narrCount[i] = narrCount[i] + narrCount[i-1];   //This step make sure the next step aux could operate on globe index
-            
+	    //This step make sure the next step aux could operate on globe index
+            for (i=1; i<nRadix; i++) narrCount[i] = narrCount[i] + narrCount[i-1];   
+	     
             //Put nums[i] to the new position based on this round of sorting
             for (i=n-1; i>=0; i--) aux[--narrCount[(nums[i] % nBase)/nDivisor]] = nums[i];
             
