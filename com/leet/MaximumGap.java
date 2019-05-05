@@ -157,7 +157,7 @@ public class MaximumGap {
         
         int aux[] = new int[n];
         
-        //Sort the array
+        //Sort the array  (Small --> Large)
         while (nMax / nDivisor > 0) {
             int[] narrCount = new int[nRadix];  //count of numbers in each position digit
             
