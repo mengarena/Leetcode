@@ -71,7 +71,7 @@ public class TreeDfsBfs {
     	TreeNode endNode = null; 
     	
     	while (bEnd == false) {
-    		bEnd = true;
+    	    bEnd = true;
     	    size = lstlstPath.size();
     	    for (i=size-1; i>=0; i--) {
     	    	lstPath = lstlstPath.get(i);
@@ -80,16 +80,16 @@ public class TreeDfsBfs {
     	    	
     	    	bEnd = false;
     	    	if (endNode.right != null) {
-    	    		List<TreeNode> lstPathNew = new ArrayList<TreeNode>(lstPath);
-    	    		lstPathNew.add(endNode.right);
-    	    		lstlstPath.set(i, lstPathNew);
+    	    	    List<TreeNode> lstPathNew = new ArrayList<TreeNode>(lstPath);
+    	    	    lstPathNew.add(endNode.right);
+    	    	    lstlstPath.set(i, lstPathNew);
     	    	}
     	    	
     	    	if (endNode.left != null) {
-    	    		lstPath.add(endNode.left);
-    	    		if (endNode.right != null) {
-    	    			lstlstPath.add(i, lstPath);
-    	    		} 
+    	    	    lstPath.add(endNode.left);
+    	    	    if (endNode.right != null) {
+    	    	        lstlstPath.add(i, lstPath);
+    	    	    } 
     	    	}
     	    }
     	}
@@ -108,7 +108,7 @@ public class TreeDfsBfs {
     		List<Integer> lstBDFS = new ArrayList<Integer>();
     		
     		for (TreeNode tmpNode:lstPathTmp) {
-    			lstBDFS.add(tmpNode.val);
+    		    lstBDFS.add(tmpNode.val);
     		}
     		
     		lstlstBDFS.add(lstBDFS);
@@ -128,8 +128,8 @@ public class TreeDfsBfs {
     	
     	if (head == null) return lstlstDFS;
         while (head != null) {
-        	lstPath.add(head);
-        	head = head.left;
+            lstPath.add(head);
+            head = head.left;
         }
     	
     	while (!lstPath.isEmpty()) {
