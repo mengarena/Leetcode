@@ -10,7 +10,6 @@ package com.leet;
 //
 //Beware of overflow.
 
-
 //Hard
 public class NumberOfDigitOne {
 
@@ -72,9 +71,9 @@ public class NumberOfDigitOne {
         
         // Cal number of digits
         while (nQuotient > 0) {
-        	nTotalDigitCnt = nTotalDigitCnt + 1;
+            nTotalDigitCnt = nTotalDigitCnt + 1;
         	
-        	nQuotient = nQuotient / 10;
+            nQuotient = nQuotient / 10;
         }
         	        
         nRemainder = n % 10;
@@ -113,12 +112,10 @@ public class NumberOfDigitOne {
         			nTotalDigitOneCnt = nTotalDigitOneCnt + nQuotient*nRng + (nRemainder + 1);
         		} else {
         			nTotalDigitOneCnt = nTotalDigitOneCnt + nQuotient*nRng;
-        		}
-        		
-        	}
-        	
+        		}	
+        	}	
         }
         
         return nTotalDigitOneCnt;
-	 }	
+    }	
 }
