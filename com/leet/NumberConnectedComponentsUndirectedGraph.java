@@ -63,10 +63,10 @@ public class NumberConnectedComponentsUndirectedGraph {
         return nCount;
     }
     
-    private int root(int[] roots, int i) {
+    private int get_root(int[] roots, int i) {
     	while (i != roots[i]) {
-    		roots[i] = roots[roots[i]];  //Path compression
-    		i = roots[i];
+    	    roots[i] = roots[roots[i]];  //Path compression
+    	    i = roots[i];
     	}
     	return i;
     }
