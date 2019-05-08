@@ -33,16 +33,14 @@ public class NumberConnectedComponentsUndirectedGraph {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	public void run() {
 		int[][] edges = {{2,3}, {1,2}, {1,3}};
 		
 		System.out.println(countComponents(4, edges));
 	}
-	
-	
-	//Union Find
-	//Refer to:  https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf
+		
+    //Union Find
+    //Refer to:  https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf
     public int countComponents(int n, int[][] edges) {
     	if (edges == null || edges.length == 0 || edges[0].length == 0) return n;    	    	
         int[] roots = new int[n];
@@ -53,11 +51,11 @@ public class NumberConnectedComponentsUndirectedGraph {
         for (i=0; i<n; i++) roots[i] = i;
         
         for (i=0; i<m; i++) {
-        	int root1 = root(roots, edges[i][0]);
-        	int root2 = root(roots, edges[i][1]);
+        	int root1 = get_root(roots, edges[i][0]);
+        	int root2 = get_root(roots, edges[i][1]);
         	
         	if (root1 != root2) {
-        		roots[root1] = root2;    //Connect
+        	    roots[root1] = root2;    //Connect
         	    nCount--;
         	}
         }
@@ -65,29 +63,13 @@ public class NumberConnectedComponentsUndirectedGraph {
         return nCount;
     }
     
-    
-    
     private int root(int[] roots, int i) {
     	while (i != roots[i]) {
     		roots[i] = roots[roots[i]];  //Path compression
     		i = roots[i];
     	}
-    	
     	return i;
     }
-	
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     //Check whether two nodes are connected
     private boolean IsConnected(int[] roots, int p, int q) {
@@ -95,21 +77,15 @@ public class NumberConnectedComponentsUndirectedGraph {
     }
     
     private void unite(int[] roots, int p, int q) {
-    	int i = root(roots, p);
-    	int j = root(roots, q);
+    	int i = get_root(roots, p);
+    	int j = get_root(roots, q);
     	roots[i] = j;
     }
     
     
-
-    
-    
-    
-    
-    
-	//AC:  27%
-	//For each edge, for example, [1, 2], record both [1, 2] and [2, 1] in hashmap
-	//And then use DFS to search
+    //AC:  27%
+    //For each edge, for example, [1, 2], record both [1, 2] and [2, 1] in hashmap
+    //And then use DFS to search
     public int countComponentsA(int n, int[][] edges) {
     	if (edges == null || edges.length == 0 || edges[0].length == 0) return n;    	    	
         boolean barrVisited[] = new boolean[n];
