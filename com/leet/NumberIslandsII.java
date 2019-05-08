@@ -53,15 +53,15 @@ import java.util.List;
 public class NumberIslandsII {
 
 	
-	//AC:  96%
+    //AC:  96%
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
-		List<Integer> lstIsland = new ArrayList<Integer>();
-		if (positions == null || positions.length == 0) return lstIsland;
-		int k = positions.length;
-		int i,j;
-		int[] roots = new int[m*n+1];   //To be 1-starting
-		int count = 0;
-		int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+	    List<Integer> lstIsland = new ArrayList<Integer>();
+	    if (positions == null || positions.length == 0) return lstIsland;
+	    int k = positions.length;
+	    int i,j;
+	    int[] roots = new int[m*n+1];   //To be 1-starting
+	    int count = 0;
+	    int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 				
 	    for (i=0; i<k; i++) {
 	    	int x = positions[i][0], y = positions[i][1];
@@ -78,7 +78,7 @@ public class NumberIslandsII {
 	    		
 	    		if (xx < 0 || xx >= m || yy < 0 || yy >= n || roots[id] == 0) continue;
 	    		
-	    		int rootId = root(roots, id);
+	    		int rootId = get_root(roots, id);
 	    		
 	    		if (rootId != roots[node]) {
 	    		    roots[node] = rootId;
@@ -94,19 +94,17 @@ public class NumberIslandsII {
 	}		
 	
     
-	private int root(int[] roots, int node) {
-		while (node != roots[node]) {
-			roots[node] = roots[roots[node]];
-			node = roots[node];
-		}
+	private int get_root(int[] roots, int node) {
+	    while (node != roots[node]) {
+		roots[node] = roots[roots[node]];
+		node = roots[node];
+	    }
 		
-		return node;
-    }
+	    return node;
+        }
    
     
-    
-	
-	//AC: 82%  Union Find
+    //AC: 82%  Union Find
     public List<Integer> numIslands2B(int m, int n, int[][] positions) {
 		List<Integer> lstIsland = new ArrayList<Integer>();
 		if (positions == null || positions.length == 0) return lstIsland;
@@ -144,15 +142,13 @@ public class NumberIslandsII {
 	    	lstIsland.add(count);
 	    }
 	    
-		return lstIsland;
+	    return lstIsland;
 	}	
 	
 	
 	
 	
-	
-	
-	
+
 	
 	//ACC:  3%
 	public List<Integer> numIslands2A(int m, int n, int[][] positions) {
