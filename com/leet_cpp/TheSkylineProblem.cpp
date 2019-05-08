@@ -54,7 +54,8 @@ public:
         
         multiset<int> setHeight;  //Default order: Small -> Large
 
-        setHeight.insert(0);   // Make sure when all removed, still has one (i.e. 0) remained. This is for the last point in result
+        setHeight.insert(0);   // Make sure when all removed, still has one (i.e. 0) remained. 
+                               // This is for the last point in result
         
         int curHeight = 0;
         int prevHeight = 0;
