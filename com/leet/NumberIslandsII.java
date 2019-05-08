@@ -58,7 +58,7 @@ public class NumberIslandsII {
 	    if (positions == null || positions.length == 0) return lstIsland;
 	    int k = positions.length;
 	    int i,j;
-	    int[] roots = new int[m*n+1];   //To be 1-starting
+	    int[] roots = new int[m*n+1];   //To be 1-starting, will be 0 for each node/id if not ever filled
 	    int count = 0;
 	    int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 				
