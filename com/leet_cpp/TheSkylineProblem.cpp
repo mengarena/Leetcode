@@ -67,7 +67,6 @@ public:
                 setHeight.insert(-tmpPair.second);
             } else {    // The effect of this height should be removed
                 setHeight.erase(setHeight.find(tmpPair.second));
-
             }
             
             curHeight = *(setHeight.rbegin());  //Get current Largest height
