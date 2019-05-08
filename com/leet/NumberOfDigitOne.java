@@ -58,7 +58,7 @@ public class NumberOfDigitOne {
 	 *    x0 >= 1 ==> (x2x1 + 1) * pow(10,n-3)
 	 *    x0 == 0 ==> x2x1*pow(10, n-3)
 	 */
-	 public static int countDigitOne(int n) {
+    public static int countDigitOne(int n) {
         int nTotalDigitOneCnt = 0;
         int nQuotient = 0;
         int nRemainder = 0;
