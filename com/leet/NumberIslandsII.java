@@ -75,6 +75,8 @@ public class NumberIslandsII {
 	    		int yy = y + dirs[j][1];
 	    		int id = xx*n + yy + 1;   //To be 1 starting
 	    		
+			// roots[id] = 0 means this position is not processed before, i.e. it is not filled position before,
+			// so it has no root
 	    		if (xx < 0 || xx >= m || yy < 0 || yy >= n || roots[id] == 0) continue;
 	    		
 	    		int rootId = get_root(roots, id);
