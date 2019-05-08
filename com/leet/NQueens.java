@@ -54,7 +54,8 @@ public class NQueens {
             return lstlstConfigs;
         }
         
-        int[][] board = new int[n][n];  //0: not set, possible to set;  nRowIdx+1: set (i.e. will be "Q");  -(nRowIdx+1): Invalid, should not set
+        int[][] board = new int[n][n];  //0: not set, possible to set;  
+	                                //nRowIdx+1: set (i.e. will be "Q");  -(nRowIdx+1): Invalid, should not set
         
         solveNQueensHelper(board, n, 0, lstlstConfigs);
         
@@ -85,7 +86,8 @@ public class NQueens {
                 
                 solveNQueensHelper(board, n, nCurRowIdx+1, lstlstConfigs);
                 
-                recoverInvalid(board, n, nCurRowIdx, i);  //Recover the corresponding column, diagonal before trying next position in current row
+                recoverInvalid(board, n, nCurRowIdx, i);  //Recover the corresponding column, 
+		                                          //diagonal before trying next position in current row
                 
             }
         }
@@ -150,7 +152,8 @@ public class NQueens {
         
         //Process column
         for (i=nRowIdx+1; i<n; i++) {
-            if (board[i][nColIdx] >= (nRowIdx+1) || board[i][nColIdx] <= -(nRowIdx+1)) board[i][nColIdx] = 0;   //Column, board[i][nColIdx] >= (nRowIdx+1) => 'Q'
+            if (board[i][nColIdx] >= (nRowIdx+1) || board[i][nColIdx] <= -(nRowIdx+1)) board[i][nColIdx] = 0;   
+		                                                  //Column, board[i][nColIdx] >= (nRowIdx+1) => 'Q'
         }
         
         ii = nRowIdx;
