@@ -52,7 +52,6 @@ import java.util.List;
 //Hard
 public class NumberIslandsII {
 
-	
     //AC:  96%
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
 	    List<Integer> lstIsland = new ArrayList<Integer>();
@@ -90,16 +89,14 @@ public class NumberIslandsII {
 	    	lstIsland.add(count);
 	    }
 	    
-		return lstIsland;
+	    return lstIsland;
 	}		
 	
-    
 	private int get_root(int[] roots, int node) {
 	    while (node != roots[node]) {
 		roots[node] = roots[roots[node]];
 		node = roots[node];
 	    }
-		
 	    return node;
         }
    
