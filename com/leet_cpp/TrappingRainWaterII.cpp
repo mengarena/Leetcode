@@ -112,7 +112,7 @@ public:
         int neiRow, neiCol;
         vector<vector<bool>> visited(r, vector<bool>(c, false));
         
-        priority_queue<Cell> pq;
+        priority_queue<Cell> pq;   // Smallest on top
        
         for (i=0; i<r; i++) {
             visited[i][0] = true;
