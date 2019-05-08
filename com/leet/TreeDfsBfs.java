@@ -94,7 +94,6 @@ public class TreeDfsBfs {
     	    }
     	}
     	
-    	
     	lstlstBFS = getListValues(lstlstPath);
     	
     	return lstlstBFS;
@@ -113,7 +112,6 @@ public class TreeDfsBfs {
     		
     		lstlstBDFS.add(lstBDFS);
     	}
-    	
     	
     	return lstlstBDFS;
     }
@@ -148,7 +146,6 @@ public class TreeDfsBfs {
     		} else {
     			lstPath.remove(lstPath.size()-1);
     		}
-    		
     	}
     	
     	lstlstDFS = getListValues(lstlstPath);
@@ -184,7 +181,6 @@ public class TreeDfsBfs {
     	
     	return lstlstFS;
     }
-    
-    
+
 }
 
