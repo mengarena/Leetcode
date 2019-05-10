@@ -62,6 +62,8 @@ import java.util.List;
 //Hard
 public class PerfectRectangle {
 
+	//Best Solution:  https://www.cnblogs.com/grandyang/p/5825619.html
+	
 	public PerfectRectangle() {
 		// TODO Auto-generated constructor stub
 	}
