@@ -28,9 +28,42 @@ public class Permutations {
 		}
 	}
 	
+    // ACC:  99.75%
+    // Time Complexity:  O(n!)
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> lstlstRet = new ArrayList<List<Integer>>();
+        if (nums == null || nums.length == 0) return lstlstRet;
+        
+        int n = nums.length;
+        boolean[] used = new boolean[n];
+        List<Integer> lstOne = new ArrayList<>();
+        
+        permuteHelper(nums, 0, used, lstOne, lstlstRet);
+        return lstlstRet;
+    }
+    
+    public void permuteHelper(int[] nums, int count, boolean[] used, List<Integer> lstOne, List<List<Integer>> lstlstRet) {
+        if (count == nums.length) {
+            lstlstRet.add(new ArrayList<Integer>(lstOne));
+            return;
+        }
+        
+        for (int i=0; i<nums.length; i++) {
+            if (!used[i]) {
+                used[i] = true;
+                lstOne.add(nums[i]);
+
+                permuteHelper(nums, count+1, used, lstOne, lstlstRet);
+
+                lstOne.remove(lstOne.size()-1);
+                used[i] = false;
+            }
+        }
+    }	
 	
-	//ACC: 68%
-	//Time Complexity:  O(n!)
+	
+    //ACC: 68%
+    //Time Complexity:  O(n!)
     public List<List<Integer>> permute(int[] nums) {
     	List<List<Integer>> lstlstPerm = new ArrayList<List<Integer>>();
     	
