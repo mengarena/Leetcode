@@ -42,7 +42,7 @@ public class SparseMatrixMultiplication {
 
 	//AC: 38%
 	public int[][] multiply(int[][] A, int[][] B) {
-		if (A == null || A.length == 0 || A[0].length == 0 || B == null || B.length == 0 || B[0].length == 0) return null;
+	    if (A == null || A.length == 0 || A[0].length == 0 || B == null || B.length == 0 || B[0].length == 0) return null;
 	    int nRowA = A.length;
 	    int nColARowB = A[0].length;
 	    int nColB = B[0].length;
@@ -53,7 +53,8 @@ public class SparseMatrixMultiplication {
 	    boolean bValid = false;
 	    int nSum = 0;
 	    
-	    //First, find the all-0 rows in A and all-0 cols in B, these rows and cols will generate 0 in the result, so we don't need to process them later
+	    //First, find the all-0 rows in A and all-0 cols in B, these rows and cols will generate 0 in the result, 
+	    //so we don't need to process them later
 	    for (i=0; i<nRowA; i++) {
 	    	bValid = false;
 	    	
