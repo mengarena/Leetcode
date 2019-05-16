@@ -50,6 +50,7 @@ public:
     // In the while loop, the right tells the upbound of the rannum within sum[]
     // e.g if upbound is 4, then the rannum should be 1 or 2 or 3,
     // then the picked index should be index 1
+    // i.e. if upbound for the rannum is ith value in sum[],  the number to pick is ith number in w
     
     vector<int> sum;
     
