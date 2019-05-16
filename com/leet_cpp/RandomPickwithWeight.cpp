@@ -42,6 +42,7 @@ public:
     // Say a list:  1,3,2
     // The probability of each value get picked is 1/6, 3/6, 2/6
     // So use 'sum' to accumulate sums (i.e. 1, 4, 6)
+    // The gap between sum[i] and sum[i-1] corresponds to the weight of w[i]
     // Then in pickIndex(),  rannum could be one of these values: 0, 1,2,3,  4,5
     // If rannum = 0, should pick index 0
     // If rannum = 1,2,3, should pick index 1
