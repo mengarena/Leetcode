@@ -31,6 +31,34 @@ Easy
 class Solution {
 public:
 
+    // 46%
+    int findShortestSubArray(vector<int>& nums) {
+        unordered_map<int, int> freqs;   // num, frequency
+        unordered_map<int, pair<int, int>> poss;  // num, <first, last position>
+        int maxFreq = 0;
+        int minRange = INT_MAX;
+        
+        for (int i=0; i<nums.size(); ++i) {
+            if (!freqs.count(nums[i])) {
+                freqs[nums[i]] = 1;
+                poss[nums[i]] = make_pair(i, i);
+            } else {
+                freqs[nums[i]]++;
+                poss[nums[i]].second = i;
+            }
+            
+            if (maxFreq < freqs[nums[i]]) {
+                maxFreq = freqs[nums[i]];
+                minRange = poss[nums[i]].second - poss[nums[i]].first + 1; 
+            } else if (maxFreq == freqs[nums[i]]) {
+                minRange = min(minRange, poss[nums[i]].second - poss[nums[i]].first + 1); 
+            }
+        }
+ 
+        return minRange;
+    }    
+    
+    
     // 36%
     int findShortestSubArray(vector<int>& nums) {
         unordered_map<int, int> freqs;   // num, frequency
