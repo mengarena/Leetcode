@@ -35,6 +35,7 @@ class Solution {
 public:
 
     // 93%
+    // Complexity: O(n)
     int diameterOfBinaryTree(TreeNode* root) {
         int maxDia = 0;
         
