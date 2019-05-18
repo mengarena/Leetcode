@@ -86,6 +86,53 @@ private:
     stack<int> maxs;
 };
 
+
+
+
+// 86%
+// This method use map to record the positions of each value
+class MaxStack {
+public:
+    /** initialize your data structure here. */
+    MaxStack() {
+        
+    }
+    
+    void push(int x) {
+        normals.insert(normals.begin(), x);
+        maxs[x].push_back(normals.begin());
+    }
+    
+    int pop() {
+        int val = normals.front();
+        normals.erase(normals.begin());
+        maxs[val].pop_back();
+        if (maxs[val].empty()) maxs.erase(val);
+        return val;
+    }
+    
+    int top() {
+        return normals.front();
+    }
+    
+    int peekMax() {
+        return maxs.rbegin()->first;
+    }
+    
+    int popMax() {
+        int val = maxs.rbegin()->first;
+        auto it = maxs[val].back();
+        maxs[val].pop_back();
+        if (maxs[val].empty()) maxs.erase(val);
+        normals.erase(it);
+        return val;
+    }
+
+private:
+    list<int> normals;
+    map<int, vector<list<int>::iterator>> maxs;  // Ascending order by key
+};
+
 /**
  * Your MaxStack object will be instantiated and called as such:
  * MaxStack* obj = new MaxStack();
