@@ -32,7 +32,6 @@ A and B contain only lowercase letters from the set {'a', 'b', 'c', 'd', 'e', 'f
 Hard
 */
 
-/*
 
 class Solution {
 public:
@@ -89,4 +88,3 @@ public:
     }
     
 };
-*/
