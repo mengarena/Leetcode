@@ -37,6 +37,7 @@ class Solution {
 public:
 
     // 94%
+    // Basically, it is BFS
     int kSimilarity(string A, string B) {
         if (A == B) return 0;
         if (A.length() != B.length()) return -1;
