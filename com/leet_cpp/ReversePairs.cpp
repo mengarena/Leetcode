@@ -53,6 +53,7 @@ public:
             }
         }
         
+        // Sort the elements between [s, e]
         sort(nums.begin() + s, nums.begin() + e + 1);
     }
     
