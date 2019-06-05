@@ -49,17 +49,17 @@ Google
 class Solution {
 public:
 
-    // Pass all test cases
-    int catMouseGame(vector<vector<int>>& graph) {
+     // 70%
+     int catMouseGame(vector<vector<int>>& graph) {
         int n = graph.size();
-        vector<vector<vector<int>>> color;  // cat node, mouse node, move (0-mouse, 1 cat)
-        vector<vector<vector<int>>> outdegree;
+        vector<vector<vector<int>>> color(n, vector<vector<int>>(n, vector<int>(2,0)));  // cat node, mouse node, move (0-mouse, 1 cat)
+        vector<vector<vector<int>>> outdegree(n, vector<vector<int>>(n, vector<int>(2,0)));
      
         for (int i=0; i<n; ++i) {  // cat
             for (int j=0; j<n; ++j) {  // mouse
-                outdegree[i][j][0] = graph[j];  // mouse move
-                outdegree[i][j][1] = graph[i];  // cat move
-                if (auto k:graph[i]) {
+                outdegree[i][j][0] = graph[j].size();  // mouse move
+                outdegree[i][j][1] = graph[i].size();  // cat move
+                for (auto k : graph[i]) {
                     if (k == 0) {  // Cat cannot be in 0
                         outdegree[i][j][1]--;
                         break;
@@ -72,9 +72,9 @@ public:
         for (int k=1; k<n; ++k) {
             for (int m = 0; m<2; ++m) {
                 color[k][0][m] = 1;   // when mouse is at 0, mouse win
-                queue.push({k, 0, m ,1});
+                q.push({k, 0, m, 1});
                 color[k][k][m] = 2;   // when cat and mouse at same node, cat win
-                queue.push({k, k, m 2});
+                q.push({k, k, m, 2});
             }
         }
         
@@ -86,7 +86,7 @@ public:
             
             int prevMove = 1 - curMove;
             
-            for (int prev:graph[prevMove==1? cat:mouse]) {
+            for (auto prev:graph[prevMove==1? cat:mouse]) {
                 int prevCat = prevMove == 1? prev:cat;
                 int prevMouse = prevMove == 1? mouse:prev;
                 if (prevCat == 0) continue;
@@ -102,8 +102,6 @@ public:
         
         return color[2][1][0];
     }
-
-
 
     // Pass 40/49 test cases
     int catMouseGame(vector<vector<int>>& graph) {
