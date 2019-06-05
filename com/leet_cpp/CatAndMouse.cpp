@@ -52,7 +52,8 @@ public:
      // 70%
      int catMouseGame(vector<vector<int>>& graph) {
         int n = graph.size();
-        vector<vector<vector<int>>> color(n, vector<vector<int>>(n, vector<int>(2,0)));  // cat node, mouse node, move (0-mouse, 1 cat)
+        vector<vector<vector<int>>> color(n, vector<vector<int>>(n, vector<int>(2,0))); 
+                                                                           // cat node, mouse node, move (0-mouse, 1 cat)
         vector<vector<vector<int>>> outdegree(n, vector<vector<int>>(n, vector<int>(2,0)));
      
         for (int i=0; i<n; ++i) {  // cat
