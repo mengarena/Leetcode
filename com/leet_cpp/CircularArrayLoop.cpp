@@ -155,5 +155,41 @@ public:
         
         return false;
     }
+ 
+ 
+     // 21%
+     bool circularArrayLoop(vector<int>& nums) {
+        int n = nums.size();
+        for(int i=0; i<n; i++){
+            int slow = i;
+            int fast = getNextIdx(nums, slow);
+            bool direction = nums[slow] > 0;
+
+            if(fast == slow) { // check if the index circle itelf
+                nums[i] = 0;
+                continue;
+            }
+
+            while (slow != fast && nums[fast] != 0) { 
+                if(nums[fast] > 0 != direction) break;
+                slow = getNextIdx(nums, slow);
+                fast = getNextIdx(nums, fast);
+                if(nums[fast] > 0 != direction) break;                
+                fast = getNextIdx(nums, fast);
+            }
+
+            if (fast == slow && fast != getNextIdx(nums, fast))
+                return true;
+
+            nums[i] = 0;
+        }
+        
+        return false;
+    }
+    
+    int getNextIdx(vector<int>& nums, int i) {
+        int n = nums.size();
+        return ((i+nums[i])%n+n)%n;
+    }
 };
 
