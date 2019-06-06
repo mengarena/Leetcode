@@ -91,8 +91,8 @@ public:
             int newCol = col + dirs[newDir][1];
             
             if (visited.count(make_pair(newRow, newCol)) == 0 && robot.move()) {
-                backtrack(robot, newRow, newCol, newDir);
-                goBack(robot);
+                backtrack(robot, newRow, newCol, newDir);  // Clean on the new direction
+                goBack(robot);  // Go back to the previous cell
             }
             
             robot.turnRight();  // Try next direction
