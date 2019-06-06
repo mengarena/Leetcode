@@ -84,7 +84,6 @@ public:
         visited.insert(make_pair(row, col));
         robot.clean();
         
-        // clocking wise: 0-up, 1-right, 2-down, 3-left
         for (int i = 0; i<dirs.size(); ++i) {
             int newDir = (dir + i) % 4;  // Next direction
             int newRow = row + dirs[newDir][0];
