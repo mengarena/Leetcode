@@ -65,7 +65,7 @@ public:
         // i-1th day + 1 day pass
         // i-7th day + 7 day pass
         // i-30th day + 30 day pass
-        for (int i=1; i<=365; ++i) {
+        for (int i=1; i<=365; ++i) {   // One optimization:  Only need to loop to the last day in days
             if (mydays[i] == 0) {
                 dp[i] = dp[i-1];
             } else {
