@@ -28,6 +28,103 @@ Google, Uber, Amazon
 */
 
 
+// Same as the one below, but shorter
+class Solution {
+public:
+    struct Node {
+        int type;    // 0: number, 1: operator, 2: ( or )
+        long num;
+        char symbol;
+        Node(int t, long n, char s) { type = t; num = n; symbol = s; }
+    };
+    
+    // Check whether current operand(num) could be "combined" with previous operand
+    void backwards(stack<Node>& s, long num) {
+        if (!s.empty() && s.top().type == 1) {
+            if (s.top().symbol == '+') {
+                s.pop();
+                s.push(Node(0, num, ' '));
+            } else if (s.top().symbol == '-') {
+                s.pop();
+                s.push(Node(0, -1*num, ' '));
+            } else if (s.top().symbol == '*') {
+                s.pop();
+                s.top().num *= num;
+            } else if (s.top().symbol == '/') {
+                s.pop();
+                s.top().num /= num;
+            }
+        } else {
+            s.push(Node(0, num, ' '));
+        }
+    }
+    
+    int calculate(string s) {
+        stack<Node> stk;
+        
+        long num = 0;
+        int prevType = -1;  // 0: previous is number, 1: previous is operator 2: previous is ( or )
+        
+        for (int i=0; i<s.length(); ++i) {            
+            if (isdigit(s[i])) {
+                num = num*10 + s[i] - '0';
+                prevType = 0;
+                continue;
+            }
+            
+            if (s[i] == '*' || s[i] == '/' || s[i] == '+' || s[i] == '-') {
+                if (prevType == 0) {
+                    backwards(stk, num);
+                }
+                
+                num = 0;
+                stk.push(Node(1, 0, s[i]));
+                prevType = 1;
+                continue;
+            }
+            
+            if (s[i] == '(') {
+                stk.push(Node(2, 0, s[i]));
+                prevType = 2;
+            } else if (s[i] == ')') {
+                if (prevType == 0) {
+                    backwards(stk, num);
+                }
+                
+                num = 0;
+                int tmpNum = 0;
+                // "Condense" the expression between a pair of '(' and ')'
+                while (!stk.empty() && (stk.top().type != 2 || stk.top().symbol != '(')) {
+                    Node tmp = stk.top();
+                    stk.pop();
+                    tmpNum += tmp.num;
+                }
+                
+                if (!stk.empty() && stk.top().type == 2 && stk.top().symbol == '(') {
+                    stk.pop();
+                    backwards(stk, tmpNum);
+                }
+                
+                prevType = 2;
+            }
+        }
+        
+        if (prevType == 0) {
+            backwards(stk, num);
+        }
+        
+        long finalNum = 0;
+        while (!stk.empty()) {
+            finalNum += stk.top().num;
+            stk.pop();
+        }
+        
+        return finalNum;
+    }
+
+};
+
+
 class Solution {
 public:
     struct Node {
