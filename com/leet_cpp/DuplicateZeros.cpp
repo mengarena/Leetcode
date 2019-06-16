@@ -61,8 +61,10 @@ public:
         for (int i=n-1; i>=0; --i) {
             if (cnt > 0) {
                 if (i+cnt > n-1) {
-                    if (arr[i] == 0) cnt--;
-                    arr[i] = 0;
+                    if (arr[i] == 0) {
+                        if (i+cnt-1 <= n-1) arr[i+cnt-1] = 0;
+                        cnt--;
+                    }
                     continue;
                 }
                 arr[i+cnt] = arr[i];
