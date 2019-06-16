@@ -43,7 +43,8 @@ public:
                 arr[j] = arr[i];
             }
             
-            if (arr[i] == 0 && --j < n) arr[j] = 0;
+            if (arr[i] == 0 && --j < n) arr[j] = 0;   // in a for loop, if arr[i] is not 0, both i and j move one step
+                                                      // if arr[i] is 0, j moves 2 steps (both 2 steps should set value 0)
         }
     }
     
