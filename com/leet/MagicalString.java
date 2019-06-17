@@ -72,7 +72,7 @@ public class Solution {
                     } else if (lstNum.size() == numIdx+2) {
                         lstNum.add(2);
                     }
-                } else {   // the corresponding element is 1
+                } else {   // the corresponding element is 2
                     if (lstNum.size() == numIdx+1) {
                         lstNum.add(2);
                         lstNum.add(1);
