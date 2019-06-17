@@ -75,7 +75,8 @@ public class FrogJump {
         int stone;
         int nextStone;
         
-        Map<Integer, Set<Integer>> hm = new HashMap<Integer, Set<Integer>>();  //Stone position (not index), possible steps from this stone
+        Map<Integer, Set<Integer>> hm = new HashMap<Integer, Set<Integer>>();  //Stone position (not index), 
+	                                                                       //possible steps from this stone
         
         for (i=0; i<n; i++) {
             hm.put(stones[i], new HashSet<Integer>());
