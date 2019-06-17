@@ -56,7 +56,9 @@ public class Solution {
             }            
             
             if (prevHeater >= 0 && nextHeater < n) {
-                maxMinRadius = Math.max(maxMinRadius, Math.min(Math.abs(heaters[prevHeater]-houses[curHouse]), Math.abs(heaters[nextHeater] - houses[curHouse])));
+                maxMinRadius = Math.max(maxMinRadius, 
+                                        Math.min(Math.abs(heaters[prevHeater]-houses[curHouse]), 
+                                                 Math.abs(heaters[nextHeater] - houses[curHouse])));
             } else if (prevHeater >= 0) {
                 maxMinRadius = Math.max(maxMinRadius, Math.abs(heaters[prevHeater] - houses[curHouse]));
             } else if (nextHeater < n) {
