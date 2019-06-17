@@ -71,6 +71,9 @@ public class MaximumGap {
         int maxGap = Integer.MIN_VALUE;
         int previous = nMin;
         
+	// Excluding nMin and nMax, only n-2 numbers exist, they need to be put in n-1 buckets,
+	// So at least one bucket is empty, so only need to check the two element around the empty bucket,
+	// the gap between min and max of within same bucket does not need to be checked
         for (int i=0; i<n-1; i++) {
             if (narrMin[i] == Integer.MAX_VALUE && narrMax[i] == Integer.MIN_VALUE) continue;
             
