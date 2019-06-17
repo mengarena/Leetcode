@@ -18,12 +18,13 @@ public class WiggleSort {
 		System.out.println();
 	}
 	
-	//Accepted: 71%
-	//Actually, it could goes to round
-	//First round, make sure order like (start from 0 position) (small1 big1) (small2 big2) (small big)  ---i.e. every two-element group be small big order (small2 might be larger than big1)
-	//Second round, make sure order like (start from 1 position) (big small) (big small) (big small)
-	//In this way, could make the order meet the requirement
-	//The two round could be merged into one round as follows:
+    //Accepted: 71%
+    //Actually, it could goes 2 rounds:
+    //First round, make sure order like (start from 0 position) (small1 big1) (small2 big2) (small big)  
+    //     ---i.e. every two-element group be small big order (small2 might be larger than big1)
+    //Second round, make sure order like (start from 1 position) (big small) (big small) (big small)
+    //In this way, could make the order meet the requirement
+    //The two round could be merged into one round as follows:
     public void wiggleSort(int[] nums) {
         if (nums == null || nums.length <= 1) return;
         
