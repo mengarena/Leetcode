@@ -29,8 +29,9 @@ public class Candy {
 	}
 	
 	
-	//Attention:  only when i > its neighbor(s), its value is larger than neighbor(s); if not >, it not necessarily to be equal.
-	//[1,2,2]  the result should be 4 (not 5), i.e. the result should be 1,2,1
+    //Attention:  only when i > its neighbor(s), its value is larger than neighbor(s); 
+    //            if not >, it not necessarily to be equal.
+    //[1,2,2]  the result should be 4 (not 5), i.e. the result should be 1,2,1
     public int candy(int[] ratings) {
         if (ratings == null || ratings.length == 0) return 0;
         int n = ratings.length;
