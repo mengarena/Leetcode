@@ -36,9 +36,11 @@ You may assume k is always valid, ie: 1 ≤ k ≤ input array's size for non-emp
 
 public class Solution {
 	
-	//ACC
-	//Strategy: Use a maxHeap and a minHeap to remember half of the window (if k is odd, minHeap has one more number than maxHeap)
-	//The median will be the top element of minHeap (if k is odd), or the mean of the two top elements of maxHeap and minHeap
+    //ACC
+    //Strategy: Use a maxHeap and a minHeap to remember half of the window 
+    //(if k is odd, minHeap has one more number than maxHeap)
+    //The median will be the top element of minHeap (if k is odd), 
+    //or the mean of the two top elements of maxHeap and minHeap
     public double[] medianSlidingWindow(int[] nums, int k) {
         if (nums == null || nums.length == 0 || k <= 0) return new double[0];
         int n = nums.length;
