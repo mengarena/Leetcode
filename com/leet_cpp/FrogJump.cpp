@@ -71,9 +71,7 @@ public:
                     
                     hm[nextStone].insert(step);
                     hm[nextStone].insert(step+1);
-
                 }
-                
             }
         }
         
