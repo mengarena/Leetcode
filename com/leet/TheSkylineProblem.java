@@ -269,7 +269,7 @@ public class TheSkylineProblem {
 	
 	
 	
-	//ACC: 54%
+    //ACC: 54%
     public List<int[]> getSkyline(int[][] buildings) {
         List<int[]> lstKeyPoints = new ArrayList<>();
         if (buildings == null || buildings.length == 0 || buildings[0].length == 0) return lstKeyPoints;
@@ -278,8 +278,8 @@ public class TheSkylineProblem {
         int i;
                 
         for (i=0; i<n; i++) {
-        	lstHeights.add(new int[]{buildings[i][0], -buildings[i][2]});   //Negative to represent start point
-        	lstHeights.add(new int[]{buildings[i][1], buildings[i][2]});    //Positive to represent end point
+            lstHeights.add(new int[]{buildings[i][0], -buildings[i][2]});   //Negative to represent start point
+            lstHeights.add(new int[]{buildings[i][1], buildings[i][2]});    //Positive to represent end point
         }
         
         //Sort the critical points based on x axis value (and the heights at these points)
@@ -289,46 +289,43 @@ public class TheSkylineProblem {
         //the (positive) larger height (i.e. the smaller negated height) will be put in front and processed first
         //For end point, the smaller height will be put in front and processed first
         Collections.sort(lstHeights, new Comparator<int[]>() {
-        	public int compare(int[] a, int[] b) {    //In a[], b[],  [0] x axis value; [1] height
-        		if (a[0] != b[0]) {
-        			return a[0] - b[0];
-        		} else {
-        			return a[1] - b[1];
-        		}
+            public int compare(int[] a, int[] b) {    //In a[], b[],  [0] x axis value; [1] height
+        	if (a[0] != b[0]) {
+        	    return a[0] - b[0];
+        	} else {
+        	    return a[1] - b[1];
         	}
+            }
         });
 
-        
         //This PriorityQueue maintains the effect heights by this moment
         //Largest value is on top
         Queue<Integer> pq = new PriorityQueue<Integer>(11, new Comparator<Integer>() {
-        	public int compare(Integer a, Integer b) {
-        		return b-a;
-        	}
+            public int compare(Integer a, Integer b) {
+        	return b-a;
+            }
         });
-        
         
         pq.offer(0);   //When no building, height is 0
         int prevHeight = 0;
         int curHeight = 0;
         
         for (int[] h:lstHeights) {   //h[1] is height
-        	if (h[1] < 0) {   //Starting point; its height comes into play
-        		pq.offer(-h[1]);
-        	} else {    //End point, its height becomes ineffective (out of effect)
-        		pq.remove(h[1]);  //This step is slow (O(n))
-        	}
+            if (h[1] < 0) {   //Starting point; its height comes into play
+        	pq.offer(-h[1]);
+            } else {    //End point, its height becomes ineffective (out of effect)
+        	pq.remove(h[1]);  //This step is slow (O(n))
+            }
         	
-        	curHeight = pq.peek();
+            curHeight = pq.peek();
         	
-        	if (curHeight != prevHeight) {
-        		lstKeyPoints.add(new int[]{h[0], curHeight});   //h[0] is the x-axis value
-        		prevHeight = curHeight;
-        	}
+            if (curHeight != prevHeight) {
+        	lstKeyPoints.add(new int[]{h[0], curHeight});   //h[0] is the x-axis value
+        	prevHeight = curHeight;
+            }
         }
         
         return lstKeyPoints;
-        
     }
 	
 
