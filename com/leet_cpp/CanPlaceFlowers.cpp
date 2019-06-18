@@ -29,7 +29,6 @@ public:
     // The rule for the #plantable flowers are different for heading/trailing empty entries and middle empty entries
     bool canPlaceFlowers(vector<int>& flowerbed, int n) {
         int len = flowerbed.size();
-        if (2*len < n) return false;
         int count = 0;
         int tmp = 0;
         int i = 0;
