@@ -80,4 +80,57 @@ public:
         return vecSkyline;
         
     }
+};    
+    
+    
+class Solution {
+public:
+    // x-axis value: ascending; 
+    // if x-axis values are same, height ascending 
+    //(since height could be negative, so actually larger positive height will come first)
+    static bool mycmp(const vector<int>& A, const vector<int>& B) {
+        if (A[0] == B[0]) {
+            return A[1] < B[1]; 
+        } else {
+            return A[0] < B[0];
+        }
+    }
+    
+    vector<vector<int>> getSkyline(vector<vector<int>>& buildings) {
+        vector<vector<int>> ans;
+        multiset<int> heights;
+        
+        vector<vector<int>> mybuildings;
+        for (auto building:buildings) {
+            mybuildings.push_back({building[0], -building[2]});
+            mybuildings.push_back({building[1], building[2]});
+        }
+        
+        sort(mybuildings.begin(), mybuildings.end(), mycmp);
+        
+        heights.insert(0);
+        
+        int prevHeight = 0;
+        int curHeight = 0;
+        
+        for (auto mybuild:mybuildings) {
+            if (mybuild[1] < 0) {
+                heights.insert(-mybuild[1]);
+            } else {
+                auto it = heights.lower_bound(mybuild[1]);
+                heights.erase(it);
+            }
+            
+            curHeight = *(heights.rbegin());
+            
+            if (prevHeight != curHeight) {
+                ans.push_back({mybuild[0], curHeight});
+            }
+            
+            prevHeight = curHeight;
+        }
+        
+        return ans;
+    }
 };
+
