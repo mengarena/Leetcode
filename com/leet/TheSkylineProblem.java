@@ -24,12 +24,15 @@ import com.leet.MeetingRoomsII.Interval;
 //It is guaranteed that 0 ¡Ü Li, Ri ¡Ü INT_MAX, 0 < Hi ¡Ü INT_MAX, and Ri - Li > 0. 
 //You may assume all buildings are perfect rectangles grounded on an absolutely flat surface at height 0.
 //
-//For instance, the dimensions of all buildings in Figure A are recorded as: [ [2 9 10], [3 7 15], [5 12 12], [15 20 10], [19 24 8] ] .
+//For instance, the dimensions of all buildings in Figure A are recorded as: 
+//[ [2 9 10], [3 7 15], [5 12 12], [15 20 10], [19 24 8] ] .
 //
-//The output is a list of "key points" (red dots in Figure B) in the format of [ [x1,y1], [x2, y2], [x3, y3], ... ] that uniquely defines a skyline. 
+//The output is a list of "key points" (red dots in Figure B) in the format of [ [x1,y1], [x2, y2], [x3, y3], ... ] 
+// that uniquely defines a skyline. 
 //A key point is the left endpoint of a horizontal line segment. 
 //Note that the last key point, where the rightmost building ends, is merely used to mark the termination of the skyline, 
-//and always has zero height. Also, the ground in between any two adjacent buildings should be considered part of the skyline contour.
+//and always has zero height. Also, the ground in between any two adjacent buildings should be considered 
+//part of the skyline contour.
 //
 //For instance, the skyline in Figure B should be represented as:[ [2 10], [3 15], [7 12], [12 0], [15 10], [20 8], [24, 0] ].
 //
@@ -87,7 +90,8 @@ public class TheSkylineProblem {
 			updateRangeUtil(0, N-1, i, j, val, 0);
 		}
 		
-		//ss, se is the start/end index of raw elements (managed) in current node (raw elements are the leafs in the Segment tree)
+		//ss, se is the start/end index of raw elements (managed) in current node 
+		//(raw elements are the leafs in the Segment tree)
 		//si is current node in st (0 => root); 2*si+1 is its left child, 2*si+2 is its right child
 		//qs, qe is the index of query range (corresponding to raw elements, i.e. leafs)
 		//val is the new value
@@ -197,9 +201,9 @@ public class TheSkylineProblem {
 	
 	
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	//ACC: 79%
+    //ACC: 79%
     public List<int[]> getSkylineA(int[][] buildings) {
         List<int[]> lstPoints = new ArrayList<>();
         if (buildings == null || buildings.length == 0 || buildings[0].length == 0) return lstPoints;
@@ -216,7 +220,8 @@ public class TheSkylineProblem {
         
         //Sort the critical points based on x axis value (and the heights at these points)
         //Small x-axis value put in front; if x-axis values are the same, sort based on height (*Trick here)
-        //Since for the starting point, height has been negated, so for starting points; if two segments have same starting points, 
+        //Since for the starting point, height has been negated, so for starting points; 
+	//if two segments have same starting points, 
         //the (positive) larger height (i.e. the smaller negated height) will be put in front and processed first
         //For end point, the smaller height will be put in front and processed first
         Collections.sort(lstHeights, new Comparator<int[]>() {
@@ -279,7 +284,8 @@ public class TheSkylineProblem {
         
         //Sort the critical points based on x axis value (and the heights at these points)
         //Small x-axis value put in front; if x-axis values are the same, sort based on height (*Trick here)
-        //Since for the starting point, height has been negated, so for starting points; if two segments have same starting points, 
+        //Since for the starting point, height has been negated, so for starting points; 
+	//if two segments have same starting points, 
         //the (positive) larger height (i.e. the smaller negated height) will be put in front and processed first
         //For end point, the smaller height will be put in front and processed first
         Collections.sort(lstHeights, new Comparator<int[]>() {
