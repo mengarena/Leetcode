@@ -46,7 +46,7 @@ import com.leet.MeetingRoomsII.Interval;
 //the three lines of height 5 should be merged into one in the final output as such: [...[2 3], [4 5], [12 7], ...]
 
 		
-//Google, Microsoft, Facebook, Twitter, Yelp
+//Google, Microsoft, Facebook, Twitter, Yelp, Uber
 //Hard
 public class TheSkylineProblem {
 
