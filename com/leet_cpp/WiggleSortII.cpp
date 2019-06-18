@@ -57,6 +57,7 @@ Accessing A(9) actually accesses nums[8].
         // In the wiki, sorting is ascending,
         // here below is descending
         // The bigger numbers normally in index 0~n/2 are placed in odd places
+        // i.e.  A(0~n/2) which corresponding to nums[1,3,5,7...] will be put larger numbers
         int i=0, j=0, k=n-1;
         
         while (j <= k) {
