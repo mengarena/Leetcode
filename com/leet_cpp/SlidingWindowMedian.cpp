@@ -60,7 +60,8 @@ public:
             m.insert(nums[i]);
             if (nums[i] < *mid) mid--;  // The new inserted value is smaller than mid, so it will lower the median, 
                                         // so move back 1 step
-            if (nums[i-k] <= *mid) mid++;  // nums[i-k] is the one to be removed
+            if (nums[i-k] <= *mid) mid++;  // nums[i-k] is the one to be removed. Here need to use <= rather than <, 
+                                           // when k = 1, nums[i-k] is pointed by mid, so next loop, mid will be invaid
             auto it = m.lower_bound(nums[i-k]);
             m.erase(it);   // Cannot directly erase value, because multiple could have same value
         }
