@@ -25,7 +25,7 @@ Uber
 class Solution {
 public:
     
-    // Sort:  first in ascending order by end; if end is same, sort in descending order
+    // Sort:  first in ascending order by end; if end is same, sort in descending order for start
     // The idea is similar to the Russia Doll problem
     //
     // Attention: This compare function must be "static"
