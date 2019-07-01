@@ -49,7 +49,7 @@ public:
         
         int i, stone, nextStone;
         
-        unordered_map<int, unordered_set<int>> hm;
+        unordered_map<int, unordered_set<int>> hm;   // Stone, possible steps (leaving) from this stone
  
         for (const int& x:stones) hm[x] = unordered_set<int>();
 
