@@ -45,13 +45,8 @@ public:
     // Calcuation based on different scenarios of a, b, c 
     int threeSumMulti(vector<int>& A, int target) {
         unordered_map<int, int> m;
-        for (auto num:A) {
-            if (m.count(num)) {
-                m[num]++;
-            } else {
-                m[num] = 1;
-            }
-        }
+        
+        for (auto num:A) m[num]++;
         
         long M = pow(10, 9) + 7;
         
