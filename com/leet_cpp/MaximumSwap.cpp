@@ -55,9 +55,7 @@ public:
         
         for (int i=0; i<diffPos; ++i) {
             if (s[i] < s[maxPos]) {
-                char tmp = s[i];
-                s[i] = s[maxPos];
-                s[maxPos] = tmp;
+                swap(s[i], s[maxPos]);
                 break;
             }
         }
