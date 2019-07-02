@@ -39,11 +39,12 @@ public class FindSmallestIntegerBySwappingAPairOfDigits {
 	}
 	
 	//Strategy
-//	As a preparation, we loop through the digits, and mark the last positions of the digits in an array[10] (call it last) (including 0s). 
-//	That is O(n).
+//	As a preparation, we loop through the digits, and mark the last positions of the digits in an array[10] (call it last)
+//	(including 0s). That is O(n).
 //
 //	Next, we start to iterate through digits from left to right. 
-//	For each position we try to find the smallest digit whose last position is greater than our current position (position constraint). 
+//	For each position we try to find the smallest digit whose last position is greater than our current position 
+//	(position constraint). 
 //	Also that digit must be smaller than the current digit.
 //
 //	If we are in the first position we start the loop on last from 1 (otherwise from 0), 
@@ -78,8 +79,8 @@ public class FindSmallestIntegerBySwappingAPairOfDigits {
 //	Once again, here we do one iteration on the digits (for pre-parsing the data), then one iteration for finding the MSB. 
 //	In the second iteration we iterate on last, which is constant size (at most 9).
 //
-//	You can further optimize the algorithm by adding keeping track of the minimum value when it is worth to start the loop on last, 
-//	but that's an optimization already. 
+//	You can further optimize the algorithm by adding keeping track of the minimum value when it is worth to 
+//	start the loop on last, but that's an optimization already. 
 //	The prevoius version contained that, check the history if you're interested :)
 
 	//Complexity:  O(n)
@@ -108,7 +109,7 @@ public class FindSmallestIntegerBySwappingAPairOfDigits {
 			//For the digit at current position, to find a smallest digit which is smaller than current digit and 
 			//that digit's last position is larger than current position
 			for (j=start; j<narrDigits[i]; j++) {  //For digit smaller than current digit
-				if (last[j] > i) {   //For position larger than current position
+				if (last[j] > i) {      //For position larger than current position
 					tmp = narrDigits[i];
 					narrDigits[i] = narrDigits[last[j]];
 					narrDigits[last[j]] = tmp;
