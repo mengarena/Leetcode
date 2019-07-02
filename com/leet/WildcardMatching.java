@@ -89,13 +89,15 @@ public class WildcardMatching {
         		nsPos = i;
         		j++;
         	} else if (nstarPos != -1) {  //To here, means carrp[j] != carrs[i], so before proceeding on pattern, 
-        		                          //must match those unmatched in s with the pattern by using the "*", so the position in pattern is fixed at nstarPos+1
+        		                      //must match those unmatched in s with the pattern by using the "*", 
+			                      //so the position in pattern is fixed at nstarPos+1
         		//In case, for example, 
         		//s = d e h k a k a
         		//p = d *   k a
         		//So the "ka" in p could match first "ka" or second "ka" in s
         		//here below, j will always set to the position of 'k' in p
-        		//It will first compare first "ka" in s with "ka" in p (i.e. * = "eh"), and nsPos will be at the first "k" in s
+        		//It will first compare first "ka" in s with "ka" in p (i.e. * = "eh"), 
+			//and nsPos will be at the first "k" in s
         		//After compared the first "ka", p ends; while s does not ends
         		//So the while loop come to here again
         		//And it then try to compare second "ka" in s with "ka" in p (i.e. * = "ehka")
