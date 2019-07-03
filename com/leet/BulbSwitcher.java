@@ -44,8 +44,8 @@ public class BulbSwitcher {
         int nCount = 0;
         
         while (i*i <= n) {
-        	i++;
-        	nCount = nCount + 1;
+            i++;
+            nCount = nCount + 1;
         }
         
         return nCount;
