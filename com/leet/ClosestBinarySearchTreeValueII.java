@@ -56,7 +56,8 @@ public class ClosestBinarySearchTreeValueII {
         setPredStack(root, target, stkPred);
         setSuccStack(root, target, stkSucc);
         
-        if (!stkPred.isEmpty() && !stkSucc.isEmpty() && stkPred.peek().val == stkSucc.peek().val) {  //In case the same node is both pushed to stkPred and stkSucc
+        if (!stkPred.isEmpty() && !stkSucc.isEmpty() && stkPred.peek().val == stkSucc.peek().val) {  
+		//In case the same node is both pushed to stkPred and stkSucc
         	getPrecedessor(stkPred);    
         }
         
