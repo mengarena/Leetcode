@@ -31,11 +31,12 @@ public:
     // Refer to: https://leetcode.com/problems/sum-of-subarray-minimums/discuss/178876/stack-solution-with-very-detailed-explanation-step-by-step
     // Here use a stack to remember the Previous Less Elmenent, and another stack to remember the Next Less Element
     // e.g. [3 7 8 4]
-    // 3 has not PLE, 7 has PLE 3, 8 has PLE 7, 4 has PLE 3
-    // 3 hs not NLE, 7 has NLE 4, 8 has NLE 8, 4 has no NLE
+    // 3 has no PLE, 7 has PLE 3, 8 has PLE 7, 4 has PLE 3
+    // 3 has no NLE, 7 has NLE 4, 8 has NLE 4, 4 has no NLE
     // By knowing an element's PLE and NLE,
     // Say the distance between an element and it PLE and NLE is a and b
-    // Total number of sub arrays with this element as its minimal value will be a*b, (so sum will be a*b*Value of this element)
+    // Total number of sub arrays with this element as its minimal value will be a*b, 
+    // (so sum will be a*b*Value of this element)
     int sumSubarrayMins(vector<int>& A) {
         if (A.size() == 0) return 0;
         int n = A.size();
