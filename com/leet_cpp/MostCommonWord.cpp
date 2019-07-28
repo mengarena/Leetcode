@@ -84,11 +84,7 @@ public:
         transform(word.begin(), word.end(), word.begin(), ::tolower);
             
         if (find(banned.begin(), banned.end(), word) == banned.end()) {
-            if (wordFreq.count(word)) {
-                wordFreq[word]++;
-            } else {
-                wordFreq[word] = 1;
-            }
+            wordFreq[word]++;
                 
             if (maxFreq < wordFreq[word]) {
                 maxFreq = wordFreq[word];
