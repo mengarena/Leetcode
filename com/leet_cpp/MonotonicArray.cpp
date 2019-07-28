@@ -1,15 +1,7 @@
 /*
 
 896. Monotonic Array
-Easy
 
-263
-
-25
-
-Favorite
-
-Share
 An array is monotonic if it is either monotone increasing or monotone decreasing.
 
 An array A is monotone increasing if for all i <= j, A[i] <= A[j].  
