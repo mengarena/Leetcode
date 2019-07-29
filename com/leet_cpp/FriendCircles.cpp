@@ -78,7 +78,17 @@ public:
         if (x != roots[x]) roots[x] = findRoot(roots[x], roots);
         return roots[x];
     }
-
+ 
+    int findRoot(int x, vector<int>& roots) {
+	   	   while (x != roots[x]) {
+				        roots[x] = roots[roots[x]];
+				        x = roots[x];
+			     }
+			
+			     return x;
+    }
+ 
+ 
 
     // 7%
     int findCircleNum(vector<vector<int>>& M) {
