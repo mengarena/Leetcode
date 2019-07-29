@@ -20,7 +20,8 @@ public class LongestPalindromicSubstring {
 	
 	//ACC:  97%
 	//Loop from left to right to check each char
-	//Once meet a new char, try to check the substring before this new char (inclusive), with len = nMaxLen + 1 or nMaxLen + 2, 
+	//Once meet a new char, try to check the substring before this new char (inclusive), 
+	//with len = nMaxLen + 1 or nMaxLen + 2, 
 	//to see whether the substring is palindromic substring
 	public String longestPalindrome(String s) {
 		if (s == null || s.isEmpty()) return "";
