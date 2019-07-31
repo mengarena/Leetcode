@@ -73,7 +73,8 @@ public class BurstBalloons {
     				//i.e. in case "a b c", it records the situation when b is bursted, 
 				//     it does not record the result after bursting b,
     				//i.e. it does not contain the coins for "a c"
-    				dp[left][right] = Math.max(dp[left][right], numsNew[left]*numsNew[k]*numsNew[right] + dp[left][k] + dp[k][right]);
+    				dp[left][right] = Math.max(dp[left][right], 
+					   numsNew[left]*numsNew[k]*numsNew[right] + dp[left][k] + dp[k][right]);
     			}
     		}
     	}
