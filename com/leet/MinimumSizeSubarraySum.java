@@ -29,7 +29,7 @@ public class MinimumSizeSubarraySum {
 	}
 	
 	
-	//Pay attention: the subarray must be continuous
+    //Pay attention: the subarray must be continuous
     public int minSubArrayLen(int s, int[] nums) {
     	if (nums == null || nums.length == 0) return 0;
         int n = nums.length;
