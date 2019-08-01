@@ -77,7 +77,13 @@ public class PatchingArray {
       }
 	
 
-	//ACC: 12%  (1 ms)
+	
+	
+	
+	
+	
+	
+    //ACC: 12%  (1 ms)
     public int minPatchesA(int[] nums, int n) {
         int cnt = nums.length;
         int patchCnt = 0;
