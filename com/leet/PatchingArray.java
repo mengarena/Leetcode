@@ -5,7 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 //Given a sorted positive integer array nums and an integer n, 
-//add/patch elements to the array such that any number in range [1, n] inclusive can be formed by the sum of some elements in the array. 
+//add/patch elements to the array such that any number in range [1, n] 
+//inclusive can be formed by the sum of some elements in the array. 
 //Return the minimum number of patches required.
 //
 //Example 1:
@@ -45,34 +46,35 @@ public class PatchingArray {
 	
 	//ACC: 12%  (1 ms)
 	public int minPatches(int[] nums, int n) {
-		int nLen = nums.length;
-		int nCumSum = 1;  //The up bound (exclusive) of current cumulative sum (i.e. the sum of current numbers in nums[] plus patched); 
-		                  //here nCumSum means all numbers within [1, nCumSum) could be expressed as sum with numbers in original nums[] and already patched numbers
-		int nNumIdx = 0;
-		int nPatchCnt = 0;
+	    int nLen = nums.length;
+	    int nCumSum = 1;  //The up bound (exclusive) of current cumulative sum 
+		              //(i.e. the sum of current numbers in nums[] plus patched); 
+		              //here nCumSum means all numbers within [1, nCumSum) 
+		              //could be expressed as sum with numbers in original nums[] and already patched numbers
+	    int nNumIdx = 0;
+	    int nPatchCnt = 0;
 				
-		while (nNumIdx <= nLen-1 || nCumSum <= n) {	
-			if (nNumIdx <= nLen-1) {
-				if (nums[nNumIdx] > nCumSum) {  //i.e. nums[nNumIdx] larger than the number going to be patched
-					nPatchCnt++;   //Path nCumSum as a new number
-					if (n - nCumSum < nCumSum) break;
-					nCumSum = nCumSum*2;    //Cumulative sum increase to nCumSum+nCumSum
-				} else {
-					if (n - nCumSum < nums[nNumIdx]) break;
-					nCumSum = nCumSum + nums[nNumIdx];   //Cumulative sum increase to nCumSum + nums[nNumIdx]
-					nNumIdx++;
-				}
+	    while (nNumIdx <= nLen-1 || nCumSum <= n) {	
+		if (nNumIdx <= nLen-1) {
+		    if (nums[nNumIdx] > nCumSum) { //i.e. nums[nNumIdx] larger than the number going to be patched
+			nPatchCnt++;   //Path nCumSum as a new number
+			if (n - nCumSum < nCumSum) break;
+			nCumSum = nCumSum*2;    //Cumulative sum increase to nCumSum+nCumSum
+		    } else {
+			if (n - nCumSum < nums[nNumIdx]) break;
+			nCumSum = nCumSum + nums[nNumIdx];  //Cumulative sum increase to nCumSum + nums[nNumIdx]
+			nNumIdx++;
+		    }
 
-			} else {			
-				nPatchCnt++;   //Path nCumSum as a new number
-				if (n - nCumSum < nCumSum) break;
-				nCumSum = nCumSum*2;    //Cumulative sum increase to nCumSum+nCumSum	 (i.e. this round patch nCumSum)			
-
-			}
+		} else {			
+		    nPatchCnt++;   //Path nCumSum as a new number
+		    if (n - nCumSum < nCumSum) break;
+		    nCumSum = nCumSum*2;    //Cumulative sum increase to nCumSum+nCumSum (i.e. this round patch nCumSum)
 		}
+	   }
 		
-		return nPatchCnt;
-	}
+	   return nPatchCnt;
+      }
 	
 
 	//ACC: 12%  (1 ms)
