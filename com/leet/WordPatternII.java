@@ -36,8 +36,8 @@ public class WordPatternII {
 	
 	
 	
-	//ACC:  85%
-	Map<Character, String> hmPatStr = new HashMap<Character, String>();
+    //ACC:  85%
+    Map<Character, String> hmPatStr = new HashMap<Character, String>();
 	
     public boolean wordPatternMatch(String pattern, String str) {
     	if (pattern.isEmpty()) return str.isEmpty();
