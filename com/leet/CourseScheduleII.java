@@ -105,7 +105,7 @@ public class CourseScheduleII {
                 }
             }
             
-            //If the schedule has not cycle,  i always > j. 
+            //If the schedule has no cycle,  i always > j. 
 	    //I.e. after processing current no-parent node's children (i.e. lstChildren), 
 	    //always could produce a new no-parent node
             //If i == j, there is a cycle
