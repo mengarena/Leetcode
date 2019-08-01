@@ -20,7 +20,7 @@ package com.leet;
 //Game over. 8 is the number I picked.
 //
 //You end up paying $5 + $7 + $9 = $21.
-//Given a particular n กÝ 1, find out how much money you need to have to guarantee a win.
+//Given a particular n ยกร 1, find out how much money you need to have to guarantee a win.
 //
 //Hint:
 //
@@ -54,10 +54,13 @@ public class GuessNumberHigherLowerII {
         int tmpPay = Integer.MAX_VALUE;
         
         //Between [s, e], could guess different numbers (i),
-        //Here assume the situation is every time, once I make a guess (each guess will divide the range into two), the guess is wrong and pay most (Math.max)
-        //The purpose is to get the minimal max (i.e. if every time guessed wrong, the minimal money I need to pay (Math.min, i.e. the optimal guessing point)
+        //Here assume the situation is every time, once I make a guess (each guess will divide the range into two), 
+	//the guess is wrong and pay most (Math.max)
+        //The purpose is to get the minimal max (i.e. if every time guessed wrong, 
+	//the minimal money I need to pay (Math.min, i.e. the optimal guessing point)
         for (int i=s; i<=e; i++) {
-            int tmp = i + Math.max(DP(pay, s, i-1), DP(pay, i+1, e));    //i == penalty of guessing wrong, PLUS the cost in the two sub ranges
+            int tmp = i + Math.max(DP(pay, s, i-1), DP(pay, i+1, e));    
+		                                 //i == penalty of guessing wrong, PLUS the cost in the two sub ranges
             tmpPay = Math.min(tmpPay, tmp);
         }
         
