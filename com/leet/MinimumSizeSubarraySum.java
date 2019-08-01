@@ -40,39 +40,37 @@ public class MinimumSizeSubarraySum {
         boolean bOverflow = false;
         
         while (nEndPos <= n-1) {
-        	if (nSum < s) {
-        		if (nSum > Integer.MAX_VALUE-nums[nEndPos]) {
-        			bOverflow = true;
-        		} else {
-        			nSum = nSum + nums[nEndPos];
+            if (nSum < s) {
+        	 if (nSum > Integer.MAX_VALUE-nums[nEndPos]) {
+        		bOverflow = true;
+        	 } else {
+        		nSum = nSum + nums[nEndPos];
+        	 }
+        		
+        	 nEndPos++;
+            }
+        	
+            while (nSum >= s || bOverflow == true) {
+        	  nMinLen = Math.min(nMinLen, nEndPos-nStartPos);
+        	  if (nMinLen == 1) break;
+        	  if (bOverflow == true) {
+        		nSum = nSum - nums[nStartPos];
+        		if (nSum <= Integer.MAX_VALUE-nums[nEndPos-1]) {
+        		    nSum = nSum + nums[nEndPos-1];
+        		    bOverflow = false;
         		}
-        		
-        		nEndPos++;
-        	}
+        	  } else {
+        		nSum = nSum - nums[nStartPos];
+        	  }
+      	
+        	  nStartPos++;
+            }
         	
-        	while (nSum >= s || bOverflow == true) {
-        		nMinLen = Math.min(nMinLen, nEndPos-nStartPos);
-        		if (nMinLen == 1) break;
-        		if (bOverflow == true) {
-        			nSum = nSum - nums[nStartPos];
-        			if (nSum <= Integer.MAX_VALUE-nums[nEndPos-1]) {
-        				nSum = nSum + nums[nEndPos-1];
-        				bOverflow = false;
-        			}
-        		} else {
-        			nSum = nSum - nums[nStartPos];
-        		}
-        		
-        		
-        		nStartPos++;
-        	}
-        	
-        	if (nMinLen == 1) break;
-        	
+            if (nMinLen == 1) break;
         }
         
         if (nMinLen == n+1) {
-        	nMinLen = 0;
+            nMinLen = 0;
         }
         
         return nMinLen;
