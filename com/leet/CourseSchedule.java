@@ -60,7 +60,7 @@ public class CourseSchedule {
 	
 	
 
-	//ACC:  62%
+    //ACC:  62%
     public boolean canFinish(int numCourses, int[][] prerequisites) {
     	if (prerequisites == null || prerequisites.length <= 1) return true;
         Map<Integer, Set<Integer>> hm = new HashMap<Integer, Set<Integer>>();
