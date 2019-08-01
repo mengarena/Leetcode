@@ -29,7 +29,8 @@ package com.leet;
 //2. Take a small example (n = 3). What do you end up paying in the worst case?
 //3. Check out this article if you're still stuck.
 //4. The purely recursive implementation of minimax would be worthless for even a small n. You MUST use dynamic programming.
-//5. As a follow-up, how would you modify your code to solve the problem of minimizing the expected loss, instead of the worst-case loss?
+//5. As a follow-up, how would you modify your code to solve the problem of minimizing the expected loss, 
+//instead of the worst-case loss?
 
 
 //Google		
@@ -40,7 +41,7 @@ public class GuessNumberHigherLowerII {
 	}
 
 	
-	//ACC:  17ms
+    //ACC:  17ms
     public int getMoneyAmount(int n) {
         int[][] pay = new int[n+1][n+1];    //for range[i~j], need to pay pay[i][j]
         
