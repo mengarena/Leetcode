@@ -13,7 +13,7 @@ public class MinStepsMakePalindrome {
 
 	public int minStep(String input) {
 	    int inputSize = input.length();
-	    int[][] dp = new int[inputSize][inputSize];    //Steps for substring between i, j (both inclusive) to be palindrome
+	    int[][] dp = new int[inputSize][inputSize];  //Steps for substring between i, j (both inclusive) to be palindrome
 	    for (int i = 0; i < inputSize - 1; i++) {
 	        if (input.charAt(i) != input.charAt(i + 1)) {
 	            dp[i][i + 1] = 1;
