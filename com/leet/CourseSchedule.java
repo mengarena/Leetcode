@@ -63,7 +63,7 @@ public class CourseSchedule {
     //ACC:  62%
     public boolean canFinish(int numCourses, int[][] prerequisites) {
     	if (prerequisites == null || prerequisites.length <= 1) return true;
-        Map<Integer, Set<Integer>> hm = new HashMap<Integer, Set<Integer>>();
+        Map<Integer, Set<Integer>> hm = new HashMap<Integer, Set<Integer>>();  // Course (parent), Courses relied on it (child)
         int n = prerequisites.length;
         boolean visited[] = new boolean[numCourses];    // To remember whether course i is done
         boolean arrVistied[] = new boolean[numCourses]; // To remember whether all courses rely on course i are done
