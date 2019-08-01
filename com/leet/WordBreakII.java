@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-//Given a string s and a dictionary of words dict, add spaces in s to construct a sentence where each word is a valid dictionary word.
+//Given a string s and a dictionary of words dict, add spaces in s to construct a sentence 
+//where each word is a valid dictionary word.
 //
 //Return all such possible sentences.
 //
@@ -25,9 +26,9 @@ public class WordBreakII {
 	}
 
 	
-	//ACC
-	//If there is no memo (i.e. hm), the time complexity is O(2^n) --- at every position, there could be a cut, or not a cut
-	//If with memo (i.e. hm), the time complexity is O(n^2)
+//ACC
+//If there is no memo (i.e. hm), the time complexity is O(2^n) --- at every position, there could be a cut, or not a cut
+//If with memo (i.e. hm), the time complexity is O(n^2)
 	
 //https://discuss.leetcode.com/topic/27855/my-concise-java-solution-based-on-memorized-dfs/23	
 //Let's start form an example. Assume we have a word "leet" and length is four(just forget the dictionary). 
@@ -88,7 +89,7 @@ public class WordBreakII {
 	
 	
 	
-	//ACC: 91%
+    //ACC: 91%
     private Map<String, List<String>> hm = new HashMap<>();
     
     public List<String> wordBreakK(String s, Set<String> wordDict) {
@@ -133,7 +134,7 @@ public class WordBreakII {
 	
 	
 	
-	//ACC:  50%
+    //ACC:  50%
     //private Map<String, List<String>> hm = new HashMap<>();
     
     public List<String> wordBreak(String s, Set<String> wordDict) {
