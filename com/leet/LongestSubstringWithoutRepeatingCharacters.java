@@ -22,7 +22,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
 	}
 	
 	
-	//Also could use HashMap<Character, Integer>  (character, position), and needs to remember the starting position
+    //Also could use HashMap<Character, Integer>  (character, position), and needs to remember the starting position
     public int lengthOfLongestSubstring(String s) {
     	if (s == null || s.isEmpty()) return 0;
         int n = s.length();
@@ -41,7 +41,8 @@ public class LongestSubstringWithoutRepeatingCharacters {
         			lstSubstr.add(s.charAt(i));
         		} else {
         			nMaxLen = Math.max(nMaxLen, lstSubstr.size());
-        			//Find a duplicate character, remove all the heading character including the duplicate character in the list
+        			//Find a duplicate character, 
+				//remove all the heading character including the duplicate character in the list
         			for (int j=0; j<=nIdx; j++) {
         				lstSubstr.remove(0);
         			}
