@@ -54,6 +54,5 @@ public class LongestSubstringWithoutRepeatingCharacters {
         nMaxLen = Math.max(nMaxLen, lstSubstr.size());
         
         return nMaxLen;
-    	
     }	
 }
