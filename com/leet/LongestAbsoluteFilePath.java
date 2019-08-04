@@ -71,8 +71,10 @@ public class LongestAbsoluteFilePath {
         
         for (String sPath:paths) {
             nLevel = sPath.lastIndexOf("\t")+1;   //if there are 3 '\t', nLevel = 3 
-            narrLevelLen[nLevel+1] = narrLevelLen[nLevel] + sPath.length() - nLevel + 1;    //Last "+1" is for the "\" in the path
-            if (sPath.indexOf('.') != -1) maxLen = Math.max(maxLen, narrLevelLen[nLevel+1]-1);   //If it is file, the last "\" is not need, so -1 (Once comes to the filename part, its preceding path segments have all been processed
+            narrLevelLen[nLevel+1] = narrLevelLen[nLevel] + sPath.length() - nLevel + 1;  //Last "+1" is for the "\" in the path
+            if (sPath.indexOf('.') != -1) maxLen = Math.max(maxLen, narrLevelLen[nLevel+1]-1);   
+		//If it is file, the last "\" is not need, 
+		//so -1 (Once comes to the filename part, its preceding path segments have all been processed
         }
         
         return maxLen;
