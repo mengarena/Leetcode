@@ -48,19 +48,14 @@ public class LongestSubstringAtMostKDistinctCharacters {
         nMaxLen = 1;
         
         for (i = 1; i < n; i++) {      	
-        	if (!hmLastPos.containsKey(carr[i]) && hmLastPos.size() < k) {
-                
-                hmLastPos.put(carr[i], i);
-
+        	if (!hmLastPos.containsKey(carr[i]) && hmLastPos.size() < k) {               
+                        hmLastPos.put(carr[i], i);
         		nMaxLen = i - firstPos + 1;
-        		
         	} else if (hmLastPos.containsKey(carr[i])) {
         		hmLastPos.put(carr[i], i);
         		nLen = i - firstPos + 1;
         		nMaxLen = Math.max(nMaxLen, nLen);
-        		
-        	} else if (!hmLastPos.containsKey(carr[i]) && hmLastPos.size() == k) {
-        		        		
+        	} else if (!hmLastPos.containsKey(carr[i]) && hmLastPos.size() == k) {    		
         		int nMin = getMinLastPos(hmLastPos);
         		
         		firstPos = nMin + 1;
@@ -70,14 +65,12 @@ public class LongestSubstringAtMostKDistinctCharacters {
     			nLen = i - firstPos + 1;
     			nMaxLen = Math.max(nMaxLen, nLen);        		
         	}
-        	
         }
                 
         return nMaxLen;
     }	
     
-    
-    
+
     private int getMinLastPos(Map<Character, Integer> hmLastPos) {
     	Set<Character> setChar = hmLastPos.keySet();
     	char letter = 0;
