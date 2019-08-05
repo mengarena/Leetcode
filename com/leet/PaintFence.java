@@ -49,10 +49,13 @@ public class PaintFence {
         
         //nDiffColorCnt:  store the #solution, where the last two posts are different color
         //nSameColorCnt:  store the #solution, where the last two posts are same color
-        //Pay attention: nDiffColorCnt and nSameColorCnt are the total #solutions so far for the two situations (last two posts same color, last two posts different color), 
+        //Pay attention: nDiffColorCnt and nSameColorCnt are the total #solutions so far for the two situations 
+	//(last two posts same color, last two posts different color), 
         //They are NOT simply the color choice on day i (which is at most k)
-        //For example, #color = 5;  but by day i-1, there are 100 combinations of different color solutions (i.e. nDiffColorCnt = 100), 
-        //now on day i, we want to put same color as day i-1, the total #solution for this same color painting will be nDiffColorCnt (its value by yesterday)
+        //For example, #color = 5;  but by day i-1, there are 100 combinations of different color solutions 
+	//(i.e. nDiffColorCnt = 100), 
+        //now on day i, we want to put same color as day i-1, 
+	//the total #solution for this same color painting will be nDiffColorCnt (its value by yesterday)
         int nDiffColorCnt = k*(k-1); //By 2nd post
         int nSameColorCnt = k;       //By 2nd post
         
@@ -61,7 +64,8 @@ public class PaintFence {
         	nSameColorCnt = nDiffColorCnt;   //Now come to day i, because for nSameColorCnt, previous two days are same color, 
         	                                 //if want to same color as yesterday, the only choice is nDiffColorCnt
         	nDiffColorCnt = (nTmp + nDiffColorCnt)*(k-1);  
-        	//Here nTmp+nDiffColorCnt (i.e. the sum of nSameColorCnt + nDiffColorCnt by yesterday), now today i want to be different from them, 
+        	//Here nTmp+nDiffColorCnt (i.e. the sum of nSameColorCnt + nDiffColorCnt by yesterday), 
+		//now today i want to be different from them, 
         	//so have *(k-1) total (different color) solution
         }
         
@@ -70,7 +74,8 @@ public class PaintFence {
     
     
 	
-	//AC:  Deduced from drawing figures and calculate formula
+	
+    //AC:  Deduced from drawing figures and calculate formula
     public int numWaysA(int n, int k) {
     	if (n == 0) return 0;
         if (n == 1) return k;
