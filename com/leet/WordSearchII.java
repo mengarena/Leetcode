@@ -69,8 +69,8 @@ public class WordSearchII {
 	//Strategy: Construct Trie for the words
 	//Search around the board[][], once meet a valid word, save it
         class TrieNode {
-    	   String sWord;
-    	   TrieNode[] children = new TrieNode[26];
+    	    String sWord;
+    	    TrieNode[] children = new TrieNode[26];
         }
    	
 	public TrieNode buildTrie(String[] words) {
