@@ -58,48 +58,49 @@ public class WordSearch {
         boolean[][] checked = new boolean[nRowCnt][nColCnt];
         
         for (int i=0; i<nRowCnt; i++) {
-        	for (int j=0; j<nColCnt; j++) {
-        		boolean bRet = existHelper(board, checked, i, j, nRowCnt, nColCnt, carr, 0);
-        		if (bRet) return true;
-        		checked[i][j] = false;
-        	}
+            for (int j=0; j<nColCnt; j++) {
+        	boolean bRet = existHelper(board, checked, i, j, nRowCnt, nColCnt, carr, 0);
+        	if (bRet) return true;
+        	checked[i][j] = false;
+            }
         }
         
         return false;
     }	
     
     //DFS
-    private boolean existHelper(char[][] board, boolean[][] checked, int nRowIdx, int nColIdx, int nRowCnt, int nColCnt, char[] carr, int nStartPos) {
+    private boolean existHelper(char[][] board, boolean[][] checked, int nRowIdx, int nColIdx, int nRowCnt, int nColCnt, 
+				char[] carr, int nStartPos) {
     	if (board[nRowIdx][nColIdx] != carr[nStartPos]) {
-    		return false;
+    	    return false;
     	} else {
-    		if (nStartPos == carr.length-1) return true;
-    		checked[nRowIdx][nColIdx] = true;
+    	    if (nStartPos == carr.length-1) return true;
+    	    checked[nRowIdx][nColIdx] = true;
     	}
     	
     	//Check four neighbors for next character
     	if (nRowIdx+1 < nRowCnt && !checked[nRowIdx+1][nColIdx] && nStartPos+1 <= carr.length-1) {
-    		boolean bRet = existHelper(board, checked, nRowIdx+1, nColIdx, nRowCnt, nColCnt, carr, nStartPos+1);
-    		if (bRet) return true;
-    		checked[nRowIdx+1][nColIdx] = false;
+    	    boolean bRet = existHelper(board, checked, nRowIdx+1, nColIdx, nRowCnt, nColCnt, carr, nStartPos+1);
+    	    if (bRet) return true;
+    	    checked[nRowIdx+1][nColIdx] = false;
     	}
     	
     	if (nRowIdx-1 >= 0 && !checked[nRowIdx-1][nColIdx] && nStartPos+1 <= carr.length-1) {
-    		boolean bRet = existHelper(board, checked, nRowIdx-1, nColIdx, nRowCnt, nColCnt, carr, nStartPos+1);
-    		if (bRet) return true;
-    		checked[nRowIdx-1][nColIdx] = false;
+    	    boolean bRet = existHelper(board, checked, nRowIdx-1, nColIdx, nRowCnt, nColCnt, carr, nStartPos+1);
+    	    if (bRet) return true;
+    	    checked[nRowIdx-1][nColIdx] = false;
     	}
 
     	if (nColIdx+1 < nColCnt && !checked[nRowIdx][nColIdx+1] && nStartPos+1 <= carr.length-1) {
-    		boolean bRet = existHelper(board, checked, nRowIdx, nColIdx+1, nRowCnt, nColCnt, carr, nStartPos+1);
-    		if (bRet) return true;
-    		checked[nRowIdx][nColIdx+1] = false;
+    	    boolean bRet = existHelper(board, checked, nRowIdx, nColIdx+1, nRowCnt, nColCnt, carr, nStartPos+1);
+    	    if (bRet) return true;
+    	    checked[nRowIdx][nColIdx+1] = false;
     	}
 
     	if (nColIdx-1 >= 0 && !checked[nRowIdx][nColIdx-1] && nStartPos+1 <= carr.length-1) {
-    		boolean bRet = existHelper(board, checked, nRowIdx, nColIdx-1, nRowCnt, nColCnt, carr, nStartPos+1);
-    		if (bRet) return true;
-    		checked[nRowIdx][nColIdx-1] = false;
+    	    boolean bRet = existHelper(board, checked, nRowIdx, nColIdx-1, nRowCnt, nColCnt, carr, nStartPos+1);
+    	    if (bRet) return true;
+    	    checked[nRowIdx][nColIdx-1] = false;
     	}
 
     	return false;
