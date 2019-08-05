@@ -130,8 +130,8 @@ public class WordLadder {
 	}
 	
 	
-	//ACC:  99%  (Two-end BFS)
-	//Strategy:  Search from both sides (i.e. start--->    <---end)
+    //ACC:  99%  (Two-end BFS)
+    //Strategy:  Search from both sides (i.e. start--->    <---end)
     public int ladderLengthM(String beginWord, String endWord, Set<String> wordList) {
         if (wordList == null || wordList.size() == 0) return 0;
         Set<String> setA = new HashSet<String>();
@@ -162,18 +162,16 @@ public class WordLadder {
                 
                 for (char j='a'; j<='z'; j++) {
                     if (cElem != j) {
-                        carrWord[i] = j;
-                        
+                        carrWord[i] = j;                   
                         String sNewWord = String.valueOf(carrWord);
                         
-                        if (setB.contains(sNewWord)) return nLevel + 1;     //If the new word could be found in end set, the path is done! (there is the path)
+                        if (setB.contains(sNewWord)) return nLevel + 1;  //If the new word could be found in end set, 
+			                                                 //the path is done! (there is the path)
                         
                         if (wordList.contains(sNewWord)) setNew.add(sNewWord);
                     }
-                    
                      
                 }
-                
                 carrWord[i] = cElem;
             }
         }
