@@ -102,15 +102,12 @@ public class ScrambleString {
         	String s32 = s2.substring(0, n2-i);
         	
         	//In this step, if isAnagram is not used: works, but much less efficient
-        	if ( (isAnagram(s11, s21) && isAnagram(s12, s22) && isScramble(s11, s21) && isScramble(s12, s22)) || 
-        		 (isAnagram(s11, s31) && isAnagram(s12, s32) && isScramble(s11, s31) && isScramble(s12, s32))) return true;       	
+        	if ((isAnagram(s11, s21) && isAnagram(s12, s22) && isScramble(s11, s21) && isScramble(s12, s22)) || 
+        	    (isAnagram(s11, s31) && isAnagram(s12, s32) && isScramble(s11, s31) && isScramble(s12, s32))) return true;       	
         }
         
         return false;
-        
     }
 	
-    
-    
 	
 }
