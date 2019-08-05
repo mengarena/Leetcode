@@ -60,10 +60,10 @@ public class PaintFence {
         int nSameColorCnt = k;       //By 2nd post
         
         for (int i=2; i<n; i++) {
-        	int nTmp = nSameColorCnt;
-        	nSameColorCnt = nDiffColorCnt;   //Now come to day i, because for nSameColorCnt, previous two days are same color, 
-        	                                 //if want to same color as yesterday, the only choice is nDiffColorCnt
-        	nDiffColorCnt = (nTmp + nDiffColorCnt)*(k-1);  
+            int nTmp = nSameColorCnt;
+            nSameColorCnt = nDiffColorCnt;   //Now come to day i, because for nSameColorCnt, previous two days are same color, 
+        	                             //if want to same color as yesterday, the only choice is nDiffColorCnt
+            nDiffColorCnt = (nTmp + nDiffColorCnt)*(k-1);  
         	//Here nTmp+nDiffColorCnt (i.e. the sum of nSameColorCnt + nDiffColorCnt by yesterday), 
 		//now today i want to be different from them, 
         	//so have *(k-1) total (different color) solution
