@@ -69,20 +69,19 @@ public class SerializeDeserializeBinaryTree {
         while (!quTree.isEmpty()) {
         	TreeNode node = quTree.poll();
         	if (node == null) {
-        		
         		if (sTree.length() > 0) {
-        			sTree.append(",#");
+        		    sTree.append(",#");
         		} else {
-        			sTree.append("#");
+        		    sTree.append("#");
         		}
         	} else {
         		if (sTree.length() > 0) {
-        			sTree.append("," + node.val);
+        		    sTree.append("," + node.val);
         		} else {
-        			sTree.append(node.val + "");
+        		    sTree.append(node.val + "");
         		}
-            	quTree.offer(node.left);
-            	quTree.offer(node.right);
+            	        quTree.offer(node.left);
+            	        quTree.offer(node.right);
         	}
         }
         
@@ -113,13 +112,13 @@ public class SerializeDeserializeBinaryTree {
         for (i=0; i<nLen; i++) {
         	if (tnNode[i] == null) continue;
         	
-        	int nLeftChildIdx = 2*(i-narrNullCnt[i])+1;   //Every time, a null occurs before this (parent) node, whose childrens' index will be moved forward by 2
+        	int nLeftChildIdx = 2*(i-narrNullCnt[i])+1;   //Every time, a null occurs before this (parent) node, 
+		                                              //whose childrens' index will be moved forward by 2
         	int nRightChildIdx = 2*(i-narrNullCnt[i])+2;
         	
         	tnNode[i].left = tnNode[nLeftChildIdx];
         	tnNode[i].right = tnNode[nRightChildIdx];
         }
-        
         
         return tnNode[0]; 
     }
