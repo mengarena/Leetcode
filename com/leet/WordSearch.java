@@ -75,8 +75,9 @@ public class WordSearch {
     	    return false;
     	} else {
     	    if (nStartPos == carr.length-1) return true;
-    	    checked[nRowIdx][nColIdx] = true;
     	}
+	    
+	checked[nRowIdx][nColIdx] = true; 
     	
     	//Check four neighbors for next character
     	if (nRowIdx+1 < nRowCnt && !checked[nRowIdx+1][nColIdx] && nStartPos+1 <= carr.length-1) {
