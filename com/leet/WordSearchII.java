@@ -68,12 +68,11 @@ public class WordSearchII {
 	
 	//Strategy: Construct Trie for the words
 	//Search around the board[][], once meet a valid word, save it
-    class TrieNode {
-    	String sWord;
-    	TrieNode[] children = new TrieNode[26];
-    }
-    
-		
+        class TrieNode {
+    	   String sWord;
+    	   TrieNode[] children = new TrieNode[26];
+        }
+   	
 	public TrieNode buildTrie(String[] words) {
 	    TrieNode root = new TrieNode();
 	    
@@ -81,9 +80,9 @@ public class WordSearchII {
 	    	TrieNode p = root;
 	    	char[] carr = sword.toCharArray();
 	    	for (int i=0; i<carr.length; i++) {
-	    		int nIdx = carr[i]-'a';
-	    		if (p.children[nIdx] == null) p.children[nIdx] = new TrieNode();
-	    		p = p.children[nIdx];
+	    	    int nIdx = carr[i]-'a';
+	    	    if (p.children[nIdx] == null) p.children[nIdx] = new TrieNode();
+	    	    p = p.children[nIdx];
 	    	}
 	    	
 	    	p.sWord = sword;
@@ -103,7 +102,7 @@ public class WordSearchII {
 	    
 	    for(int i=0; i<m; i++) {
 	    	for (int j=0; j<n; j++) {
-	    		searchWords(board, i, j,  root, lstWords);
+	    	    searchWords(board, i, j,  root, lstWords);
 	    	}
 	    }
 	    
@@ -128,12 +127,12 @@ public class WordSearchII {
 	    
 	    board[i][j] = '#';   //make sure each cell will only be used once for each traverse
 			
-		if (j < n-1) searchWords(board, i, j+1, tr, lstWords);
-		if (j > 0) searchWords(board, i, j-1, tr, lstWords);
-		if (i < m-1) searchWords(board, i+1, j, tr, lstWords);
-		if (i > 0) searchWords(board, i-1, j, tr, lstWords);
+	    if (j < n-1) searchWords(board, i, j+1, tr, lstWords);
+	    if (j > 0) searchWords(board, i, j-1, tr, lstWords);
+	    if (i < m-1) searchWords(board, i+1, j, tr, lstWords);
+	    if (i > 0) searchWords(board, i-1, j, tr, lstWords);
 		
-		board[i][j] = c;
+	    board[i][j] = c;
 	}
 	
 	
