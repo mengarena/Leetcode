@@ -33,7 +33,8 @@ public class PaintHouseII {
     }
 	
 	//ACC: 23%  O(nk)
-	//Strategy: method is similar to PaintHouse, but in each column, remember the smallest and second smallest, so for next column, add one of them based on the index
+	//Strategy: method is similar to PaintHouse, but in each column, remember the smallest and second smallest, 
+	//so for next column, add one of them based on the index
     public int minCostII(int[][] costs) {
         if (costs == null || costs.length == 0 || costs[0].length == 0) return 0;
         int n = costs.length;
@@ -44,14 +45,13 @@ public class PaintHouseII {
 
         for (i=0; i<k; i++) {
         	if (nPrevSmallest > costs[0][i]) {
-        		nPrevSecondSmallest = nPrevSmallest;
-        		nPrevSmallest = costs[0][i];
-        		nPrevSmallestIdx = i;        		
+        	    nPrevSecondSmallest = nPrevSmallest;
+        	    nPrevSmallest = costs[0][i];
+        	    nPrevSmallestIdx = i;        		
         	} else {
-        		if (nPrevSecondSmallest > costs[0][i]) nPrevSecondSmallest = costs[0][i];
+        	    if (nPrevSecondSmallest > costs[0][i]) nPrevSecondSmallest = costs[0][i];
         	}
         }
-        
         
         for (i=1; i<n; i++) {
         	int tmpSmallest = Integer.MAX_VALUE;
@@ -60,37 +60,36 @@ public class PaintHouseII {
         	
         	for (j=0; j<k; j++) {
         		if (j != nPrevSmallestIdx) {
-        			costs[i][j] = costs[i][j] + nPrevSmallest;
+        		    costs[i][j] = costs[i][j] + nPrevSmallest;
         		} else {
-        			costs[i][j] = costs[i][j] + nPrevSecondSmallest;
+        		    costs[i][j] = costs[i][j] + nPrevSecondSmallest;
         		}
         		
-            	if (tmpSmallest > costs[i][j]) {
-            		tmpSecondSmallest = tmpSmallest;
-            		tmpSmallest = costs[i][j];
-            		tmpSmallestIdx = j;
-            	} else {
-            		if (tmpSecondSmallest > costs[i][j]) tmpSecondSmallest = costs[i][j];
-            	}
-        		
+            	        if (tmpSmallest > costs[i][j]) {
+            		    tmpSecondSmallest = tmpSmallest;
+            		    tmpSmallest = costs[i][j];
+            		    tmpSmallestIdx = j;
+            	        } else {
+            		    if (tmpSecondSmallest > costs[i][j]) tmpSecondSmallest = costs[i][j];
+            	        }
         	}
         	
         	nPrevSmallest = tmpSmallest;
         	nPrevSecondSmallest = tmpSecondSmallest;
         	nPrevSmallestIdx = tmpSmallestIdx;
         }
-        
-        
+       
         int nMin = costs[n-1][0];
         
         for (i=1; i<k; i++) {
-        	nMin = Math.min(nMin, costs[n-1][i]);
+            nMin = Math.min(nMin, costs[n-1][i]);
         }
         
         return nMin;
     }
 	
-	//Acc: 58%, but this is NOT O(nk)
+	
+    //Acc: 58%, but this is NOT O(nk)
     public int minCostIIA(int[][] costs) {
         if (costs == null || costs.length == 0 || costs[0].length == 0) return 0;
         int n = costs.length;
