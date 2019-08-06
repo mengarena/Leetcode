@@ -61,7 +61,8 @@ public:
 
     //Strategy: Use a set to record the tried start point
     //From each start point, try to move in four direction
-    //When the ball hit wall (i.e. border or wall in the matrix), the stop position becomes the new start point for next searching
+    //When the ball hit wall (i.e. border or wall in the matrix), 
+    //the stop position becomes the new start point for next searching
     bool hasPath(vector<vector<int>>& maze, vector<int>& start, vector<int>& destination) {
         set<vector<int>> visitedStart;
         return dfs(maze, visitedStart, start, destination);
