@@ -105,7 +105,8 @@ public:
                 }
 
                 //For the stop point, set its distance from the very original "start"
-                //Only whether the new distance is smaller than previous distance or this is the first time visiting the stop point, 
+                //Only when the new distance is smaller than previous distance or 
+                //this is the first time visiting the stop point, 
                 //set the distance
                 //
                 //* For other cells on the road, their distances from "start" are not set (i.e. kept as -1) 
