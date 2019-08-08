@@ -134,3 +134,59 @@ bool fncomp (int lhs, int rhs) {
 
 bool(*fn_pt)(int,int) = fncomp;
 std::set<int, bool(*)(int,int)> myset(fn_pt);  // function pointer as Compare
+
+
+////////////////////////////////////////////////////////////////////////
+// Template
+
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+template <typename S, typename T>
+class MyNode {
+ public:
+    S name;
+    T value;
+    
+    MyNode(S name, T value) {
+        this->name = name;
+        this->value = value;
+    }
+};
+
+template <typename T>
+class MyQueue {
+ public:
+    void add(T mynode);
+    void printall();
+
+ private:
+    vector<T> myq;
+};
+
+template <typename T>
+void MyQueue<T>::add(T mynode) {
+    myq.push_back(mynode);
+}
+
+template <typename T>
+void MyQueue<T>::printall() {
+    for (auto node:myq) {
+        cout << node.name << ", " << node.value << endl;
+    }
+}
+
+int main(int argc, const char * argv[]) {
+    MyQueue<MyNode<string, int>> mq;
+    mq.add(MyNode<string, int>("meng", 12));
+    mq.add(MyNode<string, int>("rufeng", 45));
+    mq.add(MyNode<string, int>("jing", 67.5));
+
+    mq.printall();
+    
+    return 0;
+}
