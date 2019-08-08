@@ -139,7 +139,6 @@ std::set<int, bool(*)(int,int)> myset(fn_pt);  // function pointer as Compare
 ////////////////////////////////////////////////////////////////////////
 // Template
 
-
 #include <iostream>
 #include <string>
 #include <vector>
