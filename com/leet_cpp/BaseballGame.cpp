@@ -64,12 +64,16 @@ public:
             } else if (cc == "+") {
                 if (!stk.empty()) {
                     int num1 = stk.top();
+                    stk.pop();
                     if (!stk.empty()) {
-                        stk.pop();
                         int num2 = stk.top();
                         stk.push(num1);
                         stk.push(num1+num2);
-                        sum += num1+num2;
+                        sum += num1 + num2;
+                    } else {
+                        stk.push(num1);
+                        stk.push(num1);
+                        sum += num1;
                     }
                 }
             } else if (cc == "D") {
