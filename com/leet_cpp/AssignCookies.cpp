@@ -37,16 +37,14 @@ public:
     int findContentChildren(vector<int>& g, vector<int>& s) {
         if (s.size() == 0) return 0;
         int count = 0;
-        int start = 0;
         
         sort(g.begin(), g.end());
         sort(s.begin(), s.end());
         
         for (int i=0; i<s.size(); i++) {
-            if (s[i] >= g[start]) {
-                start++;
+            if (s[i] >= g[count]) {
                 count++;
-                if (start == g.size()) break;
+                if (count == g.size()) break;
             }
         }
         
