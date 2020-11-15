@@ -23,27 +23,17 @@ public:
         int nCol = grid[0].size();
         int i, j;
         int maxEnemy = 0;
-        int **pRowBased = new int*[nRow];
-        
-        for (i=0; i<nRow; i++) pRowBased[i] = new int[nCol];
-        
-        int **pColBased = new int*[nRow];
-        
-        for (i=0; i<nRow; i++) pColBased[i] = new int[nCol];
-        
-        for (i=0; i<nRow; i++) {
-            fill_n(pRowBased[i], nCol, 0);
-            fill_n(pColBased[i], nCol, 0);
-        }
-        
+        vector<vector<int>> rowBased(m, vector<int>(n, 0));
+        vector<vector<int>> colBased(m, vector<int>(n, 0));
+
         for (i=0; i<nRow; i++) {
             for (j=0; j<nCol; j++) {
                 if (grid[i][j] == 'W') continue;
                 
                 if (j > 0 && grid[i][j-1] != 'W') {
-                    pRowBased[i][j] = pRowBased[i][j-1];
+                    rowBased[i][j] = rowBased[i][j-1];
                 } else {
-                    pRowBased[i][j] = getEnemyByRow(grid, nRow, nCol, i, j);
+                    rowBased[i][j] = getEnemyByRow(grid, nRow, nCol, i, j);
                 }
             }
         }
@@ -53,13 +43,13 @@ public:
                 if (grid[i][j] == 'W') continue;
                 
                 if (i > 0 && grid[i-1][j] != 'W') {
-                    pColBased[i][j] = pColBased[i-1][j];
+                    colBased[i][j] = colBased[i-1][j];
                 } else {
-                    pColBased[i][j] = getEnemyByCol(grid, nRow, nCol, i, j);
+                    colBased[i][j] = getEnemyByCol(grid, nRow, nCol, i, j);
                 }
                 
                 if (grid[i][j] == '0') {
-                    maxEnemy = max(maxEnemy, pRowBased[i][j] + pColBased[i][j]);
+                    maxEnemy = max(maxEnemy, rowBased[i][j] + colBased[i][j]);
                     if (maxEnemy == nRow + nCol - 2) break;
                 }
             }
