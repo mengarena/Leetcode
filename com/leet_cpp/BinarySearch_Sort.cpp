@@ -103,7 +103,7 @@ vector<DT> dtv;
 dtv.push_back(DT(5,3));
 dtv.push_back(DT(4,2));
 dtv.push_back(DT(6,3));
-sort(dtv.begin(), dtv.end(), mycomp);          // Sort
+sort(dtv.begin(), dtv.end(), mycomp);          // Sorted to (6,3), (5,3), (4,2)
 
 
 struct DTComp {
@@ -112,7 +112,7 @@ struct DTComp {
     }
 };
 
-priority_queue<DT, vector<DT>, DTComp> ppqqs;
+priority_queue<DT, vector<DT>, DTComp> ppqqs;   // Smallest on top
 
 string sss = "mengrufeng";
 unordered_set<char>  ssset(sss.begin(), sss.end());
@@ -125,8 +125,8 @@ struct classcomp {
 
 int myints1[]= {10,30,20,50,40};
 
-std::set<int, classcomp> myset;                 // class as Compare
-myset.insert(myints1, myints1 + sizeof(myints1)/sizeof(int));
+std::set<int, classcomp> myset;             // class as Compare
+myset.insert(myints1, myints1 + sizeof(myints1)/sizeof(int));    // Sorted to 10, 20, 30, 40, 50
 
 bool fncomp (int lhs, int rhs) { 
     return lhs < rhs; 
