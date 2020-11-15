@@ -45,8 +45,6 @@ public:
     }
     
     void setStack(TreeNode *root) {
-        if (root == NULL) return;
-        
         while (root != NULL) {
             stkTree.push(root);
             root = root->left;
