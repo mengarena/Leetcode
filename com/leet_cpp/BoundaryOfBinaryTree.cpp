@@ -84,11 +84,10 @@ public:
         TreeNode* tmp = root->left;
         while (tmp) {
             if (!tmp->left && !tmp->right) break;
+            ans.push_back(tmp->val);
             if (tmp->left) {
-                ans.push_back(tmp->val);
                 tmp = tmp->left;
             } else {
-                ans.push_back(tmp->val);
                 tmp = tmp->right;
             }
         }
@@ -102,11 +101,10 @@ public:
         tmp = root->right;
         while (tmp) {
             if (!tmp->left && !tmp->right) break;
+            stk.push(tmp->val);
             if (tmp->right) {
-                stk.push(tmp->val);
                 tmp = tmp->right;
             } else {
-                stk.push(tmp->val);
                 tmp = tmp->left;
             }
         }
@@ -118,7 +116,6 @@ public:
         
         return ans;
     }
-    
     
     // Only add the leaf nodes, in InOrder
     void addLeafs(TreeNode* root, vector<int>& ans) {
