@@ -39,7 +39,7 @@ public:
     TreeNode* convertBST(TreeNode* root) {
         stack<TreeNode*> stk;
         
-        preOrder(root, stk);
+        inOrder(root, stk);
         
         int sum = 0;
         
@@ -53,11 +53,11 @@ public:
         return root;
     }
     
-    void preOrder(TreeNode* root, stack<TreeNode*>& stk) {
+    void inOrder(TreeNode* root, stack<TreeNode*>& stk) {
         if (!root) return;
         
-        preOrder(root->left, stk);
+        inOrder(root->left, stk);
         stk.push(root);
-        preOrder(root->right, stk);
+        inOrder(root->right, stk);
     }
 };
