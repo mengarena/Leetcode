@@ -77,14 +77,13 @@ public:
    int binaryGap(int N)
    {
       int dist = 0;
-      int lastOne = -1;
     
       //Skip the tail "0" in binary.
       while (N % 2 == 0) N = N/2;
     
       if (N == 1) return dist;
     
-      lastOne = 0;
+      int lastOne = 0;
       int i = 0;
     
       while (N >= 2) {
