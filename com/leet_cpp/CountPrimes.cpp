@@ -19,7 +19,7 @@ Let's write down all of 12's factors:
 6 * 2 = 12
 
 As you can see, calculations of 4 * 3 and 6 * 2 are not necessary. 
-Therefore, we only need to consider factors up to ¡Ìn because, 
+Therefore, we only need to consider factors up to sqrt(n) because, 
 if n is divisible by some number p, then n = p * q and since p <= q, we could derive that p <= sqrt(n).
 
 Our total runtime has now improved to O(n^1.5), which is slightly better. Is there a faster approach?
