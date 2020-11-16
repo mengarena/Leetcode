@@ -10,10 +10,7 @@ We may not load more weight than the maximum weight capacity of the ship.
 Return the least weight capacity of the ship that will result in 
 all the packages on the conveyor belt being shipped within D days.
 
- 
-
 Example 1:
-
 Input: weights = [1,2,3,4,5,6,7,8,9,10], D = 5
 Output: 15
 Explanation: 
@@ -26,8 +23,8 @@ A ship capacity of 15 is the minimum to ship all the packages in 5 days like thi
 
 Note that the cargo must be shipped in the order given, so using a ship of capacity 14 and 
 splitting the packages into parts like (2, 3, 4, 5), (1, 6, 7), (8), (9), (10) is not allowed. 
-Example 2:
 
+Example 2:
 Input: weights = [3,2,2,4,1,4], D = 3
 Output: 6
 Explanation: 
@@ -45,12 +42,9 @@ Explanation:
 3rd day: 3
 4th day: 1, 1
  
-
 Note:
-
 1 <= D <= weights.length <= 50000
 1 <= weights[i] <= 500
-
 
 Medium:
 Uber
