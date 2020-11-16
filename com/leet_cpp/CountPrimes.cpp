@@ -95,48 +95,20 @@ public int countPrimes(int n) {
 */
 
 class Solution {
-public:
-    int countPrimesA(int n) {
-        int count = 0;
-        int i, j;
-        
-        bool *prime = new bool[n];
-        
-        for (i=0; i<n; i++) prime[i] = true;
-        
-        for (i=2; i*i<n; i++) {
-            if (!prime[i]) continue;
-            
-            for (j=i*i; j<n; j=j+i) {
-                prime[j] = false;
-            }
-        }
-        
-        for (i=2; i<n; i++) {
-            if (prime[i]) count++;
-        }
-        
-        delete [] prime;
-        return count;
-    }
-    
-    
-    
+public:    
     int countPrimes(int n) {
         int count = 0;
-        int i, j;
-        
         vector<bool> prime(n, true);
         
-        for (i=2; i*i<n; i++) {
+        for (int i=2; i*i<n; i++) {
             if (!prime[i]) continue;
             
-            for (j=i*i; j<n; j=j+i) {
+            for (int j=i*i; j<n; j=j+i) {
                 prime[j] = false;
             }
         }
         
-        for (i=2; i<n; i++) {
+        for (int i=2; i<n; i++) {
             if (prime[i]) count++;
         }
         
