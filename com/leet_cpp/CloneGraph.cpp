@@ -33,6 +33,7 @@ Visually, the graph looks like the following:
  *     UndirectedGraphNode(int x) : label(x) {};
  * };
  */
+              
 class Solution {
 public:
     UndirectedGraphNode *cloneGraph(UndirectedGraphNode *node) {
@@ -72,7 +73,6 @@ public:
                 hmGraph[tmpNode]->neighbors.push_back(hmGraph[tmpOldNeighbor]);
             }
         }
-        
         
         return root;
     }
