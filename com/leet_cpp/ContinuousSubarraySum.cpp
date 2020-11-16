@@ -41,7 +41,10 @@ public:
             if (!m.count(sum)) {
                 m[sum] = i;
             } else {
-                if (i - m[sum] > 1) return true;
+                if (i - m[sum] > 1) return true;   // from x1, x2, x3, x4, x5,   
+                                                   // if till x2 and till x4 has the same mod value to K, 
+                                                   // then the x3, x4 should be the multipler of k
+                                                   // so here > 1
             }
         }
         
