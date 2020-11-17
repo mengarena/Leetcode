@@ -54,8 +54,9 @@ public:
         
         for (int p=2; p<=PLen; ++p) {
             for (int x1 = n-1; x1 >= 0; --x1) {  // Possible x position of path1
+                int y1 = p-1-x1;    // from x, decide the value of y
+             
                 for (int x2 = x1; x2 >= 0; --x2) {   // Possible x position of path2
-                    int y1 = p-1-x1;    // from x, decide the value of y
                     int y2 = p-1-x2;
                     
                     if (y1 < 0 || y2 < 0 || y1 >= n || y2 >= n) continue;
