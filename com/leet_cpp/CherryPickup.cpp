@@ -77,7 +77,7 @@ public:
                     // (Draw on board about the two heads of the two paths to understand)
                     // To reach <y1,x1> and <y2, x2>
                     // The steps before <y1, x1> could be <y1, x1-1>(left) and <y1-1, x1> (above)
-                    // The steps before <y2, x2> could be <y2, x2-1>(left)and <y2-1, x2>(above)
+                    // The steps before <y2, x2> could be <y2, x2-1>(left) and <y2-1, x2>(above)
                     // Here four if to choose best path
                     if (x1 > 0 && x2 > 0 && dp[x1-1][x2-1] >= 0) { // left, left
                         best = max(best, delta + dp[x1-1][x2-1] );
