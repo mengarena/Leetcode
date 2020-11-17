@@ -22,7 +22,6 @@ and it is the same player's turn to move), the game is a draw.
 Given a graph, and assuming both players play optimally, return 1 if the game is won by Mouse, 
 2 if the game is won by Cat, and 0 if the game is a draw.
 
-
 Example 1:
 Input: [[2,5],[3],[0,4,5],[1,4,5],[2,3],[0,2,3]]
 Output: 0
@@ -44,16 +43,13 @@ Hard
 Google
 */
 
-
-
 class Solution {
 public:
 
      // 70%
      int catMouseGame(vector<vector<int>>& graph) {
         int n = graph.size();
-        vector<vector<vector<int>>> color(n, vector<vector<int>>(n, vector<int>(2,0))); 
-                                                                           // cat node, mouse node, move (0-mouse, 1 cat)
+        vector<vector<vector<int>>> color(n, vector<vector<int>>(n, vector<int>(2,0)));  // cat node, mouse node, move (0-mouse, 1 cat)
         vector<vector<vector<int>>> outdegree(n, vector<vector<int>>(n, vector<int>(2,0)));
      
         for (int i=0; i<n; ++i) {  // cat
@@ -104,6 +100,9 @@ public:
         return color[2][1][0];
     }
 
+ 
+ 
+ 
     // Pass 40/49 test cases
     int catMouseGame(vector<vector<int>>& graph) {
         int mouseNode = 1;
@@ -116,7 +115,8 @@ public:
         return ret;
     }
     
-    int game(vector<vector<int>>& graph, int mouseNode, int catNode, int turn, set<vector<int>>& visited, unordered_set<int>& mouseVisited, unordered_set<int>& catVisited) {
+    int game(vector<vector<int>>& graph, int mouseNode, int catNode, int turn, set<vector<int>>& visited, 
+             unordered_set<int>& mouseVisited, unordered_set<int>& catVisited) {
         
         vector<int> status = {turn, mouseNode, catNode};
         
@@ -162,7 +162,6 @@ public:
             }
             
             if (canMove == false) return 1;
-
         }
         
         return 0;
