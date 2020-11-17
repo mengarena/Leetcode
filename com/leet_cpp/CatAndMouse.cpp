@@ -33,7 +33,6 @@ Explanation:
   0
  
 Note:
-
 3 <= graph.length <= 50
 It is guaranteed that graph[1] is non-empty.
 It is guaranteed that graph[2] contains a non-zero element. 
