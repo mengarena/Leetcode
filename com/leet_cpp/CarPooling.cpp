@@ -58,9 +58,9 @@ public:
         vector<Node> starts;
         vector<Node> ends;
         for (auto trip:trips) {
+            if (trip[0] > capacity) return false;
             starts.push_back({trip[0], trip[1]});
             ends.push_back({trip[0], trip[2]});
-            if (trip[0] > capacity) return false;
         }
         
         sort(starts.begin(), starts.end(), mycomp);
