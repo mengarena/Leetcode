@@ -55,11 +55,12 @@ public:
         for (int p=2; p<=PLen; ++p) {
             for (int x1 = n-1; x1 >= 0; --x1) {  // Possible x position of path1
                 int y1 = p-1-x1;    // from x, decide the value of y
+                if (y1 < 0 || y1 >= n) continue;
              
                 for (int x2 = x1; x2 >= 0; --x2) {   // Possible x position of path2
                     int y2 = p-1-x2;
                     
-                    if (y1 < 0 || y2 < 0 || y1 >= n || y2 >= n) continue;
+                    if (y2 < 0 || y2 >= n) continue;
                     if (grid[y1][x1] < 0 || grid[y2][x2] < 0) {
                         dp[x1][x2] = -1;
                         continue;
