@@ -11,7 +11,6 @@ The locations are given as the number of kilometers due east from your vehicle's
 
 Return true if and only if it is possible to pick up and drop off all passengers for all the given trips. 
 
-
 Example 1:
 Input: trips = [[2,1,5],[3,3,7]], capacity = 4
 Output: false
@@ -37,7 +36,6 @@ trips[i].length == 3
 
 Medium
 */
-
 
 class Solution {
 public:
