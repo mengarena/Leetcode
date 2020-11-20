@@ -42,7 +42,6 @@ public:
         if (stones.size() <= 1) return true;
         int n = stones.size();
         if (stones[0] != 0 || stones[1] != 1) return false;
-        
         if (stones.size() <= 2) return true;
         int last = stones[n-1];
         
