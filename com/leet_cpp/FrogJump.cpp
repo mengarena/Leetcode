@@ -61,7 +61,7 @@ public:
                 nextStone = stone + step;
                 if (nextStone == last) return true;
                 
-                if (hm.find(nextStone) != hm.end()) {
+                if (hm.find(nextStone) != hm.end()) {.  // Check whether position at nextStone is a valid stone defined in the input stones vector
                     if (step > 1) {
                         hm[nextStone].insert(step-1);
                     }
