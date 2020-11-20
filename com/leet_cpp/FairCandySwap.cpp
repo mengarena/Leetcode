@@ -68,6 +68,7 @@ public:
             if (BB.count(a-sum/2)) {
                 ans[0] = a;
                 ans[1] = a-sum/2;
+                break;
             }
         }
         
