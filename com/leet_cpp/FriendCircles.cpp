@@ -37,10 +37,8 @@ N is in range [1,200].
 M[i][i] = 1 for all students.
 If M[i][j] = 1, then M[j][i] = 1.
 
-
 Medium
 */
-
 
 // Strategy:  To find how many islands exist.  Each island is a friend circle
 // In an "island", the two points not necessary to be direct neighbors, 
