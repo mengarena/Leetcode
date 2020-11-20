@@ -30,12 +30,10 @@ Given the following multilevel doubly linked list:
 
 We should return the following flattened doubly linked list:
 
-
 Medium
 
 Uber, Amazon, Bloomberg, Linkedin, Microsoft
 */
-
 
 /*
 // Definition for a Node.
