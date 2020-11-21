@@ -49,11 +49,7 @@ public:
         vector<string> ans;
         
         for (auto w:words) {
-            if (m.count(w)) {
-                m[w]++;
-            } else {
-                m[w] = 1;
-            }
+            m[w]++;
         }
         
         for (auto it=m.begin(); it!=m.end(); ++it) {
