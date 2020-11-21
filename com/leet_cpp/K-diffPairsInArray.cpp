@@ -30,7 +30,6 @@ All the integers in the given input belong to the range: [-1e7, 1e7].
 Easy
 */
 
-
 class Solution {
 public:
     // 72%
