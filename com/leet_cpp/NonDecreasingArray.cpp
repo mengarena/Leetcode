@@ -41,7 +41,7 @@ public:
     
         if (idx == -1 || idx == 1 || idx == n-1) return true;
         if (idx > 0 && idx < n-1 && nums[idx-1] <= nums[idx+1]) return true;   // 1 3 2 4 (to change 2)
-        if (idx >= 2&& idx < n-1 && nums[idx-2] <= nums[idx]) return true;     // 1 3 2 2 (to change 3)
+        if (idx >= 2 && idx < n-1 && nums[idx-2] <= nums[idx]) return true;     // 1 3 2 2 (to change 3)
         
         return false;
     }
