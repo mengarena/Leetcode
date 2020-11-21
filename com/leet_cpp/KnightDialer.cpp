@@ -68,7 +68,7 @@ public:
         // e.g. from 4,6 can reach 0
         vector<vector<int>> moves{{4,6}, {6,8}, {7,9}, {4,8}, {0,3,9}, {}, {0,1,7}, {2,6}, {1,3}, {2,4}};
         
-        // In this dp, dp[0][i] and dp[1][i] are used to recorded the result to this node at n-1 and n steps
+        // In this dp, dp[0][i] and dp[1][i] are used to record the result to this node at n-1 and n steps
         // Note:  could be [0] for n-1th step, [1] for nth step; [1] for n-1th step, [0] for nth step;
         vector<vector<int>> dp(2, vector<int>(10, 0));  //2: one for current, one for prev
         
