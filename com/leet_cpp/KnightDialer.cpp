@@ -15,6 +15,7 @@ Each hop must be from one key to another numbered key.
 
 Each time it lands on a key (including the initial placement of the knight), 
 it presses the number of that key, pressing N digits total.
+You are allowed to place the knight on any numeric cell initially 
 
 How many distinct numbers can you dial in this manner?
 
@@ -23,15 +24,26 @@ Since the answer may be large, output the answer modulo 10^9 + 7.
 Example 1:
 Input: 1
 Output: 10
+Explanation: We need to dial a number of length 1, so placing the knight over any numeric cell of the 10 cells is sufficient.
 
 Example 2:
 Input: 2
 Output: 20
+Explanation: All the valid number we can dial are [04, 06, 16, 18, 27, 29, 34, 38, 40, 43, 49, 60, 61, 67, 72, 76, 81, 83, 92, 94]
 
 Example 3:
 Input: 3
 Output: 46
- 
+
+Example 4:
+Input: n = 4
+Output: 104
+
+Example 5:
+Input: n = 3131
+Output: 136006598
+Explanation: Please take care of the mod.
+
 Note:
 1 <= N <= 5000
 
@@ -39,7 +51,6 @@ Medium
 
 Facebook, Google, Microsoft, Box
 */
-
 
 class Solution {
 public:
