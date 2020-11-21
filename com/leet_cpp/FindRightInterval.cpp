@@ -15,16 +15,12 @@ You may assume none of these intervals have the same start point.
 
 Example 1:
 Input: [ [1,2] ]
-
 Output: [-1]
-
 Explanation: There is only one interval in the collection, so it outputs -1.
 
 Example 2:
 Input: [ [3,4], [2,3], [1,2] ]
-
 Output: [-1, 0, 1]
-
 Explanation: There is no satisfied "right" interval for [3,4].
 For [2,3], the interval [3,4] has minimum-"right" start point;
 For [1,2], the interval [2,3] has minimum-"right" start point.
@@ -48,15 +44,7 @@ For [2,3], the interval [3,4] has minimum-"right" start point.
  * };
  */
 
-
 //Medium
-
-
-//ACC:
-
-#include <vector>
-
-using namespace std;
 
 class Solution {
     
