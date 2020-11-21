@@ -27,7 +27,6 @@ Example 3:
 Input: [1,7,5,1,9,2,5,1]
 Output: [7,9,9,9,0,5,0,0]
  
-
 Note:
 1 <= node.val <= 10^9 for each node in the linked list.
 The given list has length in the range [0, 10000].
@@ -36,7 +35,6 @@ Medium
 
 Uber, Amazon
 */
-
 
 /**
  * Definition for singly-linked list.
@@ -58,7 +56,6 @@ public:
         if (!head) return ans;
 
         stack<int> stkIdx;
-        
         int idx = 0;
         
         while (head) {
@@ -83,6 +80,5 @@ public:
 
         return ans;
     }
-    
     
 };
