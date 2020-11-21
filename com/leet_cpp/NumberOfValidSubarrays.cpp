@@ -6,7 +6,6 @@ Given an array A of integers, return the number of non-empty continuous subarray
 
 The leftmost element of the subarray is not larger than other elements in the subarray.
 
-
 Example 1:
 Input: [1,4,2,5,3]
 Output: 11
@@ -30,7 +29,6 @@ Hard
 
 Hulu
 */
-
 
 class Solution {
 public:
