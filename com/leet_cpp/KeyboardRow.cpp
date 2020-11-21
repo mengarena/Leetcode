@@ -33,7 +33,6 @@ public:
         return ans;
     }
     
-    
     //Check whether characters in word is in one row
     bool checkWord(vector<string>& rows, string word) {
         int curRow = -1;
