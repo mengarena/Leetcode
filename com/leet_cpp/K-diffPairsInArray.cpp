@@ -40,11 +40,7 @@ public:
         int count = 0;
         
         for (auto num:nums) {
-            if (!freqs.count(num)) {
-                freqs[num] = 1;
-            } else {
-                freqs[num]++;
-            }
+            freqs[num]++;
         }
         
         for (auto it=freqs.begin(); it!=freqs.end(); ++it) {
