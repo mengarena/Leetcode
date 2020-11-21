@@ -53,7 +53,7 @@ public:
             for (char c:w) {
                 mos_ret += mos[c-'a'];
             }
-            if (ans.count(mos_ret) == 0) ans.insert(mos_ret);
+            ans.insert(mos_ret);
         }
         
         return ans.size();
