@@ -65,6 +65,7 @@ public:
         return roll(maze, ball[0], ball[1], hole, 0, 0, 0, "", pair<string, int>() = {"impossible", INT_MAX});
     }
     
+    // Use the existing maze vector to store the current distance
     string roll(vector<vector<int>>& maze, int rowBall, int colBall, const vector<int>& hole, int dirRow, int dirCol, int steps, 
                 const string& path, pair<string, int>& ret) {    // ret: to record the final result: path to hole and steps
         if (steps >= ret.second) {
@@ -87,7 +88,7 @@ public:
         }
         
         if (maze[rowBall][colBall] == 0 || steps + 2 < maze[rowBall][colBall]) {
-            maze[rowBall][colBall] = steps + 2;
+            maze[rowBall][colBall] = steps + 2;   // here avoid to set '1' for the maze cell. '1' is for walls
                 
             //To make the result in lexicographical order, roll in order of d-l-r-u    
             if (dirRow == 0) roll(maze, rowBall, colBall, hole, 1, 0, steps, path+"d", ret); 
