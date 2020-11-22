@@ -15,8 +15,7 @@ The maze is represented by a binary 2D array. 1 means the wall and 0 means the e
 You may assume that the borders of the maze are all walls. 
 The ball and the hole coordinates are represented by row and column indexes.
 
-Example 1
-
+Example 1:
 Input 1: a maze represented by a 2D array
 
 0 0 0 0 0
@@ -34,8 +33,7 @@ The first way is left -> up -> left, represented by "lul".
 The second way is up -> left, represented by 'ul'.
 Both ways have shortest distance 6, but the first way is lexicographically smaller because 'l' < 'u'. So the output is "lul".
 
-Example 2
-
+Example 2:
 Input 1: a maze represented by a 2D array
 
 0 0 0 0 0
@@ -55,6 +53,7 @@ There is only one ball and one hole in the maze.
 Both the ball and hole exist on an empty space, and they will not be at the same position initially.
 The given maze does not contain border (like the red rectangle in the example pictures), but you could assume the border of the maze are all walls.
 The maze contains at least 2 empty spaces, and the width and the height of the maze won't exceed 30.
+
 Show Tags
 Show Similar Problems
 
@@ -98,7 +97,6 @@ public:
             if (dirCol == 0) roll(maze, rowBall, colBall, hole, 0, 1, steps, path+"r", ret);
             if (dirRow == 0) roll(maze, rowBall, colBall, hole, -1, 0, steps, path+"u", ret);
         }       
-        
         
         return ret.first;
     }
