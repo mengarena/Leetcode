@@ -59,6 +59,7 @@ public:
         return totalTime;
     }
     
+    // Check the propagation to node, the distanct to 'node' is 'dist'
     void propagate(unordered_map<int, vector<pair<int, int>>>& mytimes, vector<int>& delays, int node, int dist) {
         if (dist >= delays[node]) return;
         delays[node] = dist;
