@@ -23,7 +23,7 @@ public:
         vector<string> ans(nums.size(),"");
         
         priority_queue<pair<int, int>> pq;  //Element Value, Original index
-                                            //The priority_queue will be maxHeap based on the firse element (i.e. values of elements)
+                                            //The priority_queue will be maxHeap (i.e. largest on top) based on the first element (i.e. values of elements)
         int i;
         
         for (i=0; i<nums.size(); i++) {
