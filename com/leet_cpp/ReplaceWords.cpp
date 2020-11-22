@@ -12,20 +12,16 @@ If a successor has many roots can form it, replace it with the root with the sho
 You need to output the sentence after the replacement.
 
 Example 1:
-
 Input: dict = ["cat", "bat", "rat"]
 sentence = "the cattle was rattled by the battery"
 Output: "the cat was rat by the bat"
  
-
 Note:
-
 The input will only have lower-case letters.
 1 <= dict words number <= 1000
 1 <= sentence words number <= 1000
 1 <= root length <= 100
 1 <= sentence words length <= 1000
-
 
 Medium
 */
