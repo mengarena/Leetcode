@@ -80,7 +80,7 @@ public:
         int candPostIdx = -1;
         int minPostPos = INT_MAX;
         
-        // If no character's current position is <= curPos, find the chacter, 
+        // If no character's current position is <= curPos, find the character, 
         // which has the smallest next position;
         // if two characters have same smallest next positions, the one has the largest remaining count should be selected.
         for (int i=0; i<arrcnt.size(); ++i) {
