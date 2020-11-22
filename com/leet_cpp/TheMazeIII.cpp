@@ -66,7 +66,7 @@ public:
     }
     
     string roll(vector<vector<int>>& maze, int rowBall, int colBall, const vector<int>& hole, int dirRow, int dirCol, int steps, 
-                const string& path, pair<string, int>& ret) {
+                const string& path, pair<string, int>& ret) {    // ret: to record the final result: path to hole and steps
         if (steps >= ret.second) {
             return ret.first;
         }
