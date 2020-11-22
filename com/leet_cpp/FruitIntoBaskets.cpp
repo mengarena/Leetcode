@@ -55,16 +55,13 @@ public:
     // 90%
     int totalFruit(vector<int>& tree) {
         if (tree.empty()) return 0;
-        int first, second, prev;
-        int firstPosS=-1, firstPosE=-1;
+        int firstPosS = 0, firstPosE = 0;
         int secondPosS = 1, secondPosE = -1;
         int maxLen = 0;
         int n = tree.size();
-        
-        first = tree[0];
-        firstPosS = 0;
-        firstPosE = 0;
-        prev = first;
+        int first = tree[0];
+        int prev = first;
+        int second;
         
         for (int i=1; i<n; ++i) {
             if (tree[i] == first) {
