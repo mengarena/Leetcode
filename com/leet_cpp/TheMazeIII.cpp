@@ -73,7 +73,7 @@ public:
         }
         
         if (dirRow != 0 || dirCol != 0) {
-			//Move in one direction
+	    //Move in one direction
             while (rowBall + dirRow >= 0 && rowBall + dirRow < maze.size() &&
                    colBall + dirCol >= 0 && colBall + dirCol < maze[0].size() &&
                    maze[rowBall + dirRow][colBall + dirCol] != 1) {
@@ -85,7 +85,6 @@ public:
                        //If meet hole, check steps and save path
                        if (rowBall == hole[0] && colBall == hole[1] && steps < ret.second) ret = {path, steps};
                    }
-            
         }
         
         if (maze[rowBall][colBall] == 0 || steps + 2 < maze[rowBall][colBall]) {
