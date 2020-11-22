@@ -70,6 +70,6 @@ public:
             }
         }
         
-        return s.substr(1);
+        return s.substr(1);  // (1) get remove the heading " "
     }
 };
