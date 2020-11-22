@@ -13,14 +13,11 @@ there must be at least n intervals that CPU are doing different tasks or just be
 You need to return the least number of intervals the CPU will take to finish all the given tasks.
 
 Example:
-
 Input: tasks = ["A","A","A","B","B","B"], n = 2
 Output: 8
 Explanation: A -> B -> idle -> A -> B -> idle -> A -> B.
  
-
 Note:
-
 The number of tasks is in the range [1, 10000].
 The integer n is in the range [0, 100].
 
@@ -62,7 +59,7 @@ public:
         return curPos;
     }
     
-    
+ 
     int findCand(vector<int>& arrcnt, vector<int> &validPos, int curPos, int& needPos) {
         int maxCnt = 0;
         int candIdx = -1;
