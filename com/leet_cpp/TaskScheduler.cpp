@@ -69,7 +69,7 @@ public:
             if (arrcnt[i] == 0) continue;
             
             if (validPos[i] <= curPos && maxCnt < arrcnt[i]) {
-                maxCnt = arrcnt[i];
+                maxCnt = arrcnt[i];   // Choose the one has most count
                 candIdx = i;
             }
         }
