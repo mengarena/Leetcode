@@ -64,7 +64,7 @@ public:
         if (dist >= delays[node]) return;
         delays[node] = dist;
         
-        if (mytimes.count(node) == 0) return;
+        if (mytimes.count(node) == 0) return;  //There is no path leaving 'node'
         
         vector<pair<int, int>> adjs = mytimes[node];
         
