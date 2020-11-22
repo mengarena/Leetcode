@@ -38,7 +38,7 @@ public:
         //bool operator < (const Cell &a) {  //Wrong
         bool operator < (const Cell &a) const {  //Correct
         //bool operator < (Cell a) const {   //Correct
-            return height > a.height;   //Equals to "greater", lead to order: Small, Large
+            return a.height < height;   //Equals to "greater", lead to order: Small, Large
         }
     };
     
