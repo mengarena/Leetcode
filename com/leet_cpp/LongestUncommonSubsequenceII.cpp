@@ -35,11 +35,7 @@ public:
         int candMaxLen = 0;
         
         for (int i=0; i<n; ++i) {
-            if (m.count(strs[i])) {
-                m[strs[i]]++;
-            } else {
-                m[strs[i]] = 1;
-            }
+            m[strs[i]]++;
             candMaxLen = max(candMaxLen, static_cast<int>(strs[i].size()));
         }
         
