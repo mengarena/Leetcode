@@ -74,7 +74,7 @@ public:
         int i=0, j;
         
         for (j=0; j<noncand.length(); ++j) {
-            if (cand[i] == noncand[j]) i++;
+            if (i < cand.length() && cand[i] == noncand[j]) i++;
         }
         
         return (i == cand.length()) && (j == noncand.length());
