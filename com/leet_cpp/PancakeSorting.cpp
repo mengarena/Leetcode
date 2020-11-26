@@ -60,8 +60,8 @@ public:
                 }
             }
             
-            ans.push_back(maxIdx+1);
-            ans.push_back(n);
+            ans.push_back(maxIdx+1);   // For Flipping the max to the head
+            ans.push_back(n);          // For Flipping the whole currently unprocessed subarray
             
             // pay attention to the reverse() API, the range of the two parameters is [ )
             reverse(A.begin(), A.begin()+maxIdx+1); 
