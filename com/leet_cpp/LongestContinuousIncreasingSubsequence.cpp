@@ -22,7 +22,6 @@ Easy
 Facebook
 */
 
-
 class Solution {
 public:
 
@@ -43,7 +42,6 @@ public:
         }
         
         maxLen = max(maxLen, cnt);
-        
         return maxLen;
     }
 };
