@@ -29,50 +29,23 @@ public:
 
     // 97%
     int findLUSlength(vector<string>& strs) {
-        int n = strs.size();
-        if (n == 0) return -1;
-        unordered_map<string, int> m;   // string, len
-        int candMaxLen = 0;
-        
-        for (int i=0; i<n; ++i) {
-            m[strs[i]]++;
-            candMaxLen = max(candMaxLen, static_cast<int>(strs[i].size()));
-        }
-        
-        vector<string> cands;
-        unordered_set<string> noncands;
-        int candMaxLen1 = -1;
-        
-        for (auto it = m.begin(); it!=m.end(); ++it) {
-            string s = it->first;
-            if (it->second > 1) {
-                noncands.insert(s);
-            } else { 
-                if (s.size() == candMaxLen) return candMaxLen;
-                candMaxLen1 = max(candMaxLen1, static_cast<int>(s.size()));
-                cands.push_back(s);
+        int res = -1, j = 0, n = strs.size();
+        for (int i = 0; i < n; ++i) {
+            for (j = 0; j < n; ++j) {
+                if (i == j) continue;
+                if (isSubsequence(strs[i], strs[j])) break;
             }
+            if (j == n) res = max(res, (int)strs[i].size());   // when j == n, means strs[i]'s isSubsequence() all get False
         }
-        
-        sort(cands.begin(), cands.end(), [](string s, string t){ return s.length() > t.length(); });
-        
-        for (auto cand:cands) {
-            for (auto noncand:noncands) {
-                if (cand.length() >= noncand.length()) continue;
-                if (!isSubsequence(cand, noncand)) return cand.length();
-            }
-        }
-        
-        return -1;
+        return res;
     }
     
     bool isSubsequence(string& cand, string& noncand) {
-        int i=0, j;
-        
-        for (j=0; j<noncand.length(); ++j) {
-            if (i < cand.length() && cand[i] == noncand[j]) i++;
-        }
-        
-        return (i == cand.length()) && (j == noncand.length());
+        int i = 0;
+        for (char c : noncand) {
+            if (c == cand[i]) ++i;
+            if (i == cand.size()) break;
+        } 
+        return i == cand.size();
     }
 };
