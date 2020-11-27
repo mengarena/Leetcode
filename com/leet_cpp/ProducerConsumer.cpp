@@ -28,12 +28,9 @@ void producer(int n)
         cv.notify_all();
     }
     
-    {
-        //lock_guard<mutex> lk(m);
-        finished.store(true);
-        cv.notify_all();
-    }
-    
+    //lock_guard<mutex> lk(m);
+    finished.store(true);
+    cv.notify_all();
 }
 
 /*
@@ -68,7 +65,6 @@ int main()
     tc.join();
 
     cout << "Done !" << endl;
-
 }
 
 //////////////////////////////////////////////////
@@ -100,13 +96,10 @@ void producer(int n)
         cvC.notify_all();
     }
     
-    {
-        cvP.wait(lk, []{return qu.empty();});
-        finished.store(true);
-        cout << "Producer tells consumers to finished" << endl;
-        cvC.notify_all();
-    }
-    
+    cvP.wait(lk, []{return qu.empty();});
+    finished.store(true);
+    cout << "Producer tells consumers to finished" << endl;
+    cvC.notify_all();    
 }
 
 void consumer()
@@ -139,5 +132,4 @@ int main()
     tc.join();
 
     cout << "Done !" << endl;
-
 }
