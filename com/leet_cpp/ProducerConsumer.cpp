@@ -30,6 +30,12 @@ void producer(int n)
     
 }
 
+/*
+The std::condition_variable::wait(...) unlocks the mutex and 
+waits for the std::condition_variable.notify_one() member function call. 
+Then, wait(...) reacquires the lock and proceeds.
+*/
+
 void consumer()
 {
     unique_lock<mutex> lk(m);
