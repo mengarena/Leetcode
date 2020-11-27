@@ -34,7 +34,7 @@ void consumer()
 {
     unique_lock<mutex> lk(m);
     while (1) {
-        cv.wait(lk, []{ return (finished.load() || !qu.empty()); });
+        cv.wait(lk, []{ return (finished.load() || !qu.empty()); });   // condition_variable::wait() requires unique_lock
         if (!qu.empty()) {
             while (!qu.empty()) {
                 cout << "Consumer: " << qu.front() << endl;
