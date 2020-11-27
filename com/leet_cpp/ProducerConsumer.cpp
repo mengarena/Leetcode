@@ -5,13 +5,13 @@
 #include <queue>
 #include <atomic>
 
-using namespace std;
-
 /*
 Difference between lock_guard vs unique_lock：
 
 http://jakascorner.com/blog/2016/02/lock_guard-and-unique_lock.html
 */
+
+using namespace std;
 
 mutex m;
 condition_variable cv;
@@ -57,7 +57,6 @@ void consumer()
 
 int main()
 {
-
     thread tp(producer, 1000);
     thread tc(consumer);
 
@@ -68,7 +67,6 @@ int main()
 }
 
 //////////////////////////////////////////////////
-
 #include <iostream>
 #include <thread>
 #include <condition_variable>
@@ -124,7 +122,6 @@ void consumer()
 
 int main()
 {
-
     thread tp(producer, 100);
     thread tc(consumer);
 
