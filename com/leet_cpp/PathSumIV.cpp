@@ -22,6 +22,7 @@ The tree that the list represents is:
   5   1
 
 The path sum is (3 + 5) + (3 + 1) = 12.
+
 Example 2:
 Input: [113, 221]
 Output: 4
