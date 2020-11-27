@@ -8,7 +8,6 @@ The maximum depth is the number of nodes along the longest path from the root no
 
 For example, given a 3-ary tree:
 
- 
 We should return its max depth, which is 3.
 
 Note:
@@ -18,7 +17,6 @@ The total number of nodes is at most 5000.
 
 Easy
 */
-
 
 /*
 // Definition for a Node.
