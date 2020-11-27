@@ -7,6 +7,12 @@
 
 using namespace std;
 
+/*
+Difference between lock_guard vs unique_lock：
+
+http://jakascorner.com/blog/2016/02/lock_guard-and-unique_lock.html
+*/
+
 mutex m;
 condition_variable cv;
 queue<int> qu;
