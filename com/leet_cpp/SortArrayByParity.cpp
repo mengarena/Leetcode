@@ -26,13 +26,10 @@ public:
         int n = A.size();
         int i = 0;
         int j = n-1;
-        int tmp;
         
         while (i < j) {
             if (A[i] % 2 == 1) {
-                tmp = A[j];
-                A[j] = A[i];
-                A[i] = tmp;
+                swap(A[i], A[j]);
                 j--;
             } else {
                 i++;
