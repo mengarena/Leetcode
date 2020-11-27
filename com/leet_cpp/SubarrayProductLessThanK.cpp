@@ -13,12 +13,10 @@ Explanation: The 8 subarrays that have product less than 100 are: [10], [5], [2]
 Note that [10, 5, 2] is not included as the product of 100 is not strictly less than k.
 
 Note:
-
 0 < nums.length <= 50000.
 0 < nums[i] < 1000.
 0 <= k < 10^6.
 */
-
 
 class Solution {
 public:
