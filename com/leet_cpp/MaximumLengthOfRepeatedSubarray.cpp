@@ -5,7 +5,6 @@
 Given two integer arrays A and B, return the maximum length of an subarray that appears in both arrays.
 
 Example 1:
-
 Input:
 A: [1,2,3,2,1]
 B: [3,2,1,4,7]
@@ -14,13 +13,11 @@ Explanation:
 The repeated subarray with maximum length is [3, 2, 1].
 
 Note:
-
 1 <= len(A), len(B) <= 1000
 0 <= A[i], B[i] < 100
 
 Medium
 */
-
 
 class Solution {
 public:
@@ -47,7 +44,6 @@ public:
             }
         }
 
-        
         for (int i=1; i<m; ++i) {
             for (int j=1; j<n; ++j) {
                 if (A[i] == B[j]) {
