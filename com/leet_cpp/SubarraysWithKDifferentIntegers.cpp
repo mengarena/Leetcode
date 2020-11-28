@@ -29,10 +29,7 @@ Hard
 Amazon
 */
 
-
-
 class Solution {
-     
 public:
     int subarraysWithKDistinct(vector<int>& A, int K) {
         Window w1, w2;
