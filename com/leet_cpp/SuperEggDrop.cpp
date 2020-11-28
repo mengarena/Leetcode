@@ -3,7 +3,6 @@
 887. Super Egg Drop
 
 You are given K eggs, and you have access to a building with N floors from 1 to N. 
-
 Each egg is identical in function, and if an egg breaks, you cannot drop it again.
 
 You know that there exists a floor F with 0 <= F <= N such that any egg dropped at a floor higher than F will break, 
@@ -40,7 +39,6 @@ Hard
 
 Google
 */
-
 
 class Solution {
 public:
