@@ -60,7 +60,7 @@ public:
     }
     
     // Find the min value in the tree whose value is not "val"
-    // If does not exist sucn a node, return -1;
+    // If does not exist such a node, return -1;
     int findSpecifiedMin(TreeNode* root, int val) {
         if (!root->left && !root->right) {
             if (root->val == val)
