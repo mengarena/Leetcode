@@ -53,7 +53,7 @@ public:
         
         for (auto num:A) {
             for (int i=m; i>=1; --i) {
-                for (auto sum:sums[i-1]) {
+                for (auto sum:sums[i-1]) {  // For the first few steps, for example when i=m, this for will be skipped since sums[m-1] is empty
                     sums[i].insert(sum + num);
                 }
             }
