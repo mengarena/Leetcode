@@ -37,7 +37,8 @@ public:
         int ans = n+1;
         
         vector<int> sums(n+1, 0);  // Cumulative sum
-        deque<int> dq;  // Keep the index of sums; in this deque, (from back-->front) sums[i] decreases
+        deque<int> dq;  // Keep the index of sums; 
+                        // in this deque, from back-->front: index decrease, and also the corresponding sums[i] decreases, 
         
         for (int i=0; i<n; i++) sums[i+1] = sums[i] + A[i];
         
