@@ -51,7 +51,7 @@ public:
         int m = board.size();
         int n = board[0].size();
         
-        set<vector<vector<int>>> visited;  // Canot use unordered_set since there is no std::hash specialization for vector
+        set<vector<vector<int>>> visited;  // Cannot use unordered_set since there is no std::hash specialization for vector
         queue<pair<int,int>> qPos;
         queue<vector<vector<int>>> qBoard;
         
