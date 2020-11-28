@@ -19,7 +19,6 @@ For example, you may serialize the following 3-ary tree
  as [1 [3[5 6] 2 4]]. You do not necessarily need to follow this format, 
  so please be creative and come up with different approaches yourself.
 
-
 Note:
 N is in the range of [1, 1000]
 Do not use class member/global/static variables to store states. 
@@ -27,7 +26,6 @@ Your serialize and deserialize algorithms should be stateless.
 
 Uber, Amazon, Google, Ebay, Microsoft
 */
-
 
 /*
 // Definition for a Node.
