@@ -53,7 +53,7 @@ public:
             // This while make sure that the smaller value with larger index is saved
             // at the back of the deque
             // say if we don't have this while loop, the deque from back looks like:
-            // 9(front) 8 7(back) say the corresponding sums are 88 99 111
+            // 9(back) 8 7(front) say the corresponding sums are 88 99 111
             // here 88 < 99 and 88 < 111, so next time when a new sums[i] comes
             // since 88 has smaller value but larger index
             // It will more likely get a larger difference with next new sums[i],
