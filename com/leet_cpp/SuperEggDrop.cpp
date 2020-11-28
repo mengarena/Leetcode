@@ -67,6 +67,10 @@ public:
                                                             // to reach <m,i>, there are two ways,
                                                             // one is from <m-1, i> (does not consume egg, i.e. egg not broken)
                                                             // the other is from <m-1, i-1> (consume one egg, i.e. egg broken)
+             
+                                                            // The last "+1" is a new floor could be check, NOT egg!
+                                                            // i.e. with m-1 move, we can check dp[m-1][i] and  dp[m-1][i-1] floors, 
+                                                            // now with [m][i], we can check their sum + 1 floors  
             }
         }
         
