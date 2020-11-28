@@ -54,7 +54,7 @@ public:
       So, with m moves and k eggs, we can find out F in n0+n1+1 floors, whichever F is.
     */
     // Time complexity: O(KlogN) 
-    // The adding part (line 68), dp[m][i] is almost 2*dp[m-1][j], so it is 2 times to approach N, so logN
+    // The adding part (line 66), dp[m][i] is almost 2*dp[m-1][j], so it is 2 times to approach N, so logN
     int superEggDrop(int K, int N) {
         vector<vector<int>> dp(N+1, vector<int>(K+1, 0));  // dp: max floors could be checked by k egges, n moves
         int m = 0;
