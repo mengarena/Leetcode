@@ -42,7 +42,7 @@ public:
         for (int i=0; i<n; i++) sums[i+1] = sums[i] + A[i];
         
         for (int i=0; i<n+1; ++i) {
-            // Continuously check the different between sums[i] and 
+            // Continuously check the difference between sums[i] and 
             // the sums[x] which is indexed by the front() of the dq
             // the distance between i and dq.front() becomes smaller and smaller
             while (!dq.empty() && sums[i] - sums[dq.front()] >= K) {
@@ -53,7 +53,7 @@ public:
             // This while make sure that the smaller value with larger index is saved
             // at the back of the deque
             // say if we don't have this while loop, the deque from back looks like:
-            // 9 8 7... say the corresponding sums are 88 99 111
+            // 9(front) 8 7(back) say the corresponding sums are 88 99 111
             // here 88 < 99 and 88 < 111, so next time when a new sums[i] comes
             // since 88 has smaller value but larger index
             // It will more likely get a larger difference with next new sums[i],
