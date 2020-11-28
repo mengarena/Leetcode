@@ -22,10 +22,8 @@ Hard
 Uber
 */
 
-
 class Solution {
 public:
-
     // 30%
     // Strategy:
     // If we could divide A into two sub arrays, one's length could be less than or equal to the other
