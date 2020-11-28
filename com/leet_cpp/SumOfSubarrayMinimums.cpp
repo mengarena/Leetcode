@@ -77,6 +77,8 @@ public:
         return ans;
     }
 
+ 
+ 
     // TLE (passed 99/100 test cases)
     // Strategy: Since it is required to calculate the sum of minimal values of sub array
     // We can use the minimal values of pivot
