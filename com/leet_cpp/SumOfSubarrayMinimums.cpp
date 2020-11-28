@@ -7,7 +7,6 @@ Given an array of integers A, find the sum of min(B), where B ranges over every 
 Since the answer may be large, return the answer modulo 10^9 + 7.
 
 Example 1:
-
 Input: [3,1,2,4]
 Output: 17
 Explanation: Subarrays are [3], [1], [2], [4], [3,1], [1,2], [2,4], [3,1,2], [1,2,4], [3,1,2,4]. 
@@ -18,11 +17,8 @@ Note:
 1 <= A[i] <= 30000
 
 Medium
-
 Amazon
 */
-
-
 
 class Solution {
 public:
