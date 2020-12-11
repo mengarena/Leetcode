@@ -10,7 +10,7 @@ import java.util.List;
 //
 //Note:
 //All numbers (including target) will be positive integers.
-//Elements in a combination (a1, a2, ¡­ , ak) must be in non-descending order. (ie, a1 ¡Ü a2 ¡Ü ¡­ ¡Ü ak).
+//Elements in a combination (a1, a2, Â¡Â­ , ak) must be in non-descending order. (ie, a1 Â¡Ãœ a2 Â¡Ãœ Â¡Â­ Â¡Ãœ ak).
 //The solution set must not contain duplicate combinations.
 //For example, given candidate set 2,3,6,7 and target 7, 
 //A solution set is: 
@@ -40,10 +40,8 @@ public class CombinationSum {
 	}
 	
 	
-	
-	
-	//Time complexity: O(n!)
-	//n is number of elements in candidates
+    //Time complexity: O(n!)
+    //n is number of elements in candidates
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> lstlstCombSum = new ArrayList<List<Integer>>();
         if (candidates == null || candidates.length == 0) return lstlstCombSum;
@@ -55,7 +53,6 @@ public class CombinationSum {
     }
     
     private void combinationSumHelper(List<List<Integer>> lstlstCombSum, List<Integer> lstComb, int[] candidates, int startIdx, int target) {
-        
         if (target < 0) return;
         if (target == 0) {
             lstlstCombSum.add(new ArrayList<Integer>(lstComb));
