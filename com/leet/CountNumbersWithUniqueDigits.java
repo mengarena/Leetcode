@@ -9,7 +9,8 @@ package com.leet;
 //Hint:
 //
 //A direct way is to use the backtracking approach.
-//Backtracking should contains three states which are (the current number, number of steps to get that number and a bitmask which represent which number is marked as visited so far in the current number). 
+//Backtracking should contains three states which are 
+//(the current number, number of steps to get that number and a bitmask which represent which number is marked as visited so far in the current number). 
 //Start with state (0,0,0) and count all valid number till we reach number of steps equals to 10n.
 //This problem can also be solved using a dynamic programming approach and some knowledge of combinatorics.
 //Let f(k) = count of numbers with unique digits with length equals k.
