@@ -42,7 +42,8 @@ public class ContainsDuplicateIII {
         	if (mapBucket.containsKey(nLabel)) {   //Two numbers in the same bucket, so their values difference is <= t and the different of index <= k
         		return true;
         	} else if (mapBucket.containsKey(nLabel-1) && Math.abs((long)nums[i] - mapBucket.get(nLabel-1)) <= t) {  //In neighboring bucket and also the difference of value <= t
-        		return true;                                                                                         //Here only need to check neighboring bucket, value difference in non-neighbor buckets must > t
+        		return true;                                                                                     //Here only need to check neighboring bucket, 
+			                                                                                                 //value difference in non-neighbor buckets must > t
         	} else if (mapBucket.containsKey(nLabel+1) && Math.abs((long)nums[i] - mapBucket.get(nLabel+1)) <= t) {
         		return true;
         	}
