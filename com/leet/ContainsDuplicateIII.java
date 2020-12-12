@@ -61,7 +61,7 @@ public class ContainsDuplicateIII {
 		if (nNum >= 0) {
 			nLabel = nNum/nBucketWidth;
 		} else {
-			nLabel = (nNum+1)/nBucketWidth - 1;   // Should be:  nNum/nBucketWidth - 1    ?
+			nLabel = (nNum+1)/nBucketWidth - 1;
 		}
 		
 		return nLabel;
