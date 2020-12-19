@@ -14,18 +14,15 @@ import java.util.List;
 //
 //Example 1:
 //s = "abc", t = "ahbgdc"
-//
 //Return true.
 //
 //Example 2:
 //s = "axc", t = "ahbgdc"
-//
 //Return false.
 //
 //Follow up:
 //If there are lots of incoming S, say S1, S2, ... , Sk where k >= 1B, and you want to check one by one to see if T has its subsequence. 
 //In this scenario, how would you change your code?
-
 
 //Pinterest
 public class IsSubsequence {
@@ -33,10 +30,9 @@ public class IsSubsequence {
 	public IsSubsequence() {
 		// TODO Auto-generated constructor stub
 	}
-
 	
-	//ACC:  2ms
-	//use indexOf to search the position of char in s from String t
+    //ACC:  2ms
+    //use indexOf to search the position of char in s from String t
 //	I checked the origin code of func "indexOf" and "charAt". 
 //	These two solution both traversed the char of String one by one to search the first occurrence specific char.
 //	The difference is that indexOf only call once function then traversed in "String.value[]" arr, 
@@ -59,7 +55,7 @@ public class IsSubsequence {
     }
     
 	
-	//ACC:  23 ms
+    //ACC:  23 ms
     //Normal two pointers
     public boolean isSubsequenceA(String s, String t) {
         if (s == null || s.isEmpty()) return true;
