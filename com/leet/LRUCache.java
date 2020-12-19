@@ -17,9 +17,8 @@ import java.util.Set;
 //Hard
 public class LRUCache {
 
-	
-	//ACC: 22%
-	//Formal implement:  HashMap + double link list
+    //ACC: 22%
+    //Formal implement:  HashMap + double link list
     class MyEntry {
         MyEntry before;
         MyEntry after;
@@ -27,10 +26,10 @@ public class LRUCache {
         int val;
     }
     
-	private Map<Integer, MyEntry> hm = null;    //Used to check whether the key is in and quickly locate the element in the link list
-	private MyEntry first = null;   //Point to the most recent element
-	private MyEntry last = null;    //Point to the least recent element
-	private int capacity = 0;
+    private Map<Integer, MyEntry> hm = null;    //Used to check whether the key is in and quickly locate the element in the link list
+    private MyEntry first = null;   //Point to the most recent element
+    private MyEntry last = null;    //Point to the least recent element
+    private int capacity = 0;
 	
     public LRUCache(int capacity) {
     	this.capacity = capacity;
