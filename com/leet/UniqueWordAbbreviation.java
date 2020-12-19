@@ -38,19 +38,21 @@ import java.util.Set;
 //Easy
 public class UniqueWordAbbreviation {
 
-	public UniqueWordAbbreviation() {
+    public UniqueWordAbbreviation() {
 		// TODO Auto-generated constructor stub
-	}
-
+    }
 	
-	//Pay attention to the description of the question
-	//***A word's abbreviation is unique if no other word from the dictionary has the same abbreviation***
-	//If the dictionary has a word "hello",  if we use isUnique to test a word "hello", the two "hello" will be considered the same, so isUnique("hello") = true (if no other h2o words exist)
-	//While in the example given in the question, "cane" has same abbr as "cake", but they are different words
+    //Pay attention to the description of the question
+    //***A word's abbreviation is unique if no other word from the dictionary has the same abbreviation***
+    //If the dictionary has a word "hello",  if we use isUnique to test a word "hello", 
+    //the two "hello" will be considered the same, so isUnique("hello") = true (if no other h2o words exist)
+    //While in the example given in the question, "cane" has same abbr as "cake", but they are different words
 	
-    private Map<String, List<String>> hmDict = new HashMap<String, List<String>>();   //Key (abbr),  the list of dict words which has the abbr
+    private Map<String, List<String>> hmDict = new HashMap<String, List<String>>();   //Key (abbr),  
+	                                                                              //the list of dict words which has the abbr
 
-    public void ValidWordAbbr(String[] dictionary) {   //Original version for the question should be (constructor): public ValidWordAbbr(String[] dictionary)
+    public void ValidWordAbbr(String[] dictionary) {   //Original version for the question should be (constructor): 
+	                                               //public ValidWordAbbr(String[] dictionary)
         if (dictionary == null || dictionary.length == 0) return;
         
         for (int i=0; i<dictionary.length; i++) {
@@ -62,8 +64,7 @@ public class UniqueWordAbbreviation {
                 List<String> lstValue = new ArrayList<String>();
                 lstValue.add(dictionary[i]);
                 hmDict.put(sAbbr, lstValue);
-            }
-        	
+            }	
         }
     }
 
@@ -73,7 +74,6 @@ public class UniqueWordAbbreviation {
     	
     	return s.charAt(0) + "" + (n-2) + s.charAt(n-1);
     }
-    
     
     public boolean isUnique(String word) {
         if (word == null) return false;
@@ -89,8 +89,7 @@ public class UniqueWordAbbreviation {
     	
     	return false;
     }
-    
-    
+	
 }
 
 
