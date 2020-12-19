@@ -43,24 +43,24 @@ public class UniquePathsII {
         //Process first column
         for (i=0; i<m; i++) {
         	if (i == 0) {
-        		if (obstacleGrid[i][0] == 1) {
-        			narrPath[i][0] = 0;
-        		} else {
-        			narrPath[i][0] = 1;
-        		}
+        	    if (obstacleGrid[i][0] == 1) {
+        		narrPath[i][0] = 0;
+        	    } else {
+        		narrPath[i][0] = 1;
+        	    }
         	} else {
-        		if (obstacleGrid[i][0] == 1) {
-        			narrPath[i][0] = 0;
-        		} else {
-        		    narrPath[i][0] = narrPath[i-1][0];
-        		}
+        	    if (obstacleGrid[i][0] == 1) {
+        		narrPath[i][0] = 0;
+        	    } else {
+        		narrPath[i][0] = narrPath[i-1][0];
+                    }
         	}
         }
         
         //Process first row
         for (i=1; i<n; i++) {
         	if (obstacleGrid[0][i] == 1) {
-        		narrPath[0][i] = 0;
+        	    narrPath[0][i] = 0;
         	} else {
         	    narrPath[0][i] = narrPath[0][i-1];
         	}
@@ -70,14 +70,13 @@ public class UniquePathsII {
         for (i=1; i<m; i++) {
         	for (j=1; j<n; j++) {
         		if (obstacleGrid[i][j] == 1) {
-        			narrPath[i][j] = 0;
+        		    narrPath[i][j] = 0;
         		} else {
-        			narrPath[i][j] = narrPath[i-1][j] + narrPath[i][j-1];
+        		    narrPath[i][j] = narrPath[i-1][j] + narrPath[i][j-1];
         		}
         	}
         }
         
         return narrPath[m-1][n-1];
-        
     }	
 }
