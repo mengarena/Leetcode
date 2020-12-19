@@ -83,7 +83,7 @@ public class UniqueWordAbbreviation {
         
         if (!hmDict.containsKey(sAbbr)) return true;
         
-    	if (hmDict.get(sAbbr).size() > 2) return false;
+    	if (hmDict.get(sAbbr).size() >= 2) return false;
     	
     	if (hmDict.get(sAbbr).size() == 1 && word.equals(hmDict.get(sAbbr).get(0))) return true;
     	
