@@ -56,7 +56,7 @@ public class UniqueWordAbbreviation {
         if (dictionary == null || dictionary.length == 0) return;
         
         for (int i=0; i<dictionary.length; i++) {
-        	String sAbbr = getAbbr(dictionary[i]);
+            String sAbbr = getAbbr(dictionary[i]);
         	
             if (hmDict.containsKey(sAbbr)) {
                 if (!hmDict.get(sAbbr).contains(dictionary[i])) hmDict.get(sAbbr).add(dictionary[i]);
