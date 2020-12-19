@@ -63,9 +63,9 @@ public class LRUCache {
             first = me;
             
             hm.put(key, me);
-        	return value;        	
+            return value;        	
         } else {
-        	return -1;
+            return -1;
         }
     }
     
