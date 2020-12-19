@@ -39,7 +39,7 @@ import java.util.Set;
 public class UniqueWordAbbreviation {
 
     public UniqueWordAbbreviation() {
-		// TODO Auto-generated constructor stub
+	// TODO Auto-generated constructor stub
     }
 	
     //Pay attention to the description of the question
