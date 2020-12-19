@@ -31,10 +31,11 @@ Explanation: There are six substrings "z", "a", "b", "za", "ab", "zab" of string
 //Medium
 
 public class Solution {
-	//ACC
-	//To get the maximum continuous length ending at each letter
-	//For example, there are two substrings ending at "f", cdef, abcdef, we only need to consider "abcdef", because it contains all the substrings of "cdef"
-	//For a substring "abcdef", the number of unique substring (considering the ending letter) is the length of the substring
+    //ACC
+    //To get the maximum continuous length ending at each letter
+    //For example, there are two substrings ending at "f", cdef, abcdef, we only need to consider "abcdef", 
+    //because it contains all the substrings of "cdef"
+    //For a substring "abcdef", the number of unique substring (considering the ending letter) is the length of the substring
     public int findSubstringInWraproundString(String p) {
         if (p == null || p.isEmpty()) return 0;
         int maxCurLen = 0;
