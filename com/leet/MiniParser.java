@@ -14,18 +14,12 @@ import java.util.Stack;
 //String does not contain white spaces.
 //String contains only digits 0-9, [, - ,, ].
 //
-//
 //Example 1:
-//
 //Given s = "324",
-//
 //You should return a NestedInteger object which contains a single integer 324.
-//		
-//		
+//				
 //Example 2:
-//
 //Given s = "[123,[456,[789]]]",
-//
 //Return a NestedInteger object containing a nested list with 2 elements:
 //
 //1. An integer containing value 123.
@@ -33,7 +27,6 @@ import java.util.Stack;
 //    i.  An integer containing value 456.
 //    ii. A nested list with one element:
 //         a. An integer containing value 789.
-
 
 //Airbnb
 public class MiniParser {
@@ -121,4 +114,3 @@ public class MiniParser {
         return stk.peek();
     }
 }
-
