@@ -37,10 +37,12 @@ public class QueueReconstructionByHeight {
 		System.out.println("");
 	}
 	
-	//ACC: 92 ms
-	//Strategy:
-	//   Sort people,  if height are the same, k smaller is put in front (easy to understand, this way could satisify larger k really has more elements in front); 
-	//                 if height are different, larger height is put in front (this way could satisify the k of smaller-height element when adding to the result list)
+    //ACC: 92 ms
+    //Strategy:
+    //   Sort people,  if height are the same, k smaller is put in front (easy to understand, 
+    //                 this way could satisify larger k really has more elements in front); 
+    //                 if height are different, larger height is put in front 
+    //                 (this way could satisify the k of smaller-height element when adding to the result list)
     public int[][] reconstructQueue(int[][] people) {
     	
         //Arrays.sort(people, (a, b)->(a[0]!=b[0]?Integer.compare(b[0], a[0]):Integer.compare(a[1], b[1])));   //Java 8
