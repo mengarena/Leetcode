@@ -46,11 +46,10 @@ import java.util.Set;
 //Note:
 //
 //(1) According to the definition of tree on Wikipedia: 
-//¡°a tree is an undirected graph in which any two vertices are connected by exactly one path. 
-//In other words, any connected graph without simple cycles is a tree.¡±
+//Â¡Â°a tree is an undirected graph in which any two vertices are connected by exactly one path. 
+//In other words, any connected graph without simple cycles is a tree.Â¡Â±
 //
 //(2) The height of a rooted tree is the number of edges on the longest downward path between the root and a leaf.
-
 
 //The height of a rooted tree is the number of edges on the longest downward path between root and a leaf.
 
