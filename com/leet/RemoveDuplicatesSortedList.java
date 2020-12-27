@@ -41,23 +41,17 @@ public class RemoveDuplicatesSortedList {
         ListNode pNext;
         
         if (head == null) return null;
-        
-        int nCurVal = head.val;
-        int nNextVal;
-        
+                
         pNext = pCur.next;
         
         while (pNext != null) {
-        	nNextVal = pNext.val;
         	
-        	if (nNextVal == nCurVal) {
-        		pNext = pNext.next;
-        	} else {
-        		pCur.next = pNext;
-        		pCur = pNext;
-        		nCurVal = nNextVal;
-        		pNext = pNext.next;
+        	if (pNext.val != pCur.val) {
+        	    pCur.next = pNext;
+        	    pCur = pNext;
         	}
+		
+		pNext = pNext.next;
         }
         
         pCur.next = null;
