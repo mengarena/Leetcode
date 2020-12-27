@@ -41,10 +41,11 @@ public class ReconstructItinerary {
 	}
 	
 	
-	//Strategy:  Convert String Airport code into integer
-	//1. Convert string to integer for each airport (saved in hmAirport)
-	//2. Organize the tickets (each airport maps to its destinations in hmTickets)
-	//3. Find the itinerary. From the start airport, try each of destination (in order) as next airport to see whether it could complete the itinerary; if yes, this will be the result
+    //Strategy:  Convert String Airport code into integer
+    //1. Convert string to integer for each airport (saved in hmAirport)
+    //2. Organize the tickets (each airport maps to its destinations in hmTickets)
+    //3. Find the itinerary. From the start airport, try each of destination (in order) as next airport to see whether it could complete the itinerary; 
+    //if yes, this will be the result
     public List<String> findItinerary(String[][] tickets) {
         List<String> lstItinerary = new ArrayList<String>();
         if (tickets == null || tickets.length == 0 || tickets[0].length == 0) return lstItinerary;
@@ -79,7 +80,6 @@ public class ReconstructItinerary {
     			lstAirport.add(nInsertPos, nAirportEnd);
     			hmTickets.replace(nAirportStart, lstAirport);
     		}
-    		
         }
         
         //Organize the tickets
