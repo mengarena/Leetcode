@@ -77,7 +77,7 @@ public class RearrangeStringKDistanceApart {
         int maxCnt = 0;
         
         for (int i=0; i<narrCnt.length; i++) {
-            if (narrCnt[i] > 0 && narrCnt[i] > maxCnt && narrValidLeftPos[i] <= curPos) {
+            if (narrCnt[i] > maxCnt && narrValidLeftPos[i] <= curPos) {
                 maxCnt = narrCnt[i];
                 candidateLetterIdx = i;
             }
