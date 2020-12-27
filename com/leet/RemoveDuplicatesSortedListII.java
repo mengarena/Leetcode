@@ -42,10 +42,8 @@ public class RemoveDuplicatesSortedListII {
         int nCnt = 1;
         
         while (pNext != null) {
-        	        	
         	if (pCur.val == pNext.val) {
         		nCnt = nCnt + 1;
-        		pNext = pNext.next;
         	} else {
         		if (nCnt == 1) {
         			if (newHead == null) newHead = pCur;
@@ -58,11 +56,10 @@ public class RemoveDuplicatesSortedListII {
         		}
         		
         		pCur = pNext;
-        		nCnt = 1;
-        		
-        		pNext = pCur.next;
+        		nCnt = 1;	
         	}
         	
+		pNext = pCur.next;
         }
         
         if (pPrev != null) {
