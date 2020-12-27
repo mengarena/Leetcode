@@ -11,27 +11,20 @@ import java.util.Queue;
 //
 //Example 1:
 //str = "aabbcc", k = 3
-//
 //Result: "abcabc"
-//
 //The same letters are at least distance 3 from each other.
 //
 //Example 2:
 //str = "aaabc", k = 3 
-//
 //Answer: ""
-//
 //It is not possible to rearrange the string.
 //
 //Example 3:
 //str = "aaadbbcc", k = 2
-//
 //Answer: "abacabcd"
-//
 //Another possible answer is: "abcabcda"
 //
 //The same letters are at least distance 2 from each other.
-
 
 //Google
 //Hard
@@ -53,8 +46,8 @@ public class RearrangeStringKDistanceApart {
 	
 	
 	
-	//ACC:  71%
-	//Strategy: use two arrays to remember: 1) remained count of each letter  2) Most left possible position for each letter
+    //ACC:  71%
+    //Strategy: use two arrays to remember: 1) remained count of each letter  2) Most left possible position for each letter
     public String rearrangeString(String str, int k) {
         if (str == null || str.length() <= 1 || k == 0) return str;
         int n = str.length();
@@ -67,8 +60,9 @@ public class RearrangeStringKDistanceApart {
         for (i=0; i<n; i++) narrCnt[str.charAt(i)-'a']++;
         
         for (i=0; i<n; i++) {  //Position of each letter
-            int candidateLetterIdx = getCandidateLetterIdx(narrCnt, narrValidLeftPos, i);   //Find out which letter is most suitable to be put at position i in the final result
-                                                                                            //The most suitable letter is the one 1) has largest remained count  2) Its left position is valid
+            int candidateLetterIdx = getCandidateLetterIdx(narrCnt, narrValidLeftPos, i);   
+		             //Find out which letter is most suitable to be put at position i in the final result
+                             //The most suitable letter is the one 1) has largest remained count  2) Its left position is valid
             if (candidateLetterIdx == -1) return "";
             narrCnt[candidateLetterIdx]--;
             narrValidLeftPos[candidateLetterIdx] = i+k;
