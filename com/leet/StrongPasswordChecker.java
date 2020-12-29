@@ -135,7 +135,9 @@ public int strongPasswordChecker(String s) {
         }
             
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] >= 3 && over_len > 0) {
+            if (arr[i] >= 3 && over_len > 0) {  // Try to consume "over_len" on arr[i]. If arr[i] > over_len, can consume all over_len; 
+		                                // otherwise, if over_len is larger, it directly make arr[i] into valid repeating string, 
+		                                // without going to the next "if"
                 int need = arr[i] - 2;
                 arr[i] -= over_len;
                 over_len -= need;
