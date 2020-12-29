@@ -151,6 +151,11 @@ public int strongPasswordChecker(String s) {
     return res;
 }	
 
+	
+	
+	
+	
+	
 /*	
 A quick explanation of the program:
 
