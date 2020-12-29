@@ -8,11 +8,9 @@ package com.leet;
 //Given m satisfies the following constraint: 1 ¡Ü m ¡Ü length(nums) ¡Ü 14,000.
 //
 //Examples:
-//
 //Input:
 //nums = [7,2,5,10,8]
 //m = 2
-//
 //Output:
 //18
 //
@@ -30,14 +28,14 @@ public class SplitArrayLargestSum {
 		// TODO Auto-generated constructor stub
 	}
 
-	//ACC:  10ms
-	//
-	//Strategy:
-	//The minimal largest sum should be between the max (single) element (in case each subarray has only one element) and the sum of the array (in case m = 1)
-	//
-	//Use binary search, select a threshold for subarray, to see whether it is possible to split into m subarray
-	//If for a threshold, there are more than m subarray, we should increase the threshold
-	//Otherwise, we need to decrease the threshold
+    //ACC:  10ms
+    //
+    //Strategy:
+    //The minimal largest sum should be between the max (single) element (in case each subarray has only one element) and the sum of the array (in case m = 1)
+    //
+    //Use binary search, select a threshold for subarray, to see whether it is possible to split into m subarray
+    //If for a threshold, there are more than m subarray, we should increase the threshold
+    //Otherwise, we need to decrease the threshold
     public int splitArray(int[] nums, int m) {
         if (nums == null || nums.length < m) return 0;
         int n = nums.length;
