@@ -123,8 +123,9 @@ public int strongPasswordChecker(String s) {
         int over_len = Math.max(arr.length - 20, 0), left_over = 0;
         res += over_len;
         
-	// Change the repeating string into string length 3m+2 as above analysis
-	// Since later, with 3m+2 length repeating string (e.g. aaaaa), we can just replace (3m+2/3) characters to make them valid
+	// Change the repeating string with length 3m or 3m+1 into string length 3n+2 as above analysis
+	// Since later, with 3n+2 length repeating string (e.g. aaaaa), 
+	// we can just replace (3n+2/3) characters to make them valid (this the most efficient way to change string into valid string)
         for (int k = 1; k < 3; k++) {
             for (int i = 0; i < arr.length && over_len > 0; i++) {
                 if (arr[i] < 3 || arr[i] % 3 != (k - 1)) continue;
