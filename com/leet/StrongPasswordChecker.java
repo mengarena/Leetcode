@@ -141,6 +141,7 @@ public int strongPasswordChecker(String s) {
                 over_len -= need;
             }
                 
+	    // Corresponding the replacement operation for strings at length 3n+2, e.g. change "aaaaa" to "aabaa"	
             if (arr[i] >= 3) left_over += arr[i] / 3;
         }
             
