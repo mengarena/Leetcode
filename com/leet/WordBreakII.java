@@ -62,6 +62,10 @@ public class WordBreakII {
         return res;
     }
     
+    // For example, we have "abcd", so differet way to split, 
+    // e.g. "a" + "bcd",   later when we process "bcd", it will furture split into "b" + "cd"
+    // Original "abcd" could also be split into "ab" + "cd"
+    // So if without the hm,  the "cd" will be processed twice in the two scenarios
     private List<String> wordBreakHelper(String s, List<String> wordDict, int maxLen, int minLen) {
         List<String> res = new ArrayList<>();
         
