@@ -30,7 +30,8 @@ public class VerifyPreorderSequenceBinarySearchTree {
 	//
 	//Strategy:  Simulate (preorder) tree traversal
 	//If new node smaller than previous node, it is on left (sub)trees
-	//When a new node larger than previous node, it means the traversal goes to a right branch, then it pops out all smaller value (which should be on the corresponding left branch of the same sub tree)
+	//When a new node larger than previous node, it means the traversal goes to a right branch, then it pops out all smaller value 
+	//(which should be on the corresponding left branch of the same sub tree)
 	//Then it find the low bound for the new node (the low bound node actually is the root of this sub tree)
 	//Then all other coming nodes should be larger than this low bound (because it is preorder traversal), otherwise the tree is wrong
     public boolean verifyPreorder(int[] preorder) {
@@ -42,12 +43,13 @@ public class VerifyPreorderSequenceBinarySearchTree {
             if (i < nLowBound) return false;
             
             while (!stkNode.isEmpty() && i > stkNode.peek()) nLowBound = stkNode.pop();   
-            //When come to this, it is on the right branch, i is the first node on right branch (i.e. sub-root of the sub right tree). by the end of this while, nLowBound is the root 
+            //When come to this, it is on the right branch, i is the first node on right branch (i.e. sub-root of the sub right tree). 
+	    //by the end of this while, nLowBound is the root 
             //Pop the nodes on the corresponding left branch and find the low bound (which should be the root of this sub tree)
-            //After the series of pop(), the top node on the stkNode is the root's root of the current right branch (while the nLowBound is the value of the root node of current right branch)
+            //After the series of pop(), the top node on the stkNode is the root's root of the current right branch 
+	    //(while the nLowBound is the value of the root node of current right branch)
             //All the coming node should be larger than the low bound, if not, wrong.
-            
-            
+           
             stkNode.push(i);
         }
  
