@@ -190,8 +190,8 @@ public class WordLadderII {
     			List<String> lstParent = lstlstParent.get(i);
     			String sParent = lstParent.get(lstParent.size()-1);
     			
-    	    	List<String> lstLevel = new ArrayList<String>();  //To save derived (from sParent) new words
-    	    	List<Integer> lstFoundIdx = new ArrayList<Integer>();   //In lstLevel, which equals sEndWord
+    	    	        List<String> lstLevel = new ArrayList<String>();  //To save derived (from sParent) new words
+    	    	        List<Integer> lstFoundIdx = new ArrayList<Integer>();   //In lstLevel, which equals sEndWord
     	    	
     			boolean bRet = findLadderHelperBFS(wordList, sParent, sEndWord, lstLevel, lstFoundIdx, wordsToRemove);
     			if (bRet == true) {
