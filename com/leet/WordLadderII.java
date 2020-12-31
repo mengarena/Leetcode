@@ -222,9 +222,9 @@ public class WordLadderII {
     		}  //For
     		
     		if (bFound) break;
-			//Reason to remove the word for next level:
-			//If don't remove, when meets this word at other (higher) level, the final path could not be shorter than this one,
-			//those will not be the result path, so could remove it
+		//Reason to remove the word for next level:
+		//If don't remove, when meets this word at other (higher) level, the final path could not be shorter than this one,
+		//those will not be the result path, so could remove it
     		//for (String sRemove:wordsToRemove) wordList.remove(sRemove);	
     		wordList.removeAll(wordsToRemove);
     	}
