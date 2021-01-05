@@ -95,7 +95,7 @@ struct DT {
     DT(int a, int b) { this->a = a; this->b = b; }
 };
 
-bool mycomp(DT& A, DT& B) {
+static bool mycomp(DT& A, DT& B) {
     return A.a > B.a;          // Descending order by X.a
 }
 
