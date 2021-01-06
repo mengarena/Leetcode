@@ -1,4 +1,4 @@
-/*
+"""
 
 1556. Thousand Separator
 
@@ -24,7 +24,7 @@ Constraints:
 0 <= n < 2^31
 
 Easy
-*/
+"""
 
 class Solution:
     def thousandSeparator(self, n: int) -> str:
