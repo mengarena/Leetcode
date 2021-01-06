@@ -1,4 +1,4 @@
-/*
+"""
 
 1572. Matrix Diagonal Sum
 
@@ -31,7 +31,7 @@ n == mat.length == mat[i].length
 1 <= mat[i][j] <= 100
 
 Easy
-*/
+"""
 
 class Solution:
     def diagonalSum(self, mat: List[List[int]]) -> int:
