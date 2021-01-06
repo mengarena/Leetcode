@@ -1,4 +1,4 @@
-/*
+"""
 
 433. Minimum Genetic Mutation
 
@@ -39,7 +39,7 @@ bank: ["AAAACCCC", "AAACCCCC", "AACCCCCC"]
 return: 3
 
 Medium
-*/
+"""
 
 class Solution:
     def getNewStart(self, start: str):
