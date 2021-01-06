@@ -1,5 +1,4 @@
-/*
-
+"""
 1624. Largest Substring Between Two Equal Characters
 
 Given a string s, return the length of the longest substring between two equal characters, excluding the two characters. 
@@ -32,7 +31,7 @@ Constraints:
 s contains only lowercase English letters.
 
 Easy
-*/
+"""
 
 class Solution:
     def maxLengthBetweenEqualCharacters(self, s: str) -> int:
