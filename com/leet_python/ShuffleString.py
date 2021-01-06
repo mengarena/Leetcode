@@ -1,4 +1,4 @@
-/*
+"""
 
 1528. Shuffle String
 
@@ -38,7 +38,7 @@ s contains only lower-case English letters.
 All values of indices are unique (i.e. indices is a permutation of the integers from 0 to n - 1).
 
 Easy
-*/
+"""
 
 class Solution:
     def restoreString(self, s: str, indices: List[int]) -> str:
