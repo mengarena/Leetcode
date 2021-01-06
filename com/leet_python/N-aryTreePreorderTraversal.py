@@ -1,5 +1,4 @@
-/*
-
+"""
 589. N-ary Tree Preorder Traversal
 
 Given an n-ary tree, return the preorder traversal of its nodes' values.
@@ -22,7 +21,7 @@ The height of the n-ary tree is less than or equal to 1000
 The total number of nodes is between [0, 10^4]
 
 Easy
-*/
+"""
 
 """
 # Definition for a Node.
