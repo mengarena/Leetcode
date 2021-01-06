@@ -1,4 +1,4 @@
-/*
+"""
 
 1530. Number of Good Leaf Nodes Pairs
 
@@ -35,7 +35,7 @@ The number of nodes in the tree is in the range [1, 2^10].
 Each node's value is between [1, 100].
 1 <= distance <= 10
 
-*/
+"""
 
 # Definition for a binary tree node.
 # class TreeNode:
