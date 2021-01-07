@@ -56,15 +56,15 @@ class Solution:
         return len(target) - len(dp)
 
 
-    def findPos(self, numbers: List[int], seqEnd: List[int], lisLen: int, num: int)->int:
+    def findPos(self, numbers: List[int], seqIndex: List[int], lisLen: int, num: int)->int:
         start = 1
         end = lisLen
         
         while start <= end:
             mid = (end+start)//2
-            if numbers[seqEnd[mid]] == num:
+            if numbers[seqIndex[mid]] == num:
                 return mid
-            elif numbers[seqEnd[mid]] < num:
+            elif numbers[seqIndex[mid]] < num:
                 start = mid + 1
             else:
                 end = mid - 1
