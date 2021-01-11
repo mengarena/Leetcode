@@ -68,7 +68,7 @@ public:
          return a.total > b.total;   
     }
     
-    //56%
+    //60%
     int stoneGameVI(vector<int>& aliceValues, vector<int>& bobValues) {
         int n = aliceValues.size();
         vector<IdxTotal> totals;
@@ -81,7 +81,6 @@ public:
                          
         int aliceTotal = 0;
         bool aliceTurn = true;
-        int valueToTakeIdx;
                          
         for (int i=0; i<n; ++i) {
             if (aliceTurn) {
