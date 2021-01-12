@@ -51,6 +51,8 @@ Medium
 
 class Solution {
 public:
+ 
+    // 100%
     double averageWaitingTime(vector<vector<int>>& customers) {
         int n = customers.size();
         if (n == 0) return 0;
