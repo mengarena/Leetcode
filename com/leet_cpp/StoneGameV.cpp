@@ -65,6 +65,7 @@ public:
         return memo[start][end];
     }
     
+    // 50%
     int stoneGameV(vector<int>& stoneValue) {
         int n = stoneValue.size();
         memo.resize(n, vector<int>(n, -1));
