@@ -50,7 +50,7 @@ public:
         
         memo[start][end] = 0;
         
-        for (int i=start+1; i<=end; ++i) {
+        for (int i=start+1; i<=end; ++i) { // Try each partition
             int left = prefixSum[i]-prefixSum[start];
             int right = prefixSum[end+1] - prefixSum[i];
             if (left < right) {
